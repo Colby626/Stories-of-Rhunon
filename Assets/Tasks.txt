@@ -1,0 +1,19 @@
+Constitution increasing health
+Choosing who to attack
+Strength increasing damage
+Weapons increasing damage dealt
+Armor decreasing damage taken 
+Reflexes adding a dodge chance
+Precision increasing chance to hit against dodge and maybe critical
+Stamina for power attacks that deal double damage 
+AI attacks players on their turn
+AI attacks players intelligently 
+
+Colby:
+Health and damage
+
+Ben:
+Speed affecting turn order
+
+Michael:
+Draw the 4 main players's sprites
