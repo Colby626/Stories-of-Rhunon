@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterSheet : MonoBehaviour
 {
     public int Health;
+    public int MaxHealth;
     public int Stamina;
     [Header("Proficiencies:")]
     public int FistProficiency;
@@ -54,22 +55,8 @@ public class CharacterSheet : MonoBehaviour
         GetComponent<SpriteRenderer>().color = startcolor;
     }
 
-    //Used for the attack button to deal damage
-    public void Attack(GameObject target)
-    {
-        //Make the movement happen over time
-        //Have a set target be highlighted by a mousepress
-        //Make the attack button start this function
-        int damage = Strength + 1;
-        Vector2 startPosition = gameObject.transform.position;
-        Vector2 targetPosition = target.gameObject.transform.position;
-        transform.position = Vector2.MoveTowards(startPosition, targetPosition, movementSpeed);
-        target.GetComponent<CharacterSheet>().TakeDamage(damage);
-        transform.position = Vector2.MoveTowards(targetPosition, startPosition, movementSpeed);
-    }
-
     //Deals damage to this character
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         Health -= damage;
         if(Health <= 0)

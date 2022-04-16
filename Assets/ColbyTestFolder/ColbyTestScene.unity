@@ -607,6 +607,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9, type: 3}
+      propertyPath: Health
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9, type: 3}
       propertyPath: Reflexes
       value: 7
       objectReference: {fileID: 0}
@@ -721,7 +725,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.5647277, g: 0.8773585, b: 0.32648036, a: 1}
   m_FlipX: 0
@@ -1186,6 +1190,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2001981257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1383555037002574667, guid: ad33a31da65d383488651642118a93a9, type: 3}
+  m_PrefabInstance: {fileID: 63649955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2076773412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1353,11 +1362,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 353112960}
         m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: Attack
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2001981257}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1447,7 +1456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9, type: 3}
       propertyPath: Reflexes
-      value: 5
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574666, guid: ad33a31da65d383488651642118a93a9, type: 3}
       propertyPath: m_RootOrder

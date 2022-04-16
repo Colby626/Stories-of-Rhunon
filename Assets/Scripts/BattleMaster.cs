@@ -61,4 +61,18 @@ public class BattleMaster : MonoBehaviour
     {
         turnPassed = true;
     }
+
+    //Used for the attack button to deal damage
+    public void Attack(GameObject target)
+    {
+        //Make the movement happen over time
+        //Have a set target be highlighted by a mousepress
+        //Make the button only work once per turn
+        int damage = nextCharacter.GetComponent<CharacterSheet>().Strength + 1;
+        Vector2 startPosition = nextCharacter.transform.position;
+        Vector2 targetPosition = target.gameObject.transform.position;
+        nextCharacter.transform.position = Vector2.MoveTowards(startPosition, targetPosition, nextCharacter.GetComponent<CharacterSheet>().movementSpeed*Time.deltaTime);
+        target.GetComponent<CharacterSheet>().TakeDamage(damage);
+        nextCharacter.transform.position = Vector2.MoveTowards(nextCharacter.transform.position, startPosition, nextCharacter.GetComponent<CharacterSheet>().movementSpeed*Time.deltaTime);
+    }
 }
