@@ -5,7 +5,8 @@ using UnityEngine;
 public class CharacterSheet : MonoBehaviour
 {
     public int Health;
-    public int AP;
+    public int MaxHealth;
+    public int Stamina;
     [Header("Proficiencies:")]
     public int FistProficiency;
     public int LightProficiency;
@@ -22,7 +23,7 @@ public class CharacterSheet : MonoBehaviour
     public int Speed;
     public int Precision;
     public int Constitution;
-    public int Stamina;
+    public int Grit;
     [Header("Equipment:")]
     public GameObject HandSlot1;
     public GameObject HandSlot2;
@@ -34,9 +35,6 @@ public class CharacterSheet : MonoBehaviour
     public GameObject Ring1;
     public GameObject Ring2;
     public GameObject Neck;
-    [Header("Attacks")]
-    public string[] attackNames;
-    string slash = "Slash";
     [Header("Programmer stuff:")]
     public float movementSpeed;
 
@@ -57,22 +55,8 @@ public class CharacterSheet : MonoBehaviour
         GetComponent<SpriteRenderer>().color = startcolor;
     }
 
-    //Used for the attack button to deal damage
-    public void Attack(GameObject target)
-    {
-        //Make the movement happen over time
-        //Have a set target be highlighted by a mousepress
-        //Make the attack button start this function
-        int damage = Strength + 1;
-        Vector2 startPosition = gameObject.transform.position;
-        Vector2 targetPosition = target.gameObject.transform.position;
-        transform.position = Vector2.MoveTowards(startPosition, targetPosition, movementSpeed);
-        target.GetComponent<CharacterSheet>().TakeDamage(damage);
-        transform.position = Vector2.MoveTowards(targetPosition, startPosition, movementSpeed);
-    }
-
     //Deals damage to this character
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         Health -= damage;
         if(Health <= 0)

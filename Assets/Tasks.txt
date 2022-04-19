@@ -10,7 +10,9 @@ AI attacks players on their turn
 AI attacks players intelligently 
 
 Colby:
-Health and damage
+Damage
+Do we want enemies exact health values to be displayed or just their health bars? The mystery of exactly how much health enemies 
+has adds to difficulty but makes strategizing harder.
 
 Ben:
 Speed affecting turn order

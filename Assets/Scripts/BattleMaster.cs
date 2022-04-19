@@ -9,8 +9,7 @@ public class BattleMaster : MonoBehaviour
     bool battleStarted;
     bool turnPassed;
     public Text turn;
-    [HideInInspector]
-    public GameObject nextCharacter;
+    GameObject nextCharacter;
     int characterindex = 0;
     GameObject[] characters;
 
@@ -41,7 +40,7 @@ public class BattleMaster : MonoBehaviour
         //Displays the first character to go's name on the screen
         if(battleStarted == true)
         {
-            turn.text = "It is " + nextCharacter.name + "'s turn";
+            turn.text = "It is " + nextCharacter.gameObject.name + "'s turn";
         }
 
         //As each turn passes, displays the next character's name
@@ -63,8 +62,17 @@ public class BattleMaster : MonoBehaviour
         turnPassed = true;
     }
 
-    public void DisplayAttacks()
+    //Used for the attack button to deal damage
+    public void Attack(GameObject target)
     {
-
+        //Make the movement happen over time
+        //Have a set target be highlighted by a mousepress
+        //Make the button only work once per turn
+        int damage = nextCharacter.GetComponent<CharacterSheet>().Strength + 1;
+        Vector2 startPosition = nextCharacter.transform.position;
+        Vector2 targetPosition = target.gameObject.transform.position;
+        nextCharacter.transform.position = Vector2.MoveTowards(startPosition, targetPosition, nextCharacter.GetComponent<CharacterSheet>().movementSpeed*Time.deltaTime);
+        target.GetComponent<CharacterSheet>().TakeDamage(damage);
+        nextCharacter.transform.position = Vector2.MoveTowards(nextCharacter.transform.position, startPosition, nextCharacter.GetComponent<CharacterSheet>().movementSpeed*Time.deltaTime);
     }
 }
