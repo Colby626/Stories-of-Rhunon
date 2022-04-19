@@ -2,28 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSheet : MonoBehaviour
+
+[System.Serializable]
+public class CharacterEquipment
 {
-    public int Health;
-    public int MaxHealth;
-    public int Stamina;
-    [Header("Proficiencies:")]
-    public int FistProficiency;
-    public int LightProficiency;
-    public int One_handedProficiency;
-    public int Two_handedProficiency;
-    public int ReachProficiency;
-    public int BowProficiency;
-    public int CrossbowProficiency;
-    public int ThrownProficiency;
-    [Header("Stats:")]
-    public int Strength;
-    public int Attunement;
-    public int Reflexes;
-    public int Speed;
-    public int Precision;
-    public int Constitution;
-    public int Grit;
     [Header("Equipment:")]
     public GameObject HandSlot1;
     public GameObject HandSlot2;
@@ -35,6 +17,44 @@ public class CharacterSheet : MonoBehaviour
     public GameObject Ring1;
     public GameObject Ring2;
     public GameObject Neck;
+}
+
+[System.Serializable]
+public class CharacterProficiencies
+{
+    [Header("Proficiencies:")]
+    public int FistProficiency;
+    public int LightProficiency;
+    public int One_handedProficiency;
+    public int Two_handedProficiency;
+    public int ReachProficiency;
+    public int BowProficiency;
+    public int CrossbowProficiency;
+    public int ThrownProficiency;
+}
+
+[System.Serializable]
+public class CharacterStats
+{
+    [Header("Stats:")]
+    public int Strength;
+    public int Attunement;
+    public int Reflexes;
+    public int Speed;
+    public int Precision;
+    public int Constitution;
+    public int Endurance;
+}
+
+public class CharacterSheet : MonoBehaviour
+{
+    public int Health;
+    public int MaxHealth;
+    public int Stamina;
+    public CharacterStats characterStats;
+    public CharacterProficiencies characterProficiencies;
+    public CharacterEquipment characterEquipment;
+
     [Header("Programmer stuff:")]
     public float movementSpeed;
 

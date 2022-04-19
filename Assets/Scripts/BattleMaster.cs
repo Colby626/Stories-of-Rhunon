@@ -21,7 +21,7 @@ public class BattleMaster : MonoBehaviour
         {
             for(int j = 0; j < characters.Length - 1; j-=-1)
             {
-                if (characters[j].GetComponent<CharacterSheet>().Reflexes < characters[j + 1].GetComponent<CharacterSheet>().Reflexes)
+                if (characters[j].GetComponent<CharacterSheet>().characterStats.Reflexes < characters[j + 1].GetComponent<CharacterSheet>().characterStats.Reflexes)
                 {
                     GameObject temp = characters[j];
                     characters[j] = characters[j + 1];
@@ -68,7 +68,7 @@ public class BattleMaster : MonoBehaviour
         //Make the movement happen over time
         //Have a set target be highlighted by a mousepress
         //Make the button only work once per turn
-        int damage = nextCharacter.GetComponent<CharacterSheet>().Strength + 1;
+        int damage = nextCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1;
         Vector2 startPosition = nextCharacter.transform.position;
         Vector2 targetPosition = target.gameObject.transform.position;
         nextCharacter.transform.position = Vector2.MoveTowards(startPosition, targetPosition, nextCharacter.GetComponent<CharacterSheet>().movementSpeed*Time.deltaTime);
