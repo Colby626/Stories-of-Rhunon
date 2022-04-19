@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterSheet : MonoBehaviour
 {
     public int Health;
-    public int Stamina;
+    public int AP;
     [Header("Proficiencies:")]
     public int FistProficiency;
     public int LightProficiency;
@@ -22,7 +22,7 @@ public class CharacterSheet : MonoBehaviour
     public int Speed;
     public int Precision;
     public int Constitution;
-    public int Grit;
+    public int Stamina;
     [Header("Equipment:")]
     public GameObject HandSlot1;
     public GameObject HandSlot2;
@@ -34,6 +34,9 @@ public class CharacterSheet : MonoBehaviour
     public GameObject Ring1;
     public GameObject Ring2;
     public GameObject Neck;
+    [Header("Attacks")]
+    public string[] attackNames;
+    string slash = "Slash";
     [Header("Programmer stuff:")]
     public float movementSpeed;
 
