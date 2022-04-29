@@ -17,10 +17,11 @@ public class TestAddAttack : MonoBehaviour
 
     public void AddNewAttack()
     {
-        //GameObject newAttack = Instantiate((GameObject)Resources.Load("Attack"), attackList.transform.position, attackList.transform.rotation);
-        //newAttack.transform.parent = attackList.transform;
-        //uiList._listBoxes.Add(newAttack.GetComponent<PlayerListBox>());
-        //attackList.GetComponent<PlayerListBank>().attackNames.Add(newAttack.name);
-        //uiList.Refresh();
+        GameObject newAttack = Instantiate((GameObject)Resources.Load("Attack"), attackList.transform.position, attackList.transform.rotation);
+        newAttack.transform.parent = attackList.transform;
+        uiList._listBoxes.Add(newAttack.GetComponent<PlayerListBox>());
+        attackList.GetComponent<PlayerListBank>().attackNames.Add(newAttack.name);
+        uiList.Initialize();
+        //newAttack.GetComponent<PlayerListBox>().InitializePosition();
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 [System.Serializable]
@@ -46,44 +47,30 @@ public class CharacterStats
     public int Endurance;
 }
 
+[System.Serializable]
+public class CharacterAttacks
+{
+    [Header("Attacks:")]
+    public List<string> attackNames;
+}
+
 public class CharacterSheet : MonoBehaviour
 {
+    public string Name;
     public int Health;
     public int MaxHealth;
     public int Stamina;
+    public Image Portrait;
     public CharacterStats characterStats;
     public CharacterProficiencies characterProficiencies;
     public CharacterEquipment characterEquipment;
+    public CharacterAttacks characterAttacks;
 
     [Header("Programmer stuff:")]
     public float movementSpeed;
-
-    private Color startcolor;
+    public int turnOrderPriority;
 
     //Bracelets and Rings go in the same slot
-
-    //Highlights the character when the mouse is over them 
-    void OnMouseEnter()
-    {
-        startcolor = GetComponent<SpriteRenderer>().color;
-        GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color * 1.5f;
-    }
-
-    //When the mouse leaves the character they will be unhighlighted
-    void OnMouseExit()
-    {
-        GetComponent<SpriteRenderer>().color = startcolor;
-    }
-
-    //Deals damage to this character
-    public void TakeDamage(int damage)
-    {
-        Health -= damage;
-        if(Health <= 0)
-        {
-            Die();
-        }
-    }
 
     void Die()
     {
