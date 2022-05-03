@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4520371628535082127}
   - component: {fileID: 3515694084115582316}
   - component: {fileID: 2039857393916834415}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 5237580635644603372}
   - component: {fileID: 8887869088168600759}
   - component: {fileID: 1896647543124316639}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Character
   m_TagString: Participant
   m_Icon: {fileID: 0}
@@ -240,7 +240,10 @@ MonoBehaviour:
   Name: 
   Health: 10
   MaxHealth: 10
+  Mana: 0
+  MaxMana: 0
   Stamina: 10
+  MaxStamina: 0
   Portrait: {fileID: 0}
   characterStats:
     Strength: 0
@@ -324,7 +327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doMouseOver: 1
   portrait: {fileID: 0}
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
+  staminaBar: {fileID: 0}
 --- !u!114 &1896647543124316639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
+  magicBar: {fileID: 0}
+  staminaBar: {fileID: 0}
 --- !u!1 &3285708973699581916
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +358,7 @@ GameObject:
   - component: {fileID: 6622253094504560964}
   - component: {fileID: 767314396533434703}
   - component: {fileID: 4080610839211443577}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: HealthbarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +433,7 @@ GameObject:
   - component: {fileID: 7577625773829735232}
   - component: {fileID: 8528198070572761720}
   - component: {fileID: 6499738255719469252}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +508,7 @@ GameObject:
   - component: {fileID: 5117898670750241106}
   - component: {fileID: 6369124927427840255}
   - component: {fileID: 3022985510244602019}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +645,7 @@ GameObject:
   - component: {fileID: 7968113952781477349}
   - component: {fileID: 561926055552928934}
   - component: {fileID: 9148562020913564185}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5074215424778186177}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

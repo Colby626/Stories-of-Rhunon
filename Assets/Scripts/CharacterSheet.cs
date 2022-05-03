@@ -59,8 +59,11 @@ public class CharacterSheet : MonoBehaviour
     public string Name;
     public int Health;
     public int MaxHealth;
+    public int Mana;
+    public int MaxMana;
     public int Stamina;
-    public Image Portrait;
+    public int MaxStamina;
+    public Sprite Portrait;
     public CharacterStats characterStats;
     public CharacterProficiencies characterProficiencies;
     public CharacterEquipment characterEquipment;
