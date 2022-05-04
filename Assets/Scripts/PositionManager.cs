@@ -22,7 +22,6 @@ public class PositionManager : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<BattleMaster>().currentCharacter;
         camera = FindObjectOfType<Camera>();
         allCharacters = GameObject.FindGameObjectsWithTag("Participant");
 
@@ -42,6 +41,8 @@ public class PositionManager : MonoBehaviour
             //Gets the position of the mouse on the screen and converts it world space
             mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
+
+            player = FindObjectOfType<BattleMaster>().currentCharacter;
 
             //turns off the status popup when hovering over characters while positioning
             foreach (GameObject character in allCharacters)
@@ -75,8 +76,9 @@ public class PositionManager : MonoBehaviour
 
     }
 
-    public void StartTracking()
+    public void StartTracking(int test)
     {
+        Debug.Log("Test");
         buttonClicked = true;
     }
 

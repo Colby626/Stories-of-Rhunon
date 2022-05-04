@@ -8,12 +8,13 @@ public class AttackListGenerator : MonoBehaviour
     public GameObject playerCanvas;
 
     public List<string> names;
+    private GameObject attackList;
 
-    public void Generate()
+    public void Generate(GameObject canvas)
     {
-        //names = GetComponent<CharacterSheet>().characterAttacks.attackNames;
+        playerCanvas = canvas;
 
-        GameObject attackList = Instantiate(Resources.Load("Attack List") as GameObject, playerCanvas.transform.position, playerCanvas.transform.rotation, playerCanvas.transform);
+        attackList = Instantiate(Resources.Load("AttackList") as GameObject, playerCanvas.transform.position, playerCanvas.transform.rotation, playerCanvas.transform);
         CircularScrollingList UIList = attackList.GetComponent<CircularScrollingList>();
 
         attackList.GetComponent<RectTransform>().anchorMin = new Vector2(.5f, 0f);
@@ -23,10 +24,16 @@ public class AttackListGenerator : MonoBehaviour
         foreach (string name in names)
         {
             GameObject newButton = Instantiate(Resources.Load(name) as GameObject, playerCanvas.transform.position, playerCanvas.transform.rotation, attackList.transform);
+            newButton.name = name;
             UIList._listBoxes.Add(newButton.GetComponent<PlayerListBox>());
             UIList.GetComponent<PlayerListBank>().attackNames.Add(newButton.name);
         }
 
         UIList.Initialize();
+    }
+
+    public void Degenerate()
+    {
+        Destroy(attackList);
     }
 }

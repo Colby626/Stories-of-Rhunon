@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 6514061281131700140}
   - component: {fileID: 7550386306425405433}
   - component: {fileID: 5868960034384735485}
+  - component: {fileID: 6456929915982315622}
   m_Layer: 5
   m_Name: Position
   m_TagString: Untagged
@@ -255,7 +256,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6514061281131700140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6456929915982315622}
+        m_TargetAssemblyTypeName: PositionManager, Assembly-CSharp
+        m_MethodName: StartTracking
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5868960034384735485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,3 +282,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contentText: {fileID: 8979683791298821211}
+--- !u!114 &6456929915982315622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215505778760102369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f80cc8273375042b8a64ece212b5ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionImage: {fileID: 1831560836730649351, guid: 6d21356fc61160345b140c4b39576cb9,
+    type: 3}
+  outOfBoundsImage: {fileID: 3335952773959776263, guid: a2fe510ccb982c64cbd3ec8b78bb507a,
+    type: 3}
+  finishedPositioning:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6456929915982315622}
+        m_TargetAssemblyTypeName: PositionManager, Assembly-CSharp
+        m_MethodName: OnFinish
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  animationTime: 2

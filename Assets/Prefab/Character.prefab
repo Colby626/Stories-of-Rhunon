@@ -212,7 +212,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 50
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
     type: 3}
   m_Color: {r: 0.28009173, g: 0.50279796, b: 0.9150943, a: 1}
@@ -332,6 +332,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   staminaBar: {fileID: 0}
+  animationTime: 1
 --- !u!114 &1896647543124316639
 MonoBehaviour:
   m_ObjectHideFlags: 0

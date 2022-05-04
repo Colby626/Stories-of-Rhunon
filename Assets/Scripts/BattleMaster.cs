@@ -19,10 +19,11 @@ public class BattleMaster : MonoBehaviour
     private int turnCounter = 0;
     private bool battleStarted;
     private bool turnPassed;
+    private bool generated = false;
 
     void Start()
     {
-        //Finds all the participants and orders them from highest reflexes to lowest
+        //Finds all the participants
         characterArray = GameObject.FindGameObjectsWithTag("Participant");
         characters = new List<GameObject>(characterArray);
 
@@ -33,8 +34,6 @@ public class BattleMaster : MonoBehaviour
         turnPassed = false;
         battleStarted = true;
         currentCharacter = turnOrder[0];
-
-        //generate first list of options at first character
     }
 
     void Update()
@@ -47,7 +46,7 @@ public class BattleMaster : MonoBehaviour
         }
 
         //As each turn passes, displays the next character's name
-        //turnpassed will be called in a unity event at the end of the current characters turn
+        //turnpassed will be changed in a unity event at the end of the current characters turn
         if(turnPassed)
         {
             characterindex++;
@@ -55,6 +54,17 @@ public class BattleMaster : MonoBehaviour
             turnPassed = false;
         }
 
+        //checks to ensure that there is not already a list created and if not, creates one
+        if (!generated)
+        {
+            if (!currentCharacter.GetComponent<Enemy>())
+            {
+                listGenerator.Generate(currentCharacter.GetComponentInChildren<Canvas>().gameObject);
+                generated = true;
+            }
+        }
+
+        //checks when reached the end of the current order and makes a new one. Recalculated at -1 to avoid index errors
         if (turnCounter == (turnOrder.Count - 1))
         {
             CalculateTurnOrder();
@@ -72,6 +82,9 @@ public class BattleMaster : MonoBehaviour
     {
         turnPassed = true;
         turnCounter++;
+
+        listGenerator.Degenerate();
+        generated = false;
     }
 
     private void CalculateTurnOrder()

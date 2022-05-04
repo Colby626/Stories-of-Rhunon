@@ -8,6 +8,7 @@ public class BoundaryCheck : MonoBehaviour
     private SpriteRenderer sprite;
     [HideInInspector]
     public bool canClick;
+    public bool entered = false;
 
     private void Start()
     {
@@ -17,21 +18,29 @@ public class BoundaryCheck : MonoBehaviour
         canClick = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Boundary") || other.CompareTag("Participant"))
-        {
-            blockerSprite.SetActive(true);
-            sprite.enabled = false;
-            canClick = false;
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("Boundary") || other.CompareTag("Participant"))
+    //    {
+    //        blockerSprite.SetActive(true);
+    //        sprite.enabled = false;
+    //        canClick = false;
+    //    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void Update()
     {
-        if (other.CompareTag("Boundary") || other.CompareTag("Participant"))
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1f);
+        foreach (Collider2D collider in colliders)
         {
-            if (blockerSprite.activeSelf)
+            if (collider.CompareTag("Boundary") || collider.CompareTag("Participant"))
+            {
+                blockerSprite.SetActive(true);
+                sprite.enabled = false;
+                canClick = false;
+            }
+            else
             {
                 blockerSprite.SetActive(false);
                 sprite.enabled = true;
@@ -39,4 +48,23 @@ public class BoundaryCheck : MonoBehaviour
             }
         }
     }
+
+    //private void OnTriggerStay2D(Collider2D other)
+    //{
+    //    entered = true;
+    //}
+
+    //private void OnTriggerExit2D(Collider2D other)
+    //{
+    //    entered = false;
+    //    if (other.CompareTag("Boundary") || other.CompareTag("Participant"))
+    //    {
+    //        if (blockerSprite.activeSelf && !entered)
+    //        {
+    //            blockerSprite.SetActive(false);
+    //            sprite.enabled = true;
+    //            canClick = true;
+    //        }
+    //    }
+    //}
 }
