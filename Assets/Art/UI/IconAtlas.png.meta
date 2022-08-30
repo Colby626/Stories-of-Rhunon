@@ -147,6 +147,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -156,8 +157,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -1108,6 +1109,48 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      IconAtlas_6: 637600287025168647
+      IconAtlas_20: 5738201534200495273
+      IconAtlas_29: -5550690367494017933
+      IconAtlas_9: -4966162305417256429
+      IconAtlas_5: -6958197667073352549
+      IconAtlas_2: -2163040721368170237
+      IconAtlas_12: 8570429155452517563
+      IconAtlas_7: 5089334733563943778
+      IconAtlas_17: -1943507328537871512
+      IconAtlas_26: -666771148777041706
+      IconAtlas_23: -5246137551894079265
+      IconAtlas_38: -1893530104310317046
+      IconAtlas_14: -3571986809002808010
+      IconAtlas_15: 9187306151616330636
+      IconAtlas_16: -2744771846480662119
+      IconAtlas_4: 3018069600957669009
+      IconAtlas_36: -2676236025544865102
+      IconAtlas_31: -3101916323672966024
+      IconAtlas_35: -5750116725303482918
+      IconAtlas_27: 8308421321160616916
+      IconAtlas_3: -8130827432417160453
+      IconAtlas_8: -3883835491738983535
+      IconAtlas_21: -7424967190693757416
+      IconAtlas_34: -3753293963759949728
+      IconAtlas_0: 8438338092690115022
+      IconAtlas_37: -3430664942715567639
+      IconAtlas_30: 1955164516179061658
+      IconAtlas_10: 59762828546937834
+      IconAtlas_39: -7412506391863123985
+      IconAtlas_28: -991502311116383588
+      IconAtlas_1: 27845708269913200
+      IconAtlas_11: 5412631424334258285
+      IconAtlas_18: -5815559458100759616
+      IconAtlas_25: 3239308363713313717
+      IconAtlas_40: -8048369888140241961
+      IconAtlas_22: 538514410529161385
+      IconAtlas_33: 1283489019212284972
+      IconAtlas_13: 3326831728913971431
+      IconAtlas_32: -3682351099881230906
+      IconAtlas_19: 6120908473732132678
+      IconAtlas_24: 7982521409735569031
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

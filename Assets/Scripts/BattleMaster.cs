@@ -55,14 +55,14 @@ public class BattleMaster : MonoBehaviour
         }
 
         //checks to ensure that there is not already a list created and if not, creates one
-        if (!generated)
+        /*if (!generated)
         {
             if (!currentCharacter.GetComponent<Enemy>())
             {
                 listGenerator.Generate(currentCharacter.GetComponentInChildren<Canvas>().gameObject);
                 generated = true;
             }
-        }
+        }*/
 
         //checks when reached the end of the current order and makes a new one. Recalculated at -1 to avoid index errors
         if (turnCounter == (turnOrder.Count - 1))

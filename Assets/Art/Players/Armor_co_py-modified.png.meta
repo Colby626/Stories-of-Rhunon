@@ -54,6 +54,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,8 +64,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -343,6 +344,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Armor_co_py-modified_0: -2040201141479533192
+      Armor_co_py-modified_2: -243072287789744301
+      Armor_co_py-modified_1: 4037965715436268432
+      Armor_co_py-modified_7: 857991760408643736
+      Armor_co_py-modified_4: -8156834059357337614
+      Armor_co_py-modified_3: 5881458002361342821
+      Armor_co_py-modified_8: -8115033208014669887
+      Armor_co_py-modified_9: -6334687397757427517
+      Armor_co_py-modified_5: -5000869883365105626
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
