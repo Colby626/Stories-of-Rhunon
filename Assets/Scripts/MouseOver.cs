@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ public class MouseOver : MonoBehaviour
     public StatBar healthBar;
     public StatBar manaBar;
     public StatBar staminaBar;
+    public Text nameText;
     public float animationTime = 1f;
 
     private void Start()
@@ -61,5 +63,7 @@ public class MouseOver : MonoBehaviour
         staminaBar.SetBar(character.Stamina);
 
         portrait.sprite = character.Portrait;
+
+        nameText.text = characterSprite.GetComponent<CharacterSheet>().Name;
     }
 }

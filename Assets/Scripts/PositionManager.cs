@@ -18,7 +18,6 @@ public class PositionManager : MonoBehaviour
     private bool instantiated = false;
     private GameObject imageInstance;
     private bool doTracking = true;
-    private bool move = false;
 
     private void Start()
     {

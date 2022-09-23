@@ -18,17 +18,8 @@ public class StatusManager : MonoBehaviour
         character.Mana = character.MaxMana;
         character.Stamina = character.MaxStamina;
 
-        //healthBar.SetBarMax(character.MaxHealth);
-        //magicBar.SetBarMax(character.MaxMana);
-        //staminaBar.SetBarMax(character.MaxStamina);
-    }
-
-    public void TakeDamage(int damage)
-    {
-        character.Health -= damage;
-        if (character.Health <= 0)
-        {
-            //Die();
-        }
+        healthBar.SetBarMax(character.MaxHealth);
+        magicBar.SetBarMax(character.MaxMana);
+        staminaBar.SetBarMax(character.MaxStamina);
     }
 }

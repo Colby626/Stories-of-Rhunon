@@ -18,11 +18,14 @@ public class StatBar : MonoBehaviour
         slider.value = stat;
     }
 
-    //void Update()
-    //{
-    //    nameText.text = name;
-    //    healthText.text = "HP: " + GetComponent<CharacterSheet>().Health.ToString();
-    //    healthbar.fillAmount = (float)GetComponent<CharacterSheet>().Health / (float)GetComponent<CharacterSheet>().MaxHealth;
-    //}
+    private void Start()
+    {
+        //nameText.text = name;
+    }
+    void Update()
+    {
+        //healthText.text = "HP: " + GetComponent<CharacterSheet>().Health.ToString();
+        //healthbar.fillAmount = (float)GetComponent<CharacterSheet>().Health / (float)GetComponent<CharacterSheet>().MaxHealth;
+    }
 
 }

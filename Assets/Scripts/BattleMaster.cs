@@ -8,18 +8,22 @@ public class BattleMaster : MonoBehaviour
     public int multiTurnThreshold = 50;
     public Text turn;
     public List<GameObject> turnOrder = new List<GameObject>();
+    public Texture2D cursorTexture;
 
     private List<GameObject> tempList = new List<GameObject>();
     private List<GameObject> characters;
     private GameObject[] characterArray;
+
     //[HideInInspector]
     public GameObject currentCharacter;
+    public bool attackPressed = false;
+    public bool attackDone = false;
+
     private AttackListGenerator listGenerator;
     private int characterindex = 0;
     private int turnCounter = 0;
     private bool battleStarted;
     private bool turnPassed;
-    private bool generated = false;
 
     void Start()
     {
@@ -81,10 +85,10 @@ public class BattleMaster : MonoBehaviour
     public void NextTurn()
     {
         turnPassed = true;
+        attackDone = false;
         turnCounter++;
 
         listGenerator.Degenerate();
-        generated = false;
     }
 
     private void CalculateTurnOrder()
@@ -143,17 +147,21 @@ public class BattleMaster : MonoBehaviour
         }
     }
 
-    //Used for the attack button to deal damage
-    //public void Attack(GameObject target)
-    //{
-    //    //Make the movement happen over time
-    //    //Have a set target be highlighted by a mousepress
-    //    //Make the button only work once per turn
-    //    int damage = nextCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1;
-    //    Vector2 startPosition = nextCharacter.transform.position;
-    //    Vector2 targetPosition = target.gameObject.transform.position;
-    //    nextCharacter.transform.position = Vector2.MoveTowards(startPosition, targetPosition, nextCharacter.GetComponent<CharacterSheet>().movementSpeed*Time.deltaTime);
-    //    target.GetComponent<CharacterSheet>().TakeDamage(damage);
-    //    nextCharacter.transform.position = Vector2.MoveTowards(nextCharacter.transform.position, startPosition, nextCharacter.GetComponent<CharacterSheet>().movementSpeed*Time.deltaTime);
-    //}
+    public void Attack()
+    {
+        if (attackDone)
+        {
+            return;
+        }
+        if (attackPressed)
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            attackPressed = false;
+            return;
+        }
+        attackPressed = true;
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+        //Play attack animation
+        //Grey out the attack button when it can't be used
+    }
 }

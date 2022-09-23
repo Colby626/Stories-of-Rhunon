@@ -72,35 +72,56 @@ public class CharacterSheet : MonoBehaviour
     [Header("Programmer stuff:")]
     public float movementSpeed;
     public int turnOrderPriority;
+    public BattleMaster battleMaster;
 
-    //Bracelets and Rings go in the same slot
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+        if (Health <= 0)
+        {
+            Die();
+        }
+    }
 
     void Die()
     {
         Destroy(this.gameObject);
     }
+
+    public void OnMouseDown()
+    {
+        if (battleMaster.attackPressed)
+        {
+            TakeDamage(battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
+            battleMaster.attackPressed = false;
+            battleMaster.attackDone = true;
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+    }
 }
-    /*
+/*
+Bracelets and Rings go in the same slot
+
 Fist
 
 Light: 
-    daggers, clubs, sickle, whip(has reach)
+daggers, clubs, sickle, whip(has reach)
 
 One-handed:
-    longswords, axes, maces, flails(ignore shields)
+longswords, axes, maces, flails(ignore shields)
 
 Two-handed:
-    greatswords, greataxes, greatclubs, greathammers, quarterstaffs
+greatswords, greataxes, greatclubs, greathammers, quarterstaffs
 
 Reach:
-    spears, swordstaffs, poleaxes, scythes(ignore shields)
+spears, swordstaffs, poleaxes, scythes(ignore shields)
 
 Bow:
-    shortbows, longbows
+shortbows, longbows
 
 Crossbow:
-    light crossbows, crossbows, heavy crossbows
+light crossbows, crossbows, heavy crossbows
 
 Thrown:
-    javelins, throwing daggers, throwing axes, slings
-     */
+javelins, throwing daggers, throwing axes, slings
+ */
