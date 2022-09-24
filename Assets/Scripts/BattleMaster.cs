@@ -7,23 +7,23 @@ public class BattleMaster : MonoBehaviour
 {
     public int multiTurnThreshold = 50;
     public Text turn;
-    public List<GameObject> turnOrder = new List<GameObject>();
+    public List<GameObject> turnOrder = new();
     public Texture2D cursorTexture;
+    public Button attackButton;
 
-    private List<GameObject> tempList = new List<GameObject>();
-    private List<GameObject> characters;
+    private List<GameObject> tempList = new();
     private GameObject[] characterArray;
 
-    //[HideInInspector]
+    public List<GameObject> characters;
+    public List<GameObject> livingPlayers;
+    public List<GameObject> livingEnemies;
     public GameObject currentCharacter;
     public bool attackPressed = false;
     public bool attackDone = false;
 
-    private AttackListGenerator listGenerator;
     private int characterindex = 0;
     private int turnCounter = 0;
     private bool battleStarted;
-    private bool turnPassed;
 
     void Start()
     {
@@ -31,64 +31,73 @@ public class BattleMaster : MonoBehaviour
         characterArray = GameObject.FindGameObjectsWithTag("Participant");
         characters = new List<GameObject>(characterArray);
 
-        listGenerator = GetComponent<AttackListGenerator>();
+        //Gets a list of the players
+        foreach (GameObject character in characterArray)
+        {
+            if (character.GetComponent<CharacterSheet>().isPlayer)
+            {
+                livingPlayers.Add(character);
+            }
+        }
 
+        //Gets a list of the enemies
+        foreach (GameObject character in characterArray)
+        {
+            if (!character.GetComponent<CharacterSheet>().isPlayer)
+            {
+                livingEnemies.Add(character);
+            }
+        }
         StartingTurnOrder();
 
-        turnPassed = false;
         battleStarted = true;
         currentCharacter = turnOrder[0];
     }
 
     void Update()
     {
-        //Displays the first character to go's name on the screen
-        //will be removed
-        if(battleStarted)
+        if (attackDone)
         {
-            turn.text = "It is " + currentCharacter.GetComponent<CharacterSheet>().Name + "'s turn";
+            attackButton.interactable = false;
         }
 
-        //As each turn passes, displays the next character's name
-        //turnpassed will be changed in a unity event at the end of the current characters turn
-        if(turnPassed)
-        {
-            characterindex++;
-            currentCharacter = turnOrder[characterindex];
-            turnPassed = false;
-        }
-
-        //checks to ensure that there is not already a list created and if not, creates one
-        /*if (!generated)
-        {
-            if (!currentCharacter.GetComponent<Enemy>())
-            {
-                listGenerator.Generate(currentCharacter.GetComponentInChildren<Canvas>().gameObject);
-                generated = true;
-            }
-        }*/
-
-        //checks when reached the end of the current order and makes a new one. Recalculated at -1 to avoid index errors
-        if (turnCounter == (turnOrder.Count - 1))
+        //checks if the turn counter is closer than 20 from the furthest calculated the list has gone and if so calculates the list further
+        if (turnCounter >= (turnOrder.Count() - 20))
         {
             CalculateTurnOrder();
+        }
 
-            //update UI turn order portraits
-
-            turnCounter = 0;
-            characterindex = 0;
-            currentCharacter = turnOrder[0];
+        //Displays the character to go's name on the screen
+        //will be removed
+        if (battleStarted)
+        {
+            turn.text = "It is " + currentCharacter.GetComponent<CharacterSheet>().Name + "'s turn";
         }
     }
 
     //Used for the button to go to the next turn
     public void NextTurn()
     {
-        turnPassed = true;
+        characterindex++;
+        currentCharacter = turnOrder[characterindex];
         attackDone = false;
         turnCounter++;
+        attackButton.interactable = true;
 
-        listGenerator.Degenerate();
+        //listGenerator.Degenerate();
+
+        //If the next person in line is not a player the ai will attack one of them at random
+        if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        {
+            GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
+            currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
+            target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
+            if (livingPlayers.Count() == 0)
+            {
+                //Display lose screen
+            }
+            NextTurn();
+        }
     }
 
     private void CalculateTurnOrder()
@@ -149,19 +158,21 @@ public class BattleMaster : MonoBehaviour
 
     public void Attack()
     {
+        //Don't let them attack more than once per turn 
         if (attackDone)
         {
             return;
         }
+
+        //If they are pressing the attack button after they already pressed it 
         if (attackPressed)
         {
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             attackPressed = false;
             return;
         }
+
         attackPressed = true;
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
-        //Play attack animation
-        //Grey out the attack button when it can't be used
     }
 }

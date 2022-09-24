@@ -10,11 +10,34 @@ AI attacks players on their turn
 AI attacks players intelligently 
 
 Colby:
-Damage
 Exact health numbers optional in settings menu. Default as off.
 
 Ben:
-Repositioning
 
 Michael:
-Draw the 4 main players's sprites
+Draw the 4 main players's animations
+
+Bracelets and Rings go in the same slot
+
+Fist
+
+Light: 
+daggers, clubs, sickle, whip(has reach)
+
+One-handed:
+longswords, axes, maces, flails(ignore shields)
+
+Two-handed:
+greatswords, greataxes, greatclubs, greathammers, quarterstaffs
+
+Reach:
+spears, swordstaffs, poleaxes, scythes(ignore shields)
+
+Bow:
+shortbows, longbows
+
+Crossbow:
+light crossbows, crossbows, heavy crossbows
+
+Thrown:
+javelins, throwing daggers, throwing axes, slings

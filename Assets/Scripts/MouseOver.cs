@@ -9,7 +9,6 @@ public class MouseOver : MonoBehaviour
     private GameObject status;
     private CharacterSheet character;
     public bool doMouseOver = true;
-    private Vector2 originalScale;
 
     public Image portrait;
     public StatBar healthBar;
@@ -17,6 +16,8 @@ public class MouseOver : MonoBehaviour
     public StatBar staminaBar;
     public Text nameText;
     public float animationTime = 1f;
+
+    private bool isHighlighted = false;
 
     private void Start()
     {
@@ -26,28 +27,30 @@ public class MouseOver : MonoBehaviour
         status = healthBar.transform.parent.gameObject;
     }
 
-    //Highlights the character when the mouse is over them 
-    void OnMouseEnter()
+    //Highlights the character when the mouse is over them and displays their status menu
+    void OnMouseOver()
     {
-        if (doMouseOver)
+        while (!character.isDead)
+        {
+            ActivateStatus();
+        }
+
+        if (doMouseOver && !isHighlighted)
         {
             characterSprite.color *= 1.5f;
-
-            SwapStatus();
+            isHighlighted = true;
         }
     }
 
-    //When the mouse leaves the character they will be unhighlighted
-    void OnMouseExit()
+    //Remove status window and unhighlight
+    private void OnMouseExit()
     {
-        if (doMouseOver)
-        {
-            characterSprite.color = startcolor;
-            status.SetActive(false);
-        }
+        status.SetActive(false);
+        characterSprite.color = startcolor;
+        isHighlighted = false;
     }
 
-    private void SwapStatus()
+    private void ActivateStatus()
     {
         if (!status.activeSelf)
         {

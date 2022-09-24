@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5074215424778186177}
   m_RootOrder: 1
@@ -168,6 +169,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3074, y: 2.093, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5877331900432747558}
   m_Father: {fileID: 0}
@@ -184,6 +186,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -237,13 +240,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b2f8cabcb63cd4a9a5a68304cce285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Name
   Health: 10
   MaxHealth: 10
-  Mana: 0
-  MaxMana: 0
+  Mana: 10
+  MaxMana: 10
   Stamina: 10
-  MaxStamina: 0
+  MaxStamina: 10
   Portrait: {fileID: 0}
   characterStats:
     Strength: 0
@@ -277,6 +280,9 @@ MonoBehaviour:
     attackNames: []
   movementSpeed: 100
   turnOrderPriority: 0
+  battleMaster: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
+    type: 3}
+  isPlayer: 0
 --- !u!114 &1234056286237845227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +338,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   staminaBar: {fileID: 0}
+  nameText: {fileID: 0}
   animationTime: 1
 --- !u!114 &1896647543124316639
 MonoBehaviour:
@@ -376,6 +383,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5074215424778186177}
   m_RootOrder: 0
@@ -451,6 +459,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5074215424778186177}
   m_RootOrder: 2
@@ -526,6 +535,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5074215424778186177}
   m_RootOrder: 3
@@ -663,6 +673,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7648769, y: 0.47778308, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5074215424778186177}
   m_Father: {fileID: 1383555037002574666}
@@ -760,6 +771,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6622253094504560964}
   - {fileID: 4520371628535082127}

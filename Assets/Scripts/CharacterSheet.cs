@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
+using System.Linq; //for livingEnemies.Count()
+using UnityEngine.InputSystem.Processors;
 
 [System.Serializable]
 public class CharacterEquipment
@@ -73,6 +73,8 @@ public class CharacterSheet : MonoBehaviour
     public float movementSpeed;
     public int turnOrderPriority;
     public BattleMaster battleMaster;
+    public bool isPlayer;
+    public bool isDead = false;
 
     public void TakeDamage(int damage)
     {
@@ -85,43 +87,75 @@ public class CharacterSheet : MonoBehaviour
 
     void Die()
     {
-        Destroy(this.gameObject);
+        battleMaster.livingPlayers.Remove(gameObject);
+        battleMaster.characters.Remove(gameObject);
+        while (battleMaster.turnOrder.Contains(gameObject))
+        {
+            battleMaster.turnOrder.Remove(gameObject);
+        }
+        isDead = true;
+        gameObject.SetActive(false);
     }
 
     public void OnMouseDown()
     {
-        if (battleMaster.attackPressed)
+        //Checks if the player is clicking attack on a character
+        if (battleMaster.attackPressed && !isPlayer)
         {
+            battleMaster.currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
             TakeDamage(battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
             battleMaster.attackPressed = false;
             battleMaster.attackDone = true;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+            if (battleMaster.livingEnemies.Count() == 0)
+            {
+                //Display win screen
+            }
         }
     }
+
+/////////////////////// Everything below here is my "attack animation" of shaking
+ 
+    [Header("Info")]
+    private Vector3 _startPos;
+    private float _timer;
+    private Vector3 _randomPos;
+
+    [Header("Shake Settings")]
+    [Range(0f, 2f)]
+    public float _time = 0.2f;
+    [Range(0f, 2f)]
+    public float _distance = 0.1f;
+
+
+    private void Awake()
+    {
+        _startPos = transform.position;
+    }
+
+    public void Begin()
+    {
+        StopAllCoroutines();
+        StartCoroutine(Shake());
+    }
+
+    private IEnumerator Shake()
+    {
+        _timer = 0f;
+
+        while (_timer < _time)
+        {
+            _timer += Time.deltaTime;
+
+            _randomPos = _startPos + (Random.insideUnitSphere * _distance);
+
+            transform.position = _randomPos;
+
+            yield return null;
+        }
+
+        transform.position = _startPos;
+    }
+
 }
-/*
-Bracelets and Rings go in the same slot
-
-Fist
-
-Light: 
-daggers, clubs, sickle, whip(has reach)
-
-One-handed:
-longswords, axes, maces, flails(ignore shields)
-
-Two-handed:
-greatswords, greataxes, greatclubs, greathammers, quarterstaffs
-
-Reach:
-spears, swordstaffs, poleaxes, scythes(ignore shields)
-
-Bow:
-shortbows, longbows
-
-Crossbow:
-light crossbows, crossbows, heavy crossbows
-
-Thrown:
-javelins, throwing daggers, throwing axes, slings
- */
