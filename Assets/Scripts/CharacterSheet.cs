@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq; //for livingEnemies.Count()
-using UnityEngine.InputSystem.Processors;
 
 [System.Serializable]
 public class CharacterEquipment
@@ -104,6 +103,7 @@ public class CharacterSheet : MonoBehaviour
         if (battleMaster.livingEnemies.Count() == 0)
         {
             battleMaster.battleStarted = false;
+            battleMaster.battleHud.SetActive(false);
             battleMaster.winScreen.SetActive(true);
         }
 

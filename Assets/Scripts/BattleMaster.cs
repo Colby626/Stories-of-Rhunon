@@ -20,6 +20,7 @@ public class BattleMaster : MonoBehaviour
     public GameObject currentCharacter;
     public GameObject loseScreen;
     public GameObject winScreen;
+    public GameObject battleHud;
     public bool attackPressed = false;
     public bool attackDone = false;
     public bool battleStarted;
@@ -99,6 +100,7 @@ public class BattleMaster : MonoBehaviour
             if (livingPlayers.Count() == 0)
             {
                 battleStarted = false;
+                battleHud.SetActive(false);
                 loseScreen.SetActive(true);
             }
             else
