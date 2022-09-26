@@ -18,12 +18,14 @@ public class BattleMaster : MonoBehaviour
     public List<GameObject> livingPlayers;
     public List<GameObject> livingEnemies;
     public GameObject currentCharacter;
+    public GameObject loseScreen;
+    public GameObject winScreen;
     public bool attackPressed = false;
     public bool attackDone = false;
+    public bool battleStarted;
 
     private int characterindex = 0;
     private int turnCounter = 0;
-    private bool battleStarted;
 
     void Start()
     {
@@ -92,11 +94,17 @@ public class BattleMaster : MonoBehaviour
             GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
             currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
             target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
+
+            //If there are no more players alive, display the lose screen
             if (livingPlayers.Count() == 0)
             {
-                //Display lose screen
+                battleStarted = false;
+                loseScreen.SetActive(true);
             }
-            NextTurn();
+            else
+            {
+                NextTurn();
+            }
         }
     }
 

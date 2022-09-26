@@ -6,10 +6,10 @@ public class MouseOver : MonoBehaviour
 {
     private Color startcolor;
     private SpriteRenderer characterSprite;
-    private GameObject status;
     private CharacterSheet character;
     public bool doMouseOver = true;
 
+    public GameObject status;
     public Image portrait;
     public StatBar healthBar;
     public StatBar manaBar;
@@ -30,11 +30,16 @@ public class MouseOver : MonoBehaviour
     //Highlights the character when the mouse is over them and displays their status menu
     void OnMouseOver()
     {
-        while (!character.isDead)
+        if (!character.isDead)
         {
             ActivateStatus();
         }
 
+        if (character.isDead)
+        {
+            status.SetActive(false);
+        }
+        
         if (doMouseOver && !isHighlighted)
         {
             characterSprite.color *= 1.5f;

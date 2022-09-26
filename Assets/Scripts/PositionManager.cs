@@ -12,7 +12,6 @@ public class PositionManager : MonoBehaviour
 
     private GameObject player;
     private GameObject[] allCharacters;
-    private Camera camera;
     private bool buttonClicked = false;
     private Vector3 mousePosition;
     private bool instantiated = false;
@@ -21,7 +20,6 @@ public class PositionManager : MonoBehaviour
 
     private void Start()
     {
-        camera = FindObjectOfType<Camera>();
         allCharacters = GameObject.FindGameObjectsWithTag("Participant");
 
         if (finishedPositioning == null)
@@ -38,7 +36,7 @@ public class PositionManager : MonoBehaviour
         if (buttonClicked)
         {
             //Gets the position of the mouse on the screen and converts it world space
-            mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
 
             player = FindObjectOfType<BattleMaster>().currentCharacter;

@@ -88,12 +88,25 @@ public class CharacterSheet : MonoBehaviour
     void Die()
     {
         battleMaster.livingPlayers.Remove(gameObject);
+        battleMaster.livingEnemies.Remove(gameObject);
         battleMaster.characters.Remove(gameObject);
         while (battleMaster.turnOrder.Contains(gameObject))
         {
             battleMaster.turnOrder.Remove(gameObject);
         }
         isDead = true;
+        if (GetComponent<MouseOver>().status.activeSelf)
+        {
+            GetComponent<MouseOver>().status.SetActive(false);
+        }
+
+        //If there are no more enemies, display the win screen
+        if (battleMaster.livingEnemies.Count() == 0)
+        {
+            battleMaster.battleStarted = false;
+            battleMaster.winScreen.SetActive(true);
+        }
+
         gameObject.SetActive(false);
     }
 
