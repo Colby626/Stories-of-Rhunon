@@ -55,6 +55,12 @@ public class BattleMaster : MonoBehaviour
 
         battleStarted = true;
         currentCharacter = turnOrder[0];
+
+        //Display status of current character
+        if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        {
+            currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
+        }
     }
 
     void Update()
@@ -107,6 +113,11 @@ public class BattleMaster : MonoBehaviour
             {
                 NextTurn();
             }
+        }
+
+        if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        {
+            currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
         }
     }
 

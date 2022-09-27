@@ -14,8 +14,11 @@ public class MouseOver : MonoBehaviour
     public StatBar healthBar;
     public StatBar manaBar;
     public StatBar staminaBar;
+    public StatBar overheadHealthBar;
+    public TextMeshProUGUI overheadNameText;
     public Text nameText;
     public float animationTime = 1f;
+    public BattleMaster battleMaster;
 
     private bool isHighlighted = false;
 
@@ -25,6 +28,7 @@ public class MouseOver : MonoBehaviour
         character = characterSprite.GetComponent<CharacterSheet>();
         startcolor = characterSprite.color;
         status = healthBar.transform.parent.gameObject;
+        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
     }
 
     //Highlights the character when the mouse is over them and displays their status menu
@@ -32,12 +36,15 @@ public class MouseOver : MonoBehaviour
     {
         if (!character.isDead && character.isPlayer)
         {
-            ActivateStatus();
+            ActivateStatus(character);
         }
 
         if (!character.isPlayer)
         {
             character.transform.GetChild(0).gameObject.SetActive(true);
+            overheadHealthBar.SetBarMax(character.MaxHealth);
+            overheadHealthBar.SetBar(character.Health);
+            overheadNameText.text = character.Name;
         }
         
         if (doMouseOver && !isHighlighted)
@@ -50,29 +57,30 @@ public class MouseOver : MonoBehaviour
     //Remove status window and unhighlight
     private void OnMouseExit()
     {
-        status.SetActive(false);
+        if (character.gameObject != battleMaster.currentCharacter)
+        {
+            //Display status of current character
+            ActivateStatus(battleMaster.currentCharacter.GetComponent<CharacterSheet>());
+        }
         character.transform.GetChild(0).gameObject.SetActive(false);
         characterSprite.color = startcolor;
         isHighlighted = false;
     }
 
-    private void ActivateStatus()
+    public void ActivateStatus(CharacterSheet participant)
     {
-        if (!status.activeSelf)
-        {
-            status.SetActive(true);
-        }
+        status.SetActive(true);
 
-        healthBar.SetBarMax(character.MaxHealth);
-        manaBar.SetBarMax(character.MaxMana);
-        staminaBar.SetBarMax(character.MaxStamina);
+        healthBar.SetBarMax(participant.MaxHealth);
+        manaBar.SetBarMax(participant.MaxMana);
+        staminaBar.SetBarMax(participant.MaxStamina);
 
-        healthBar.SetBar(character.Health);
-        manaBar.SetBar(character.Mana);
-        staminaBar.SetBar(character.Stamina);
+        healthBar.SetBar(participant.Health);
+        manaBar.SetBar(participant.Mana);
+        staminaBar.SetBar(participant.Stamina);
 
-        portrait.sprite = character.Portrait;
+        portrait.sprite = participant.Portrait;
 
-        nameText.text = characterSprite.GetComponent<CharacterSheet>().Name;
+        nameText.text = participant.Name;
     }
 }
