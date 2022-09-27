@@ -5,6 +5,7 @@ using TMPro;
 public class StatBar : MonoBehaviour
 {
     public Slider slider;
+    public TextMeshProUGUI barText;
     //public TextMeshProUGUI nameText;
     //public TextMeshProUGUI healthText;
     //public Image healthbar;
@@ -12,6 +13,7 @@ public class StatBar : MonoBehaviour
     public void SetBar(int stat)
     {
         slider.value = stat;
+        barText.text = stat + "/" + slider.maxValue;
     }
 
     public void SetBarMax(int stat)

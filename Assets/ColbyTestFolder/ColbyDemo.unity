@@ -604,14 +604,29 @@ PrefabInstance:
       objectReference: {fileID: 2104524248}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: manaText
+      value: 
+      objectReference: {fileID: 1757205113}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 213245285}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 520035137}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1901610940}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 2119237598}
     - target: {fileID: 8887869088168600759, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: manaBar
@@ -1601,6 +1616,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515915105}
   m_CullTransparentMesh: 1
+--- !u!114 &520035137 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1158966667580743114, guid: 2199af7bbaab32e49b0d46c58326c0db,
+    type: 3}
+  m_PrefabInstance: {fileID: 8596790380431448722}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &545070184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,14 +1941,29 @@ PrefabInstance:
       objectReference: {fileID: 2104524248}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: manaText
+      value: 
+      objectReference: {fileID: 1757205113}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 213245285}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 520035137}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1901610940}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 2119237598}
     - target: {fileID: 5877331900432747558, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3648,14 +3690,29 @@ PrefabInstance:
       objectReference: {fileID: 2104524248}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: manaText
+      value: 
+      objectReference: {fileID: 1757205113}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 213245285}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 520035137}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1901610940}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 2119237598}
     - target: {fileID: 5877331900432747558, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3912,14 +3969,29 @@ PrefabInstance:
       objectReference: {fileID: 2104524248}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: manaText
+      value: 
+      objectReference: {fileID: 1757205113}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 213245285}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 520035137}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1901610940}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 2119237598}
     - target: {fileID: 8887869088168600759, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: manaBar
@@ -4938,6 +5010,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1746306098}
   battleMaster: {fileID: 353112960}
+--- !u!114 &1757205113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1318352390876835294, guid: 2199af7bbaab32e49b0d46c58326c0db,
+    type: 3}
+  m_PrefabInstance: {fileID: 8596790380431448722}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1761710249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: a0a71fda412ad0941ab44f1732ea4c1e,
@@ -16566,14 +16650,29 @@ PrefabInstance:
       objectReference: {fileID: 2104524248}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: manaText
+      value: 
+      objectReference: {fileID: 1757205113}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 213245285}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 520035137}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1901610940}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 2119237598}
     - target: {fileID: 8887869088168600759, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: manaBar
@@ -16668,6 +16767,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a818f039fed71ec4c921b76d8b1e7758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2119237598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8548108934205123820, guid: 2199af7bbaab32e49b0d46c58326c0db,
+    type: 3}
+  m_PrefabInstance: {fileID: 8596790380431448722}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6240884723879482
@@ -16925,14 +17036,29 @@ PrefabInstance:
       objectReference: {fileID: 2104524248}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: manaText
+      value: 
+      objectReference: {fileID: 1757205113}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 213245285}
     - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 520035137}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1901610940}
+    - target: {fileID: 1896647543124316639, guid: ad33a31da65d383488651642118a93a9,
+        type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 2119237598}
     - target: {fileID: 4598515880276481534, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: m_IsActive
@@ -17092,11 +17218,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8596790380641994743, guid: 2199af7bbaab32e49b0d46c58326c0db,
+        type: 3}
+      propertyPath: barText
+      value: 
+      objectReference: {fileID: 520035137}
     - target: {fileID: 8596790380714379451, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 353112960}
+    - target: {fileID: 8596790381256170798, guid: 2199af7bbaab32e49b0d46c58326c0db,
+        type: 3}
+      propertyPath: barText
+      value: 
+      objectReference: {fileID: 2119237598}
     - target: {fileID: 8596790381319742263, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_Name
@@ -17247,5 +17383,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 353112960}
+    - target: {fileID: 8596790381460121418, guid: 2199af7bbaab32e49b0d46c58326c0db,
+        type: 3}
+      propertyPath: barText
+      value: 
+      objectReference: {fileID: 1757205113}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2199af7bbaab32e49b0d46c58326c0db, type: 3}
