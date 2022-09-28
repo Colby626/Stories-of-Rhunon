@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro; //For name text under turn order portraits
 
 public class BattleMaster : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class BattleMaster : MonoBehaviour
     private List<GameObject> tempList = new();
     private GameObject[] characterArray;
 
+    public List<Image> portraits;
+    public List<TextMeshProUGUI> namesList;
     public List<GameObject> characters;
     public List<GameObject> livingPlayers;
     public List<GameObject> livingEnemies;
@@ -24,6 +27,7 @@ public class BattleMaster : MonoBehaviour
     public bool attackPressed = false;
     public bool attackDone = false;
     public bool battleStarted;
+    public int howFarInTheFutureYouCalculateTurnOrder = 50;
 
     private int characterindex = 0;
     private int turnCounter = 0;
@@ -61,6 +65,20 @@ public class BattleMaster : MonoBehaviour
         {
             currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
         }
+
+        //Display portraits for the turn order
+        for (; turnCounter < portraits.Count(); turnCounter++)
+        {
+            portraits[turnCounter].sprite = turnOrder[turnCounter].GetComponent<CharacterSheet>().Portrait;
+        }
+        turnCounter -= portraits.Count();
+
+        //Display names for the turn order
+        for (; turnCounter < namesList.Count(); turnCounter++)
+        {
+            namesList[turnCounter].text = turnOrder[turnCounter].GetComponent<CharacterSheet>().Name;
+        }
+        turnCounter -= portraits.Count();
     }
 
     void Update()
@@ -71,7 +89,7 @@ public class BattleMaster : MonoBehaviour
         }
 
         //checks if the turn counter is closer than 20 from the furthest calculated the list has gone and if so calculates the list further
-        if (turnCounter >= (turnOrder.Count() - 20))
+        if (turnCounter >= (turnOrder.Count() - howFarInTheFutureYouCalculateTurnOrder))
         {
             CalculateTurnOrder();
         }
@@ -93,7 +111,17 @@ public class BattleMaster : MonoBehaviour
         turnCounter++;
         attackButton.interactable = true;
 
-        //listGenerator.Degenerate();
+        //Display portraits for the turn order
+        for (int i = 0; i < portraits.Count(); i++)
+        {
+            portraits[i].sprite = turnOrder[turnCounter+i].GetComponent<CharacterSheet>().Portrait;
+        }
+
+        //Display names for the turn order
+        for (int i = 0; i < namesList.Count(); i++)
+        {
+            namesList[i].text = turnOrder[turnCounter+i].GetComponent<CharacterSheet>().Name;
+        }
 
         //If the next person in line is not a player the ai will attack one of them at random
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
