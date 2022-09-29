@@ -94,10 +94,6 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.turnOrder.Remove(gameObject);
         }
         isDead = true;
-        if (GetComponent<MouseOver>().status.activeSelf)
-        {
-            GetComponent<MouseOver>().status.SetActive(false);
-        }
 
         //If there are no more enemies, display the win screen
         if (battleMaster.livingEnemies.Count() == 0)
