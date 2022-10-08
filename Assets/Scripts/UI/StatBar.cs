@@ -6,11 +6,15 @@ public class StatBar : MonoBehaviour
 {
     public Slider slider;
     public TextMeshProUGUI barText;
+    public bool wantText;
 
     public void SetBar(int stat)
     {
         slider.value = stat;
-        barText.text = stat + "/" + slider.maxValue;
+        if (wantText)
+        {
+            barText.text = stat + "/" + slider.maxValue;
+        }
     }
 
     public void SetBarMax(int stat)

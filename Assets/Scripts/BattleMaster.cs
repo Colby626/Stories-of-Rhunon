@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro; //For name text under turn order portraits
+using UnityEngine.UIElements;
 
 public class BattleMaster : MonoBehaviour
 {
@@ -10,13 +11,13 @@ public class BattleMaster : MonoBehaviour
     public Text turn;
     public List<GameObject> turnOrder = new();
     public Texture2D cursorTexture;
-    public Button attackButton;
+    public UnityEngine.UI.Button attackButton;
 
     private List<GameObject> tempList = new();
     private GameObject[] characterArray;
-
-    public List<Image> portraits;
+    public List<UnityEngine.UI.Image> portraits;
     public List<TextMeshProUGUI> namesList;
+    public List<StatBar> healthBars;
     public List<GameObject> characters;
     public List<GameObject> livingPlayers;
     public List<GameObject> livingEnemies;
@@ -24,13 +25,21 @@ public class BattleMaster : MonoBehaviour
     public GameObject loseScreen;
     public GameObject winScreen;
     public GameObject battleHud;
+    [HideInInspector]
     public bool attackPressed = false;
+    [HideInInspector]
     public bool attackDone = false;
+    [HideInInspector]
     public bool battleStarted;
     public int howFarInTheFutureYouCalculateTurnOrder = 50;
 
     private int characterindex = 0;
     private int turnCounter = 0;
+
+    [Header("Inventory:")]
+    public GameObject inventory;
+    public UnityEngine.UI.Image equipmentPortrait;
+
 
     void Start()
     {
@@ -66,17 +75,13 @@ public class BattleMaster : MonoBehaviour
             currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
         }
 
-        //Display portraits for the turn order
+        //Display portraits, names, and healths for the turn order
         for (; turnCounter < portraits.Count(); turnCounter++)
         {
             portraits[turnCounter].sprite = turnOrder[turnCounter].GetComponent<CharacterSheet>().Portrait;
-        }
-        turnCounter -= portraits.Count();
-
-        //Display names for the turn order
-        for (; turnCounter < namesList.Count(); turnCounter++)
-        {
             namesList[turnCounter].text = turnOrder[turnCounter].GetComponent<CharacterSheet>().Name;
+            healthBars[turnCounter].SetBarMax(turnOrder[turnCounter].GetComponent<CharacterSheet>().MaxHealth);
+            healthBars[turnCounter].SetBar(turnOrder[turnCounter].GetComponent<CharacterSheet>().Health);
         }
         turnCounter -= portraits.Count();
     }
@@ -111,16 +116,13 @@ public class BattleMaster : MonoBehaviour
         turnCounter++;
         attackButton.interactable = true;
 
-        //Display portraits for the turn order
+        //Display portraits, names, and healths for the turn order
         for (int i = 0; i < portraits.Count(); i++)
         {
             portraits[i].sprite = turnOrder[turnCounter+i].GetComponent<CharacterSheet>().Portrait;
-        }
-
-        //Display names for the turn order
-        for (int i = 0; i < namesList.Count(); i++)
-        {
             namesList[i].text = turnOrder[turnCounter+i].GetComponent<CharacterSheet>().Name;
+            healthBars[i].SetBarMax(turnOrder[turnCounter+i].GetComponent<CharacterSheet>().MaxHealth);
+            healthBars[i].SetBar(turnOrder[turnCounter+i].GetComponent<CharacterSheet>().Health);
         }
 
         //If the next person in line is not a player the ai will attack one of them at random
@@ -216,12 +218,28 @@ public class BattleMaster : MonoBehaviour
         //If they are pressing the attack button after they already pressed it 
         if (attackPressed)
         {
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             attackPressed = false;
             return;
         }
 
         attackPressed = true;
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+        UnityEngine.Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+    }
+
+    public void OpenInventory()
+    {
+        if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        {
+            battleHud.SetActive(false);
+            inventory.SetActive(true);
+            equipmentPortrait.sprite = currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite;
+        }
+    }
+
+    public void CloseInventory()
+    {
+        battleHud.SetActive(true);
+        inventory.SetActive(false);
     }
 }
