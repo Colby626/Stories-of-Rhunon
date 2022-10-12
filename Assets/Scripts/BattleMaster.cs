@@ -10,11 +10,11 @@ public class BattleMaster : MonoBehaviour
     public Text turn;
     public List<GameObject> turnOrder = new();
     public Texture2D cursorTexture;
-    public UnityEngine.UI.Button attackButton;
+    public Button attackButton;
 
     private List<GameObject> tempList = new();
     private GameObject[] characterArray;
-    public List<UnityEngine.UI.Image> portraits;
+    public List<Image> portraits;
     public List<TextMeshProUGUI> namesList;
     public List<StatBar> healthBars;
     public List<GameObject> characters;
@@ -38,7 +38,7 @@ public class BattleMaster : MonoBehaviour
     [Header("Inventory:")]
     public GameObject inventory;
     public InventoryUI inventoryUI;
-    public UnityEngine.UI.Image equipmentPortrait;
+    public Image equipmentPortrait;
 
 
     void Start()
@@ -233,6 +233,7 @@ public class BattleMaster : MonoBehaviour
         {
             battleHud.SetActive(false);
             inventory.SetActive(true);
+            inventoryUI.GetComponent<InventoryUI>().UpdateUI();
             equipmentPortrait.sprite = currentCharacter.GetComponent<SpriteRenderer>().sprite;
             GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI(); //Updates inventory to match the current character
         }
@@ -243,6 +244,7 @@ public class BattleMaster : MonoBehaviour
         battleHud.SetActive(true);
         //Remove all items from inventory graphics
         inventoryUI.GetComponent<InventoryUI>().ClearUI();
+        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
         inventory.SetActive(false);
     }
 }

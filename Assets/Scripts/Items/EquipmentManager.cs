@@ -1,11 +1,10 @@
+using System; //for Enum.GetNames()
 using System.Collections.Generic; //for Lists
 using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
 {
     public InventorySlot[] equipmentSlots;
-
-    public List<Equipment> currentEquipment;
 
     Inventory inventory;
     InventoryUI inventoryUI;
@@ -18,8 +17,7 @@ public class EquipmentManager : MonoBehaviour
         inventoryUI = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryUI>();
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
         inventory = battleMaster.currentCharacter.GetComponent<Inventory>();
-        numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
-        currentEquipment = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment;
+        numSlots = Enum.GetNames(typeof(EquipmentSlot)).Length;
     }
 
     // Equip a new item
@@ -33,17 +31,22 @@ public class EquipmentManager : MonoBehaviour
 
         // If there was already an item in the slot
         // make sure to put it back in the inventory
-        if (currentEquipment[slotIndex] != null)
+        if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[slotIndex] != null)
         {
-            oldItem = currentEquipment[slotIndex];
+            oldItem = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[slotIndex];
 
             inventory.Add(oldItem);
         }
 
-        currentEquipment[slotIndex] = newItem;
+        battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[slotIndex] = newItem;
 
         EquipmentSlot slot = newItem.equipSlot;
         UpdateEquipmentUI(slot, newItem);
+
+        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
+        battleMaster.currentCharacter.GetComponent<Inventory>().items.Remove(newItem);
+        inventoryUI = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryUI>();
+        inventoryUI.UpdateUI();
 
         //Increase damage or armor
         battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength += newItem.damageIncrease;
@@ -52,6 +55,8 @@ public class EquipmentManager : MonoBehaviour
 
     public void Unequip(Equipment oldItem)
     {
+        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
+
         EquipmentSlot slot = oldItem.equipSlot;
         switch (slot)
         {
@@ -112,6 +117,9 @@ public class EquipmentManager : MonoBehaviour
         }
         battleMaster.currentCharacter.GetComponent<Inventory>().items.Add(oldItem);
         inventoryUI.UpdateUI();
+
+        battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[(int)slot] = null;
+        UpdateEquipmentUI();
 
         //Reduce damage or armor
         battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength -= oldItem.damageIncrease;
@@ -189,20 +197,25 @@ public class EquipmentManager : MonoBehaviour
     }
 
     public void UpdateEquipmentUI()
-    {
-        currentEquipment = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment;
+    {        
         for (int i = 0; i < numSlots; i++)
         {
-            if (currentEquipment[i] == null)
+            if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[i] != null)
             {
-                equipmentSlots[i].icon.sprite = null;
-                equipmentSlots[i].icon.enabled = false;
-            }
-            else
-            {
-                equipmentSlots[i].icon.sprite = currentEquipment[i].icon;
+                equipmentSlots[i].item = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[i];
+                equipmentSlots[i].icon.sprite = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[i].icon;
                 equipmentSlots[i].icon.enabled = true;
             }
+        }
+    }
+
+    public void ClearEquipmentUI()
+    {
+        for (int i = 0; i < numSlots; i++)
+        {
+            equipmentSlots[i].item = null;
+            equipmentSlots[i].icon.sprite = null;
+            equipmentSlots[i].icon.enabled = false;
         }
     }
 }

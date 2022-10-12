@@ -14,17 +14,7 @@ public class Equipment : Item
     public override void Use()
     {
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
-        if (battleMaster.currentCharacter.GetComponent<Inventory>().items.Contains(this))
-        {
-            GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().Equip(this);  // Equip
-            RemoveFromInventory(this);  // Remove from inventory
-        }
-
-        else if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
-        {
-            GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().Unequip(this);  //Unequip
-            RemoveFromEquipment(this.equipSlot); //Remove from equipment
-        }
+        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().Equip(this);
     }
 }
 

@@ -36,15 +36,15 @@ public class CharacterProficiencies
 public class CharacterStats
 {
     [Header("Stats:")]
-    public int Strength;
+    public int Strength; //Increases damage
     public int Attunement;
-    public int Reflexes;
-    public int Speed;
+    public int Reflexes; //Determines how many turns you get at the beginning of combat
+    public int Speed; //Determines how often your turn comes up again in combat
     public int Precision;
     public int Constitution;
     public int Endurance;
     [HideInInspector]
-    public int Defense;
+    public int Defense; //Decreases damage taken
 }
 
 [System.Serializable]
@@ -86,7 +86,7 @@ public class CharacterSheet : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Health -= damage;
+        Health -= damage - characterStats.Defense;
         if (Health <= 0)
         {
             Die();
