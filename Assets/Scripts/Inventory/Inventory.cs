@@ -1,15 +1,9 @@
-using System.Collections.Generic;
+using System.Collections.Generic; //For lists
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory instance;
-    void Awake()
-    {
-        instance = this;
-    }
-
-    public List<Item> items = new List<Item>();
+    public List<Item> items = new();
 
     // Add a new item
     public void Add(Item item)

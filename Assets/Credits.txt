@@ -2,5 +2,6 @@ Cainos - Tilemap - https://cainos.itch.io/pixel-art-top-down-basic
 Mounir Tohami - GUI - https://mounirtohami.itch.io/pixel-art-gui-elements
 CodeMonkey - Grid System - https://unitycodemonkey.com/downloadpage.php?yid=waEsGu--9P8 
 https://limezu.itch.io/ - RPG Arsenal
+Brackeys - Inventory Code - https://github.com/Brackeys/RPG-Tutorial 
 
 Not sure if this is Free to use: https://chillingames.itch.io/basic-game-icons - Icon Atlas

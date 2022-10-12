@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 4388331401930706473}
   barText: {fileID: 3022985510244602019}
+  wantText: 0
 --- !u!1 &845832654604820729
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +453,6 @@ MonoBehaviour:
     Head: {fileID: 0}
     Torso: {fileID: 0}
     Legs: {fileID: 0}
-    Feet: {fileID: 0}
     Arms: {fileID: 0}
     Ring1: {fileID: 0}
     Ring2: {fileID: 0}
@@ -479,6 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360ef4b94ec60a14b89e95a0c9f3faa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
 --- !u!61 &5237580635644603372
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -527,6 +528,7 @@ MonoBehaviour:
   overheadNameText: {fileID: 2039857393916834415}
   nameText: {fileID: 0}
   animationTime: 1
+  battleMaster: {fileID: 0}
 --- !u!114 &1896647543124316639
 MonoBehaviour:
   m_ObjectHideFlags: 0

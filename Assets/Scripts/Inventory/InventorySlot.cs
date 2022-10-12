@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    Item item;
+    public Item item;
     public Image icon;
 
     public void AddItem(Item newItem)
@@ -12,13 +12,30 @@ public class InventorySlot : MonoBehaviour
 
         icon.sprite = newItem.icon;
 
-        item.enabled = true;
+        icon.enabled = true;
+    }
+    public void AddEquipment(Equipment newEquipment)
+    {
+        item = newEquipment;
+
+        icon.enabled = true;
+
+        icon.sprite = newEquipment.icon;
     }
 
     public void ClearSlot()
     {
         item = null;
-        item.icon = null;
-        item.enabled = false;
+        icon.sprite = null;
+        icon.enabled = false;
+    }
+
+    // Use the item
+    public void UseItem()
+    {
+        if (item != null)
+        {
+            item.Use();
+        }
     }
 }

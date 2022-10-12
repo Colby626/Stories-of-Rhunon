@@ -7,6 +7,8 @@ TagManager:
   - Participant
   - Boundary
   - BattleMaster
+  - EquipmentManager
+  - InventoryUI
   layers:
   - Default
   - TransparentFX

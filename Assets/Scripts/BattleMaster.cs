@@ -1,9 +1,8 @@
-using System.Collections.Generic;
+using System.Collections.Generic; //For lists
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro; //For name text under turn order portraits
-using UnityEngine.UIElements;
 
 public class BattleMaster : MonoBehaviour
 {
@@ -38,6 +37,7 @@ public class BattleMaster : MonoBehaviour
 
     [Header("Inventory:")]
     public GameObject inventory;
+    public InventoryUI inventoryUI;
     public UnityEngine.UI.Image equipmentPortrait;
 
 
@@ -147,7 +147,7 @@ public class BattleMaster : MonoBehaviour
 
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
+            currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>()); //Activates the status menu at the bottom to match the current character
         }
     }
 
@@ -233,13 +233,16 @@ public class BattleMaster : MonoBehaviour
         {
             battleHud.SetActive(false);
             inventory.SetActive(true);
-            equipmentPortrait.sprite = currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite;
+            equipmentPortrait.sprite = currentCharacter.GetComponent<SpriteRenderer>().sprite;
+            GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI(); //Updates inventory to match the current character
         }
     }
 
     public void CloseInventory()
     {
         battleHud.SetActive(true);
+        //Remove all items from inventory graphics
+        inventoryUI.GetComponent<InventoryUI>().ClearUI();
         inventory.SetActive(false);
     }
 }

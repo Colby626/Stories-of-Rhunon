@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
+    public BattleMaster battleMaster;
     Inventory inventory;
 
-    private void Start()
+    public void UpdateUI()
     {
-        inventory = Inventory.instance;
-    }
+        inventory = battleMaster.currentCharacter.GetComponent<Inventory>();
 
-    void UpdateUI()
-    {
         InventorySlot[] slots = GetComponentsInChildren<InventorySlot>(); 
 
         for (int i = 0; i < slots.Length; i++)
@@ -24,6 +22,15 @@ public class InventoryUI : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
-        
+    }
+
+    public void ClearUI()
+    {
+        InventorySlot[] slots = GetComponentsInChildren<InventorySlot>();
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].ClearSlot();
+        }
     }
 }

@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -13829,11 +13829,11 @@ TextureImporter:
       consumables_28: -1118951071
       consumables_10: -1526266321
       consumables_381: -153909066
-      consumables_184: -1876769252
-      consumables_291: -104672452
       consumables_441: -1054860632
+      consumables_291: -104672452
       consumables_453: 1140332827
       consumables_401: 1491421386
+      consumables_184: -1876769252
       consumables_79: -450158011
       consumables_462: -230827686
       consumables_611: 555112035
@@ -13842,10 +13842,10 @@ TextureImporter:
       consumables_325: -593374972
       consumables_106: -899301184
       consumables_298: 2006625789
-      consumables_16: 1869600052
-      consumables_376: -210950289
-      consumables_526: 469139367
       consumables_624: -1031985555
+      consumables_16: 1869600052
+      consumables_526: 469139367
+      consumables_376: -210950289
       consumables_140: -1896820693
       consumables_388: -1182444521
       consumables_99: -180340387

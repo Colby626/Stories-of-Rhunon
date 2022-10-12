@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -1146,17 +1146,17 @@ TextureImporter:
       chests_6: 15605044
       chests_4: 178561253
       chests_0: -256948481
-      chests_9: -1817474119
       chests_31: -1443800459
       chests_19: -495699168
-      chests_47: -1627302872
+      chests_9: -1817474119
       chests_18: -1391240614
-      chests_2: -1910574430
+      chests_47: -1627302872
       chests_45: -75170574
+      chests_2: -1910574430
       chests_8: -95840990
-      chests_27: 1055575268
       chests_28: 1119322945
       chests_11: -1043676130
+      chests_27: 1055575268
       chests_38: 105475241
       chests_3: 278670312
       chests_34: 275826028

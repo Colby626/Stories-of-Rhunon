@@ -1,22 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Collections.Generic; //for Lists
 using UnityEngine;
 using System.Linq; //for livingEnemies.Count()
 
 [System.Serializable]
-public class CharacterEquipment
+public class CharacterEquipment : Component
 {
     [Header("Equipment:")]
-    public GameObject HandSlot1;
-    public GameObject HandSlot2;
-    public GameObject Head;
-    public GameObject Torso;
-    public GameObject Legs;
-    public GameObject Feet;
-    public GameObject Arms;
-    public GameObject Ring1;
-    public GameObject Ring2;
-    public GameObject Neck;
+    public Equipment Head;
+    public Equipment Torso;
+    public Equipment Arms;
+    public Equipment Legs;
+    public Equipment ArmSlot1;
+    public Equipment ArmSlot2;
+    public Equipment Ring1;
+    public Equipment Ring2;
+    public Equipment Neck;
 }
 
 [System.Serializable]
@@ -44,6 +43,8 @@ public class CharacterStats
     public int Precision;
     public int Constitution;
     public int Endurance;
+    [HideInInspector]
+    public int Defense;
 }
 
 [System.Serializable]
@@ -65,7 +66,7 @@ public class CharacterSheet : MonoBehaviour
     public Sprite Portrait;
     public CharacterStats characterStats;
     public CharacterProficiencies characterProficiencies;
-    public CharacterEquipment characterEquipment;
+    public List<Equipment> characterEquipment;
     public CharacterAttacks characterAttacks;
 
     [Header("Programmer stuff:")]
@@ -74,6 +75,14 @@ public class CharacterSheet : MonoBehaviour
     public BattleMaster battleMaster;
     public bool isPlayer;
     public bool isDead = false;
+
+    private void Start()
+    {
+        characterEquipment = new List<Equipment> { GetComponent<CharacterEquipment>().Head, GetComponent<CharacterEquipment>().Torso,
+            GetComponent<CharacterEquipment>().Arms, GetComponent<CharacterEquipment>().Legs, GetComponent<CharacterEquipment>().ArmSlot1,
+            GetComponent<CharacterEquipment>().ArmSlot2, GetComponent<CharacterEquipment>().Ring1, GetComponent<CharacterEquipment>().Ring2,
+            GetComponent<CharacterEquipment>().Neck };
+    }
 
     public void TakeDamage(int damage)
     {
@@ -116,11 +125,6 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.attackPressed = false;
             battleMaster.attackDone = true;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
-            if (battleMaster.livingEnemies.Count() == 0)
-            {
-                //Display win screen
-            }
         }
     }
 

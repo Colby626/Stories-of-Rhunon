@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -3783,12 +3783,12 @@ TextureImporter:
       armours_102: 2079294990
       armours_81: 2011876890
       armours_132: 113259765
-      armours_54: -888557295
       armours_87: 2090983074
-      armours_95: -921161705
-      armours_135: -1448620291
       armours_104: 773673040
       armours_140: -1106827754
+      armours_135: -1448620291
+      armours_95: -921161705
+      armours_54: -888557295
       armours_119: 1729933201
       armours_143: 1557769771
       armours_155: -2144702029
@@ -3824,10 +3824,10 @@ TextureImporter:
       armours_150: -1898986691
       armours_169: -1092400486
       armours_41: 1069401963
+      armours_124: -176520122
       armours_90: 1075558744
       armours_91: -1033856627
       armours_139: -1968519628
-      armours_124: -176520122
       armours_56: 1930517769
       armours_163: -1334714588
       armours_32: -750128756
@@ -3868,13 +3868,13 @@ TextureImporter:
       armours_101: 1334486307
       armours_20: -1134557714
       armours_147: 2035794665
+      armours_151: -3740301
       armours_84: -1205933549
       armours_108: -1477413324
-      armours_144: 1645049849
       armours_142: -982809835
-      armours_168: -263889493
+      armours_144: 1645049849
       armours_146: 1038872255
-      armours_151: -3740301
+      armours_168: -263889493
       armours_156: 260921817
   spritePackingTag: 
   pSDRemoveMatte: 0

@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool gamePaused = false;
     public GameObject pauseMenu;
+    public GameObject battleHud;
     public BattleMaster battleMaster;
 
     private void Update()
@@ -26,6 +27,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Unpause()
     {
+        battleHud.SetActive(true);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         gamePaused = false;
@@ -33,6 +35,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        battleHud.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         gamePaused = true;
