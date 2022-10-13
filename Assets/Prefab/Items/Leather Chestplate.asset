@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Leather Chestplate
   icon: {fileID: 980072772, guid: 9beb12cc9815e774bb2a4b4410c0106c, type: 3}
   showInInventory: 1
-  equipSlot: 1
+  equipSlot: 0
   damageNegation: 1
   damageIncrease: 0

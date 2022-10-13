@@ -14,6 +14,14 @@ public class InventorySlot : MonoBehaviour
 
         icon.enabled = true;
     }
+    public void AddEquipment(Equipment newEquipment)
+    {
+        item = newEquipment;
+
+        icon.enabled = true;
+
+        icon.sprite = newEquipment.icon;
+    }
 
     public void ClearSlot()
     {
@@ -28,14 +36,6 @@ public class InventorySlot : MonoBehaviour
         if (item != null)
         {
             item.Use();
-        }
-    }
-
-    public void Unequip()
-    {
-        if (item != null)
-        {
-            GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().Unequip((Equipment)item);
         }
     }
 }
