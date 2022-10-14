@@ -40,6 +40,18 @@ public class BattleMaster : MonoBehaviour
     public InventoryUI inventoryUI;
     public Image equipmentPortrait;
 
+    [Header("Leveling:")]
+    public GameObject levelUpButton;
+    public GameObject levelUpPanel;
+    public GameObject levelUpPortrait;
+    public GameObject strengthText;
+    public GameObject attunementText;
+    public GameObject reflexesText;
+    public GameObject speedText;
+    public GameObject precisionText;
+    public GameObject constitutionText;
+    public GameObject enduranceText;
+
 
     void Start()
     {
@@ -84,6 +96,16 @@ public class BattleMaster : MonoBehaviour
             healthBars[turnCounter].SetBar(turnOrder[turnCounter].GetComponent<CharacterSheet>().Health);
         }
         turnCounter -= portraits.Count();
+
+        //Displays the levelUpButton if the currentCharacter has enough XP to LevelUp
+        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        {
+            levelUpButton.SetActive(true);
+        }
+        else
+        {
+            levelUpButton.SetActive(false);
+        }
     }
 
     void Update()
@@ -143,6 +165,16 @@ public class BattleMaster : MonoBehaviour
             {
                 NextTurn();
             }
+        }
+
+        //Display the levelup button if the currentCharacter has more XP than they need to level up
+        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        {
+            levelUpButton.SetActive(true);
+        }
+        else
+        {
+            levelUpButton.SetActive(false);
         }
 
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
@@ -247,4 +279,146 @@ public class BattleMaster : MonoBehaviour
         GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
         inventory.SetActive(false);
     }
+
+    public void LevelUp()
+    {
+        battleHud.SetActive(false);
+        levelUpPanel.SetActive(true);
+        levelUpPortrait.GetComponent<Image>().sprite = currentCharacter.GetComponent<SpriteRenderer>().sprite;
+        strengthText.GetComponent<TextMeshProUGUI>().text = "Strength: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength.ToString();
+        attunementText.GetComponent<TextMeshProUGUI>().text = "Attunement: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Attunement.ToString();
+        reflexesText.GetComponent<TextMeshProUGUI>().text = "Reflexes: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Reflexes.ToString();
+        speedText.GetComponent<TextMeshProUGUI>().text = "Speed: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Speed.ToString();
+        precisionText.GetComponent<TextMeshProUGUI>().text = "Precision: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Precision.ToString();
+        constitutionText.GetComponent<TextMeshProUGUI>().text = "Constitution: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Constitution.ToString();
+        enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Endurance.ToString();
+    }
+
+    #region LevelUp Stat Functions
+    public void LevelUpStrength()
+    {
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength += 1;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+        battleHud.SetActive(true);
+        //Display the levelup button if the currentCharacter has more XP than they need to level up
+        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        {
+            levelUpButton.SetActive(true);
+        }
+        else
+        {
+            levelUpButton.SetActive(false);
+        }
+        levelUpPanel.SetActive(false);
+    }
+
+    public void LevelUpAttunement()
+    {
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.Attunement += 1;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+        battleHud.SetActive(true);
+        //Display the levelup button if the currentCharacter has more XP than they need to level up
+        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        {
+            levelUpButton.SetActive(true);
+        }
+        else
+        {
+            levelUpButton.SetActive(false);
+        }
+        levelUpPanel.SetActive(false);
+    }
+
+    public void LevelUpReflexes()
+    {
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.Reflexes += 1;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+        battleHud.SetActive(true);
+        //Display the levelup button if the currentCharacter has more XP than they need to level up
+        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        {
+            levelUpButton.SetActive(true);
+        }
+        else
+        {
+            levelUpButton.SetActive(false);
+        }
+        levelUpPanel.SetActive(false);
+    }
+
+    public void LevelUpSpeed()
+    {
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.Speed += 1;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+        battleHud.SetActive(true);
+        //Display the levelup button if the currentCharacter has more XP than they need to level up
+        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        {
+            levelUpButton.SetActive(true);
+        }
+        else
+        {
+            levelUpButton.SetActive(false);
+        }
+        levelUpPanel.SetActive(false);
+    }
+
+    public void LevelUpPrecision()
+    {
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.Precision += 1;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+        battleHud.SetActive(true);
+        //Display the levelup button if the currentCharacter has more XP than they need to level up
+        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        {
+            levelUpButton.SetActive(true);
+        }
+        else
+        {
+            levelUpButton.SetActive(false);
+        }
+        levelUpPanel.SetActive(false);
+    }
+
+    public void LevelUpConstitution()
+    {
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.Constitution += 1;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+        battleHud.SetActive(true);
+        //Display the levelup button if the currentCharacter has more XP than they need to level up
+        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        {
+            levelUpButton.SetActive(true);
+        }
+        else
+        {
+            levelUpButton.SetActive(false);
+        }
+        levelUpPanel.SetActive(false);
+    }
+
+    public void LevelUpEndurance()
+    {
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.Endurance += 1;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+        battleHud.SetActive(true);
+        //Display the levelup button if the currentCharacter has more XP than they need to level up
+        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        {
+            levelUpButton.SetActive(true);
+        }
+        else
+        {
+            levelUpButton.SetActive(false);
+        }
+        levelUpPanel.SetActive(false);
+    }
+    #endregion
 }

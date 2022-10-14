@@ -45,6 +45,8 @@ public class CharacterStats
     public int Endurance; //Determines max stamina
     [HideInInspector]
     public int Defense; //Decreases damage taken
+    public int XP;
+    public int XPtoLevelUp;
 }
 
 [System.Serializable]
@@ -80,6 +82,7 @@ public class CharacterSheet : MonoBehaviour
     {
         MaxHealth = characterStats.Constitution;
         MaxStamina = characterStats.Endurance;
+        characterStats.XPtoLevelUp = 10; //This is the starting value for the amount of XP it takes to level up
 
         characterEquipment = new List<Equipment> { GetComponent<CharacterEquipment>().Head, GetComponent<CharacterEquipment>().Torso,
             GetComponent<CharacterEquipment>().Arms, GetComponent<CharacterEquipment>().Legs, GetComponent<CharacterEquipment>().ArmSlot1,
@@ -115,6 +118,11 @@ public class CharacterSheet : MonoBehaviour
         }
         isDead = true;
 
+        if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        {
+            battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.XP += characterStats.XP;
+        }
+
         //If there are no more enemies, display the win screen
         if (battleMaster.livingEnemies.Count() == 0)
         {
@@ -139,8 +147,8 @@ public class CharacterSheet : MonoBehaviour
         }
     }
 
-/////////////////////// Everything below here is my "attack animation" of shaking
- 
+    /////////////////////// Everything below here is my "attack animation" of shaking
+
     [Header("Info")]
     private Vector3 _startPos;
     private float _timer;
