@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3444737388573469852}
   - component: {fileID: 6276197854949121670}
+  - component: {fileID: 1888620513}
   m_Layer: 0
   m_Name: BattleMaster
-  m_TagString: Untagged
+  m_TagString: BattleMaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,10 +45,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c279201b610f874d9252015eb57a77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiTurnThreshold: 100
+  multiTurnThreshold: 50
   turn: {fileID: 0}
   turnOrder: []
   cursorTexture: {fileID: 2800000, guid: 0dee58cf3f17a8e4289138b97b910a05, type: 3}
+  attackButton: {fileID: 0}
+  portraits:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  namesList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  healthBars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  characters: []
+  livingPlayers: []
+  livingEnemies: []
   currentCharacter: {fileID: 0}
+  loseScreen: {fileID: 0}
+  winScreen: {fileID: 0}
+  battleHud: {fileID: 0}
   attackPressed: 0
   attackDone: 0
+  battleStarted: 0
+  howFarInTheFutureYouCalculateTurnOrder: 50
+  inventory: {fileID: 0}
+  inventoryUI: {fileID: 0}
+  equipmentPortrait: {fileID: 0}
+  levelUpButton: {fileID: 0}
+  levelUpPanel: {fileID: 0}
+  levelUpPortrait: {fileID: 0}
+  strengthText: {fileID: 0}
+  attunementText: {fileID: 0}
+  reflexesText: {fileID: 0}
+  speedText: {fileID: 0}
+  precisionText: {fileID: 0}
+  constitutionText: {fileID: 0}
+  enduranceText: {fileID: 0}
+--- !u!114 &1888620513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6714195307129551134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 803618bf4d62d0c498a10b32f0052674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCanvas: {fileID: 0}
+  names:
+  - Attack
+  - Inventory
+  - Position
+  - Run

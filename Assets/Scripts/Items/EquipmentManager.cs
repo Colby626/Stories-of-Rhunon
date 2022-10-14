@@ -12,7 +12,7 @@ public class EquipmentManager : MonoBehaviour
     BattleMaster battleMaster;
     int numSlots;
 
-    void Start()
+    void Awake()
     {
         inventoryUI = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryUI>();
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();

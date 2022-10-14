@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro; //For name text under turn order portraits
+using System.Collections; //For IEnumerator like Timer
 
 public class BattleMaster : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class BattleMaster : MonoBehaviour
     public List<GameObject> turnOrder = new();
     public Texture2D cursorTexture;
     public Button attackButton;
+    [Tooltip("The time it waits before letting an AI run their first turn if they go first")]
+    public int timeBeforeStart = 2;
 
     private List<GameObject> tempList = new();
     private GameObject[] characterArray;
@@ -53,7 +56,7 @@ public class BattleMaster : MonoBehaviour
     public GameObject enduranceText;
 
 
-    void Start()
+    void Awake()
     {
         //Finds all the participants
         characterArray = GameObject.FindGameObjectsWithTag("Participant");
@@ -106,6 +109,11 @@ public class BattleMaster : MonoBehaviour
         {
             levelUpButton.SetActive(false);
         }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(Timer()); //Will only let the AI go after 2 seconds if they are first in the turn order, without waiting, scripts don't finish loading 
     }
 
     void Update()
@@ -421,4 +429,29 @@ public class BattleMaster : MonoBehaviour
         levelUpPanel.SetActive(false);
     }
     #endregion
+
+    IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(timeBeforeStart);
+
+        //If the next person in line is not a player the ai will attack one of them at random
+        if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        {
+            GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
+            currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
+            target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
+
+            //If there are no more players alive, display the lose screen
+            if (livingPlayers.Count() == 0)
+            {
+                battleStarted = false;
+                battleHud.SetActive(false);
+                loseScreen.SetActive(true);
+            }
+            else
+            {
+                NextTurn();
+            }
+        }
+    }
 }

@@ -78,8 +78,10 @@ public class CharacterSheet : MonoBehaviour
     public bool isPlayer;
     public bool isDead = false;
 
-    private void Start()
+    private void Awake()
     {
+        _startPos = transform.position; //For attack "animation"
+
         MaxHealth = characterStats.Constitution;
         MaxStamina = characterStats.Endurance;
         characterStats.XPtoLevelUp = 10; //This is the starting value for the amount of XP it takes to level up
@@ -159,12 +161,6 @@ public class CharacterSheet : MonoBehaviour
     public float _time = 0.2f;
     [Range(0f, 2f)]
     public float _distance = 0.1f;
-
-
-    private void Awake()
-    {
-        _startPos = transform.position;
-    }
 
     public void Begin()
     {

@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 3f7f9cdb80c55f14da58bd9d119bc229
   - enabled: 1
-    path: Assets/ColbyTestFolder/ColbyDemo.unity
+    path: Assets/Scenes/ColbyDemo.unity
     guid: 14810463a31b6f149938ad977ca982d7
   m_configObjects: {}
