@@ -12,11 +12,7 @@ public class StatusManager : MonoBehaviour
     void Start()
     {
         character = GetComponent<CharacterSheet>();
-
-        character.Health = character.MaxHealth;
-        character.Mana = character.MaxMana;
-        character.Stamina = character.MaxStamina;
-
+        
         healthBar.SetBarMax(character.MaxHealth);
         magicBar.SetBarMax(character.MaxMana);
         staminaBar.SetBarMax(character.MaxStamina);

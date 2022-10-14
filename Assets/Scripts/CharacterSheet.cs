@@ -36,15 +36,15 @@ public class CharacterProficiencies
 public class CharacterStats
 {
     [Header("Stats:")]
-    public int Strength;
-    public int Attunement;
-    public int Reflexes;
-    public int Speed;
-    public int Precision;
-    public int Constitution;
-    public int Endurance;
+    public int Strength; //Increases damage done
+    public int Attunement; //Magical prowess
+    public int Reflexes; //Determines how much you go at the start of combat
+    public int Speed; //Determines how often you go
+    public int Precision; //Critical chance
+    public int Constitution; //Determines max health
+    public int Endurance; //Determines max stamina
     [HideInInspector]
-    public int Defense;
+    public int Defense; //Decreases damage taken
 }
 
 [System.Serializable]
@@ -78,6 +78,9 @@ public class CharacterSheet : MonoBehaviour
 
     private void Start()
     {
+        MaxHealth = characterStats.Constitution;
+        MaxStamina = characterStats.Endurance;
+
         characterEquipment = new List<Equipment> { GetComponent<CharacterEquipment>().Head, GetComponent<CharacterEquipment>().Torso,
             GetComponent<CharacterEquipment>().Arms, GetComponent<CharacterEquipment>().Legs, GetComponent<CharacterEquipment>().ArmSlot1,
             GetComponent<CharacterEquipment>().ArmSlot2, GetComponent<CharacterEquipment>().Ring1, GetComponent<CharacterEquipment>().Ring2,
@@ -86,7 +89,15 @@ public class CharacterSheet : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Health -= damage;
+        Health -= (damage - characterStats.Defense);
+
+        //Criticals deal 150% damage
+        int rand = Random.Range(1, 100);
+        if (rand > 100 - battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Precision)
+        {
+            Health -= (damage - characterStats.Defense) / 2;
+        }
+
         if (Health <= 0)
         {
             Die();

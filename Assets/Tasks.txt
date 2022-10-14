@@ -1,9 +1,3 @@
-Constitution increasing health
-Strength increasing damage
-Weapons increasing damage dealt
-Armor decreasing damage taken 
-Reflexes adding a dodge chance
-Precision increasing chance to hit against dodge and maybe critical
 Stamina for power attacks that deal double damage 
 AI attacks players intelligently (list of attack types such as "attack mages first" or "attack biggest guy first" or "attack weakest guy first" that each ai can only have one of)
 
