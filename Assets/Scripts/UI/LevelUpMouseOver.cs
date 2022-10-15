@@ -4,19 +4,36 @@ using UnityEngine;
 public class LevelUpMouseOver : MonoBehaviour
 {
     public TextMeshProUGUI correspondingText;
-    private int indexToChange;
     private string originalText;
-    private int newValue;
+    private int finalIndex;
+    private int onesPlace;
+    private int tensPlace;
+    private bool hasTens;
 
-    public void ChangeColor()
+    public void ChangeColor() //Requires check for the ones place being 9
     {
-        indexToChange = correspondingText.text.Length - 1;
-        correspondingText = correspondingText.GetComponent<TextMeshProUGUI>();
         originalText = correspondingText.text;
+        finalIndex = correspondingText.text.Length - 1;
+        correspondingText = correspondingText.GetComponent<TextMeshProUGUI>();
 
-        newValue = int.Parse(correspondingText.text[indexToChange].ToString()) + 1;
-        correspondingText.text = correspondingText.text.Replace(correspondingText.text[indexToChange].ToString(), newValue.ToString());
-        correspondingText.text = correspondingText.text.Replace(correspondingText.text[indexToChange].ToString(), "<color=green>" + correspondingText.text[indexToChange].ToString() + "</color>");
+        hasTens = int.TryParse(correspondingText.text[finalIndex - 1].ToString(), out tensPlace);
+        if (hasTens)
+        {
+            onesPlace = int.Parse(correspondingText.text[finalIndex].ToString()) + 1;
+            correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex-1].ToString(), tensPlace.ToString());
+            correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex].ToString(), onesPlace.ToString());
+            correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex-1].ToString(), "<color=green>" + correspondingText.text[finalIndex-1].ToString() + "</color>");
+            //Strength: <color=green>T</color>
+            //finalIndex:^
+            finalIndex = correspondingText.text.Length - 1;
+            correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex].ToString(), "<color=green>" + correspondingText.text[finalIndex].ToString() + "</color>");
+        }
+        else
+        {
+            onesPlace = int.Parse(correspondingText.text[finalIndex].ToString()) + 1;
+            correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex].ToString(), onesPlace.ToString());
+            correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex].ToString(), "<color=green>" + correspondingText.text[finalIndex].ToString() + "</color>");
+        }
     }
 
     public void DefaultColor()
