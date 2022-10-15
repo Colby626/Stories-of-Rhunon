@@ -2652,7 +2652,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: Health
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -8604,7 +8604,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: Health
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -8650,22 +8650,22 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.XP
-      value: 50
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Speed
-      value: 19
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Reflexes
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Strength
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -8685,7 +8685,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Constitution
-      value: 40
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574665, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -24875,7 +24875,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Strength
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -25831,7 +25831,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: Health
-      value: 10
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -25877,7 +25877,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.XP
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -25902,12 +25902,12 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Attunement
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Constitution
-      value: 20
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574665, guid: ad33a31da65d383488651642118a93a9,
         type: 3}

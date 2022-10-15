@@ -94,7 +94,10 @@ public class CharacterSheet : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Health -= (damage - characterStats.Defense);
+        if (damage - characterStats.Defense > 0) //To make sure they don't heal what they negate
+        {
+            Health -= (damage - characterStats.Defense);
+        }
 
         //Criticals deal 150% damage
         int rand = Random.Range(1, 100);
