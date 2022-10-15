@@ -101,7 +101,7 @@ public class BattleMaster : MonoBehaviour
         turnCounter -= portraits.Count();
 
         //Displays the levelUpButton if the currentCharacter has enough XP to LevelUp
-        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        if (currentCharacter.GetComponent<CharacterSheet>().isPlayer && currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
         {
             levelUpButton.SetActive(true);
         }
@@ -176,7 +176,7 @@ public class BattleMaster : MonoBehaviour
         }
 
         //Display the levelup button if the currentCharacter has more XP than they need to level up
-        if (currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        if (currentCharacter.GetComponent<CharacterSheet>().isPlayer && currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
         {
             levelUpButton.SetActive(true);
         }
