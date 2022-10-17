@@ -34,7 +34,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.49220276, y: -0.040899754}
   m_SizeDelta: {x: -2.9125, y: -3.7464}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 4388331401930706473}
   barText: {fileID: 3022985510244602019}
-  wantText: 0
+  wantText: 1
 --- !u!1 &845832654604820729
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,9 +348,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383555037002574667}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6763829, y: 2.093, z: 1}
+  m_LocalScale: {x: 2, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5877331900432747558}
@@ -397,10 +397,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 50
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
     type: 3}
-  m_Color: {r: 0.28009173, g: 0.50279796, b: 0.9150943, a: 1}
+  m_Color: {r: 0.83921576, g: 0.18431373, b: 0.18431373, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -422,22 +422,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b2f8cabcb63cd4a9a5a68304cce285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Name
-  Health: 10
-  MaxHealth: 10
+  Name: Vampire
+  Health: 16
+  MaxHealth: 3
   Mana: 10
   MaxMana: 10
   Stamina: 10
   MaxStamina: 10
-  Portrait: {fileID: 0}
+  Portrait: {fileID: -415310202, guid: 747edf0d033db9046afb1f23dde486f3, type: 3}
   characterStats:
-    Strength: 0
-    Attunement: 0
-    Reflexes: 0
-    Speed: 0
-    Precision: 0
-    Constitution: 0
-    Endurance: 0
+    Strength: 2
+    Attunement: 20
+    Reflexes: 30
+    Speed: 30
+    Precision: 50
+    Constitution: 30
+    Endurance: 40
+    Defense: 0
+    XP: 100
+    XPtoLevelUp: 0
   characterProficiencies:
     FistProficiency: 0
     LightProficiency: 0
@@ -448,21 +451,20 @@ MonoBehaviour:
     CrossbowProficiency: 0
     ThrownProficiency: 0
   characterEquipment:
-    HandSlot1: {fileID: 0}
-    HandSlot2: {fileID: 0}
-    Head: {fileID: 0}
-    Torso: {fileID: 0}
-    Legs: {fileID: 0}
-    Arms: {fileID: 0}
-    Ring1: {fileID: 0}
-    Ring2: {fileID: 0}
-    Neck: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   characterAttacks:
     attackNames: []
   movementSpeed: 100
   turnOrderPriority: 0
-  battleMaster: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
-    type: 3}
+  battleMaster: {fileID: 0}
   isPlayer: 0
   isDead: 0
   _time: 0.2
