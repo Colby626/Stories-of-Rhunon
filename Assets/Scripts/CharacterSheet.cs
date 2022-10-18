@@ -128,6 +128,16 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.XP += characterStats.XP;
         }
 
+        //Display the levelup button if the currentCharacter has more XP than they need to level up
+        if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer && battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        {
+            battleMaster.levelUpButton.SetActive(true);
+        }
+        else
+        {
+            battleMaster.levelUpButton.SetActive(false);
+        }
+
         //If there are no more enemies, display the win screen
         if (battleMaster.livingEnemies.Count() == 0)
         {

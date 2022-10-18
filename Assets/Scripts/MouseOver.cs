@@ -9,7 +9,7 @@ public class MouseOver : MonoBehaviour
     private CharacterSheet character;
     public bool doMouseOver = true;
 
-    public GameObject status;
+    //public GameObject status;
     public Image portrait;
     public StatBar healthBar;
     public StatBar manaBar;
@@ -27,7 +27,7 @@ public class MouseOver : MonoBehaviour
         characterSprite = GetComponent<SpriteRenderer>();
         character = characterSprite.GetComponent<CharacterSheet>();
         startcolor = characterSprite.color;
-        status = healthBar.transform.parent.gameObject;
+        //status = healthBar.transform.parent.gameObject;
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
     }
 
@@ -49,7 +49,7 @@ public class MouseOver : MonoBehaviour
         
         if (doMouseOver && !isHighlighted)
         {
-            characterSprite.color *= 1.5f;
+            character.transform.GetChild(1).gameObject.SetActive(true);
             isHighlighted = true;
         }
     }
@@ -63,13 +63,13 @@ public class MouseOver : MonoBehaviour
             ActivateStatus(battleMaster.currentCharacter.GetComponent<CharacterSheet>());
         }
         character.transform.GetChild(0).gameObject.SetActive(false);
-        characterSprite.color = startcolor;
+        character.transform.GetChild(1).gameObject.SetActive(false);
         isHighlighted = false;
     }
 
     public void ActivateStatus(CharacterSheet participant)
     {
-        status.SetActive(true);
+        //status.SetActive(true);
 
         healthBar.SetBarMax(participant.MaxHealth);
         manaBar.SetBarMax(participant.MaxMana);

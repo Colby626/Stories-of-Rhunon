@@ -52,6 +52,11 @@ public class LevelUpMouseOver : MonoBehaviour
         }
     }
 
+    public void LevelupPressed()
+    {
+        ChangeColor();
+    }
+
     public void DefaultColor()
     {
         correspondingText.text = originalText;

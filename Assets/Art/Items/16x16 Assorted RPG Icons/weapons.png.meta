@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -1682,22 +1682,22 @@ TextureImporter:
       weapons_37: -1786206771
       weapons_3: 140479744
       weapons_27: 568283580
+      weapons_70: 50891537
       weapons_7: 1489554761
       weapons_58: -447533839
-      weapons_25: -2135397425
       weapons_18: 1811205491
-      weapons_39: 435231316
+      weapons_25: -2135397425
       weapons_31: -457142825
       weapons_35: -1185905949
       weapons_65: 568423633
-      weapons_56: 1470400023
+      weapons_39: 435231316
       weapons_28: 1515575744
-      weapons_62: 306792721
+      weapons_56: 1470400023
       weapons_44: -1995559343
-      weapons_16: -48325188
-      weapons_43: -1333934230
+      weapons_62: 306792721
       weapons_48: 87679027
-      weapons_70: 50891537
+      weapons_43: -1333934230
+      weapons_16: -48325188
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
