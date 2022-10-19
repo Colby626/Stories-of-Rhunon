@@ -50,6 +50,7 @@ MonoBehaviour:
   turnOrder: []
   cursorTexture: {fileID: 2800000, guid: 0dee58cf3f17a8e4289138b97b910a05, type: 3}
   attackButton: {fileID: 0}
+  timeBeforeStart: 1
   portraits:
   - {fileID: 0}
   - {fileID: 0}
