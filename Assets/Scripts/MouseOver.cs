@@ -27,7 +27,6 @@ public class MouseOver : MonoBehaviour
         characterSprite = GetComponent<SpriteRenderer>();
         character = characterSprite.GetComponent<CharacterSheet>();
         startcolor = characterSprite.color;
-        //status = healthBar.transform.parent.gameObject;
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
     }
 
@@ -39,7 +38,7 @@ public class MouseOver : MonoBehaviour
             ActivateStatus(character);
         }
 
-        if (!character.isPlayer)
+        if (!character.isPlayer && !character.isDead)
         {
             character.transform.GetChild(0).gameObject.SetActive(true);
             overheadHealthBar.SetBarMax(character.MaxHealth);
@@ -47,10 +46,25 @@ public class MouseOver : MonoBehaviour
             overheadNameText.text = character.Name;
         }
         
-        if (doMouseOver && !isHighlighted)
+        if (doMouseOver && !isHighlighted && !character.isDead)
         {
             character.transform.GetChild(1).gameObject.SetActive(true);
             isHighlighted = true;
+        }
+
+        if (character.isDead)
+        {
+            character.transform.GetChild(0).gameObject.SetActive(false);
+            character.transform.GetChild(1).gameObject.SetActive(false);
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (isHighlighted)
+        {
+            character.transform.GetChild(1).gameObject.SetActive(false);
+            isHighlighted = false;
         }
     }
 
@@ -69,8 +83,6 @@ public class MouseOver : MonoBehaviour
 
     public void ActivateStatus(CharacterSheet participant)
     {
-        //status.SetActive(true);
-
         healthBar.SetBarMax(participant.MaxHealth);
         manaBar.SetBarMax(participant.MaxMana);
         staminaBar.SetBarMax(participant.MaxStamina);

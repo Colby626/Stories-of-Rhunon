@@ -12,8 +12,8 @@ public class BattleMaster : MonoBehaviour
     public List<GameObject> turnOrder = new();
     public Texture2D cursorTexture;
     public Button attackButton;
-    [Tooltip("The time it waits before letting an AI run their first turn if they go first")]
-    public int timeBeforeStart = 2;
+    [Tooltip("The time in seconds it waits before letting an AI run their turn")]
+    public int delayBeforeEnemyTurns = 1;
 
     private List<GameObject> tempList = new();
     private GameObject[] characterArray;
@@ -114,7 +114,28 @@ public class BattleMaster : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Timer()); //Will only let the AI go after 2 seconds if they are first in the turn order, without waiting, scripts don't finish loading 
+        StartCoroutine(Timer()); //Will only let the AI go after 1 seconds if they are first in the turn order, without waiting, scripts don't finish loading 
+
+        //If the next person in line is not a player the ai will attack one of them at random
+        if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        {
+            GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
+            //currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
+            currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+            target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage + 1);
+
+            //If there are no more players alive, display the lose screen
+            if (livingPlayers.Count() == 0)
+            {
+                battleStarted = false;
+                battleHud.SetActive(false);
+                loseScreen.SetActive(true);
+            }
+            else
+            {
+                NextTurn();
+            }
+        }
     }
 
     void Update()
@@ -160,21 +181,27 @@ public class BattleMaster : MonoBehaviour
         //If the next person in line is not a player the ai will attack one of them at random
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
-            //currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
-            currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-            target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
+            StartCoroutine(Timer()); //Delay for enemey turns
 
-            //If there are no more players alive, display the lose screen
-            if (livingPlayers.Count() == 0)
+            //If the next person in line is not a player the ai will attack one of them at random
+            if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
             {
-                battleStarted = false;
-                battleHud.SetActive(false);
-                loseScreen.SetActive(true);
-            }
-            else
-            {
-                NextTurn();
+                GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
+                //currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
+                currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+                target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage + 1);
+
+                //If there are no more players alive, display the lose screen
+                if (livingPlayers.Count() == 0)
+                {
+                    battleStarted = false;
+                    battleHud.SetActive(false);
+                    loseScreen.SetActive(true);
+                }
+                else
+                {
+                    NextTurn();
+                }
             }
         }
 
@@ -430,13 +457,15 @@ public class BattleMaster : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(timeBeforeStart);
+        yield return new WaitForSeconds(delayBeforeEnemyTurns);
 
+        /*
         //If the next person in line is not a player the ai will attack one of them at random
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
-            currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
+            //currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
+            currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
             target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
 
             //If there are no more players alive, display the lose screen
@@ -451,5 +480,6 @@ public class BattleMaster : MonoBehaviour
                 NextTurn();
             }
         }
+        */
     }
 }

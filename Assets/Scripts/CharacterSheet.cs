@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic; //for Lists
 using UnityEngine;
 using System.Linq; //for livingEnemies.Count()
+using UnityEngine.TextCore.Text;
 
 [System.Serializable]
 public class CharacterEquipment : Component
@@ -45,6 +46,7 @@ public class CharacterStats
     public int Endurance; //Determines max stamina
     [HideInInspector]
     public int Defense; //Decreases damage taken
+    public int Damage;
     public int XP;
     public int XPtoLevelUp;
 }
@@ -84,6 +86,7 @@ public class CharacterSheet : MonoBehaviour
 
         MaxHealth = characterStats.Constitution;
         MaxStamina = characterStats.Endurance;
+        characterStats.Damage = characterStats.Strength;
         characterStats.XPtoLevelUp = 10; //This is the starting value for the amount of XP it takes to level up
 
         characterEquipment = new List<Equipment> { GetComponent<CharacterEquipment>().Head, GetComponent<CharacterEquipment>().Torso,
@@ -110,11 +113,11 @@ public class CharacterSheet : MonoBehaviour
 
         if (Health <= 0)
         {
-            Die();
+            StartDie();
         }
     }
 
-    void Die()
+    void StartDie()
     {
         battleMaster.livingPlayers.Remove(gameObject);
         battleMaster.livingEnemies.Remove(gameObject);
@@ -125,6 +128,11 @@ public class CharacterSheet : MonoBehaviour
         }
         isDead = true;
 
+        GetComponent<Animator>().SetTrigger("Death"); 
+    }
+
+    public void FinishDie()
+    {
         if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.XP += characterStats.XP;
@@ -140,15 +148,16 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.levelUpButton.SetActive(false);
         }
 
+        Debug.Log("Finish Die");
         //If there are no more enemies, display the win screen
         if (battleMaster.livingEnemies.Count() == 0)
         {
+            Debug.Log("Battle End");
             battleMaster.battleStarted = false;
             battleMaster.battleHud.SetActive(false);
             battleMaster.winScreen.SetActive(true);
         }
 
-        GetComponent<Animator>().SetTrigger("Death");
         gameObject.SetActive(false);
     }
 
@@ -159,7 +168,7 @@ public class CharacterSheet : MonoBehaviour
         {
             //battleMaster.currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
             battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-            TakeDamage(battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
+            TakeDamage(battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage + 1);
             battleMaster.attackPressed = false;
             battleMaster.attackDone = true;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);

@@ -49,7 +49,7 @@ public class EquipmentManager : MonoBehaviour
         inventoryUI.UpdateUI();
 
         //Increase damage or armor
-        battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength += newItem.damageIncrease;
+        battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage += newItem.damageIncrease;
         battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Defense += newItem.damageNegation;
     }
 
