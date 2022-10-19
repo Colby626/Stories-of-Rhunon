@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bff57df183732ae4e94d762f505170b4
+guid: baa7da610c4349343bf6ae9a36f2e3f2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,106 +104,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Knight-Idle-Sheet_0
+      name: Attack_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 0
-        width: 33
-        height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 60
+        y: 49
+        width: 45
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24937b55273b4c043b13055b69f5f239
-      internalID: -1045527703
+      spriteID: db1524b100af6de4588029fc8cc83d27
+      internalID: -1437569656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight-Idle-Sheet_1
+      name: Attack_1
       rect:
         serializedVersion: 2
-        x: 83
-        y: 0
-        width: 34
+        x: 210
+        y: 49
+        width: 42
         height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7623cb020b6ae7e4f82b06abaad740f4
-      internalID: 658475306
+      spriteID: 68cf3bb92e2d4394fb6333b358cf78f6
+      internalID: -1810058590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight-Idle-Sheet_2
+      name: Attack_2
       rect:
         serializedVersion: 2
-        x: 147
-        y: 0
-        width: 33
-        height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 353
+        y: 49
+        width: 36
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 343647b3d4c79af448c1074eb0b5de59
-      internalID: 519641317
+      spriteID: bf73981e461dc70439ced2fd8f49fc9c
+      internalID: -1374567452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight-Idle-Sheet_3
+      name: Attack_3
       rect:
         serializedVersion: 2
-        x: 211
-        y: 0
-        width: 32
-        height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 503
+        y: 49
+        width: 36
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a292c4450f8a21549b3d06bf345cea05
-      internalID: -745410508
+      spriteID: 2d693960e0b0b4f45ad38b98f30f170f
+      internalID: 1545094274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight-Idle-Sheet_4
+      name: Attack_4
       rect:
         serializedVersion: 2
-        x: 23
-        y: 37
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 653
+        y: 49
+        width: 36
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08186c4b2d45d2b4bafa7d0a3957a0d3
-      internalID: 1650150558
+      spriteID: 5d8efcfe18a1374429517a27f3df5039
+      internalID: -1501115611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_5
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 49
+        width: 31
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b8263bec220a1142a0e5c73a888f26c
+      internalID: -1132802865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_6
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 49
+        width: 80
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 841d4659da30a944b9543e48c193ad71
+      internalID: -956794994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_7
+      rect:
+        serializedVersion: 2
+        x: 1118
+        y: 49
+        width: 80
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf4f1ae8bba49b44faec9e627cab7220
+      internalID: 830527512
       vertices: []
       indices: 
       edges: []
@@ -219,11 +282,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Knight-Idle-Sheet_0: -1045527703
-      Knight-Idle-Sheet_4: 1650150558
-      Knight-Idle-Sheet_2: 519641317
-      Knight-Idle-Sheet_3: -745410508
-      Knight-Idle-Sheet_1: 658475306
+      Attack_5: -1132802865
+      Attack_0: -1437569656
+      Attack_7: 830527512
+      Attack_8: 1914445514
+      Attack_4: -1501115611
+      Attack_2: -1374567452
+      Attack_1: -1810058590
+      Attack_3: 1545094274
+      Attack_6: -956794994
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

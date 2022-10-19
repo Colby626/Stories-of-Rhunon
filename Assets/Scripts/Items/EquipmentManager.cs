@@ -64,54 +64,63 @@ public class EquipmentManager : MonoBehaviour
                 {
                     equipmentSlots[0].item = null;
                     equipmentSlots[0].icon.enabled = false;
+                    equipmentSlots[0].transform.GetChild(1).gameObject.SetActive(true);
                     break;
                 }
             case EquipmentSlot.Chest:
                 {
                     equipmentSlots[1].item = null;
                     equipmentSlots[1].icon.enabled = false;
+                    equipmentSlots[1].transform.GetChild(1).gameObject.SetActive(true);
                     break;
                 }
             case EquipmentSlot.Arms:
                 {
                     equipmentSlots[2].item = null;
                     equipmentSlots[2].icon.enabled = false;
+                    equipmentSlots[2].transform.GetChild(1).gameObject.SetActive(true);
                     break;
                 }
             case EquipmentSlot.Legs:
                 {
                     equipmentSlots[3].item = null;
                     equipmentSlots[3].icon.enabled = false;
+                    equipmentSlots[3].transform.GetChild(1).gameObject.SetActive(true);
                     break;
                 }
             case EquipmentSlot.ArmSlot1:
                 {
                     equipmentSlots[4].item = null;
                     equipmentSlots[4].icon.enabled = false;
+                    equipmentSlots[4].transform.GetChild(1).gameObject.SetActive(true);
                     break;
                 }
             case EquipmentSlot.ArmSlot2:
                 {
                     equipmentSlots[5].item = null;
                     equipmentSlots[5].icon.enabled = false;
+                    equipmentSlots[5].transform.GetChild(1).gameObject.SetActive(true);
                     break;
                 }
             case EquipmentSlot.Ring1:
                 {
                     equipmentSlots[6].item = null;
                     equipmentSlots[6].icon.enabled = false;
+                    equipmentSlots[6].transform.GetChild(1).gameObject.SetActive(true);
                     break;
                 }
             case EquipmentSlot.Ring2:
                 {
                     equipmentSlots[7].item = null;
                     equipmentSlots[7].icon.enabled = false;
+                    equipmentSlots[7].transform.GetChild(1).gameObject.SetActive(true);
                     break;
                 }
             case EquipmentSlot.Neck:
                 {
                     equipmentSlots[8].item = null;
                     equipmentSlots[8].icon.enabled = false;
+                    equipmentSlots[8].transform.GetChild(1).gameObject.SetActive(true);
                     break;
                 }
         }
@@ -135,6 +144,7 @@ public class EquipmentManager : MonoBehaviour
                     equipmentSlots[0].item = newItem;
                     equipmentSlots[0].icon.sprite = newItem.icon;
                     equipmentSlots[0].icon.enabled = true;
+                    equipmentSlots[0].transform.GetChild(1).gameObject.SetActive(false);
                     break;
                 }
             case EquipmentSlot.Chest:
@@ -142,6 +152,7 @@ public class EquipmentManager : MonoBehaviour
                     equipmentSlots[1].item = newItem;
                     equipmentSlots[1].icon.sprite = newItem.icon;
                     equipmentSlots[1].icon.enabled = true;
+                    equipmentSlots[1].transform.GetChild(1).gameObject.SetActive(false);
                     break;
                 }
             case EquipmentSlot.Arms:
@@ -149,6 +160,7 @@ public class EquipmentManager : MonoBehaviour
                     equipmentSlots[2].item = newItem;
                     equipmentSlots[2].icon.sprite = newItem.icon;
                     equipmentSlots[2].icon.enabled = true;
+                    equipmentSlots[2].transform.GetChild(1).gameObject.SetActive(false);
                     break;
                 }
             case EquipmentSlot.Legs:
@@ -156,6 +168,7 @@ public class EquipmentManager : MonoBehaviour
                     equipmentSlots[3].item = newItem;
                     equipmentSlots[3].icon.sprite = newItem.icon;
                     equipmentSlots[3].icon.enabled = true;
+                    equipmentSlots[3].transform.GetChild(1).gameObject.SetActive(false);
                     break;
                 }
             case EquipmentSlot.ArmSlot1:
@@ -163,6 +176,7 @@ public class EquipmentManager : MonoBehaviour
                     equipmentSlots[4].item = newItem;
                     equipmentSlots[4].icon.sprite = newItem.icon;
                     equipmentSlots[4].icon.enabled = true;
+                    equipmentSlots[4].transform.GetChild(1).gameObject.SetActive(false);
                     break;
                 }
             case EquipmentSlot.ArmSlot2:
@@ -170,6 +184,7 @@ public class EquipmentManager : MonoBehaviour
                     equipmentSlots[5].item = newItem;
                     equipmentSlots[5].icon.sprite = newItem.icon;
                     equipmentSlots[5].icon.enabled = true;
+                    equipmentSlots[5].transform.GetChild(1).gameObject.SetActive(false);
                     break;
                 }
             case EquipmentSlot.Ring1:
@@ -177,6 +192,7 @@ public class EquipmentManager : MonoBehaviour
                     equipmentSlots[6].item = newItem;
                     equipmentSlots[6].icon.sprite = newItem.icon;
                     equipmentSlots[6].icon.enabled = true;
+                    equipmentSlots[6].transform.GetChild(1).gameObject.SetActive(false);
                     break;
                 }
             case EquipmentSlot.Ring2:
@@ -184,6 +200,7 @@ public class EquipmentManager : MonoBehaviour
                     equipmentSlots[7].item = newItem;
                     equipmentSlots[7].icon.sprite = newItem.icon;
                     equipmentSlots[7].icon.enabled = true;
+                    equipmentSlots[7].transform.GetChild(1).gameObject.SetActive(false);
                     break;
                 }
             case EquipmentSlot.Neck:
@@ -191,6 +208,7 @@ public class EquipmentManager : MonoBehaviour
                     equipmentSlots[8].item = newItem;
                     equipmentSlots[8].icon.sprite = newItem.icon;
                     equipmentSlots[8].icon.enabled = true;
+                    equipmentSlots[8].transform.GetChild(1).gameObject.SetActive(false);
                     break;
                 }
         }
@@ -205,6 +223,7 @@ public class EquipmentManager : MonoBehaviour
                 equipmentSlots[i].item = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[i];
                 equipmentSlots[i].icon.sprite = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[i].icon;
                 equipmentSlots[i].icon.enabled = true;
+                equipmentSlots[i].transform.GetChild(1).gameObject.SetActive(false);
             }
         }
     }
@@ -216,6 +235,7 @@ public class EquipmentManager : MonoBehaviour
             equipmentSlots[i].item = null;
             equipmentSlots[i].icon.sprite = null;
             equipmentSlots[i].icon.enabled = false;
+            equipmentSlots[i].transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 }

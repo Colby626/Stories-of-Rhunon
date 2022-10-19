@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bff57df183732ae4e94d762f505170b4
+guid: 3c542d1da1ace0d49af11e598d8d65f4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,106 +104,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Knight-Idle-Sheet_0
+      name: Take Hit_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 0
-        width: 33
-        height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 60
+        y: 49
+        width: 45
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24937b55273b4c043b13055b69f5f239
-      internalID: -1045527703
+      spriteID: 9a5ddbfeada5d9c4da0466d7c23a1a75
+      internalID: 1666157818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight-Idle-Sheet_1
+      name: Take Hit_1
       rect:
         serializedVersion: 2
-        x: 83
-        y: 0
-        width: 34
-        height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 210
+        y: 49
+        width: 45
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7623cb020b6ae7e4f82b06abaad740f4
-      internalID: 658475306
+      spriteID: 32b5116d10ecbab4a96464b28457749d
+      internalID: 677297484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight-Idle-Sheet_2
+      name: Take Hit_2
       rect:
         serializedVersion: 2
-        x: 147
-        y: 0
-        width: 33
-        height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 350
+        y: 49
+        width: 50
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 343647b3d4c79af448c1074eb0b5de59
-      internalID: 519641317
+      spriteID: c3b2534bbb1c7f0468ea659cd6dcde9d
+      internalID: -342502396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight-Idle-Sheet_3
+      name: Take Hit_3
       rect:
         serializedVersion: 2
-        x: 211
-        y: 0
-        width: 32
-        height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 502
+        y: 49
+        width: 50
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a292c4450f8a21549b3d06bf345cea05
-      internalID: -745410508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Knight-Idle-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 37
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08186c4b2d45d2b4bafa7d0a3957a0d3
-      internalID: 1650150558
+      spriteID: cebf2557b4f0b6e4085d2de20dda5e18
+      internalID: 263066271
       vertices: []
       indices: 
       edges: []
@@ -219,11 +198,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Knight-Idle-Sheet_0: -1045527703
-      Knight-Idle-Sheet_4: 1650150558
-      Knight-Idle-Sheet_2: 519641317
-      Knight-Idle-Sheet_3: -745410508
-      Knight-Idle-Sheet_1: 658475306
+      Take Hit_2: -342502396
+      Take Hit_1: 677297484
+      Take Hit_0: 1666157818
+      Take Hit_3: 263066271
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
