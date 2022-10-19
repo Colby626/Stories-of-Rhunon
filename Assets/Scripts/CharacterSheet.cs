@@ -106,6 +106,8 @@ public class CharacterSheet : MonoBehaviour
             Health -= (damage - characterStats.Defense) / 2;
         }
 
+        GetComponent<Animator>().SetTrigger("TakingHit");
+
         if (Health <= 0)
         {
             Die();
@@ -146,6 +148,7 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.winScreen.SetActive(true);
         }
 
+        GetComponent<Animator>().SetTrigger("Death");
         gameObject.SetActive(false);
     }
 
@@ -154,7 +157,8 @@ public class CharacterSheet : MonoBehaviour
         //Checks if the player is clicking attack on a character
         if (battleMaster.attackPressed && !isPlayer)
         {
-            battleMaster.currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
+            //battleMaster.currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
+            battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
             TakeDamage(battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
             battleMaster.attackPressed = false;
             battleMaster.attackDone = true;

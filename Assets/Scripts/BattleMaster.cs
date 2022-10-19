@@ -161,7 +161,8 @@ public class BattleMaster : MonoBehaviour
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
-            currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
+            //currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
+            currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
             target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
 
             //If there are no more players alive, display the lose screen
@@ -271,6 +272,7 @@ public class BattleMaster : MonoBehaviour
 
     public void OpenInventory()
     {
+        //Play open book sound
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             battleHud.SetActive(false);
@@ -283,6 +285,7 @@ public class BattleMaster : MonoBehaviour
 
     public void CloseInventory()
     {
+        //Play close book sound
         battleHud.SetActive(true);
         //Remove all items from inventory graphics
         inventoryUI.GetComponent<InventoryUI>().ClearUI();
@@ -307,6 +310,7 @@ public class BattleMaster : MonoBehaviour
     #region LevelUp Stat Functions
     public void LevelUpStrength()
     {
+        //Play happy sound
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -323,6 +327,7 @@ public class BattleMaster : MonoBehaviour
 
     public void LevelUpAttunement()
     {
+        //Play happy sound
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Attunement += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -339,6 +344,7 @@ public class BattleMaster : MonoBehaviour
 
     public void LevelUpReflexes()
     {
+        //Play happy sound
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Reflexes += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -355,6 +361,7 @@ public class BattleMaster : MonoBehaviour
 
     public void LevelUpSpeed()
     {
+        //Play happy sound
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Speed += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -371,6 +378,7 @@ public class BattleMaster : MonoBehaviour
 
     public void LevelUpPrecision()
     {
+        //Play happy sound
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Precision += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -387,6 +395,7 @@ public class BattleMaster : MonoBehaviour
 
     public void LevelUpConstitution()
     {
+        //Play happy sound
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Constitution += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -403,6 +412,7 @@ public class BattleMaster : MonoBehaviour
 
     public void LevelUpEndurance()
     {
+        //Play happy sound
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Endurance += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
