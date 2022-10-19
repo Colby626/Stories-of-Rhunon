@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 74d31ad2bdf335c42ae191be774763c1
+guid: 017b889f3ce605e429b83161416fe548
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,70 +102,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Get Hit_0
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 49
-        width: 30
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19f6dedcd0dc18d49964c8560766bb6f
-      internalID: -1335913083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Get Hit_1
-      rect:
-        serializedVersion: 2
-        x: 186
-        y: 49
-        width: 27
-        height: 34
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 276ec55b5ee3e0e4c99c11b3e0564689
-      internalID: 1344722173
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Get Hit_2
-      rect:
-        serializedVersion: 2
-        x: 323
-        y: 49
-        width: 27
-        height: 36
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: caecdec09cdc6644aad06d5b779782f1
-      internalID: 829404136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -176,10 +113,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Get Hit_2: 829404136
-      Get Hit_0: -1335913083
-      Get Hit_1: 1344722173
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

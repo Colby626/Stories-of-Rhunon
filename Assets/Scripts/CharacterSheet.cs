@@ -113,6 +113,7 @@ public class CharacterSheet : MonoBehaviour
 
         if (Health <= 0)
         {
+            GetComponent<Animator>().SetBool("Death", true);
             StartDie();
         }
     }
@@ -127,8 +128,6 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.turnOrder.Remove(gameObject);
         }
         isDead = true;
-
-        GetComponent<Animator>().SetTrigger("Death"); 
     }
 
     public void FinishDie()

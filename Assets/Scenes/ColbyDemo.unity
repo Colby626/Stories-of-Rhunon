@@ -3956,7 +3956,7 @@ Animator:
   m_GameObject: {fileID: 1865036088}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fc3eaef8032419743ab6dff60ccdad6b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -16499,6 +16499,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -100
       objectReference: {fileID: 0}
+    - target: {fileID: 1894615183641981552, guid: ec197c7536bd8c048bdd72e8ad3847fe,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1750860393, guid: 71afa609fe8c61e46931a441499066b1,
+        type: 3}
+    - target: {fileID: 2354644717170533407, guid: ec197c7536bd8c048bdd72e8ad3847fe,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1526173315, guid: 71afa609fe8c61e46931a441499066b1,
+        type: 3}
     - target: {fileID: 2354644717234462538, guid: ec197c7536bd8c048bdd72e8ad3847fe,
         type: 3}
       propertyPath: battleMaster
@@ -16624,6 +16636,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2354644718307849274, guid: ec197c7536bd8c048bdd72e8ad3847fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354644718423922219, guid: ec197c7536bd8c048bdd72e8ad3847fe,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1526173315, guid: 71afa609fe8c61e46931a441499066b1,
+        type: 3}
+    - target: {fileID: 2354644718510126162, guid: ec197c7536bd8c048bdd72e8ad3847fe,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1851201751, guid: 71afa609fe8c61e46931a441499066b1,
+        type: 3}
     - target: {fileID: 2354644718738279570, guid: ec197c7536bd8c048bdd72e8ad3847fe,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -16684,6 +16713,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -100
       objectReference: {fileID: 0}
+    - target: {fileID: 7916517243984970034, guid: ec197c7536bd8c048bdd72e8ad3847fe,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2046953734, guid: 71afa609fe8c61e46931a441499066b1,
+        type: 3}
+    - target: {fileID: 8770325753526404052, guid: ec197c7536bd8c048bdd72e8ad3847fe,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1018670520, guid: 71afa609fe8c61e46931a441499066b1,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec197c7536bd8c048bdd72e8ad3847fe, type: 3}
 --- !u!1001 &4107888339527352628
@@ -17183,7 +17224,17 @@ PrefabInstance:
     - target: {fileID: 175038345363730462, guid: 353c556b4cff8fd41a18d99445d69ae8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.16
+      value: 1.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968699334982113236, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.2426798
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968699334982113236, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5842484
       objectReference: {fileID: 0}
     - target: {fileID: 2928935781719431311, guid: 353c556b4cff8fd41a18d99445d69ae8,
         type: 3}
@@ -17249,7 +17300,7 @@ PrefabInstance:
     - target: {fileID: 4669944406774257522, guid: 353c556b4cff8fd41a18d99445d69ae8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.66
+      value: -6.01
       objectReference: {fileID: 0}
     - target: {fileID: 4669944406774257522, guid: 353c556b4cff8fd41a18d99445d69ae8,
         type: 3}
@@ -17899,7 +17950,7 @@ PrefabInstance:
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
       propertyPath: characterStats.Strength
-      value: 100
+      value: 98
       objectReference: {fileID: 0}
     - target: {fileID: 8584715806038826667, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
@@ -18043,6 +18094,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Battle HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596790381319742263, guid: 2199af7bbaab32e49b0d46c58326c0db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8596790381319742267, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
