@@ -422,14 +422,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b2f8cabcb63cd4a9a5a68304cce285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Vampire
+  Name: No Name
   Health: 16
   MaxHealth: 3
   Mana: 10
   MaxMana: 10
   Stamina: 10
   MaxStamina: 10
-  Portrait: {fileID: -415310202, guid: 747edf0d033db9046afb1f23dde486f3, type: 3}
+  Portrait: {fileID: 0}
   characterStats:
     Strength: 2
     Attunement: 20
@@ -530,7 +530,9 @@ MonoBehaviour:
   overheadNameText: {fileID: 2039857393916834415}
   nameText: {fileID: 0}
   animationTime: 1
-  battleMaster: {fileID: 0}
+  highlightMaterial: {fileID: 2100000, guid: 80f6ae4829e86d149aa2e7876877c084, type: 2}
+  battleMaster: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
+    type: 3}
 --- !u!114 &1896647543124316639
 MonoBehaviour:
   m_ObjectHideFlags: 0

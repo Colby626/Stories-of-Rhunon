@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class MouseOver : MonoBehaviour
 {
-    private Color startcolor;
     private SpriteRenderer characterSprite;
     private CharacterSheet character;
+    private Material characterMaterial;
     public bool doMouseOver = true;
 
     //public GameObject status;
@@ -18,6 +18,7 @@ public class MouseOver : MonoBehaviour
     public TextMeshProUGUI overheadNameText;
     public Text nameText;
     public float animationTime = 1f;
+    public Material highlightMaterial;
     public BattleMaster battleMaster;
 
     private bool isHighlighted = false;
@@ -26,8 +27,8 @@ public class MouseOver : MonoBehaviour
     {
         characterSprite = GetComponent<SpriteRenderer>();
         character = characterSprite.GetComponent<CharacterSheet>();
-        startcolor = characterSprite.color;
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
+        characterMaterial = character.GetComponent<SpriteRenderer>().material;
     }
 
     //Highlights the character when the mouse is over them and displays their status menu
@@ -48,6 +49,7 @@ public class MouseOver : MonoBehaviour
         
         if (doMouseOver && !isHighlighted && !character.isDead)
         {
+            character.GetComponent<SpriteRenderer>().material = highlightMaterial;
             isHighlighted = true;
         }
 
@@ -61,6 +63,7 @@ public class MouseOver : MonoBehaviour
     {
         if (isHighlighted)
         {
+            character.GetComponent<SpriteRenderer>().material = characterMaterial;
             isHighlighted = false;
         }
     }
@@ -74,6 +77,7 @@ public class MouseOver : MonoBehaviour
             ActivateStatus(battleMaster.currentCharacter.GetComponent<CharacterSheet>());
         }
         character.transform.GetChild(0).gameObject.SetActive(false);
+        character.GetComponent<SpriteRenderer>().material = characterMaterial;
         isHighlighted = false;
     }
 
