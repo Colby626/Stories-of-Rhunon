@@ -48,14 +48,12 @@ public class MouseOver : MonoBehaviour
         
         if (doMouseOver && !isHighlighted && !character.isDead)
         {
-            character.transform.GetChild(1).gameObject.SetActive(true);
             isHighlighted = true;
         }
 
         if (character.isDead)
         {
             character.transform.GetChild(0).gameObject.SetActive(false);
-            character.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 
@@ -63,7 +61,6 @@ public class MouseOver : MonoBehaviour
     {
         if (isHighlighted)
         {
-            character.transform.GetChild(1).gameObject.SetActive(false);
             isHighlighted = false;
         }
     }
@@ -77,7 +74,6 @@ public class MouseOver : MonoBehaviour
             ActivateStatus(battleMaster.currentCharacter.GetComponent<CharacterSheet>());
         }
         character.transform.GetChild(0).gameObject.SetActive(false);
-        character.transform.GetChild(1).gameObject.SetActive(false);
         isHighlighted = false;
     }
 

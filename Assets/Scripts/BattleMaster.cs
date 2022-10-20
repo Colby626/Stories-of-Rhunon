@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using System.Linq;
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
+using JetBrains.Annotations;
+using static UnityEngine.GraphicsBuffer;
 
 public class BattleMaster : MonoBehaviour
 {
@@ -162,6 +164,9 @@ public class BattleMaster : MonoBehaviour
     //Used for the button to go to the next turn
     public void NextTurn()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        attackPressed = false;
+
         characterindex++;
         currentCharacter = turnOrder[characterindex];
         attackDone = false;
@@ -178,7 +183,7 @@ public class BattleMaster : MonoBehaviour
             healthBars[i].SetBar(turnOrder[turnCounter+i].GetComponent<CharacterSheet>().Health);
         }
 
-        //If the next person in line is not a player the ai will attack one of them at random
+        //If the next person in line is not a player the AI will attack one of them at random
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             StartCoroutine(Timer()); //Delay for enemey turns
@@ -299,6 +304,9 @@ public class BattleMaster : MonoBehaviour
 
     public void OpenInventory()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        attackPressed = false;
+
         //Play open book sound
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {

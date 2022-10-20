@@ -37,12 +37,19 @@ public class CharacterProficiencies
 public class CharacterStats
 {
     [Header("Stats:")]
+    [Range(0, 99)]
     public int Strength; //Increases damage done
+    [Range(0, 99)]
     public int Attunement; //Magical prowess
+    [Range(0, 99)]
     public int Reflexes; //Determines how much you go at the start of combat
+    [Range(0, 99)]
     public int Speed; //Determines how often you go
+    [Range(0, 99)]
     public int Precision; //Critical chance
+    [Range(0, 99)]
     public int Constitution; //Determines max health
+    [Range(0, 99)]
     public int Endurance; //Determines max stamina
     [HideInInspector]
     public int Defense; //Decreases damage taken
