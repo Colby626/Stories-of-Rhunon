@@ -2305,6 +2305,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8596790380431448722}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1148493570 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 478020716, guid: 2199af7bbaab32e49b0d46c58326c0db,
+    type: 3}
+  m_PrefabInstance: {fileID: 8596790380431448722}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1233358135 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4340533414350082172, guid: 2199af7bbaab32e49b0d46c58326c0db,
@@ -2801,6 +2813,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623342863 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8596790380714379451, guid: 2199af7bbaab32e49b0d46c58326c0db,
+    type: 3}
+  m_PrefabInstance: {fileID: 8596790380431448722}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1637408565 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8571994693881723979, guid: 2199af7bbaab32e49b0d46c58326c0db,
@@ -14871,6 +14895,16 @@ PrefabInstance:
       objectReference: {fileID: 1670823119}
     - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
+      propertyPath: nextTurnButton
+      value: 
+      objectReference: {fileID: 1623342863}
+    - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: inventoryButton
+      value: 
+      objectReference: {fileID: 1148493570}
+    - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
       propertyPath: levelUpPortrait
       value: 
       objectReference: {fileID: 3176505}
@@ -14884,6 +14918,11 @@ PrefabInstance:
       propertyPath: equipmentPortrait
       value: 
       objectReference: {fileID: 849788418}
+    - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: delayBeforeEnemyTurns
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: namesList.Array.data[0]
@@ -15131,8 +15170,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
         type: 3}
+      propertyPath: Mana
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
       propertyPath: Name
       value: Dues
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: Health
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: MaxMana
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: Stamina
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
         type: 3}
@@ -15142,9 +15201,64 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
         type: 3}
+      propertyPath: MaxHealth
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: MaxStamina
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
       propertyPath: battleMaster
       value: 
       objectReference: {fileID: 353112960}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: characterStats.XP
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: characterStats.Speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: characterStats.Reflexes
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: characterStats.Strength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: characterStats.Endurance
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: characterStats.Precision
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: characterStats.Attunement
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: characterStats.XPtoLevelUp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088047, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: characterStats.Constitution
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1944890452081922424, guid: d34687df2f1735045bbb5ccd5ac1576e,
         type: 3}
       propertyPath: magicBar
@@ -17021,8 +17135,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
         type: 3}
+      propertyPath: Mana
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
       propertyPath: Name
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: Health
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: MaxMana
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: Stamina
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
         type: 3}
@@ -17032,9 +17166,59 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
         type: 3}
+      propertyPath: MaxHealth
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: MaxStamina
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
       propertyPath: battleMaster
       value: 
       objectReference: {fileID: 353112960}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: characterStats.XP
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: characterStats.Speed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: characterStats.Reflexes
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: characterStats.Strength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: characterStats.Endurance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: characterStats.Precision
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: characterStats.Attunement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075408363937211902, guid: cc0351ac54be1a0448d50fe28634a0a8,
+        type: 3}
+      propertyPath: characterStats.Constitution
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 6075408363937211903, guid: cc0351ac54be1a0448d50fe28634a0a8,
         type: 3}
       propertyPath: m_FlipX
@@ -17246,9 +17430,44 @@ PrefabInstance:
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 4707310620795363369, guid: 2a42c095d5f8a874988a68b01c6d96d0,
         type: 3}
+      propertyPath: Mana
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707310620795363369, guid: 2a42c095d5f8a874988a68b01c6d96d0,
+        type: 3}
+      propertyPath: Health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707310620795363369, guid: 2a42c095d5f8a874988a68b01c6d96d0,
+        type: 3}
+      propertyPath: MaxMana
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707310620795363369, guid: 2a42c095d5f8a874988a68b01c6d96d0,
+        type: 3}
+      propertyPath: Stamina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707310620795363369, guid: 2a42c095d5f8a874988a68b01c6d96d0,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707310620795363369, guid: 2a42c095d5f8a874988a68b01c6d96d0,
+        type: 3}
+      propertyPath: MaxStamina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707310620795363369, guid: 2a42c095d5f8a874988a68b01c6d96d0,
+        type: 3}
       propertyPath: battleMaster
       value: 
       objectReference: {fileID: 353112960}
+    - target: {fileID: 4707310620795363369, guid: 2a42c095d5f8a874988a68b01c6d96d0,
+        type: 3}
+      propertyPath: characterStats.Attunement
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 4707310620795363370, guid: 2a42c095d5f8a874988a68b01c6d96d0,
         type: 3}
       propertyPath: m_Name
@@ -17425,8 +17644,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
         type: 3}
+      propertyPath: Mana
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
       propertyPath: Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: Health
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: MaxMana
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: Stamina
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
         type: 3}
@@ -17436,9 +17675,54 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
         type: 3}
+      propertyPath: MaxHealth
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: MaxStamina
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
       propertyPath: battleMaster
       value: 
       objectReference: {fileID: 353112960}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: characterStats.Speed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: characterStats.Reflexes
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: characterStats.Strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: characterStats.Endurance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: characterStats.Precision
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: characterStats.Attunement
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257520, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: characterStats.Constitution
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4669944406774257521, guid: 353c556b4cff8fd41a18d99445d69ae8,
         type: 3}
       propertyPath: m_Sprite
@@ -17859,15 +18143,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
         type: 3}
+      propertyPath: Mana
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
+        type: 3}
+      propertyPath: Health
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
+        type: 3}
       propertyPath: Portrait
       value: 
       objectReference: {fileID: -942805443, guid: 1a83910cff68041479c3f181f6fda0af,
         type: 3}
     - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
         type: 3}
+      propertyPath: MaxHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
+        type: 3}
       propertyPath: battleMaster
       value: 
       objectReference: {fileID: 353112960}
+    - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
+        type: 3}
+      propertyPath: characterStats.XP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
+        type: 3}
+      propertyPath: characterStats.Speed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
+        type: 3}
+      propertyPath: characterStats.Reflexes
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
+        type: 3}
+      propertyPath: characterStats.Strength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
+        type: 3}
+      propertyPath: characterStats.Endurance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570920582704227588, guid: cba70c47e4fdab74ead81849f6425c63,
+        type: 3}
+      propertyPath: characterStats.Attunement
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8570920582704227589, guid: cba70c47e4fdab74ead81849f6425c63,
         type: 3}
       propertyPath: m_Size.x
@@ -18146,8 +18475,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
+      propertyPath: Mana
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
       propertyPath: Name
       value: Tadhg
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
+      propertyPath: Health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
+      propertyPath: MaxMana
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
+      propertyPath: Stamina
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
@@ -18157,13 +18506,48 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
+      propertyPath: MaxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
+      propertyPath: MaxStamina
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
       propertyPath: battleMaster
       value: 
       objectReference: {fileID: 353112960}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
+      propertyPath: characterStats.Speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
+      propertyPath: characterStats.Reflexes
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
       propertyPath: characterStats.Strength
-      value: 99
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
+      propertyPath: characterStats.Endurance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
+      propertyPath: characterStats.Precision
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
+      propertyPath: characterStats.Constitution
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}

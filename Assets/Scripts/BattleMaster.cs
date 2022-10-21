@@ -14,6 +14,7 @@ public class BattleMaster : MonoBehaviour
     public Texture2D cursorTexture;
     public Button attackButton;
     public Button nextTurnButton;
+    public Button inventoryButton;
     [Tooltip("The time in seconds it waits before letting an AI run their turn")]
     public int delayBeforeEnemyTurns = 1;
 
@@ -25,6 +26,7 @@ public class BattleMaster : MonoBehaviour
     public List<GameObject> livingPlayers;
     public List<GameObject> livingEnemies;
     public GameObject currentCharacter;
+    public GameObject targetedEnemy;
     public GameObject loseScreen;
     public GameObject winScreen;
     public GameObject battleHud;
@@ -91,12 +93,6 @@ public class BattleMaster : MonoBehaviour
         battleStarted = true;
         currentCharacter = turnOrder[0];
 
-        //Display status of current character
-        if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
-        {
-            currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
-        }
-
         //Display portraits, names, and healths for the turn order
         for (; turnCounter < portraits.Count(); turnCounter++)
         {
@@ -121,6 +117,12 @@ public class BattleMaster : MonoBehaviour
 
     private void Start()
     {
+        //Display status of current character is they are a player
+        if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        {
+            currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
+        }
+
         //If the next person in line is not a player the AI will attack one of them at random
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
@@ -151,10 +153,14 @@ public class BattleMaster : MonoBehaviour
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             nextTurnButton.interactable = false;
+            attackButton.interactable = false;
+            inventoryButton.interactable = false;
         }
         else
         {
             nextTurnButton.interactable = true;
+            attackButton.interactable = true;
+            inventoryButton.interactable= true;
         }
     }
 
@@ -443,7 +449,7 @@ public class BattleMaster : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeEnemyTurns);
 
-        if (livingPlayers.Count > 0)
+        if (livingPlayers.Count > 0 && !currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
         }

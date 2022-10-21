@@ -170,10 +170,6 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.battleHud.SetActive(false);
             battleMaster.loseScreen.SetActive(true);
         }
-        else
-        {
-            battleMaster.NextTurn();
-        }
 
         gameObject.SetActive(false);
     }
@@ -184,7 +180,7 @@ public class CharacterSheet : MonoBehaviour
         if (battleMaster.attackPressed && !isPlayer)
         {
             battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-            TakeDamage(battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage + 1);
+            battleMaster.targetedEnemy = gameObject;
             battleMaster.attackPressed = false;
             battleMaster.attackDone = true;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
@@ -193,8 +189,19 @@ public class CharacterSheet : MonoBehaviour
 
     public void DealDamage()
     {
-        GameObject target = battleMaster.livingPlayers[Random.Range(0, battleMaster.livingPlayers.Count())];
-        target.GetComponent<CharacterSheet>().TakeDamage(characterStats.Strength + 1);
+        if (!isPlayer)
+        {
+            GameObject target = battleMaster.livingPlayers[Random.Range(0, battleMaster.livingPlayers.Count())];
+            target.GetComponent<CharacterSheet>().TakeDamage(characterStats.Strength + 1);
+        }
+        else
+        {
+            battleMaster.targetedEnemy.GetComponent<CharacterSheet>().TakeDamage(battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage + 1);
+        }
+    }
+
+    public void FinishedAttack()
+    {
         battleMaster.NextTurn();
     }
 

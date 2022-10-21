@@ -71,7 +71,7 @@ public class MouseOver : MonoBehaviour
     //Remove status window and unhighlight
     private void OnMouseExit()
     {
-        if (character.gameObject != battleMaster.currentCharacter)
+        if (character.gameObject != battleMaster.currentCharacter && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             //Display status of current character
             ActivateStatus(battleMaster.currentCharacter.GetComponent<CharacterSheet>());
@@ -83,7 +83,10 @@ public class MouseOver : MonoBehaviour
 
     public void ActivateStatus(CharacterSheet participant)
     {
-        battleMaster.status.SetActive(true);
+        if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        {
+            battleMaster.status.SetActive(true);
+        }
 
         healthBar.SetBarMax(participant.MaxHealth);
         manaBar.SetBarMax(participant.MaxMana);

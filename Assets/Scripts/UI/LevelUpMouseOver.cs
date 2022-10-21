@@ -20,6 +20,10 @@ public class LevelUpMouseOver : MonoBehaviour
         if (hasTens)
         {
             onesPlace = int.Parse(correspondingText.text[finalIndex].ToString()) + 1;
+            if (onesPlace == 0)
+            {
+                tensPlace += 1;
+            }
             if (onesPlace == 10)
             {
                 tensPlace += 1;
