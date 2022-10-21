@@ -4,21 +4,20 @@ using UnityEngine.UI;
 using System.Linq;
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
-using JetBrains.Annotations;
-using static UnityEngine.GraphicsBuffer;
 
 public class BattleMaster : MonoBehaviour
 {
+    #region Public Variables
     public int multiTurnThreshold = 50;
     public Text turn;
     public List<GameObject> turnOrder = new();
     public Texture2D cursorTexture;
     public Button attackButton;
+    public Button nextTurnButton;
     [Tooltip("The time in seconds it waits before letting an AI run their turn")]
     public int delayBeforeEnemyTurns = 1;
 
-    private List<GameObject> tempList = new();
-    private GameObject[] characterArray;
+    
     public List<Image> portraits;
     public List<TextMeshProUGUI> namesList;
     public List<StatBar> healthBars;
@@ -29,6 +28,7 @@ public class BattleMaster : MonoBehaviour
     public GameObject loseScreen;
     public GameObject winScreen;
     public GameObject battleHud;
+    public GameObject status;
     [HideInInspector]
     public bool attackPressed = false;
     [HideInInspector]
@@ -37,6 +37,10 @@ public class BattleMaster : MonoBehaviour
     public bool battleStarted;
     public int howFarInTheFutureYouCalculateTurnOrder = 50;
 
+    #endregion
+
+    private List<GameObject> tempList = new();
+    private GameObject[] characterArray;
     private int characterindex = 0;
     private int turnCounter = 0;
 
@@ -45,6 +49,7 @@ public class BattleMaster : MonoBehaviour
     public InventoryUI inventoryUI;
     public Image equipmentPortrait;
 
+    #region Leveling Variables
     [Header("Leveling:")]
     public GameObject levelUpButton;
     public GameObject levelUpPanel;
@@ -56,7 +61,7 @@ public class BattleMaster : MonoBehaviour
     public GameObject precisionText;
     public GameObject constitutionText;
     public GameObject enduranceText;
-
+    #endregion
 
     void Awake()
     {
@@ -116,27 +121,10 @@ public class BattleMaster : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Timer()); //Will only let the AI go after 1 seconds if they are first in the turn order, without waiting, scripts don't finish loading 
-
-        //If the next person in line is not a player the ai will attack one of them at random
+        //If the next person in line is not a player the AI will attack one of them at random
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
-            //currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
-            currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-            target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage + 1);
-
-            //If there are no more players alive, display the lose screen
-            if (livingPlayers.Count() == 0)
-            {
-                battleStarted = false;
-                battleHud.SetActive(false);
-                loseScreen.SetActive(true);
-            }
-            else
-            {
-                NextTurn();
-            }
+            StartCoroutine(Timer()); //Delay for enemey turns
         }
     }
 
@@ -158,6 +146,15 @@ public class BattleMaster : MonoBehaviour
         if (battleStarted)
         {
             turn.text = "It is " + currentCharacter.GetComponent<CharacterSheet>().Name + "'s turn";
+        }
+
+        if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        {
+            nextTurnButton.interactable = false;
+        }
+        else
+        {
+            nextTurnButton.interactable = true;
         }
     }
 
@@ -187,27 +184,6 @@ public class BattleMaster : MonoBehaviour
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             StartCoroutine(Timer()); //Delay for enemey turns
-
-            //If the next person in line is not a player the ai will attack one of them at random
-            if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
-            {
-                GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
-                //currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
-                currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-                target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage + 1);
-
-                //If there are no more players alive, display the lose screen
-                if (livingPlayers.Count() == 0)
-                {
-                    battleStarted = false;
-                    battleHud.SetActive(false);
-                    loseScreen.SetActive(true);
-                }
-                else
-                {
-                    NextTurn();
-                }
-            }
         }
 
         //Display the levelup button if the currentCharacter has more XP than they need to level up
@@ -467,27 +443,9 @@ public class BattleMaster : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeEnemyTurns);
 
-        /*
-        //If the next person in line is not a player the ai will attack one of them at random
-        if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        if (livingPlayers.Count > 0)
         {
-            GameObject target = livingPlayers[Random.Range(0, livingPlayers.Count())];
-            //currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
             currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-            target.GetComponent<CharacterSheet>().TakeDamage(currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength + 1);
-
-            //If there are no more players alive, display the lose screen
-            if (livingPlayers.Count() == 0)
-            {
-                battleStarted = false;
-                battleHud.SetActive(false);
-                loseScreen.SetActive(true);
-            }
-            else
-            {
-                NextTurn();
-            }
         }
-        */
     }
 }

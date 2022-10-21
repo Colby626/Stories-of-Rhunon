@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic; //for Lists
 using UnityEngine;
 using System.Linq; //for livingEnemies.Count()
-using UnityEngine.TextCore.Text;
 
 [System.Serializable]
 public class CharacterEquipment : Component
@@ -67,6 +66,7 @@ public class CharacterAttacks
 
 public class CharacterSheet : MonoBehaviour
 {
+    #region Public Variables
     public string Name;
     public int Health;
     public int MaxHealth;
@@ -86,6 +86,7 @@ public class CharacterSheet : MonoBehaviour
     public BattleMaster battleMaster;
     public bool isPlayer;
     public bool isDead = false;
+    #endregion
 
     private void Awake()
     {
@@ -111,7 +112,7 @@ public class CharacterSheet : MonoBehaviour
 
         //Criticals deal 150% damage
         int rand = Random.Range(1, 100);
-        if (rand > 100 - battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Precision)
+        if (rand > 100 - battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Precision && damage - characterStats.Defense > 0)
         {
             Health -= (damage - characterStats.Defense) / 2;
         }
@@ -154,14 +155,24 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.levelUpButton.SetActive(false);
         }
 
-        Debug.Log("Finish Die");
         //If there are no more enemies, display the win screen
         if (battleMaster.livingEnemies.Count() == 0)
         {
-            Debug.Log("Battle End");
             battleMaster.battleStarted = false;
             battleMaster.battleHud.SetActive(false);
             battleMaster.winScreen.SetActive(true);
+        }
+
+        //If there are no more players alive, display the lose screen
+        if (battleMaster.livingPlayers.Count() == 0)
+        {
+            battleMaster.battleStarted = false;
+            battleMaster.battleHud.SetActive(false);
+            battleMaster.loseScreen.SetActive(true);
+        }
+        else
+        {
+            battleMaster.NextTurn();
         }
 
         gameObject.SetActive(false);
@@ -172,13 +183,19 @@ public class CharacterSheet : MonoBehaviour
         //Checks if the player is clicking attack on a character
         if (battleMaster.attackPressed && !isPlayer)
         {
-            //battleMaster.currentCharacter.GetComponent<CharacterSheet>().Begin(); //Attack animation
             battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
             TakeDamage(battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage + 1);
             battleMaster.attackPressed = false;
             battleMaster.attackDone = true;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
+    }
+
+    public void DealDamage()
+    {
+        GameObject target = battleMaster.livingPlayers[Random.Range(0, battleMaster.livingPlayers.Count())];
+        target.GetComponent<CharacterSheet>().TakeDamage(characterStats.Strength + 1);
+        battleMaster.NextTurn();
     }
 
     /////////////////////// Everything below here is my "attack animation" of shaking

@@ -83,6 +83,8 @@ public class MouseOver : MonoBehaviour
 
     public void ActivateStatus(CharacterSheet participant)
     {
+        battleMaster.status.SetActive(true);
+
         healthBar.SetBarMax(participant.MaxHealth);
         manaBar.SetBarMax(participant.MaxMana);
         staminaBar.SetBarMax(participant.MaxStamina);
