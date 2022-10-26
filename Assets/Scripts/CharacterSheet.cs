@@ -114,6 +114,7 @@ public class CharacterSheet : MonoBehaviour
         int rand = Random.Range(1, 100);
         if (rand > 100 - battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Precision && damage - characterStats.Defense > 0)
         {
+            Debug.Log("Critical Hit!");
             Health -= (damage - characterStats.Defense) / 2;
         }
 
@@ -192,7 +193,7 @@ public class CharacterSheet : MonoBehaviour
         if (!isPlayer)
         {
             GameObject target = battleMaster.livingPlayers[Random.Range(0, battleMaster.livingPlayers.Count())];
-            target.GetComponent<CharacterSheet>().TakeDamage(characterStats.Strength + 1);
+            target.GetComponent<CharacterSheet>().TakeDamage(characterStats.Damage + 1);
         }
         else
         {

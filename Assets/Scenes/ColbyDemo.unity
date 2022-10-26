@@ -15072,10 +15072,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1532559126}
     m_Modifications:
+    - target: {fileID: 1265409021220087372, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265409021220087372, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 169ff76ce241df748a0682f622909f55,
+        type: 2}
     - target: {fileID: 1413218316496088044, guid: d34687df2f1735045bbb5ccd5ac1576e,
         type: 3}
       propertyPath: m_Name
       value: Dues
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413218316496088044, guid: d34687df2f1735045bbb5ccd5ac1576e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1413218316496088045, guid: d34687df2f1735045bbb5ccd5ac1576e,
         type: 3}
@@ -18293,6 +18309,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rha'al
       objectReference: {fileID: 0}
+    - target: {fileID: 8570920582704227591, guid: cba70c47e4fdab74ead81849f6425c63,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9192805366400556947, guid: cba70c47e4fdab74ead81849f6425c63,
         type: 3}
       propertyPath: magicBar
@@ -18486,7 +18507,7 @@ PrefabInstance:
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
       propertyPath: Health
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
@@ -18692,6 +18713,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8596790380645235384, guid: 2199af7bbaab32e49b0d46c58326c0db,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: c216d81058c1e47489bdbb9f485e12fb,
+        type: 3}
     - target: {fileID: 8596790380714379451, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

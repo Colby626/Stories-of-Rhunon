@@ -93,17 +93,6 @@ public class BattleMaster : MonoBehaviour
         battleStarted = true;
         currentCharacter = turnOrder[0];
 
-        //Display portraits, names, and healths for the turn order
-        for (; turnCounter < portraits.Count(); turnCounter++)
-        {
-            portraits[turnCounter].sprite = turnOrder[turnCounter].GetComponent<CharacterSheet>().Portrait;
-            portraits[turnCounter].preserveAspect = true;
-            namesList[turnCounter].text = turnOrder[turnCounter].GetComponent<CharacterSheet>().Name;
-            healthBars[turnCounter].SetBarMax(turnOrder[turnCounter].GetComponent<CharacterSheet>().MaxHealth);
-            healthBars[turnCounter].SetBar(turnOrder[turnCounter].GetComponent<CharacterSheet>().Health);
-        }
-        turnCounter -= portraits.Count();
-
         //Displays the levelUpButton if the currentCharacter has enough XP to LevelUp
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer && currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
         {
@@ -117,6 +106,17 @@ public class BattleMaster : MonoBehaviour
 
     private void Start()
     {
+        //Display portraits, names, and healths for the turn order
+        for (; turnCounter < portraits.Count(); turnCounter++)
+        {
+            portraits[turnCounter].sprite = turnOrder[turnCounter].GetComponent<CharacterSheet>().Portrait;
+            portraits[turnCounter].preserveAspect = true;
+            namesList[turnCounter].text = turnOrder[turnCounter].GetComponent<CharacterSheet>().Name;
+            healthBars[turnCounter].SetBarMax(turnOrder[turnCounter].GetComponent<CharacterSheet>().MaxHealth);
+            healthBars[turnCounter].SetBar(turnOrder[turnCounter].GetComponent<CharacterSheet>().Health);
+        }
+        turnCounter -= portraits.Count();
+
         //Display status of current character is they are a player
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
@@ -329,6 +329,7 @@ public class BattleMaster : MonoBehaviour
     {
         //Play happy sound
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength += 1;
+        currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
 
