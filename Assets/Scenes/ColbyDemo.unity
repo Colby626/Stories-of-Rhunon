@@ -14920,6 +14920,11 @@ PrefabInstance:
       objectReference: {fileID: 849788418}
     - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
+      propertyPath: multiTurnThreshold
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
       propertyPath: delayBeforeEnemyTurns
       value: 1
       objectReference: {fileID: 0}
@@ -17489,6 +17494,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dark Creature
       objectReference: {fileID: 0}
+    - target: {fileID: 4707310620795363370, guid: 2a42c095d5f8a874988a68b01c6d96d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4707310620795363371, guid: 2a42c095d5f8a874988a68b01c6d96d0,
         type: 3}
       propertyPath: m_RootOrder
@@ -17804,6 +17814,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669944406774257523, guid: 353c556b4cff8fd41a18d99445d69ae8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5309630365314149863, guid: 353c556b4cff8fd41a18d99445d69ae8,
         type: 3}
@@ -18494,6 +18509,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tadhg
       objectReference: {fileID: 0}
+    - target: {fileID: 8584715806038826665, guid: 9e28ef264fc07d74e812b4b75aeded8b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
       propertyPath: Mana
@@ -18507,7 +18527,7 @@ PrefabInstance:
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
       propertyPath: Health
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
@@ -18548,7 +18568,7 @@ PrefabInstance:
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
       propertyPath: characterStats.Reflexes
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}

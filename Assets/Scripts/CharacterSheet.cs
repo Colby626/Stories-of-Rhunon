@@ -206,7 +206,7 @@ public class CharacterSheet : MonoBehaviour
         battleMaster.NextTurn();
     }
 
-    /////////////////////// Everything below here is my "attack animation" of shaking
+    /////////////////////// Everything below here for shaking
 
     [Header("Info")]
     private Vector3 _startPos;

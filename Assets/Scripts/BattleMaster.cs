@@ -88,8 +88,12 @@ public class BattleMaster : MonoBehaviour
                 livingEnemies.Add(character);
             }
         }
-        StartingTurnOrder();
 
+        StartingTurnOrder();
+    }
+
+    private void Start()
+    {
         battleStarted = true;
         currentCharacter = turnOrder[0];
 
@@ -102,20 +106,6 @@ public class BattleMaster : MonoBehaviour
         {
             levelUpButton.SetActive(false);
         }
-    }
-
-    private void Start()
-    {
-        //Display portraits, names, and healths for the turn order
-        for (; turnCounter < portraits.Count(); turnCounter++)
-        {
-            portraits[turnCounter].sprite = turnOrder[turnCounter].GetComponent<CharacterSheet>().Portrait;
-            portraits[turnCounter].preserveAspect = true;
-            namesList[turnCounter].text = turnOrder[turnCounter].GetComponent<CharacterSheet>().Name;
-            healthBars[turnCounter].SetBarMax(turnOrder[turnCounter].GetComponent<CharacterSheet>().MaxHealth);
-            healthBars[turnCounter].SetBar(turnOrder[turnCounter].GetComponent<CharacterSheet>().Health);
-        }
-        turnCounter -= portraits.Count();
 
         //Display status of current character is they are a player
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
@@ -126,7 +116,7 @@ public class BattleMaster : MonoBehaviour
         //If the next person in line is not a player the AI will attack one of them at random
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            StartCoroutine(Timer()); //Delay for enemey turns
+            StartCoroutine(EnemyTurn()); //Delay for enemey turns
         }
     }
 
@@ -176,20 +166,12 @@ public class BattleMaster : MonoBehaviour
         turnCounter++;
         attackButton.interactable = true;
 
-        //Display portraits, names, and healths for the turn order
-        for (int i = 0; i < portraits.Count(); i++)
-        {
-            portraits[i].sprite = turnOrder[turnCounter+i].GetComponent<CharacterSheet>().Portrait;
-            portraits[i].preserveAspect = true;
-            namesList[i].text = turnOrder[turnCounter+i].GetComponent<CharacterSheet>().Name;
-            healthBars[i].SetBarMax(turnOrder[turnCounter+i].GetComponent<CharacterSheet>().MaxHealth);
-            healthBars[i].SetBar(turnOrder[turnCounter+i].GetComponent<CharacterSheet>().Health);
-        }
+        LoadPortraits();
 
         //If the next person in line is not a player the AI will attack one of them at random
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            StartCoroutine(Timer()); //Delay for enemey turns
+            StartCoroutine(EnemyTurn()); //Delay for enemey turns
         }
 
         //Display the levelup button if the currentCharacter has more XP than they need to level up
@@ -257,22 +239,23 @@ public class BattleMaster : MonoBehaviour
 
             tempList = turnOrder.Intersect(characters).ToList();
 
-            if (tempList.Count == characters.Count)
+            if (tempList.Count == characters.Count && turnOrder.Count >= portraits.Count) //Once each character is in the list once AND there are enough characters in the turn order to fill all the portraits 
             {
                 exit = true;
             }
         }
+        LoadPortraits();
     }
 
     public void Attack()
     {
-        //Don't let them attack more than once per turn 
+        //Don't let the player attack more than once per turn 
         if (attackDone)
         {
             return;
         }
 
-        //If they are pressing the attack button after they already pressed it 
+        //If the player is pressing the attack button after they already pressed it 
         if (attackPressed)
         {
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
@@ -446,7 +429,7 @@ public class BattleMaster : MonoBehaviour
     }
     #endregion
 
-    IEnumerator Timer()
+    IEnumerator EnemyTurn()
     {
         yield return new WaitForSeconds(delayBeforeEnemyTurns);
 
@@ -454,5 +437,20 @@ public class BattleMaster : MonoBehaviour
         {
             currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
         }
+    }
+
+
+    void LoadPortraits()
+    {
+        //Display portraits, names, and healths for the turn order
+        for (; turnCounter < portraits.Count(); turnCounter++)
+        {
+            portraits[turnCounter].sprite = turnOrder[turnCounter].GetComponent<CharacterSheet>().Portrait;
+            portraits[turnCounter].preserveAspect = true;
+            namesList[turnCounter].text = turnOrder[turnCounter].GetComponent<CharacterSheet>().Name;
+            healthBars[turnCounter].SetBarMax(turnOrder[turnCounter].GetComponent<CharacterSheet>().MaxHealth);
+            healthBars[turnCounter].SetBar(turnOrder[turnCounter].GetComponent<CharacterSheet>().Health);
+        }
+        turnCounter -= portraits.Count();
     }
 }
