@@ -1,13 +1,42 @@
-Stamina for power attacks that deal double damage 
+Stamina for power attacks that deal extra damage 
 AI attacks players intelligently (list of attack types such as "attack mages first" or "attack biggest guy first" or "attack weakest guy first" that each ai can only have one of)
+Exact health numbers optional in settings menu. Default as off.
 
 Colby:
-Exact health numbers optional in settings menu. Default as off.
 
 Ben:
 
 Michael:
 Draw the 4 main players's animations
+
+*downloaded
+&imported
+$functioning
+Sounds:
+Main Menu Music&
+Exploring Music&
+Battle Music&
+Menu button click sound*
+Levelup sound*
+Equip sound*
+Losing sound*
+Winning sound*
+
+Each Character needs:
+			Attack
+						Take Hit
+										Die
+Tadhg			*			*			*
+Rhaal			*			*			*
+Dues			*			*			*	
+Goblin			*			*			*
+Skeleton		*			*			*
+Dark Creature	*			*			*
+
+Dark Creature Attack Shortened
+Dark Creature Hit Sped Up
+Rhaal Death Sound3 Quieter
+Tadhg Death Sound4 EndOnly
 
 Bracelets and Rings go in the same slot
 
