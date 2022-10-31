@@ -443,14 +443,13 @@ public class BattleMaster : MonoBehaviour
     void LoadPortraits()
     {
         //Display portraits, names, and healths for the turn order
-        for (; turnCounter < portraits.Count(); turnCounter++)
+        for (int i = 0; i < portraits.Count(); i++)
         {
-            portraits[turnCounter].sprite = turnOrder[turnCounter].GetComponent<CharacterSheet>().Portrait;
-            portraits[turnCounter].preserveAspect = true;
-            namesList[turnCounter].text = turnOrder[turnCounter].GetComponent<CharacterSheet>().Name;
-            healthBars[turnCounter].SetBarMax(turnOrder[turnCounter].GetComponent<CharacterSheet>().MaxHealth);
-            healthBars[turnCounter].SetBar(turnOrder[turnCounter].GetComponent<CharacterSheet>().Health);
+            portraits[i].sprite = turnOrder[turnCounter + i].GetComponent<CharacterSheet>().Portrait;
+            portraits[i].preserveAspect = true;
+            namesList[i].text = turnOrder[turnCounter + i].GetComponent<CharacterSheet>().Name;
+            healthBars[i].SetBarMax(turnOrder[turnCounter + i].GetComponent<CharacterSheet>().MaxHealth);
+            healthBars[i].SetBar(turnOrder[turnCounter + i].GetComponent<CharacterSheet>().Health);
         }
-        turnCounter -= portraits.Count();
     }
 }

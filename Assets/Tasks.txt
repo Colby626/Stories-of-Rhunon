@@ -13,16 +13,16 @@ Draw the 4 main players's animations
 &imported
 $functioning
 Sounds:
-Main Menu Music&
-Exploring Music&
-Battle Music&
-Menu button click sound*
-Levelup sound*
-Equip sound*
-Losing sound*
-Winning sound*
+Main Menu Music$
+Exploring Music$
+Battle Music$
+Menu button click sound&
+Levelup sound&
+Equip sound&
+Losing sound&
+Winning sound&
 
-Each Character needs:
+Each Character needs:&
 			Attack
 						Take Hit
 										Die

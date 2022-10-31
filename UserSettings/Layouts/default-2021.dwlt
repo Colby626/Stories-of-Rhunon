@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6666
     height: 869.7778
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Console
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 51
+  controlID: 17
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 52
+  controlID: 18
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 53
+  controlID: 19
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -242,15 +242,15 @@ MonoBehaviour:
     y: 590.6667
     width: 1140
     height: 229.11108
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 15}
   - {fileID: 16}
   - {fileID: 17}
-  m_Selected: 0
-  m_LastSelected: 2
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -404,9 +404,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 88750000
       m_LastClickedID: 0
-      m_ExpandedIDs: 26fbffff
+      m_ExpandedIDs: 0ab9ffff2abdffffcccfffff16dbffff72dcffff26fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -422,7 +422,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 8}
+        m_ClientGUIView: {fileID: 9}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -800,22 +800,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Art/Players/Standard Fighter 3/TadhgSounds
+    - Assets/Audio/Sounds
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Art/Players/Standard Fighter 3/TadhgSounds
+  - Assets/Audio/Sounds
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\marka\Documents\GameDevelopment\GitHub\Stories-Of-Rhunon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 403.88892}
-    m_SelectedIDs: 68770000
-    m_LastClickedID: 30568
-    m_ExpandedIDs: 000000000475000006750000087500000a7500000c7500000e75000010750000127500001475000016750000187500001a7500001c7500001e7500002075000022750000247500003e7500006e750000707500009275000000ca9a3b
+    scrollPos: {x: 0, y: 419.88892}
+    m_SelectedIDs: 88750000
+    m_LastClickedID: 30088
+    m_ExpandedIDs: 000000000475000006750000087500000a7500000c7500000e75000010750000127500001475000016750000187500001a7500001c7500001e7500002075000022750000247500003c75000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -868,8 +868,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 88750000
+    m_LastClickedInstanceID: 30088
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300002e79ffff000000006465000064980000328e0000ec7c0000a0810000f46800008c7500005a6900001268000060690000526900000e680000fa6d0000fe6d0000a0bc0000066e0000f46d0000f66d0000006e0000e86c0000f26d00000e6a00007c9202008c670000e0670000de8b01002a8e0100a2690000ac6e00001a790000aa6700000e7500007e780000c07800002c7a00000c77000012770000b0670000c2750000f667000046980000ce750000c0750000686e00002e950000
     m_RenameOverlay:
@@ -959,7 +959,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 25516
+  m_LastSelectedObjectID: -19774
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
