@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void VolumeSlider(float value)
     {
-        audioMixer.SetFloat("MasterVolume", value);
+        value = Mathf.Clamp(value, 0.0001f, 1.0f); //Makes the slider do nothing to the sound (only will change the value by up to 1
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20);
     }
 }
