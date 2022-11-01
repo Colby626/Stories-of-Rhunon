@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool gamePaused = false;
+    public bool gamePaused = false;
     public GameObject pauseMenu;
     public GameObject battleHud;
     public BattleMaster battleMaster;
@@ -44,5 +42,7 @@ public class PauseMenu : MonoBehaviour
     public void ExitToMainMenuButton()
     {
         SceneManager.LoadScene("MainMenu");
+        AudioManager.instance.Stop("BattleMusic");
+        AudioManager.instance.Play("MainMenuMusic");
     }
 }

@@ -33,10 +33,6 @@ Goblin			*			*			*
 Skeleton		*			*			*
 Dark Creature	*			*			*
 
-Dark Creature Attack Shortened
-Dark Creature Hit Sped Up
-Rhaal Death Sound3 Quieter
-Tadhg Death Sound4 EndOnly
 
 Bracelets and Rings go in the same slot
 

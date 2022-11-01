@@ -157,8 +157,8 @@ public class BattleMaster : MonoBehaviour
     //Used for the button to go to the next turn
     public void NextTurn()
     {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         attackPressed = false;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         characterindex++;
         currentCharacter = turnOrder[characterindex];
@@ -436,6 +436,7 @@ public class BattleMaster : MonoBehaviour
         if (livingPlayers.Count > 0 && !currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+            AudioManager.instance.Play(currentCharacter.GetComponent<CharacterSheet>().attackSound);
         }
     }
 

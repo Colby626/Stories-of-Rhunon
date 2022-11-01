@@ -22,6 +22,7 @@ public class MouseOver : MonoBehaviour
     public BattleMaster battleMaster;
 
     private bool isHighlighted = false;
+    private PauseMenu pauseMenu;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class MouseOver : MonoBehaviour
         character = characterSprite.GetComponent<CharacterSheet>();
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
         characterMaterial = character.GetComponent<SpriteRenderer>().material;
+        pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
     //Highlights the character when the mouse is over them and displays their status menu
@@ -39,7 +41,7 @@ public class MouseOver : MonoBehaviour
             ActivateStatus(character);
         }
 
-        if (!character.isPlayer && !character.isDead)
+        if (!character.isPlayer && !character.isDead && !pauseMenu.gamePaused)
         {
             character.transform.GetChild(0).gameObject.SetActive(true);
             overheadHealthBar.SetBarMax(character.MaxHealth);
@@ -47,15 +49,20 @@ public class MouseOver : MonoBehaviour
             overheadNameText.text = character.Name;
         }
         
-        if (doMouseOver && !isHighlighted && !character.isDead)
+        if (!isHighlighted && !character.isDead && !pauseMenu.gamePaused)
         {
             character.GetComponent<SpriteRenderer>().material = highlightMaterial;
             isHighlighted = true;
         }
 
-        if (character.isDead)
+        if (character.isDead || pauseMenu.gamePaused)
         {
             character.transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+        if (!character.isDead && !pauseMenu.gamePaused && !character.isPlayer)
+        {
+            character.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 

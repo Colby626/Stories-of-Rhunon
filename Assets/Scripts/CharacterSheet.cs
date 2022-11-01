@@ -88,9 +88,24 @@ public class CharacterSheet : MonoBehaviour
     public bool isDead = false;
     #endregion
 
+    #region Sound Variables
+    private string noWhitespaceName;
+    private string deathSound;
+    [HideInInspector]
+    public string attackSound;
+    private string hitSound;
+    #endregion
+
     private void Awake()
     {
-        _startPos = transform.position; //For attack "animation"
+        noWhitespaceName = Name;
+        while (noWhitespaceName.Contains(" "))
+        {
+            noWhitespaceName = noWhitespaceName.Replace(" ", string.Empty);
+        }
+        deathSound = noWhitespaceName + "DeathSound";
+        attackSound = noWhitespaceName + "AttackSound";
+        hitSound = noWhitespaceName + "HitSound";
 
         MaxHealth = characterStats.Constitution;
         MaxStamina = characterStats.Endurance;
@@ -119,11 +134,11 @@ public class CharacterSheet : MonoBehaviour
         }
 
         GetComponent<Animator>().SetTrigger("TakingHit");
+        AudioManager.instance.Play(hitSound);
 
         if (Health <= 0)
         {
             GetComponent<Animator>().SetBool("Death", true);
-            StartDie();
         }
     }
 
@@ -137,6 +152,7 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.turnOrder.Remove(gameObject);
         }
         isDead = true;
+        AudioManager.instance.Play(deathSound); //Need to play this sound after the take hit animation and sound has finished
     }
 
     public void FinishDie()
@@ -180,9 +196,10 @@ public class CharacterSheet : MonoBehaviour
         //Checks if the player is clicking attack on a character
         if (battleMaster.attackPressed && !isPlayer)
         {
-            battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-            battleMaster.targetedEnemy = gameObject;
             battleMaster.attackPressed = false;
+            battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+            FindObjectOfType<AudioManager>().Play(battleMaster.currentCharacter.GetComponent<CharacterSheet>().attackSound);
+            battleMaster.targetedEnemy = gameObject;
             battleMaster.attackDone = true;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }

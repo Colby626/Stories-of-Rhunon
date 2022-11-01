@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
     public void PlayButton()
     {
         SceneManager.LoadScene("ColbyDemo");
+        AudioManager.instance.Stop("MainMenuMusic");
+        AudioManager.instance.Play("BattleMusic");
     }
 
     public void QuitButton()

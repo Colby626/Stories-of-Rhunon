@@ -1,9 +1,11 @@
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    public AudioMixerGroup audioMixer;
     public Sound[] sounds;
 
     public static AudioManager instance;
@@ -27,6 +29,7 @@ public class AudioManager : MonoBehaviour
             sound.audioSource.volume = sound.volume;
             sound.audioSource.pitch = sound.pitch;
             sound.audioSource.loop = sound.loop;
+            sound.audioSource.outputAudioMixerGroup = audioMixer;
         }
     }
 
@@ -54,6 +57,19 @@ public class AudioManager : MonoBehaviour
         if (sound != null)
         {
             sound.audioSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Sound " + name + " was not found");
+        }
+    }
+
+    public void Stop(string name)
+    {
+        Sound sound = Array.Find(sounds, sound => sound.name == name);
+        if (sound != null)
+        {
+            sound.audioSource.Stop();
         }
         else
         {
