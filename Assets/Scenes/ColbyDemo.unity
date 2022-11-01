@@ -15097,7 +15097,7 @@ PrefabInstance:
     - target: {fileID: 1413218316496088044, guid: d34687df2f1735045bbb5ccd5ac1576e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1413218316496088045, guid: d34687df2f1735045bbb5ccd5ac1576e,
         type: 3}
@@ -17494,6 +17494,116 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[17].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 91d2abd06edfc3d4691c6ec7307675eb, type: 3}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[18].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d2b36a411cfb6e941a2819d63e448ec5, type: 3}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[18].name
+      value: TadhgAttackSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[19].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1adac6221d836c64ab1983369c05af3c, type: 3}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[19].name
+      value: TadhgHitSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[20].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d99f2cc1818b2b04a92541c1490225db, type: 3}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[20].name
+      value: TadhgDeathSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[18].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[19].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[20].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[10].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[11].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[12].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[13].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[14].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[15].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[16].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[17].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[18].volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[19].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750751979602054366, guid: 4533ce72c4a89cc4bb01162596ae80ce,
+        type: 3}
+      propertyPath: sounds.Array.data[20].volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4533ce72c4a89cc4bb01162596ae80ce, type: 3}
 --- !u!1001 &5935997094805242198
@@ -18441,7 +18551,7 @@ PrefabInstance:
     - target: {fileID: 8570920582704227591, guid: cba70c47e4fdab74ead81849f6425c63,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9192805366400556947, guid: cba70c47e4fdab74ead81849f6425c63,
         type: 3}
@@ -18641,7 +18751,7 @@ PrefabInstance:
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
       propertyPath: Health
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
@@ -18682,7 +18792,7 @@ PrefabInstance:
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
       propertyPath: characterStats.Reflexes
-      value: 12
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8584715806038826666, guid: 9e28ef264fc07d74e812b4b75aeded8b,
         type: 3}
