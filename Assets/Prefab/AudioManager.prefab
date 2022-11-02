@@ -44,13 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4d69a185788bd48a49e3162a845d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24300002, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
+  masterMixer: {fileID: 24300002, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
+  musicMixer: {fileID: 1650503463172301413, guid: 7090519acf7a01540b6e4549811fd3f5,
+    type: 2}
+  soundEffectMixer: {fileID: -8121823966932493853, guid: 7090519acf7a01540b6e4549811fd3f5,
+    type: 2}
   sounds:
   - name: MainMenuMusic
     clip: {fileID: 8300000, guid: 25ab59b1a40a3e3488f618cd80366fcc, type: 3}
     volume: 0.3
     pitch: 1
     loop: 1
+    type: 0
     audioMixer: {fileID: 24300002, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
     audioSource: {fileID: 0}
   - name: BattleMusic
@@ -58,6 +63,7 @@ MonoBehaviour:
     volume: 0.3
     pitch: 1
     loop: 1
+    type: 0
     audioMixer: {fileID: 24300002, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
     audioSource: {fileID: 0}
   - name: ExploringMusic
@@ -65,6 +71,7 @@ MonoBehaviour:
     volume: 0.3
     pitch: 1
     loop: 1
+    type: 0
     audioMixer: {fileID: 24300002, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
     audioSource: {fileID: 0}
   - name: DarkCreatureDeathSound
@@ -72,6 +79,7 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 24300002, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
     audioSource: {fileID: 0}
   - name: DarkCreatureAttackSound
@@ -79,6 +87,7 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 24300002, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
     audioSource: {fileID: 0}
   - name: DarkCreatureHitSound
@@ -86,6 +95,7 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 24300002, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
     audioSource: {fileID: 0}
   - name: GoblinAttackSound
@@ -93,6 +103,7 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 24300002, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
     audioSource: {fileID: 0}
   - name: GoblinDeathSound
@@ -100,6 +111,7 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
   - name: GoblinHitSound
@@ -107,6 +119,7 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
   - name: SkeletonHitSound
@@ -114,61 +127,142 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
   - name: SkeletonAttackSound
     clip: {fileID: 8300000, guid: af808005d492ca64590bcb507d15d92b, type: 3}
-    volume: 0.5
+    volume: 0.4
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
   - name: SkeletonDeathSound
     clip: {fileID: 8300000, guid: c926921a38c4cad4e81738b89e1f8622, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
   - name: DuesAttackSound
     clip: {fileID: 8300000, guid: b98ee0177af8dca459fdea630e1cf062, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
   - name: DuesDeathSound
     clip: {fileID: 8300000, guid: 867884785ef60cb4c8ca21677e9e3ce8, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
   - name: DuesHitSound
-    clip: {fileID: 8300000, guid: 2d7698ace19abd54ebe0e8dd0200f386, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: e8d9025a69a7a3a4cbffe0bb81bfbf73, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
   - name: RhaalAttackSound
     clip: {fileID: 8300000, guid: 303aab96ae364b844a3cadb5044f5988, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
   - name: RhaalHitSound
     clip: {fileID: 8300000, guid: 79609e7708e2855479c0751f8f90919b, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
   - name: RhaalDeathSound
-    clip: {fileID: 8300000, guid: 2d7698ace19abd54ebe0e8dd0200f386, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 91d2abd06edfc3d4691c6ec7307675eb, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: TadhgAttackSound
+    clip: {fileID: 8300000, guid: d2b36a411cfb6e941a2819d63e448ec5, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: TadhgHitSound
+    clip: {fileID: 8300000, guid: 1adac6221d836c64ab1983369c05af3c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: TadhgDeathSound
+    clip: {fileID: 8300000, guid: d99f2cc1818b2b04a92541c1490225db, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: TurningPageInBookSound
+    clip: {fileID: 8300000, guid: 69e268c3c2c3fdf48960fc880b34e2a9, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: CloseBookSound
+    clip: {fileID: 8300000, guid: 81ace2d6a95937b409544111761f0f87, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: LevelupSound
+    clip: {fileID: 8300000, guid: fa529e40b3cc67c4d8a793acfa9b6db2, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: WinSound
+    clip: {fileID: 8300000, guid: 7225634ace1ce7248bc34586bf5e0b61, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: LoseSound
+    clip: {fileID: 8300000, guid: 6185f8bb42f4ee348abfe9a7d098de22, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: EquipSound
+    clip: {fileID: 8300000, guid: 53dbc39a799587d4d8e58e7506deb58f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}

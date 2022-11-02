@@ -9,7 +9,9 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject battleHud;
     public GameObject optionsMenu;
-    public Slider volumeSlider;
+    public Slider masterVolumeSlider;
+    public Slider musicVolumeSlider;
+    public Slider soundEffectVolumeSlider;
     public AudioMixer audioMixer;
     public BattleMaster battleMaster;
     private float audioVolume;
@@ -60,7 +62,17 @@ public class PauseMenu : MonoBehaviour
         audioMixer.GetFloat("MasterVolume", out audioVolume);
         audioVolume /= 20;
         audioVolume = Mathf.Pow(10, audioVolume);
-        volumeSlider.value = audioVolume;
+        masterVolumeSlider.value = audioVolume;
+
+        audioMixer.GetFloat("MusicVolume", out audioVolume);
+        audioVolume /= 20;
+        audioVolume = Mathf.Pow(10, audioVolume);
+        musicVolumeSlider.value = audioVolume;
+
+        audioMixer.GetFloat("SoundEffectVolume", out audioVolume);
+        audioVolume /= 20;
+        audioVolume = Mathf.Pow(10, audioVolume);
+        soundEffectVolumeSlider.value = audioVolume;
     }
 
     public void CloseOptions()
@@ -69,9 +81,21 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
     }
 
-    public void VolumeSlider(float value)
+    public void MasterVolumeSlider(float value)
     {
         value = Mathf.Clamp(value, 0.0001f, 1.0f);
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20);
+    }
+
+    public void MusicVolumeSlider(float value)
+    {
+        value = Mathf.Clamp(value, 0.0001f, 1.0f);
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(value) * 20);
+    }
+
+    public void SoundEffectVolumeSlider(float value)
+    {
+        value = Mathf.Clamp(value, 0.0001f, 1.0f);
+        audioMixer.SetFloat("SoundEffectVolume", Mathf.Log10(value) * 20);
     }
 }

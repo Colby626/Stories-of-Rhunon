@@ -5,7 +5,9 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioMixerGroup audioMixer;
+    public AudioMixerGroup masterMixer;
+    public AudioMixerGroup musicMixer;
+    public AudioMixerGroup soundEffectMixer;
     public Sound[] sounds;
 
     public static AudioManager instance;
@@ -29,7 +31,15 @@ public class AudioManager : MonoBehaviour
             sound.audioSource.volume = sound.volume;
             sound.audioSource.pitch = sound.pitch;
             sound.audioSource.loop = sound.loop;
-            sound.audioSource.outputAudioMixerGroup = audioMixer;
+            if (sound.type == Sound.TypeOfSound.Music)
+            {
+                sound.audioSource.outputAudioMixerGroup = musicMixer;
+            }
+            else
+            {
+                sound.audioSource.outputAudioMixerGroup = soundEffectMixer;
+            }
+            
         }
     }
 
