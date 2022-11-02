@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,8 +13,11 @@ public class PauseMenu : MonoBehaviour
     public Slider masterVolumeSlider;
     public Slider musicVolumeSlider;
     public Slider soundEffectVolumeSlider;
-    public AudioMixer audioMixer;
     public BattleMaster battleMaster;
+    public AudioMixer audioMixer;
+    [Range(-80f, 0f)]
+    public float amountQuieterWhenPaused;
+
     private float audioVolume;
 
     private void Update()
@@ -35,6 +39,11 @@ public class PauseMenu : MonoBehaviour
     {
         battleHud.SetActive(true);
         pauseMenu.SetActive(false);
+        if (optionsMenu.activeSelf)
+        {
+            optionsMenu.SetActive(false);
+        }
+        audioMixer.SetFloat("PausedMasterVolume", 0);
         Time.timeScale = 1f;
         gamePaused = false;
     }
@@ -43,13 +52,19 @@ public class PauseMenu : MonoBehaviour
     {
         battleHud.SetActive(false);
         pauseMenu.SetActive(true);
-        //Make sounds quieter
+        audioMixer.SetFloat("PausedMasterVolume", amountQuieterWhenPaused);
         Time.timeScale = 0f;
         gamePaused = true;
     }
 
     public void ExitToMainMenuButton()
     {
+        if (gamePaused)
+        {
+            audioMixer.SetFloat("PausedMasterVolume", 0);
+            gamePaused = false;
+        }
+
         SceneManager.LoadScene("MainMenu");
         AudioManager.instance.Stop("BattleMusic");
         AudioManager.instance.Play("MainMenuMusic");

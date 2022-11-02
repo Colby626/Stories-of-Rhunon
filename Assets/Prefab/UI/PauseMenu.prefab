@@ -260,7 +260,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6474621337668923754}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: OpenOptions
         m_Mode: 1
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6474621337668923754}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ExitToMainMenuButton
         m_Mode: 1
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6474621337668923754}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Unpause
         m_Mode: 1
@@ -825,7 +825,6 @@ GameObject:
   - component: {fileID: 6474621337668923759}
   - component: {fileID: 6474621337668923753}
   - component: {fileID: 6474621337668923752}
-  - component: {fileID: 6474621337668923754}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -894,22 +893,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6474621337668923754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6474621337668923758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9134d952eb9d724485341c5d7920539, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gamePaused: 0
-  pauseMenu: {fileID: 6474621337668923758}
-  battleHud: {fileID: 0}
-  optionsMenu: {fileID: 0}
-  volumeSlider: {fileID: 0}
-  audioMixer: {fileID: 24100000, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
-  battleMaster: {fileID: 0}
