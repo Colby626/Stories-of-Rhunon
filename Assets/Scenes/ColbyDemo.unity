@@ -375,6 +375,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1746306098}
   battleHud: {fileID: 959277702}
   optionsMenu: {fileID: 0}
+  volumeSlider: {fileID: 0}
   audioMixer: {fileID: 0}
   battleMaster: {fileID: 353112960}
 --- !u!4 &16813873 stripped
@@ -19667,6 +19668,11 @@ PrefabInstance:
       propertyPath: battleMaster
       value: 
       objectReference: {fileID: 353112960}
+    - target: {fileID: 6474621337668923754, guid: ee4011650a7648441b76f9467f45a139,
+        type: 3}
+      propertyPath: volumeSlider
+      value: 
+      objectReference: {fileID: 1761512444}
     - target: {fileID: 6474621337668923758, guid: ee4011650a7648441b76f9467f45a139,
         type: 3}
       propertyPath: m_Name

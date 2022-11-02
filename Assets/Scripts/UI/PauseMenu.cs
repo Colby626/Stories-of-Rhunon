@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -8,8 +9,10 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject battleHud;
     public GameObject optionsMenu;
+    public Slider volumeSlider;
     public AudioMixer audioMixer;
     public BattleMaster battleMaster;
+    private float audioVolume;
 
     private void Update()
     {
@@ -54,6 +57,10 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         optionsMenu.SetActive(true);
+        audioMixer.GetFloat("MasterVolume", out audioVolume);
+        audioVolume /= 20;
+        audioVolume = Mathf.Pow(10, audioVolume);
+        volumeSlider.value = audioVolume;
     }
 
     public void CloseOptions()
