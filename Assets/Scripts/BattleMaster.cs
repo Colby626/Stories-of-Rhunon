@@ -272,7 +272,7 @@ public class BattleMaster : MonoBehaviour
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         attackPressed = false;
 
-        //Play open book sound
+        AudioManager.instance.Play("TurningPageInBookSound");
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             battleHud.SetActive(false);
@@ -285,16 +285,16 @@ public class BattleMaster : MonoBehaviour
 
     public void CloseInventory()
     {
-        //Play close book sound
+        AudioManager.instance.Play("CloseBookSound");
         battleHud.SetActive(true);
-        //Remove all items from inventory graphics
-        inventoryUI.GetComponent<InventoryUI>().ClearUI();
+        inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
         GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
         inventory.SetActive(false);
     }
 
     public void LevelUp()
     {
+        AudioManager.instance.Play("TurningPageInBookSound");
         battleHud.SetActive(false);
         levelUpPanel.SetActive(true);
         levelUpPortrait.GetComponent<Image>().sprite = currentCharacter.GetComponent<SpriteRenderer>().sprite;
@@ -310,7 +310,7 @@ public class BattleMaster : MonoBehaviour
     #region LevelUp Stat Functions
     public void LevelUpStrength()
     {
-        //Play happy sound
+        AudioManager.instance.Play("LevelupSound");
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
@@ -322,13 +322,14 @@ public class BattleMaster : MonoBehaviour
             battleHud.SetActive(true);
             levelUpButton.SetActive(false);
             levelUpPanel.SetActive(false);
+            AudioManager.instance.Play("CloseBookSound");
         }
         strengthText.GetComponent<TextMeshProUGUI>().text = "Strength: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength.ToString();
     }
 
     public void LevelUpAttunement()
     {
-        //Play happy sound
+        AudioManager.instance.Play("LevelupSound");
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Attunement += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -339,13 +340,14 @@ public class BattleMaster : MonoBehaviour
             battleHud.SetActive(true);
             levelUpButton.SetActive(false);
             levelUpPanel.SetActive(false);
+            AudioManager.instance.Play("CloseBookSound");
         }
         attunementText.GetComponent<TextMeshProUGUI>().text = "Attunement: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Attunement.ToString();
     }
 
     public void LevelUpReflexes()
     {
-        //Play happy sound
+        AudioManager.instance.Play("LevelupSound");
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Reflexes += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -356,13 +358,14 @@ public class BattleMaster : MonoBehaviour
             battleHud.SetActive(true);
             levelUpButton.SetActive(false);
             levelUpPanel.SetActive(false);
+            AudioManager.instance.Play("CloseBookSound");
         }
         reflexesText.GetComponent<TextMeshProUGUI>().text = "Reflexes: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Reflexes.ToString();
     }
 
     public void LevelUpSpeed()
     {
-        //Play happy sound
+        AudioManager.instance.Play("LevelupSound");
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Speed += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -373,13 +376,14 @@ public class BattleMaster : MonoBehaviour
             battleHud.SetActive(true);
             levelUpButton.SetActive(false);
             levelUpPanel.SetActive(false);
+            AudioManager.instance.Play("CloseBookSound");
         }
         speedText.GetComponent<TextMeshProUGUI>().text = "Speed: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Speed.ToString();
     }
 
     public void LevelUpPrecision()
     {
-        //Play happy sound
+        AudioManager.instance.Play("LevelupSound");
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Precision += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -390,13 +394,14 @@ public class BattleMaster : MonoBehaviour
             battleHud.SetActive(true);
             levelUpButton.SetActive(false);
             levelUpPanel.SetActive(false);
+            AudioManager.instance.Play("CloseBookSound");
         }
         precisionText.GetComponent<TextMeshProUGUI>().text = "Precision: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Precision.ToString();
     }
 
     public void LevelUpConstitution()
     {
-        //Play happy sound
+        AudioManager.instance.Play("LevelupSound");
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Constitution += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -407,13 +412,14 @@ public class BattleMaster : MonoBehaviour
             battleHud.SetActive(true);
             levelUpButton.SetActive(false);
             levelUpPanel.SetActive(false);
+            AudioManager.instance.Play("CloseBookSound");
         }
         constitutionText.GetComponent<TextMeshProUGUI>().text = "Constitution: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Constitution.ToString();
     }
 
     public void LevelUpEndurance()
     {
-        //Play happy sound
+        AudioManager.instance.Play("LevelupSound");
         currentCharacter.GetComponent<CharacterSheet>().characterStats.Endurance += 1;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XP -= currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp;
         currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
@@ -424,6 +430,7 @@ public class BattleMaster : MonoBehaviour
             battleHud.SetActive(true);
             levelUpButton.SetActive(false);
             levelUpPanel.SetActive(false);
+            AudioManager.instance.Play("CloseBookSound");
         }
         enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + currentCharacter.GetComponent<CharacterSheet>().characterStats.Endurance.ToString();
     }

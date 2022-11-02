@@ -178,6 +178,8 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.battleStarted = false;
             battleMaster.battleHud.SetActive(false);
             battleMaster.winScreen.SetActive(true);
+            AudioManager.instance.Stop("BattleMusic");
+            AudioManager.instance.Play("WinSound");
         }
 
         //If there are no more players alive, display the lose screen
@@ -186,6 +188,8 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.battleStarted = false;
             battleMaster.battleHud.SetActive(false);
             battleMaster.loseScreen.SetActive(true);
+            AudioManager.instance.Stop("BattleMusic");
+            AudioManager.instance.Play("LoseSound");
         }
 
         gameObject.SetActive(false);

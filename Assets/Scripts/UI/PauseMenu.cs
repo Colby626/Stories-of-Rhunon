@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -6,6 +7,8 @@ public class PauseMenu : MonoBehaviour
     public bool gamePaused = false;
     public GameObject pauseMenu;
     public GameObject battleHud;
+    public GameObject optionsMenu;
+    public AudioMixer audioMixer;
     public BattleMaster battleMaster;
 
     private void Update()
@@ -35,6 +38,7 @@ public class PauseMenu : MonoBehaviour
     {
         battleHud.SetActive(false);
         pauseMenu.SetActive(true);
+        //Make sounds quieter
         Time.timeScale = 0f;
         gamePaused = true;
     }
@@ -44,5 +48,23 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         AudioManager.instance.Stop("BattleMusic");
         AudioManager.instance.Play("MainMenuMusic");
+    }
+
+    public void OpenOptions()
+    {
+        pauseMenu.SetActive(false);
+        optionsMenu.SetActive(true);
+    }
+
+    public void CloseOptions()
+    {
+        optionsMenu.SetActive(false);
+        pauseMenu.SetActive(true);
+    }
+
+    public void VolumeSlider(float value)
+    {
+        value = Mathf.Clamp(value, 0.0001f, 1.0f);
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20);
     }
 }

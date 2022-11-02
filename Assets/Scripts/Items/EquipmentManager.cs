@@ -42,6 +42,7 @@ public class EquipmentManager : MonoBehaviour
 
         EquipmentSlot slot = newItem.equipSlot;
         UpdateEquipmentUI(slot, newItem);
+        AudioManager.instance.Play("EquipSound");
 
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
         battleMaster.currentCharacter.GetComponent<Inventory>().items.Remove(newItem);
@@ -126,6 +127,7 @@ public class EquipmentManager : MonoBehaviour
         }
         battleMaster.currentCharacter.GetComponent<Inventory>().items.Add(oldItem);
         inventoryUI.UpdateUI();
+        AudioManager.instance.Play("EquipSound");
 
         battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[(int)slot] = null;
         UpdateEquipmentUI();
