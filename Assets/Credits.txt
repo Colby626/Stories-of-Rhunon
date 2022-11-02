@@ -16,10 +16,10 @@ Sanctumpixel - https://sanctumpixel.itch.io/viking-axe-pixel-art-character - Vik
 Mrpoly - https://opengameart.org/content/menu-music - Menu Music
 Cynicmusic - https://opengameart.org/content/battle-theme-a - Battle Music
 Cynicmusic - https://opengameart.org/content/town-theme-rpg - Exploring Music
-MixKit - https://mixkit.co/free-sound-effects/ - Equip Sound, Levelup Sound, Goblin Death Sound, Goblin Attack Sound, Dark Creature Hit Sound, Skeleton Hit Sound, Skeleton Attack Sound, Rhaal Attack Sound, 
-Rhaal Hit Sound, Dues Hit Sound, Tadhg Hit Sound
+MixKit - https://mixkit.co/free-sound-effects/ - Equip Sound, Levelup Sound, Goblin Attack Sound, Dark Creature Hit Sound, Skeleton Hit Sound, Skeleton Attack Sound, Rhaal Attack Sound, 
+Rhaal Hit Sound, Tadhg Hit Sound
 ZapSplat - https://www.zapsplat.com/empty-search/ - Losing Sound, Levelup Sound, Goblin Hit Sound, Dark Creature Attack Sound, Dark Creature Death Sounds, Skeleton Death Sound, Rhaal Death Sounds, Dues Death Sounds, 
-Dues Attack Sounds, Tadhg Attack Sound, Tadhg Death Sounds
+Dues Attack Sounds, Tadhg Attack Sound, Tadhg Death Sounds, Dues Hit Sound, Goblin Death Sound
 FesliyanStudios - https://www.fesliyanstudios.com/royalty-free-sound-effects-download - Dues Attack Sound, open book sound, flip page sound 
 
 Not sure if this is Free to use: https://chillingames.itch.io/basic-game-icons - Icon Atlas
