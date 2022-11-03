@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    private int EricsInt;
+
     private void Awake()
     {
         if (instance == null)
@@ -59,6 +61,13 @@ public class AudioManager : MonoBehaviour
         {
             Play("BattleMusic");
         }
+
+        //Everything under this within Start is for Eric
+        else
+        {
+            EricsInt = 1;
+            Play("MainMenuMusic");
+        }
     }
 
     public void Play(string name)
@@ -84,6 +93,31 @@ public class AudioManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Sound " + name + " was not found");
+        }
+    }
+
+    //This function is for Eric
+    public void NextSong()
+    {
+        switch (EricsInt)
+        {
+            case 1:
+                Stop("MainMenuMusic");
+                Play("ExploringMusic");
+                EricsInt++;
+                break;
+
+            case 2:
+                Stop("ExploringMusic");
+                Play("BattleMusic");
+                EricsInt++;
+                break;
+
+            case 3:
+                Stop("BattleMusic");
+                Play("MainMenuMusic");
+                EricsInt = 1;
+                break;
         }
     }
 }

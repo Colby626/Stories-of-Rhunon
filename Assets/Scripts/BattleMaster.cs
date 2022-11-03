@@ -122,6 +122,11 @@ public class BattleMaster : MonoBehaviour
 
     void Update()
     {
+        if (currentCharacter.GetComponent<CharacterSheet>().isDead)
+        {
+            NextTurn();
+        }
+
         if (attackDone)
         {
             attackButton.interactable = false;
