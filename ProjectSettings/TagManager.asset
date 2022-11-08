@@ -9,6 +9,8 @@ TagManager:
   - BattleMaster
   - EquipmentManager
   - InventoryUI
+  - Walkable
+  - UnWalkable
   layers:
   - Default
   - TransparentFX

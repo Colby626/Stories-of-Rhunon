@@ -1,6 +1,5 @@
 Cainos - https://cainos.itch.io/pixel-art-top-down-basic - Tilemap
 Mounir Tohami - https://mounirtohami.itch.io/pixel-art-gui-elements - GUI
-CodeMonkey - https://unitycodemonkey.com/downloadpage.php?yid=waEsGu--9P8 - Grid System
 Limezu - https://limezu.itch.io/ - RPG Arsenal
 Brackeys - https://github.com/Brackeys/RPG-Tutorial - Item code
 Creativekind - https://creativekind.itch.io/nightborne-warrior - NightBorne

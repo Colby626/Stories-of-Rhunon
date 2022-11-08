@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PathNode : MonoBehaviour
 {
-    private Grid<PathNode> grid;
     private int x;
     private int y;
 
@@ -13,15 +12,9 @@ public class PathNode : MonoBehaviour
     public int fCost;
 
     public PathNode cameFromNode;
-    public PathNode(Grid<PathNode> grid, int x, int y)
+    public PathNode(int x, int y)
     {
-        this.grid = grid;
         this.x = x;
         this.y = y;
-    }
-
-    public override string ToString()
-    {
-        return x + "," + y;
     }
 }
