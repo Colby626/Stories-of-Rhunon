@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Pathfinding
 {
-    public Pathfinding(int width, int height)
+    public void OnMouseDown()
     {
-
+        //determine which grid tile the user clicked on 
+        //pathfind to that tile
     }
 }
