@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 
 public class CustomGrid : MonoBehaviour
 {
@@ -10,13 +12,15 @@ public class CustomGrid : MonoBehaviour
     public GameObject badTile;
 
     private const int cellSize = 1;
+    private PathNode[,] nodes;
     private Collider2D[] colliders;
     private bool tilePlaced = false;
     private void Start()
     {
+        nodes = new PathNode[numColumns, numRows];
         for (int x = 0; x < numColumns; x++)
         {
-            for (int y = 0; y < numRows*2; y++)
+            for (int y = 0; y < numRows; y++)
             {
                 tilePlaced = false;
                 //If where we are instantiating a new tile is nothing check the next spot in the list
@@ -37,6 +41,7 @@ public class CustomGrid : MonoBehaviour
                             GameObject instance = Instantiate(badTile, new Vector2(x + origin.x + .5f, y + origin.y + .5f), Quaternion.identity);
                             instance.transform.localScale = new Vector3(.5f, .5f, 0);
                             instance.AddComponent<BoxCollider2D>().size *= 2;
+                            instance.name = x + " " + y;
                             tilePlaced = true;
                         }
                     }
@@ -49,12 +54,31 @@ public class CustomGrid : MonoBehaviour
                             GameObject instance = Instantiate(goodTile, new Vector2(x + origin.x + .5f, y + origin.y + .5f), Quaternion.identity);
                             instance.transform.localScale = new Vector3(.5f, .5f, 0);
                             instance.AddComponent<BoxCollider2D>().size *= 2;
+                            instance.GetComponent<PathNode>().x = x;
+                            instance.GetComponent<PathNode>().y = y;
+                            nodes[x, y] = instance.GetComponent<PathNode>();
+                            instance.name = x + " " + y;
                             tilePlaced = true;
                         }
                     }
                 }
             }
         }
+    }
+
+    public PathNode GetGridObject(int x, int y)
+    {
+        return nodes[x, y];
+    }
+
+    public int GetGridWidth()
+    {
+        return numColumns - 1;
+    }
+
+    public int GetGridHeight()
+    {
+        return numRows - 1;
     }
 
     private void OnDrawGizmos()
@@ -64,6 +88,7 @@ public class CustomGrid : MonoBehaviour
         {
             for (int y = 0; y < numRows*cellSize; y+=cellSize)
             {
+                //Drawing the boxes
                 Gizmos.DrawLine(new Vector2(x + origin.x, y + origin.y), new Vector2(x + origin.x, y + origin.y + cellSize));
                 Gizmos.DrawLine(new Vector2(x + origin.x, y + origin.y), new Vector2(x + origin.x + cellSize, y + origin.y));
 

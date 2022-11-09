@@ -198,7 +198,7 @@ public class CharacterSheet : MonoBehaviour
     public void OnMouseDown()
     {
         //Checks if the player is clicking attack on a character
-        if (battleMaster.attackPressed && !isPlayer)
+        if (battleMaster.attackPressed && !isPlayer && battleMaster.battleStarted)
         {
             battleMaster.attackPressed = false;
             battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");

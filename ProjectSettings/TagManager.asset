@@ -11,6 +11,7 @@ TagManager:
   - InventoryUI
   - Walkable
   - UnWalkable
+  - GameMaster
   layers:
   - Default
   - TransparentFX

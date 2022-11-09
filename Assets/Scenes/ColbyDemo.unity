@@ -13917,6 +13917,11 @@ PrefabInstance:
       objectReference: {fileID: 1955641109}
     - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
+      propertyPath: battleStarted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
       propertyPath: enduranceText
       value: 
       objectReference: {fileID: 1325179286}

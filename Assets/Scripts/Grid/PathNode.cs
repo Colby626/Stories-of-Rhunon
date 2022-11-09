@@ -1,20 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PathNode : MonoBehaviour
 {
-    private int x;
-    private int y;
+    public int x;
+    public int y;
 
     public int gCost;
     public int hCost;
     public int fCost;
 
+    public PathNode[] adjacentNodes;
     public PathNode cameFromNode;
-    public PathNode(int x, int y)
+
+    public GameMaster gameMaster;
+    private bool isHighlighted = false;
+    private void Start()
     {
-        this.x = x;
-        this.y = y;
+        gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+    }
+
+    private void OnMouseDown()
+    {
+        gameMaster.GetComponent<Pathfinding>().FindPath(this);
+    }
+
+    public void CalculateFCost()
+    {
+        fCost = gCost + hCost;
+    }
+
+    public void OnMouseOver()
+    {
+        if (!isHighlighted)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            isHighlighted = true;
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        isHighlighted = false;
     }
 }

@@ -35,7 +35,6 @@ public class BattleMaster : MonoBehaviour
     public bool attackPressed = false;
     [HideInInspector]
     public bool attackDone = false;
-    [HideInInspector]
     public bool battleStarted;
     public int howFarInTheFutureYouCalculateTurnOrder = 50;
 
@@ -65,8 +64,19 @@ public class BattleMaster : MonoBehaviour
     public GameObject enduranceText;
     #endregion
 
+    public static BattleMaster instance;
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(this);
+
         //Finds all the participants
         characterArray = GameObject.FindGameObjectsWithTag("Participant");
         characters = new List<GameObject>(characterArray);
@@ -89,12 +99,66 @@ public class BattleMaster : MonoBehaviour
             }
         }
 
-        StartingTurnOrder();
+        if (battleStarted == true)
+        {
+            StartingTurnOrder();
+        }
     }
 
     private void Start()
     {
+        if (battleStarted)
+        {
+            StartBattle();
+        }
+    }
+
+    void Update()
+    {
+        if (battleStarted)
+        {
+            if (currentCharacter.GetComponent<CharacterSheet>().isDead)
+            {
+                NextTurn();
+            }
+
+            if (attackDone)
+            {
+                attackButton.interactable = false;
+            }
+
+            //checks if the turn counter is closer than 20 from the furthest calculated the list has gone and if so calculates the list further
+            if (turnCounter >= (turnOrder.Count() - howFarInTheFutureYouCalculateTurnOrder))
+            {
+                CalculateTurnOrder();
+            }
+
+            //Displays the character to go's name on the screen
+            //will be removed
+            if (battleStarted)
+            {
+                turn.text = "It is " + currentCharacter.GetComponent<CharacterSheet>().Name + "'s turn";
+            }
+
+            if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+            {
+                nextTurnButton.interactable = false;
+                attackButton.interactable = false;
+                inventoryButton.interactable = false;
+            }
+            else
+            {
+                nextTurnButton.interactable = true;
+                attackButton.interactable = true;
+                inventoryButton.interactable = true;
+            }
+        }
+    }
+
+    public void StartBattle()
+    {
         battleStarted = true;
+        StartingTurnOrder();
         currentCharacter = turnOrder[0];
 
         //Displays the levelUpButton if the currentCharacter has enough XP to LevelUp
@@ -117,45 +181,6 @@ public class BattleMaster : MonoBehaviour
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             StartCoroutine(EnemyTurn()); //Delay for enemey turns
-        }
-    }
-
-    void Update()
-    {
-        if (currentCharacter.GetComponent<CharacterSheet>().isDead)
-        {
-            NextTurn();
-        }
-
-        if (attackDone)
-        {
-            attackButton.interactable = false;
-        }
-
-        //checks if the turn counter is closer than 20 from the furthest calculated the list has gone and if so calculates the list further
-        if (turnCounter >= (turnOrder.Count() - howFarInTheFutureYouCalculateTurnOrder))
-        {
-            CalculateTurnOrder();
-        }
-
-        //Displays the character to go's name on the screen
-        //will be removed
-        if (battleStarted)
-        {
-            turn.text = "It is " + currentCharacter.GetComponent<CharacterSheet>().Name + "'s turn";
-        }
-
-        if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
-        {
-            nextTurnButton.interactable = false;
-            attackButton.interactable = false;
-            inventoryButton.interactable = false;
-        }
-        else
-        {
-            nextTurnButton.interactable = true;
-            attackButton.interactable = true;
-            inventoryButton.interactable= true;
         }
     }
 
