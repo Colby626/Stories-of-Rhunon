@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Pathfinding : MonoBehaviour
 {
@@ -8,12 +9,15 @@ public class Pathfinding : MonoBehaviour
     private const int straightMovementCost = 10;
 
     private List<PathNode> openList;
-    private List<PathNode> closedList;
+    private HashSet<PathNode> closedList;
     public List<PathNode> path;
 
     public Collider2D[] colliders;
     public PathNode partyNode;
+    public GameObject party;
+    private bool isPlayer = false;
     private CustomGrid grid;
+    public float speed = .01f;
 
     public void FindPath(PathNode endNode, PathNode startNode = null)
     {
@@ -36,11 +40,12 @@ public class Pathfinding : MonoBehaviour
                 Debug.LogError("No starting node for pathfinding");
                 return;
             }
+            isPlayer = true;
             startNode = partyNode;
         }
 
         openList = new List<PathNode> { startNode };
-        closedList = new List<PathNode> { };
+        closedList = new HashSet<PathNode> { };
 
         for (int x = 0; x < GetComponent<GameMaster>().grid.numColumns; x++)
         {
@@ -62,7 +67,14 @@ public class Pathfinding : MonoBehaviour
             PathNode currentNode = GetLowestFCostNode(openList);
             if (currentNode == endNode)
             {
-                MoveOnPath(CalculatePath(endNode));
+                if (isPlayer)
+                {
+                    MoveOnPath(CalculatePath(endNode), party); //Currently only moving the party 
+                }
+                else
+                {
+                    //MoveOnPath(CalculatePath(endNode), enemy);
+                }
             }
 
             openList.Remove(currentNode);
@@ -95,7 +107,7 @@ public class Pathfinding : MonoBehaviour
         return;
     }
 
-    private List<PathNode> GetNeighboringNodes(PathNode currentNode)
+    private List<PathNode> GetNeighboringNodes(PathNode currentNode) //Can be optimized by doing this step when creating the grid to begin with 
     {
         List<PathNode> neighborsList = new List<PathNode>();
 
@@ -186,11 +198,28 @@ public class Pathfinding : MonoBehaviour
         return lowestFCostNode;
     }
 
-    private void MoveOnPath(List<PathNode> path)
+    private void MoveOnPath(List<PathNode> path, GameObject entity)
     {
+        if (path == null)
+        {
+            return;
+        }
+
+        List<Vector3> vectorPath = new List<Vector3>();
         foreach (PathNode node in path)
         {
-            //lerp between nodes
+            vectorPath.Add(new Vector3(node.x, node.y) + Vector3.one * .5f); //Makes a vector3 list storing worldspace locations in the middle of each node on the path we want to take
+        }
+
+        for (int i = 0; i < vectorPath.Count; i++)
+        {
+            Vector3 targetPosition = vectorPath[i];
+            Vector3 moveDirection = (targetPosition - entity.transform.position).normalized;
+            while (Vector3.Distance(entity.transform.position, targetPosition) > 1f) //while the entity is not at the target location
+            {
+                //entity.transform.position = entity.transform.position + moveDirection * speed * Time.deltaTime;
+                entity.transform.Translate(moveDirection * speed * Time.deltaTime);
+            }
         }
     }
 }
