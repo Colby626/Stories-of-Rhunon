@@ -13,7 +13,6 @@ public class PathNode : MonoBehaviour
     public PathNode cameFromNode;
 
     public GameMaster gameMaster;
-    private bool isHighlighted = false;
     private void Start()
     {
         gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
@@ -31,17 +30,12 @@ public class PathNode : MonoBehaviour
 
     public void OnMouseOver()
     {
-        if (!isHighlighted)
-        {
-            transform.GetChild(0).gameObject.SetActive(true);
-            isHighlighted = true;
-        }
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 
     private void OnMouseExit()
     {
         transform.GetChild(0).gameObject.SetActive(false);
-        isHighlighted = false;
     }
 
     public Vector2 GetWorldSpace()
