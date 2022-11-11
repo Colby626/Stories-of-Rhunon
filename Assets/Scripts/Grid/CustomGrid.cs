@@ -68,6 +68,10 @@ public class CustomGrid : MonoBehaviour
 
     public PathNode GetGridObject(int x, int y)
     {
+        if (nodes[x, y] == null)
+        {
+            return null;
+        }
         return nodes[x, y];
     }
 

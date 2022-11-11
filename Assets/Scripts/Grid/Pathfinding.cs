@@ -65,9 +65,12 @@ public class Pathfinding : MonoBehaviour
             for (int y = 0; y < GetComponent<GameMaster>().grid.numRows; y++)
             {
                 PathNode node = grid.GetGridObject(x, y);
-                node.gCost = int.MaxValue;
-                node.CalculateFCost();
-                node.cameFromNode = null;
+                if (node != null)
+                {
+                    node.gCost = int.MaxValue;
+                    node.CalculateFCost();
+                    node.cameFromNode = null;
+                }
             }
         }
 
@@ -127,16 +130,19 @@ public class Pathfinding : MonoBehaviour
         //Check Left
         if (currentNode.x - 1 >= 0)
         {
-            neighborsList.Add(grid.GetGridObject(currentNode.x - 1, currentNode.y));
+            if (grid.GetGridObject(currentNode.x - 1, currentNode.y) != null)
+            {
+                neighborsList.Add(grid.GetGridObject(currentNode.x - 1, currentNode.y));
+            }
 
             //Check Left Down
-            if (currentNode.y - 1 >= 0)
+            if (currentNode.y - 1 >= 0 && grid.GetGridObject(currentNode.x - 1, currentNode.y - 1) != null)
             {
                 neighborsList.Add(grid.GetGridObject(currentNode.x - 1, currentNode.y - 1));
             }
 
             //Check Left Up
-            if (currentNode.y + 1 <= grid.GetGridHeight())
+            if (currentNode.y + 1 <= grid.GetGridHeight() && grid.GetGridObject(currentNode.x - 1, currentNode.y + 1) != null)
             {
                 neighborsList.Add(grid.GetGridObject(currentNode.x - 1, currentNode.y + 1));
             }
@@ -145,29 +151,32 @@ public class Pathfinding : MonoBehaviour
         //Check Right
         if (currentNode.x + 1 <= grid.GetGridWidth())
         {
-            neighborsList.Add(grid.GetGridObject(currentNode.x + 1, currentNode.y));
+            if (grid.GetGridObject(currentNode.x + 1, currentNode.y) != null)
+            {
+                neighborsList.Add(grid.GetGridObject(currentNode.x + 1, currentNode.y));
+            }
 
             //Check Right Down
-            if (currentNode.y - 1 >= 0)
+            if (currentNode.y - 1 >= 0 && grid.GetGridObject(currentNode.x + 1, currentNode.y - 1) != null)
             {
                 neighborsList.Add(grid.GetGridObject(currentNode.x + 1, currentNode.y - 1));
             }
 
             //Check Right Up
-            if (currentNode.y + 1 <= grid.GetGridHeight())
+            if (currentNode.y + 1 <= grid.GetGridHeight() && grid.GetGridObject(currentNode.x + 1, currentNode.y + 1) != null)
             {
                 neighborsList.Add(grid.GetGridObject(currentNode.x + 1, currentNode.y + 1));
             }
         }
 
         //Check Down
-        if (currentNode.y - 1 >= 0)
+        if (currentNode.y - 1 >= 0 && grid.GetGridObject(currentNode.x, currentNode.y - 1) != null)
         {
             neighborsList.Add(grid.GetGridObject(currentNode.x, currentNode.y - 1));
         }
 
         //Check Up
-        if (currentNode.y + 1 <= grid.GetGridHeight())
+        if (currentNode.y + 1 <= grid.GetGridHeight() && grid.GetGridObject(currentNode.x, currentNode.y + 1) != null)
         {
             neighborsList.Add(grid.GetGridObject(currentNode.x, currentNode.y + 1));
         }
@@ -191,6 +200,12 @@ public class Pathfinding : MonoBehaviour
 
     private int CalculateDistance(PathNode a, PathNode b)
     {
+        if (a == null || b == null)
+        {
+            Debug.LogWarning("CalculateDistance called on null node");
+            return -1;
+        }
+
         int xDistance = Mathf.Abs(a.x - b.x);
         int yDistance = Mathf.Abs(a.y - b.y);
         int remaining = Mathf.Abs(xDistance - yDistance);

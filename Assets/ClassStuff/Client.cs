@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System;
@@ -154,4 +154,4 @@ public class Client : MonoBehaviour
 		byte[] msg = Encoding.Unicode.GetBytes(message);
 		NetworkTransport.Send(hostId,connectionId,channelId,msg,message.Length * sizeof(char), out error);
 	}
-}
+}*/
