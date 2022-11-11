@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PathNode : MonoBehaviour
@@ -22,7 +21,7 @@ public class PathNode : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameMaster.GetComponent<Pathfinding>().FindPath(this);
+        gameMaster.targetNode = this;
     }
 
     public void CalculateFCost()

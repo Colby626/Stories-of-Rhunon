@@ -55286,6 +55286,7 @@ MonoBehaviour:
   goodTile: {fileID: 8817868772905004140, guid: 074ba962fc54225478f5f7ee618c511d,
     type: 3}
   badTile: {fileID: 8817868772905004140, guid: c05dc8af43ac1b747a52571acd8f5f62, type: 3}
+  gridFinished: 0
 --- !u!1 &1874836313
 GameObject:
   m_ObjectHideFlags: 0
@@ -55318,6 +55319,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1926793091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5676936273041208875, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
+    type: 3}
+  m_PrefabInstance: {fileID: 78395780395433727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &78395780395433727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55333,7 +55340,7 @@ PrefabInstance:
     - target: {fileID: 5676936273041208874, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 5.44
       objectReference: {fileID: 0}
     - target: {fileID: 5676936273041208874, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
         type: 3}
@@ -55393,6 +55400,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 78395780395433727}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &78395780395433734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926793091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddb108cbee79004881719cf71d01f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  centeringOffset: 0.1
+  spriteOffset: 0.2
+  xPosition: 6
+  yPosition: 0
+  viewRange: 0
+  wanderRange: 2
+  wander: 1
+  wanderDelay: 5
 --- !u!1001 &542170190044550490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55465,6 +55493,16 @@ PrefabInstance:
       propertyPath: battleMaster
       value: 
       objectReference: {fileID: 1310143533}
+    - target: {fileID: 1539894390840498754, guid: 9e2d3be66e742304fa8a776cfa0678d5,
+        type: 3}
+      propertyPath: xPosition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539894390840498754, guid: 9e2d3be66e742304fa8a776cfa0678d5,
+        type: 3}
+      propertyPath: yPosition
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4659660240272881192, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
       propertyPath: battleMaster

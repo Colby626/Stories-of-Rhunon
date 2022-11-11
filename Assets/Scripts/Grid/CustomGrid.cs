@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 
 public class CustomGrid : MonoBehaviour
 {
@@ -10,6 +7,8 @@ public class CustomGrid : MonoBehaviour
     public Vector3Int origin;
     public GameObject goodTile;
     public GameObject badTile;
+    [HideInInspector]
+    public bool gridFinished = false;
 
     private const int cellSize = 1;
     private PathNode[,] nodes;
@@ -64,6 +63,7 @@ public class CustomGrid : MonoBehaviour
                 }
             }
         }
+        gridFinished = true;
     }
 
     public PathNode GetGridObject(int x, int y)

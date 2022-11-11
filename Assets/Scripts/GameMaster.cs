@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
 public class GameMaster : MonoBehaviour
 {
@@ -12,9 +10,8 @@ public class GameMaster : MonoBehaviour
     public GameObject battleHud;
     public GameObject menus;
     public CustomGrid grid;
-    public GameObject Party;
-    public int partyX;
-    public int partyY;
+    public PathNode partyNode;
+    public PathNode targetNode;
 
     public static GameMaster instance;
     private void Awake()
@@ -28,11 +25,6 @@ public class GameMaster : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
-    }
-
-    private void Start()
-    {
-        Party.transform.position = new Vector2(grid.origin.x + partyX + 0.5f, grid.origin.y + partyY + 0.5f);
     }
 
     public void LookForParticipants()
