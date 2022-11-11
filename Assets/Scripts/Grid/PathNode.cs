@@ -44,4 +44,9 @@ public class PathNode : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
         isHighlighted = false;
     }
+
+    public Vector2 GetWorldSpace()
+    {
+        return (Vector2)transform.position;
+    }
 }

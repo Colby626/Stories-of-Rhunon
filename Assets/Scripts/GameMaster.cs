@@ -32,7 +32,7 @@ public class GameMaster : MonoBehaviour
 
     private void Start()
     {
-        Party.transform.position = new Vector3(grid.origin.x + partyX + 0.5f, grid.origin.y + partyY + 0.5f, 0);
+        Party.transform.position = new Vector2(grid.origin.x + partyX + 0.5f, grid.origin.y + partyY + 0.5f);
     }
 
     public void LookForParticipants()

@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Pathfinding : MonoBehaviour
 {
@@ -18,9 +19,21 @@ public class Pathfinding : MonoBehaviour
     private bool isPlayer = false;
     private CustomGrid grid;
     public float speed = .01f;
+    private GameObject entity;
+    private List<Vector2> vectorPath = new();
+    private Vector2 moveDirection;
+    private Vector2 targetPosition;
+    private bool hasBeenMoving = false;
+    private bool isMoving = false;
 
     public void FindPath(PathNode endNode, PathNode startNode = null)
     {
+        if (isMoving)
+        {
+            Debug.Log("Already moving");
+            return;
+        }
+
         grid = GetComponent<GameMaster>().grid;
 
         //if the player is the one doing the pathfinding
@@ -198,28 +211,48 @@ public class Pathfinding : MonoBehaviour
         return lowestFCostNode;
     }
 
-    private void MoveOnPath(List<PathNode> path, GameObject entity)
+    private void MoveOnPath(List<PathNode> path, GameObject thingToMove)
     {
+        isMoving = true;
+        entity = thingToMove;
+        vectorPath = new List<Vector2>();
         if (path == null)
         {
             return;
         }
 
-        List<Vector3> vectorPath = new List<Vector3>();
         foreach (PathNode node in path)
         {
-            vectorPath.Add(new Vector3(node.x, node.y) + Vector3.one * .5f); //Makes a vector3 list storing worldspace locations in the middle of each node on the path we want to take
+            vectorPath.Add(node.GetWorldSpace()); //Makes a vector2 list storing worldspace locations of each node on the path we want to take
         }
 
-        for (int i = 0; i < vectorPath.Count; i++)
+        if (isPlayer)
         {
-            Vector3 targetPosition = vectorPath[i];
-            Vector3 moveDirection = (targetPosition - entity.transform.position).normalized;
-            while (Vector3.Distance(entity.transform.position, targetPosition) > 1f) //while the entity is not at the target location
+            partyNode = path[path.Count - 1];
+        }
+    }
+
+    private void Update()
+    {
+        if (vectorPath.Count > 0)
+        {
+            hasBeenMoving = true;
+            targetPosition = vectorPath[0];
+            moveDirection = (targetPosition - (Vector2)entity.transform.position).normalized;
+            entity.transform.Translate(moveDirection * speed * Time.deltaTime);
+
+            if (Vector2.Distance((Vector2)entity.transform.position, targetPosition) < 0.01f)
             {
-                //entity.transform.position = entity.transform.position + moveDirection * speed * Time.deltaTime;
-                entity.transform.Translate(moveDirection * speed * Time.deltaTime);
+                vectorPath.Remove(vectorPath[0]);
             }
+        }
+
+        if (vectorPath.Count == 0 && hasBeenMoving)
+        {
+            isMoving = false;
+            GetComponent<GameMaster>().partyX = partyNode.x;
+            GetComponent<GameMaster>().partyY = partyNode.y;
+            hasBeenMoving = false;
         }
     }
 }
