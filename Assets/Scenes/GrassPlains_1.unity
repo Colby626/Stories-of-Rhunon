@@ -55887,6 +55887,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
         type: 3}
+      propertyPath: wander
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: wanderDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: wanderRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
       propertyPath: spriteOffsetX
       value: 0.5
       objectReference: {fileID: 0}

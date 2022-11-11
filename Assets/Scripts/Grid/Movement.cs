@@ -94,6 +94,10 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         if (vectorPath.Count > 0)
         {
             hasBeenMoving = true;
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).GetComponent<Animator>().SetBool("Moving", true);
+            }
             targetPosition = vectorPath[0];
             moveDirection = (targetPosition - (Vector2)transform.position).normalized;
             transform.Translate(pathfinding.speed * Time.deltaTime * moveDirection);
@@ -106,6 +110,10 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
         if (vectorPath.Count == 0 && hasBeenMoving)
         {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).GetComponent<Animator>().SetBool("Moving", false);
+            }
             isMoving = false;
             hasBeenMoving = false;
         }
