@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6068096
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
@@ -35,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.87
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
@@ -80,9 +80,37 @@ PrefabInstance:
     - target: {fileID: 2949315082232947739, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_Name
-      value: Goblin Variant
+      value: Goblin
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2418278438596320911, guid: 339cb1acaafab554688cb3b57ad04cfb, type: 3}
     - {fileID: 4649192909767781351, guid: 339cb1acaafab554688cb3b57ad04cfb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 339cb1acaafab554688cb3b57ad04cfb, type: 3}
+--- !u!1 &5676936273041208875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2949315082232947739, guid: 339cb1acaafab554688cb3b57ad04cfb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7360734496134844976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &78395780395433734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5676936273041208875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddb108cbee79004881719cf71d01f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  centeringOffset: 0.1
+  spriteOffsetY: 0.14
+  spriteOffsetX: 0.5
+  xPosition: 64
+  yPosition: 5
+  viewRange: 0
+  wanderRange: 2
+  wander: 1
+  wanderDelay: 5

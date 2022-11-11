@@ -40,12 +40,12 @@ PrefabInstance:
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.599
+      value: -6.37
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.016
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
@@ -90,9 +90,37 @@ PrefabInstance:
     - target: {fileID: 8589781458273479467, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_Name
-      value: Dark Creature Variant
+      value: Dark Creature
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9103016901211574719, guid: 331e53a6ba261a84ea64ddb3cd447501, type: 3}
     - {fileID: 2260343674274309335, guid: 331e53a6ba261a84ea64ddb3cd447501, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 331e53a6ba261a84ea64ddb3cd447501, type: 3}
+--- !u!1 &900861919499629804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8589781458273479467, guid: 331e53a6ba261a84ea64ddb3cd447501,
+    type: 3}
+  m_PrefabInstance: {fileID: 8914182346091208647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6887751440803035789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900861919499629804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddb108cbee79004881719cf71d01f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  centeringOffset: 0.1
+  spriteOffsetY: 0
+  spriteOffsetX: 0.63
+  xPosition: 53
+  yPosition: 8
+  viewRange: 0
+  wanderRange: 0
+  wander: 0
+  wanderDelay: 0
