@@ -55724,7 +55724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numColumns: 102
-  numRows: 15
+  numRows: 90
   origin: {x: -60, y: -6}
   goodTile: {fileID: 8817868772905004140, guid: 074ba962fc54225478f5f7ee618c511d,
     type: 3}

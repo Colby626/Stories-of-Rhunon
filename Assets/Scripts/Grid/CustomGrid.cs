@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class CustomGrid : MonoBehaviour
@@ -62,11 +63,25 @@ public class CustomGrid : MonoBehaviour
                 }
             }
         }
+        for (int x = 0; x < numColumns; x++)
+        {
+            for (int y = 0; y < numRows; y++)
+            {
+                if (nodes[x, y] != null)
+                {
+                    nodes[x, y].CreateNeighboringNodesList();
+                }
+            }
+        }
         gridFinished = true;
     }
 
     public PathNode GetGridObject(int x, int y)
     {
+        if (x < 0 || y < 0)
+        {
+            return null;   
+        }
         if (nodes[x, y] == null)
         {
             return null;

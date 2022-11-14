@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PathNode : MonoBehaviour
@@ -11,6 +12,7 @@ public class PathNode : MonoBehaviour
 
     public PathNode[] adjacentNodes;
     public PathNode cameFromNode;
+    public List<PathNode> neighborsList = new();
 
     private Color baseColor;
     private Color badColor;
@@ -18,7 +20,7 @@ public class PathNode : MonoBehaviour
 
     public GameMaster gameMaster;
 
-    private void Start()
+    private void Awake()
     {
         gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         grid = gameMaster.grid;
@@ -61,5 +63,67 @@ public class PathNode : MonoBehaviour
     public Vector2 GetWorldSpace()
     {
         return (Vector2)transform.position;
+    }
+
+    public void CreateNeighboringNodesList()
+    {
+        //Check Left
+        if (x - 1 >= 0)
+        {
+            if (grid.GetGridObject(x - 1, y) != null)
+            {
+                neighborsList.Add(grid.GetGridObject(x - 1, y));
+            }
+
+            //Check Left Down
+            if (y - 1 >= 0 && grid.GetGridObject(x - 1, y - 1) != null)
+            {
+                neighborsList.Add(grid.GetGridObject(x - 1, y - 1));
+            }
+
+            //Check Left Up
+            if (y + 1 <= grid.GetGridHeight() && grid.GetGridObject(x - 1, y + 1) != null)
+            {
+                neighborsList.Add(grid.GetGridObject(x - 1, y + 1));
+            }
+        }
+
+        //Check Right
+        if (x + 1 <= grid.GetGridWidth())
+        {
+            if (grid.GetGridObject(x + 1, y) != null)
+            {
+                neighborsList.Add(grid.GetGridObject(x + 1, y));
+            }
+
+            //Check Right Down
+            if (y - 1 >= 0 && grid.GetGridObject(x + 1, y - 1) != null)
+            {
+                neighborsList.Add(grid.GetGridObject(x + 1, y - 1));
+            }
+
+            //Check Right Up
+            if (y + 1 <= grid.GetGridHeight() && grid.GetGridObject(x + 1, y + 1) != null)
+            {
+                neighborsList.Add(grid.GetGridObject(x + 1, y + 1));
+            }
+        }
+
+        //Check Down
+        if (y - 1 >= 0 && grid.GetGridObject(x, y - 1) != null)
+        {
+            neighborsList.Add(grid.GetGridObject(x, y - 1));
+        }
+
+        //Check Up
+        if (y + 1 <= grid.GetGridHeight() && grid.GetGridObject(x, y + 1) != null)
+        {
+            neighborsList.Add(grid.GetGridObject(x, y + 1));
+        }
+    }
+
+    public List<PathNode> GetNeighborNodes()
+    {
+        return neighborsList;
     }
 }

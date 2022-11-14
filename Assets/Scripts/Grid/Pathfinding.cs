@@ -49,7 +49,7 @@ public class Pathfinding : MonoBehaviour
             openList.Remove(currentNode);
             closedList.Add(currentNode);
 
-            foreach (PathNode neighborNode in GetNeighboringNodes(currentNode))
+            foreach (PathNode neighborNode in currentNode.GetNeighborNodes())
             {
                 if (closedList.Contains(neighborNode))
                 {
@@ -74,67 +74,6 @@ public class Pathfinding : MonoBehaviour
 
         //Out of nodes on the open list
         return null;
-    }
-
-    public List<PathNode> GetNeighboringNodes(PathNode currentNode) //Can be optimized by doing this step when creating the grid to begin with 
-    {
-        List<PathNode> neighborsList = new List<PathNode>();
-
-        //Check Left
-        if (currentNode.x - 1 >= 0)
-        {
-            if (grid.GetGridObject(currentNode.x - 1, currentNode.y) != null)
-            {
-                neighborsList.Add(grid.GetGridObject(currentNode.x - 1, currentNode.y));
-            }
-
-            //Check Left Down
-            if (currentNode.y - 1 >= 0 && grid.GetGridObject(currentNode.x - 1, currentNode.y - 1) != null)
-            {
-                neighborsList.Add(grid.GetGridObject(currentNode.x - 1, currentNode.y - 1));
-            }
-
-            //Check Left Up
-            if (currentNode.y + 1 <= grid.GetGridHeight() && grid.GetGridObject(currentNode.x - 1, currentNode.y + 1) != null)
-            {
-                neighborsList.Add(grid.GetGridObject(currentNode.x - 1, currentNode.y + 1));
-            }
-        }
-
-        //Check Right
-        if (currentNode.x + 1 <= grid.GetGridWidth())
-        {
-            if (grid.GetGridObject(currentNode.x + 1, currentNode.y) != null)
-            {
-                neighborsList.Add(grid.GetGridObject(currentNode.x + 1, currentNode.y));
-            }
-
-            //Check Right Down
-            if (currentNode.y - 1 >= 0 && grid.GetGridObject(currentNode.x + 1, currentNode.y - 1) != null)
-            {
-                neighborsList.Add(grid.GetGridObject(currentNode.x + 1, currentNode.y - 1));
-            }
-
-            //Check Right Up
-            if (currentNode.y + 1 <= grid.GetGridHeight() && grid.GetGridObject(currentNode.x + 1, currentNode.y + 1) != null)
-            {
-                neighborsList.Add(grid.GetGridObject(currentNode.x + 1, currentNode.y + 1));
-            }
-        }
-
-        //Check Down
-        if (currentNode.y - 1 >= 0 && grid.GetGridObject(currentNode.x, currentNode.y - 1) != null)
-        {
-            neighborsList.Add(grid.GetGridObject(currentNode.x, currentNode.y - 1));
-        }
-
-        //Check Up
-        if (currentNode.y + 1 <= grid.GetGridHeight() && grid.GetGridObject(currentNode.x, currentNode.y + 1) != null)
-        {
-            neighborsList.Add(grid.GetGridObject(currentNode.x, currentNode.y + 1));
-        }
-
-        return neighborsList;
     }
 
     private List<PathNode> CalculatePath(PathNode endNode)
