@@ -10,12 +10,14 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     public int xPosition;
     [Tooltip("Sets this entity to the y position relative the the custom grid")]
     public int yPosition;
+    public bool spriteFacingLeft;
 
     [Header("Enemy Stuff:")]
     public int viewRange;
     public int wanderRange;
     public bool wander = false;
-    public float wanderDelay;
+    public float wanderDelayMin;
+    public float wanderDelayMax;
 
     private GameMaster gameMaster;
     private Pathfinding pathfinding;
@@ -100,6 +102,43 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
             }
             targetPosition = vectorPath[0];
             moveDirection = (targetPosition - (Vector2)transform.position).normalized;
+
+            //Flipping the sprite based on the direction they are moving
+            if (spriteFacingLeft)
+            {
+                if (moveDirection.x >= 0) //If they are moving right
+                {
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        transform.GetChild(i).GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        transform.GetChild(i).GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                }
+            }
+            else
+            {
+                if (moveDirection.x < 0) //If they are moving left
+                {
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        transform.GetChild(i).GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        transform.GetChild(i).GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                }
+            }
+
             transform.Translate(pathfinding.speed * Time.deltaTime * moveDirection);
 
             if (Vector2.Distance((Vector2)transform.position, targetPosition) < centeringOffset)
@@ -145,7 +184,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
     public void Wander() //Randomly pick areas within range to move to 
     {
-        wanderTimer = wanderDelay;
+        wanderTimer = Random.Range(wanderDelayMin, wanderDelayMax);
         wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)]; 
         MoveOnPath(pathfinding.FindPath(wanderNode, startingNode));
     }

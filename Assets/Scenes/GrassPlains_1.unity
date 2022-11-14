@@ -55480,6 +55480,26 @@ PrefabInstance:
       propertyPath: yPosition
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4034010280295920521, guid: 6b5a578cd864e16419d09731727a9b31,
+        type: 3}
+      propertyPath: wanderDelayMax
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034010280295920521, guid: 6b5a578cd864e16419d09731727a9b31,
+        type: 3}
+      propertyPath: wanderDelayMin
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034010280295920521, guid: 6b5a578cd864e16419d09731727a9b31,
+        type: 3}
+      propertyPath: centeringOffset
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034010280295920521, guid: 6b5a578cd864e16419d09731727a9b31,
+        type: 3}
+      propertyPath: spriteFacingLeft
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4034010280295920522, guid: 6b5a578cd864e16419d09731727a9b31,
         type: 3}
       propertyPath: m_RootOrder
@@ -55737,6 +55757,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1262898058}
     m_Modifications:
+    - target: {fileID: 801831832196101544, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: wanderRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 801831832196101544, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: wanderDelayMax
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 801831832196101544, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: wanderDelayMin
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 801831832196101544, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: centeringOffset
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 801831832196101544, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: spriteFacingLeft
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -55808,8 +55853,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4034010280295920521, guid: 6b5a578cd864e16419d09731727a9b31,
         type: 3}
+      propertyPath: wanderDelayMax
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034010280295920521, guid: 6b5a578cd864e16419d09731727a9b31,
+        type: 3}
+      propertyPath: wanderDelayMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034010280295920521, guid: 6b5a578cd864e16419d09731727a9b31,
+        type: 3}
       propertyPath: centeringOffset
-      value: 0.05
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034010280295920521, guid: 6b5a578cd864e16419d09731727a9b31,
+        type: 3}
+      propertyPath: spriteFacingLeft
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4034010280295920522, guid: 6b5a578cd864e16419d09731727a9b31,
         type: 3}
@@ -55909,6 +55969,26 @@ PrefabInstance:
         type: 3}
       propertyPath: spriteOffsetY
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: wanderDelayMax
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: wanderDelayMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: centeringOffset
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: spriteFacingLeft
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7728418505946430317, guid: 14aa5a369edc5404092a96ae78a24712,
         type: 3}
