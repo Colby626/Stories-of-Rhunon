@@ -197,15 +197,18 @@ public class CharacterSheet : MonoBehaviour
 
     public void OnMouseDown()
     {
-        //Checks if the player is clicking attack on a character
-        if (battleMaster.attackPressed && !isPlayer && battleMaster.battleStarted)
+        if (GetComponent<MouseOver>()) //MouseOver should only be on the character after a battle has started, this prevents an error if you click on them outside of battle
         {
-            battleMaster.attackPressed = false;
-            battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-            FindObjectOfType<AudioManager>().Play(battleMaster.currentCharacter.GetComponent<CharacterSheet>().attackSound);
-            battleMaster.targetedEnemy = gameObject;
-            battleMaster.attackDone = true;
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            //Checks if the player is clicking attack on a character
+            if (battleMaster.attackPressed && !isPlayer && battleMaster.battleStarted)
+            {
+                battleMaster.attackPressed = false;
+                battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+                FindObjectOfType<AudioManager>().Play(battleMaster.currentCharacter.GetComponent<CharacterSheet>().attackSound);
+                battleMaster.targetedEnemy = gameObject;
+                battleMaster.attackDone = true;
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            }
         }
     }
 

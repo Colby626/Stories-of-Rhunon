@@ -5,7 +5,7 @@ public class CustomGrid : MonoBehaviour
 {
     public int numColumns;
     public int numRows;
-    public Vector3Int origin;
+    public Vector2Int origin;
     public GameObject goodTile;
     public GameObject badTile;
     [HideInInspector]
@@ -14,7 +14,7 @@ public class CustomGrid : MonoBehaviour
     private const int cellSize = 1;
     private PathNode[,] nodes;
     private Collider2D[] colliders;
-    private bool tilePlaced = false;
+    private bool tilePlaced;
 
     private void Start()
     {
@@ -23,43 +23,40 @@ public class CustomGrid : MonoBehaviour
         {
             for (int y = 0; y < numRows; y++)
             {
-                tilePlaced = false;
                 //If where we are instantiating a new tile is nothing check the next spot in the list
-                if (Physics2D.OverlapBox(new Vector2(x + origin.x + .5f, y + origin.y + .5f), new Vector2(0.5f, 0.5f), 0) == null)
+                if (Physics2D.OverlapBox(new Vector2(x + origin.x + .5f, y + origin.y + .5f), new Vector2(0.001f, 0.001f), 0) == null)
                 {
-                    tilePlaced = true;
+                    continue;
                 }
 
-                if (tilePlaced == false)
+                //Puts all colliders within a tile in a colliders array
+                tilePlaced = false;
+                colliders = Physics2D.OverlapBoxAll(new Vector2(x + origin.x + .5f, y + origin.y + .5f), new Vector2(0.5f, 0.5f), 0);
+
+                //Don't display anything on tiles that contain something with unwalkable on it
+                for (int i = 0; i < colliders.Length; i++)
                 {
-                    //Puts all colliders within a tile in a colliders array
-                    colliders = Physics2D.OverlapBoxAll(new Vector2(x + origin.x + .5f, y + origin.y + .5f), new Vector2(0.5f, 0.5f), 0);
-
-                    for (int i = 0; i < colliders.Length; i++)
+                    if (colliders[i].CompareTag("UnWalkable"))
                     {
-                        if (colliders[i].CompareTag("UnWalkable") && tilePlaced == false)
-                        {
-                            GameObject instance = Instantiate(badTile, new Vector2(x + origin.x + .5f, y + origin.y + .5f), Quaternion.identity);
-                            instance.transform.localScale = new Vector3(.5f, .5f, 0);
-                            instance.AddComponent<BoxCollider2D>().size *= 2;
-                            instance.name = x + " " + y;
-                            tilePlaced = true;
-                        }
+                        tilePlaced = true;
+                        break;
                     }
+                }
 
-                    //If there are no unwalkable colliders within a tile
+                //If there are no unwalkable colliders within a tile
+                if (!tilePlaced)
+                {
                     for (int i = 0; i < colliders.Length; i++)
                     {
-                        if (colliders[i].CompareTag("Walkable") && tilePlaced == false)
+                        if (colliders[i].CompareTag("Walkable"))
                         {
                             GameObject instance = Instantiate(goodTile, new Vector2(x + origin.x + .5f, y + origin.y + .5f), Quaternion.identity);
                             instance.transform.localScale = new Vector3(.5f, .5f, 0);
-                            instance.AddComponent<BoxCollider2D>().size *= 2;
                             instance.GetComponent<PathNode>().x = x;
                             instance.GetComponent<PathNode>().y = y;
                             nodes[x, y] = instance.GetComponent<PathNode>();
                             instance.name = x + " " + y;
-                            tilePlaced = true;
+                            break; //Removing this causes Unity to crash
                         }
                     }
                 }
@@ -93,7 +90,7 @@ public class CustomGrid : MonoBehaviour
         {
             for (int y = 0; y < numRows; y+=5) //Drawing every tile cripples performance
             {
-                Handles.Label(new Vector2(origin.x + x + cellSize, origin.y + y + cellSize), x + " " + y);
+                Handles.Label(new Vector2(origin.x + x, origin.y + y + cellSize), x + " " + y);
             }
         }
         //Draw the grid in the editor with Gizmos.DrawLines

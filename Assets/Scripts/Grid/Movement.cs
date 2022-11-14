@@ -83,7 +83,6 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         }
         if (grid.gridFinished && !wanderSetup && wander && !isPlayer)
         {
-            wanderSetup = true;
             SetupWander();
         }
 
@@ -179,6 +178,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
             }
         }
 
+        wanderSetup = true;
         Wander();
     }
 

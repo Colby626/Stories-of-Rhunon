@@ -12,10 +12,30 @@ public class PathNode : MonoBehaviour
     public PathNode[] adjacentNodes;
     public PathNode cameFromNode;
 
+    private Color baseColor;
+    private Color badColor;
+    private CustomGrid grid;
+
     public GameMaster gameMaster;
+
     private void Start()
     {
         gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        grid = gameMaster.grid;
+        badColor = grid.GetComponent<CustomGrid>().badTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+        baseColor = GetComponentInChildren<SpriteRenderer>().color;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        transform.GetChild(1).GetComponent<SpriteRenderer>().color = badColor;
+        transform.GetChild(2).GetComponent<SpriteRenderer>().color = badColor;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        transform.GetChild(1).GetComponent<SpriteRenderer>().color = baseColor;
+        transform.GetChild(2).GetComponent<SpriteRenderer>().color = baseColor;
     }
 
     private void OnMouseDown()
