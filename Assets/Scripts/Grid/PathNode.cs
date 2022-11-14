@@ -13,8 +13,8 @@ public class PathNode : MonoBehaviour
     public PathNode[] adjacentNodes;
     public PathNode cameFromNode;
     public List<PathNode> neighborsList = new();
+    public Color baseColor;
 
-    private Color baseColor;
     private Color badColor;
     private CustomGrid grid;
 

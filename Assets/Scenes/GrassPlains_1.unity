@@ -192,7 +192,7 @@ Transform:
   m_Children:
   - {fileID: 1527033608}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &291050362
 GameObject:
@@ -55467,6 +55467,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: battleStarted
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6714195307129551134, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_Name
@@ -55665,6 +55670,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034010280295920523, guid: 6b5a578cd864e16419d09731727a9b31,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8712134181227269113, guid: 6b5a578cd864e16419d09731727a9b31,
         type: 3}
@@ -56059,6 +56069,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin
       objectReference: {fileID: 0}
+    - target: {fileID: 801831832196101546, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2261491015446977864, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_IsTrigger
@@ -56158,6 +56173,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 4034010280295920523, guid: 6b5a578cd864e16419d09731727a9b31,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8712134181227269113, guid: 6b5a578cd864e16419d09731727a9b31,
         type: 3}
       propertyPath: m_IsTrigger
@@ -56176,6 +56196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dark Creature
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960179391295818991, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
         type: 3}
@@ -56307,7 +56332,7 @@ PrefabInstance:
     - target: {fileID: 1211944257266054045, guid: 72d6962769709fb4e9f5b9f3046fa175,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1211944257266054045, guid: 72d6962769709fb4e9f5b9f3046fa175,
         type: 3}
@@ -56378,6 +56403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: partyY
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535606136392239002, guid: 72d6962769709fb4e9f5b9f3046fa175,
+        type: 3}
+      propertyPath: distanceToLookForParticipants
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72d6962769709fb4e9f5b9f3046fa175, type: 3}

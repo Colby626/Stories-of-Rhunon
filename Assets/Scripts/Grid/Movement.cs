@@ -23,6 +23,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     private Pathfinding pathfinding;
     private CustomGrid grid;
     private PathNode startingNode;
+    private List<PathNode> playerPath;
     private RaycastHit2D[] raycast;
     private Collider2D[] colliders;
     private List<Vector2> vectorPath;
@@ -79,6 +80,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         if (grid.gridFinished && !startPositionDetermined)
         {
             startPositionDetermined = true;
+            gameMaster.startPositionDetermined = true;
             DetermineStartPosition();
         }
         if (grid.gridFinished && !wanderSetup && wander && !isPlayer)
@@ -142,6 +144,11 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
             if (Vector2.Distance((Vector2)transform.position, targetPosition) < centeringOffset)
             {
+                if (isPlayer)
+                {
+                    gameMaster.partyNode = playerPath[0];
+                    playerPath.Remove(playerPath[0]);
+                }
                 vectorPath.Remove(vectorPath[0]);
             }
         }
@@ -200,7 +207,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         startingNode = path[path.Count- 1]; //Sets the new starting location to whereever the end position is
         if (isPlayer)
         {
-            gameMaster.partyNode = startingNode; 
+            playerPath = path;
         }
         vectorPath = new List<Vector2>();
         

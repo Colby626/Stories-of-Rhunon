@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
-    public int battleBeginRange;
     public int distanceToLookForParticipants;
     public List<GameObject> participants;
 
@@ -14,8 +13,11 @@ public class GameMaster : MonoBehaviour
     public CustomGrid grid;
     public PathNode partyNode;
     public PathNode targetNode;
+    public bool startPositionDetermined = false;
 
-    private RaycastHit2D[] hits;
+    private bool battleSetupStarted = false;
+    private Collider2D[] colliders;
+    private List<PathNode> partyNeighbors = new();
 
     public static GameMaster instance;
     private void Awake()
@@ -33,23 +35,35 @@ public class GameMaster : MonoBehaviour
 
     private void Update()
     {
-        //If enemies in battleBeginRange
-        //battlestart
-        //lookforparticipants
+        if (startPositionDetermined && !battleSetupStarted)
+        {
+            partyNeighbors = partyNode.GetNeighborNodes();
+        
+            foreach (PathNode node in partyNeighbors)
+            {
+                if (node.transform.GetChild(1).GetComponent<SpriteRenderer>().color != node.GetComponent<PathNode>().baseColor)
+                {
+                    battleSetupStarted = true;
+                    LookForParticipants();
+                }
+            }
+        }
     }
 
     public void LookForParticipants()
     {
         //check tiles outward from contact with enemy and player with a distance of distanceToLookForPartcipants and put them in participants list then call StartBattle
-        hits = Physics2D.BoxCastAll(new Vector2(partyNode.x, partyNode.y), new Vector2(distanceToLookForParticipants, distanceToLookForParticipants), 0, Vector2.zero);
+        colliders = Physics2D.OverlapBoxAll(new Vector2(partyNode.x + grid.origin.x, partyNode.y + grid.origin.y), new Vector2(distanceToLookForParticipants, distanceToLookForParticipants), 0);
 
-        foreach (RaycastHit2D hit in hits)
+        foreach (Collider2D collider in colliders)
         {
-            if (hit.transform.gameObject.CompareTag("Participant"))
+            if (collider.transform.gameObject.CompareTag("Participant"))
             {
-                participants.Append(hit.transform.gameObject);
+                participants.Add(collider.transform.gameObject);
             }
         }
+
+        StartBattle();
     }
 
     public void StartBattle()
@@ -62,5 +76,14 @@ public class GameMaster : MonoBehaviour
     public void EndBattle()
     {
         participants.Clear();
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (battleSetupStarted)
+        {
+            Gizmos.color = Color.yellow; //Sets the color of the distance it looks for participants to yellow
+            Gizmos.DrawWireCube(new Vector3(partyNode.x + grid.origin.x, partyNode.y + grid.origin.y), new Vector3(distanceToLookForParticipants, distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
+        }
     }
 }

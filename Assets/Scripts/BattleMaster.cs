@@ -77,6 +77,7 @@ public class BattleMaster : MonoBehaviour
         }
         DontDestroyOnLoad(this);
 
+        /* this comment makes my demo scene not work. Working on Pathfinding for now
         //Finds all the participants
         characterArray = GameObject.FindGameObjectsWithTag("Participant");
         characters = new List<GameObject>(characterArray);
@@ -103,6 +104,7 @@ public class BattleMaster : MonoBehaviour
         {
             StartingTurnOrder();
         }
+        */
     }
 
     private void Start()
