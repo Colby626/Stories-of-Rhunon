@@ -54755,6 +54755,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4533ce72c4a89cc4bb01162596ae80ce, type: 3}
+--- !u!1 &578225343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6714195307129551134, guid: fc242547518354a45b9ba120ed6135f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1523658474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &795253457
 GameObject:
   m_ObjectHideFlags: 0
@@ -55093,7 +55099,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1523658474}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 578225343}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c279201b610f874d9252015eb57a77e, type: 3}
@@ -55412,6 +55418,64 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6240884737694315, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240884909635475, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 40866935500209579, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40866935500209579, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 434202786085506813, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 434202786085506813, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286885354533978929, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286885354533978929, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298494456713870467, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298494456713870467, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094746405967848084, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094746405967848084, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3444737388573469852, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_RootOrder
@@ -55467,15 +55531,55 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4135725625901180938, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135725625901180938, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: battleStarted
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347934449704604080, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347934449704604080, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6714195307129551134, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_Name
       value: BattleMaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727104525197943755, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727104525197943755, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541433644811315702, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541433644811315702, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
@@ -56396,6 +56500,11 @@ PrefabInstance:
       objectReference: {fileID: 1274621329}
     - target: {fileID: 1535606136392239002, guid: 72d6962769709fb4e9f5b9f3046fa175,
         type: 3}
+      propertyPath: menus
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535606136392239002, guid: 72d6962769709fb4e9f5b9f3046fa175,
+        type: 3}
       propertyPath: partyX
       value: 0
       objectReference: {fileID: 0}
@@ -56404,6 +56513,16 @@ PrefabInstance:
       propertyPath: partyY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1535606136392239002, guid: 72d6962769709fb4e9f5b9f3046fa175,
+        type: 3}
+      propertyPath: battleHud
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535606136392239002, guid: 72d6962769709fb4e9f5b9f3046fa175,
+        type: 3}
+      propertyPath: battleMaster
+      value: 
+      objectReference: {fileID: 578225343}
     - target: {fileID: 1535606136392239002, guid: 72d6962769709fb4e9f5b9f3046fa175,
         type: 3}
       propertyPath: distanceToLookForParticipants

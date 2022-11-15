@@ -41,7 +41,7 @@ public class GameMaster : MonoBehaviour
         
             foreach (PathNode node in partyNeighbors)
             {
-                if (node.transform.GetChild(1).GetComponent<SpriteRenderer>().color != node.GetComponent<PathNode>().baseColor)
+                if (node.transform.GetChild(1).GetComponent<SpriteRenderer>().color != node.GetComponent<PathNode>().baseColor) //Start battle sequence if next to a tile that has a different color than base color
                 {
                     battleSetupStarted = true;
                     LookForParticipants();
@@ -60,6 +60,13 @@ public class GameMaster : MonoBehaviour
             if (collider.transform.gameObject.CompareTag("Participant"))
             {
                 participants.Add(collider.transform.gameObject);
+                collider.GetComponentInParent<Movement>().wander = false;
+                collider.gameObject.AddComponent<MouseOver>();
+                collider.gameObject.AddComponent<StatusManager>();
+                collider.gameObject.GetComponent<StatusManager>().overheadHealthBar = collider.transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
+                collider.gameObject.GetComponent<StatusManager>().healthBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(1).GetComponent<StatBar>();
+                collider.gameObject.GetComponent<StatusManager>().healthBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(2).GetComponent<StatBar>();
+                collider.gameObject.GetComponent<StatusManager>().healthBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(3).GetComponent<StatBar>();
             }
         }
 
@@ -68,9 +75,7 @@ public class GameMaster : MonoBehaviour
 
     public void StartBattle()
     {
-        //Set Mouseover and Status Manager to active on the players
-        //Instantiate(battleHud);
-        //Instantiate(menus);
+        battleMaster.GetComponent<BattleMaster>().StartBattle(participants);
     }
 
     public void EndBattle()

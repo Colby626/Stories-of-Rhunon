@@ -17,7 +17,6 @@ public class BattleMaster : MonoBehaviour
     public Button inventoryButton;
     [Tooltip("The time in seconds it waits before letting an AI run their turn")]
     public int delayBeforeEnemyTurns = 1;
-
     
     public List<Image> portraits;
     public List<TextMeshProUGUI> namesList;
@@ -35,6 +34,8 @@ public class BattleMaster : MonoBehaviour
     public bool attackPressed = false;
     [HideInInspector]
     public bool attackDone = false;
+    [HideInInspector]
+    public bool turnOrderCalculated = false;
     public bool battleStarted;
     public int howFarInTheFutureYouCalculateTurnOrder = 50;
 
@@ -99,11 +100,6 @@ public class BattleMaster : MonoBehaviour
                 livingEnemies.Add(character);
             }
         }
-
-        if (battleStarted == true)
-        {
-            StartingTurnOrder();
-        }
         */
     }
 
@@ -111,13 +107,15 @@ public class BattleMaster : MonoBehaviour
     {
         if (battleStarted)
         {
-            StartBattle();
+            characterArray = GameObject.FindGameObjectsWithTag("Participant");
+            characters = new List<GameObject>(characterArray);
+            StartBattle(characters);
         }
     }
 
     void Update()
     {
-        if (battleStarted)
+        if (turnOrderCalculated && battleStarted)
         {
             if (currentCharacter.GetComponent<CharacterSheet>().isDead)
             {
@@ -137,10 +135,7 @@ public class BattleMaster : MonoBehaviour
 
             //Displays the character to go's name on the screen
             //will be removed
-            if (battleStarted)
-            {
-                turn.text = "It is " + currentCharacter.GetComponent<CharacterSheet>().Name + "'s turn";
-            }
+            turn.text = "It is " + currentCharacter.GetComponent<CharacterSheet>().Name + "'s turn";
 
             if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
             {
@@ -157,11 +152,29 @@ public class BattleMaster : MonoBehaviour
         }
     }
 
-    public void StartBattle()
+    public void StartBattle(List<GameObject> participants)
     {
+        characters = participants;
         battleStarted = true;
+        battleHud.SetActive(true);
         StartingTurnOrder();
-        currentCharacter = turnOrder[0];
+
+        foreach (GameObject character in characters)
+        {
+            if (character.GetComponent<CharacterSheet>().isPlayer)
+            {
+                livingPlayers.Add(character);
+            }
+        }
+
+        //Gets a list of the enemies
+        foreach (GameObject character in characters)
+        {
+            if (!character.GetComponent<CharacterSheet>().isPlayer)
+            {
+                livingEnemies.Add(character);
+            }
+        }
 
         //Displays the levelUpButton if the currentCharacter has enough XP to LevelUp
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer && currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
@@ -276,6 +289,8 @@ public class BattleMaster : MonoBehaviour
                 exit = true;
             }
         }
+        currentCharacter = turnOrder[0];
+        turnOrderCalculated = true;
         LoadPortraits();
     }
 
@@ -479,7 +494,6 @@ public class BattleMaster : MonoBehaviour
         }
     }
 
-
     void LoadPortraits()
     {
         //Display portraits, names, and healths for the turn order
@@ -491,5 +505,17 @@ public class BattleMaster : MonoBehaviour
             healthBars[i].SetBarMax(turnOrder[turnCounter + i].GetComponent<CharacterSheet>().MaxHealth);
             healthBars[i].SetBar(turnOrder[turnCounter + i].GetComponent<CharacterSheet>().Health);
         }
+    }
+
+    public void Reset()
+    {
+        battleStarted = false;
+        turnOrder.Clear();
+        characters.Clear();
+        livingEnemies.Clear();
+        livingEnemies.Clear();
+        turnOrderCalculated = false;
+        turnCounter = 0;
+        characterindex = 0;
     }
 }

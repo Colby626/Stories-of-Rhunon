@@ -89,7 +89,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         }
 
         wanderTimer -= Time.deltaTime;
-        if (wander && wanderSetup && !isMoving && !isPlayer && wanderTimer <= 0)
+        if (wander && wanderSetup && !isMoving && !isPlayer && wanderTimer <= 0 && !gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted)
         {
             Wander();
         }

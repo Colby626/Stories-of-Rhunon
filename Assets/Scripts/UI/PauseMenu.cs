@@ -64,6 +64,8 @@ public class PauseMenu : MonoBehaviour
             audioMixer.SetFloat("PausedMasterVolume", 0);
             gamePaused = false;
         }
+        battleMaster.Reset();
+        pauseMenu.SetActive(false);
 
         SceneManager.LoadScene("MainMenu");
         AudioManager.instance.Stop("BattleMusic");
