@@ -96,6 +96,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StopAll ()
+    {
+        foreach (Sound sound in sounds)
+        {
+            sound.audioSource.Stop();
+        }
+    }
+
     //This function is for Eric
     public void NextSong()
     {

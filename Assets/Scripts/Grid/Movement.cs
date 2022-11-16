@@ -26,7 +26,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     private List<PathNode> playerPath;
     private RaycastHit2D[] raycast;
     private Collider2D[] colliders;
-    private List<Vector2> vectorPath;
+    public List<Vector2> vectorPath;
     private Vector2 targetPosition;
     private Vector2 moveDirection;
     private bool isMoving = false;

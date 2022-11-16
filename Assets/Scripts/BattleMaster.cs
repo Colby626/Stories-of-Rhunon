@@ -189,7 +189,7 @@ public class BattleMaster : MonoBehaviour
         //Display status of current character is they are a player
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
+            currentCharacter.GetComponentInParent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
         }
 
         //If the next person in line is not a player the AI will attack one of them at random
@@ -231,7 +231,7 @@ public class BattleMaster : MonoBehaviour
 
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>()); //Activates the status menu at the bottom to match the current character
+            currentCharacter.GetComponentInParent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>()); //Activates the status menu at the bottom to match the current character
         }
     }
 

@@ -49,12 +49,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   centeringOffset: 0.1
-  spriteOffset: 0.5
-  xPosition: 0
-  yPosition: 0
+  xPosition: 59
+  yPosition: 6
+  spriteFacingLeft: 0
   viewRange: 0
   wanderRange: 0
   wander: 0
+  wanderDelayMin: 0
+  wanderDelayMax: 0
+  vectorPath: []
 --- !u!1001 &542170189452386740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147,6 +150,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6120948388800177419, guid: 4cf0570e631a7114eac00a291f7963e7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120948388800177419, guid: 4cf0570e631a7114eac00a291f7963e7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120948388800177419, guid: 4cf0570e631a7114eac00a291f7963e7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9095456782398279066, guid: 4cf0570e631a7114eac00a291f7963e7,
         type: 3}
       propertyPath: m_Enabled
@@ -169,6 +187,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 542170188930115357}
     m_Modifications:
+    - target: {fileID: 400672371818195605, guid: 3b6cff6183a5f954bbbabcd09725fdf7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400672371818195605, guid: 3b6cff6183a5f954bbbabcd09725fdf7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400672371818195605, guid: 3b6cff6183a5f954bbbabcd09725fdf7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3406707619931488772, guid: 3b6cff6183a5f954bbbabcd09725fdf7,
         type: 3}
       propertyPath: m_Enabled
@@ -276,6 +309,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 542170188930115357}
     m_Modifications:
+    - target: {fileID: 1221191457689005453, guid: fc538c9b0b4ca654fb566b3bd6bf334b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221191457689005453, guid: fc538c9b0b4ca654fb566b3bd6bf334b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221191457689005453, guid: fc538c9b0b4ca654fb566b3bd6bf334b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4195943942067324188, guid: fc538c9b0b4ca654fb566b3bd6bf334b,
         type: 3}
       propertyPath: m_Enabled

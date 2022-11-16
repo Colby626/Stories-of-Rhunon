@@ -45,18 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fdd27f8a2939340b4065c554a2003c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToLookForParticipants: 20
+  distanceToLookForParticipants: 15
   participants: []
-  battleMaster: {fileID: 6714195307129551134, guid: fc242547518354a45b9ba120ed6135f3,
-    type: 3}
-  battleHud: {fileID: 8596790381319742263, guid: 2199af7bbaab32e49b0d46c58326c0db,
-    type: 3}
-  menus: {fileID: 8786470853535599457, guid: 71e51f21a8848564985c71ca477b706d, type: 3}
+  highlightMaterial: {fileID: 2100000, guid: 80f6ae4829e86d149aa2e7876877c084, type: 2}
+  party: {fileID: 0}
+  battleMaster: {fileID: 0}
   grid: {fileID: 0}
-  Party: {fileID: 0}
   partyNode: {fileID: 0}
-  partyX: 60
-  partyY: 7
+  targetNode: {fileID: 0}
+  startPositionDetermined: 0
 --- !u!114 &1659767146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,4 +68,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: []
   colliders: []
-  partyNode: {fileID: 0}
+  speed: 5

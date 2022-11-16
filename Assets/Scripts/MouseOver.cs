@@ -26,7 +26,17 @@ public class MouseOver : MonoBehaviour
 
     private void Start()
     {
-        characterSprite = GetComponent<SpriteRenderer>();
+        if (GetComponent<CharacterSheet>())
+        {
+            if (GetComponent<CharacterSheet>().isPlayer)
+            {
+                characterSprite = GetComponent<SpriteRenderer>();
+            }
+        }
+        else
+        {
+            characterSprite = transform.GetChild(0).GetComponent<SpriteRenderer>(); //SpriteRenderer is on the child
+        }
         character = characterSprite.GetComponent<CharacterSheet>();
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
         characterMaterial = character.GetComponent<SpriteRenderer>().material;
@@ -76,6 +86,8 @@ public class MouseOver : MonoBehaviour
             character.GetComponent<SpriteRenderer>().material = characterMaterial;
             isHighlighted = false;
         }
+
+        character.OnMouseDown();
     }
 
     //Remove status window and unhighlight

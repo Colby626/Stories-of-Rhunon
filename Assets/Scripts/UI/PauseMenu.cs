@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.DebugUI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && battleMaster.battleStarted == true)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gamePaused)
             {
@@ -37,7 +36,10 @@ public class PauseMenu : MonoBehaviour
 
     public void Unpause()
     {
-        battleHud.SetActive(true);
+        if (battleMaster.battleStarted)
+        {
+            battleHud.SetActive(true);
+        }
         pauseMenu.SetActive(false);
         if (optionsMenu.activeSelf)
         {
@@ -68,7 +70,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
 
         SceneManager.LoadScene("MainMenu");
-        AudioManager.instance.Stop("BattleMusic");
+        AudioManager.instance.StopAll();
         AudioManager.instance.Play("MainMenuMusic");
     }
 

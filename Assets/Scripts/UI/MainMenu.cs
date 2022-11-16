@@ -15,9 +15,9 @@ public class MainMenu : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("ColbyDemo");
-        AudioManager.instance.Stop("MainMenuMusic");
-        AudioManager.instance.Play("BattleMusic");
+        SceneManager.LoadScene("GrassPlains_1");
+        AudioManager.instance.StopAll();
+        AudioManager.instance.Play("ExploringMusic");
     }
 
     public void QuitButton()

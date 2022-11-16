@@ -83,10 +83,11 @@ public class CharacterSheet : MonoBehaviour
     [Header("Programmer stuff:")]
     public float movementSpeed;
     public int turnOrderPriority;
-    public BattleMaster battleMaster;
     public bool isPlayer;
     public bool isDead = false;
     #endregion
+
+    private BattleMaster battleMaster;
 
     #region Sound Variables
     private string noWhitespaceName;
@@ -111,6 +112,7 @@ public class CharacterSheet : MonoBehaviour
         MaxStamina = characterStats.Endurance;
         characterStats.Damage = characterStats.Strength;
         characterStats.XPtoLevelUp = 10; //This is the starting value for the amount of XP it takes to level up
+        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
 
         characterEquipment = new List<Equipment> { GetComponent<CharacterEquipment>().Head, GetComponent<CharacterEquipment>().Torso,
             GetComponent<CharacterEquipment>().Arms, GetComponent<CharacterEquipment>().Legs, GetComponent<CharacterEquipment>().ArmSlot1,
@@ -197,7 +199,7 @@ public class CharacterSheet : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (GetComponent<MouseOver>()) //MouseOver should only be on the character after a battle has started, this prevents an error if you click on them outside of battle
+        if (GetComponentInParent<MouseOver>()) //MouseOver should only be on the character after a battle has started, this prevents an error if you click on them outside of battle
         {
             //Checks if the player is clicking attack on a character
             if (battleMaster.attackPressed && !isPlayer && battleMaster.battleStarted)

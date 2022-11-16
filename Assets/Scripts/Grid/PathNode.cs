@@ -42,7 +42,10 @@ public class PathNode : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameMaster.targetNode = this;
+        if (!gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && Time.timeScale > 0) //If a battle isn't happening and the game isn't paused
+        {
+            gameMaster.targetNode = this;
+        }
     }
 
     public void CalculateFCost()
@@ -52,7 +55,10 @@ public class PathNode : MonoBehaviour
 
     public void OnMouseOver()
     {
-        transform.GetChild(0).gameObject.SetActive(true);
+        if (Time.timeScale != 0) //If the game isn't paused
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 
     private void OnMouseExit()
