@@ -36,33 +36,36 @@ public class MouseOver : MonoBehaviour
     //Highlights the character when the mouse is over them and displays their status menu
     void OnMouseOver()
     {
-        if (!character.isDead && character.isPlayer)
+        if (battleMaster.battleStarted)
         {
-            ActivateStatus(character);
-        }
+            if (!character.isDead && character.isPlayer)
+            {
+                ActivateStatus(character);
+            }
 
-        if (!character.isPlayer && !character.isDead && !pauseMenu.gamePaused)
-        {
-            character.transform.GetChild(0).gameObject.SetActive(true);
-            overheadHealthBar.SetBarMax(character.MaxHealth);
-            overheadHealthBar.SetBar(character.Health);
-            overheadNameText.text = character.Name;
-        }
+            if (!character.isPlayer && !character.isDead && !pauseMenu.gamePaused)
+            {
+                character.transform.GetChild(0).gameObject.SetActive(true);
+                overheadHealthBar.SetBarMax(character.MaxHealth);
+                overheadHealthBar.SetBar(character.Health);
+                overheadNameText.text = character.Name;
+            }
         
-        if (!isHighlighted && !character.isDead && !pauseMenu.gamePaused)
-        {
-            character.GetComponent<SpriteRenderer>().material = highlightMaterial;
-            isHighlighted = true;
-        }
+            if (!isHighlighted && !character.isDead && !pauseMenu.gamePaused)
+            {
+                character.GetComponent<SpriteRenderer>().material = highlightMaterial;
+                isHighlighted = true;
+            }
 
-        if (character.isDead || pauseMenu.gamePaused)
-        {
-            character.transform.GetChild(0).gameObject.SetActive(false);
-        }
+            if (character.isDead || pauseMenu.gamePaused)
+            {
+                character.transform.GetChild(0).gameObject.SetActive(false);
+            }
 
-        if (!character.isDead && !pauseMenu.gamePaused && !character.isPlayer)
-        {
-            character.transform.GetChild(0).gameObject.SetActive(true);
+            if (!character.isDead && !pauseMenu.gamePaused && !character.isPlayer)
+            {
+                character.transform.GetChild(0).gameObject.SetActive(true);
+            }
         }
     }
 

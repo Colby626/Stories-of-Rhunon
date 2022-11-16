@@ -1,15 +1,14 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
     public int distanceToLookForParticipants;
     public List<GameObject> participants;
 
+    public GameObject party;
     public GameObject battleMaster;
-    public GameObject battleHud;
-    public GameObject menus;
     public CustomGrid grid;
     public PathNode partyNode;
     public PathNode targetNode;
@@ -62,11 +61,18 @@ public class GameMaster : MonoBehaviour
                 participants.Add(collider.transform.gameObject);
                 collider.GetComponentInParent<Movement>().wander = false;
                 collider.gameObject.AddComponent<MouseOver>();
+                collider.gameObject.GetComponent<MouseOver>().battleMaster = battleMaster.GetComponent<BattleMaster>();
+                collider.gameObject.GetComponent<MouseOver>().overheadHealthBar = collider.transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
+                collider.gameObject.GetComponent<MouseOver>().healthBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(1).GetComponent<StatBar>();
+                collider.gameObject.GetComponent<MouseOver>().manaBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(2).GetComponent<StatBar>();
+                collider.gameObject.GetComponent<MouseOver>().staminaBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(3).GetComponent<StatBar>();
+                collider.gameObject.GetComponent<MouseOver>().portrait = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
+                collider.gameObject.GetComponent<MouseOver>().nameText = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(4).GetComponent<Text>();
                 collider.gameObject.AddComponent<StatusManager>();
                 collider.gameObject.GetComponent<StatusManager>().overheadHealthBar = collider.transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
                 collider.gameObject.GetComponent<StatusManager>().healthBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(1).GetComponent<StatBar>();
-                collider.gameObject.GetComponent<StatusManager>().healthBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(2).GetComponent<StatBar>();
-                collider.gameObject.GetComponent<StatusManager>().healthBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(3).GetComponent<StatBar>();
+                collider.gameObject.GetComponent<StatusManager>().magicBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(2).GetComponent<StatBar>();
+                collider.gameObject.GetComponent<StatusManager>().staminaBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(3).GetComponent<StatBar>();
             }
         }
 
@@ -75,11 +81,18 @@ public class GameMaster : MonoBehaviour
 
     public void StartBattle()
     {
+        party.GetComponent<Movement>().enabled = false;
+        AudioManager.instance.Stop("ExploringMusic");
+        AudioManager.instance.Play("BattleMusic");
         battleMaster.GetComponent<BattleMaster>().StartBattle(participants);
     }
 
     public void EndBattle()
     {
+        party.GetComponent<Movement>().enabled = true;
+        AudioManager.instance.Stop("BattleMusic");
+        AudioManager.instance.Play("ExploringMusic");
+        battleMaster.GetComponent<BattleMaster>().Reset();
         participants.Clear();
     }
 
