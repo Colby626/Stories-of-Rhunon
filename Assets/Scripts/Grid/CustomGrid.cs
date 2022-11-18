@@ -7,8 +7,9 @@ public class CustomGrid : MonoBehaviour
     public int numColumns;
     public int numRows;
     public Vector2Int origin;
-    public GameObject goodTile;
-    public GameObject badTile;
+    public GameObject whiteTile;
+    public GameObject redTile;
+    public GameObject blueTile;
     [HideInInspector]
     public bool gridFinished = false;
 
@@ -51,7 +52,7 @@ public class CustomGrid : MonoBehaviour
                     {
                         if (colliders[i].CompareTag("Walkable"))
                         {
-                            GameObject instance = Instantiate(goodTile, new Vector2(x + origin.x + .5f, y + origin.y + .5f), Quaternion.identity);
+                            GameObject instance = Instantiate(whiteTile, new Vector2(x + origin.x + .5f, y + origin.y + .5f), Quaternion.identity);
                             instance.transform.localScale = new Vector3(.5f, .5f, 0);
                             instance.GetComponent<PathNode>().x = x;
                             instance.GetComponent<PathNode>().y = y;

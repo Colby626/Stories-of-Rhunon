@@ -1,7 +1,7 @@
 using System.Collections.Generic; //For lists
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
+using System.Linq; //For getting list counts
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
 
@@ -25,6 +25,7 @@ public class BattleMaster : MonoBehaviour
     public List<GameObject> livingPlayers;
     public List<GameObject> livingEnemies;
     public GameObject currentCharacter;
+    public GameObject targetedPlayer;
     public GameObject targetedEnemy;
     public GameObject loseScreen;
     public GameObject winScreen;
@@ -487,8 +488,35 @@ public class BattleMaster : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeEnemyTurns);
 
-        if (livingPlayers.Count > 0 && !currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        if (livingPlayers.Count > 0)
         {
+            targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count())];
+            //If the player is to the right of the enemy
+            if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x < 0)
+            {
+                //If the enemy is facing left flip them
+                if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == false) 
+                {
+                    currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                }
+                else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == true) 
+                {
+                    currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                }
+            }
+            //If the player is to the left or directly above/below the enemy
+            if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x >= 0)
+            {
+                //If the enemy is facing right flip them
+                if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == false) 
+                {
+                    currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                }
+                else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == true) 
+                {
+                    currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                }
+            }
             currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
             AudioManager.instance.Play(currentCharacter.GetComponent<CharacterSheet>().attackSound);
         }

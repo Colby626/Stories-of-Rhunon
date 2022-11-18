@@ -7,6 +7,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 291740418399312558, guid: 339cb1acaafab554688cb3b57ad04cfb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310126134868287475, guid: 339cb1acaafab554688cb3b57ad04cfb,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5282638933431217125, guid: b074fd2762381d94596fe5258f2d5ad3,
+        type: 2}
+    - target: {fileID: 2851423929540689215, guid: 339cb1acaafab554688cb3b57ad04cfb,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5282638933431217125, guid: b074fd2762381d94596fe5258f2d5ad3,
+        type: 2}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_RootOrder
@@ -15,27 +32,27 @@ PrefabInstance:
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6068096
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6068096
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
@@ -50,17 +67,17 @@ PrefabInstance:
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949315082232947738, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
@@ -80,7 +97,17 @@ PrefabInstance:
     - target: {fileID: 2949315082232947739, guid: 339cb1acaafab554688cb3b57ad04cfb,
         type: 3}
       propertyPath: m_Name
-      value: Goblin
+      value: Goblin Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020468084750160030, guid: 339cb1acaafab554688cb3b57ad04cfb,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020468084750160030, guid: 339cb1acaafab554688cb3b57ad04cfb,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2418278438596320911, guid: 339cb1acaafab554688cb3b57ad04cfb, type: 3}
@@ -106,11 +133,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   centeringOffset: 0.1
-  spriteOffsetY: 0.14
-  spriteOffsetX: 0.5
-  xPosition: 64
-  yPosition: 5
+  spriteFacingLeft: 0
   viewRange: 0
   wanderRange: 2
   wander: 1
-  wanderDelay: 5
+  wanderDelayMin: 0
+  wanderDelayMax: 0
+  vectorPath: []

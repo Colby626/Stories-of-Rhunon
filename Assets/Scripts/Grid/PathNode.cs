@@ -14,6 +14,7 @@ public class PathNode : MonoBehaviour
     public PathNode cameFromNode;
     public List<PathNode> neighborsList = new();
     public Color baseColor;
+    public bool enemyVisibleTile = false;
 
     private Color badColor;
     private CustomGrid grid;
@@ -24,7 +25,7 @@ public class PathNode : MonoBehaviour
     {
         gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         grid = gameMaster.grid;
-        badColor = grid.GetComponent<CustomGrid>().badTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+        badColor = grid.GetComponent<CustomGrid>().redTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
         baseColor = GetComponentInChildren<SpriteRenderer>().color;
     }
 

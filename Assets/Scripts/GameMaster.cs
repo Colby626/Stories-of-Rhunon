@@ -36,19 +36,10 @@ public class GameMaster : MonoBehaviour
 
     private void Update()
     {
-        if (startPositionDetermined && !battleSetupStarted)
-        {
-            partyNeighbors = partyNode.GetNeighborNodes();
-        
-            foreach (PathNode node in partyNeighbors)
-            {
-                if (node.transform.GetChild(1).GetComponent<SpriteRenderer>().color != node.GetComponent<PathNode>().baseColor) //Start battle sequence if next to a tile that has a different color than base color
-                {
-                    battleSetupStarted = true;
-                    LookForParticipants();
-                }
-            }
-        }
+        //Starts battle when an enemy is within one square of the players 
+        //Will be changed to when an enemy is within viewing range of the player 
+        //The Look for participants will be centered on the enemy that saw the player
+        //It will also search from the center of any enemy that is within the range of the first one 
     }
 
     public void LookForParticipants()
@@ -61,7 +52,6 @@ public class GameMaster : MonoBehaviour
             if (collider.transform.gameObject.CompareTag("Participant"))
             {
                 participants.Add(collider.transform.gameObject);
-                collider.GetComponentInParent<Movement>().wander = false;
                 if (collider.GetComponent<CharacterSheet>().isPlayer)
                 {
                     collider.gameObject.AddComponent<MouseOver>();
@@ -103,8 +93,12 @@ public class GameMaster : MonoBehaviour
     {
         foreach (GameObject participant in participants)
         {
-            participant.GetComponentInParent<Movement>().wander = false;
-            participant.GetComponentInParent<Movement>().vectorPath.Clear();
+            if (participant.GetComponentInParent<Movement>().vectorPath.Count > 0)
+            {
+                Vector3 finishMove = participant.GetComponentInParent<Movement>().vectorPath[0];
+                participant.GetComponentInParent<Movement>().vectorPath.Clear();
+                participant.GetComponentInParent<Movement>().vectorPath.Add(finishMove);
+            }
         }
         AudioManager.instance.Stop("ExploringMusic");
         AudioManager.instance.Play("BattleMusic");

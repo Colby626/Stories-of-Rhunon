@@ -9,11 +9,14 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     public bool spriteFacingLeft;
 
     [Header("Enemy Stuff:")]
+    [Tooltip("Blue circle")]
     public int viewRange;
+    [Tooltip("Red circle")]
     public int wanderRange;
     public bool wander = false;
     public float wanderDelayMin;
     public float wanderDelayMax;
+    public RaycastHit2D[] visibleRange;
 
     private GameMaster gameMaster;
     private Pathfinding pathfinding;
@@ -33,19 +36,21 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     private PathNode wanderNode;
     private bool wanderSetup = false;
     private float wanderTimer;
+    private Vector3 startPosition;
     
 
     private void Start()
     {
+        startPosition = transform.position;
         gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         grid = gameMaster.GetComponent<GameMaster>().grid;
         pathfinding = gameMaster.GetComponent<Pathfinding>();
-        vectorPath = new List<Vector2>(); //For no errors in the console
+        vectorPath = new List<Vector2>(); //Prevents an error in the console
     }
 
     private void DetermineStartPosition()
     {
-        //Set the startingNode from whereever they are 
+        //Set the startingNode from wherever they are 
         colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.5f, 0.5f), 0);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -78,6 +83,22 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         if (grid.gridFinished && !wanderSetup && wander && !isPlayer)
         {
             SetupWander();
+        }
+
+        //If a pathnode within an enemies visible range is the partynode, start the battle sequence
+        if (grid.gridFinished && !isPlayer && !gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted)
+        {
+            visibleRange = Physics2D.CircleCastAll(transform.position, viewRange, Vector2.zero);
+            foreach (RaycastHit2D hit in visibleRange)
+            {
+                if (hit.transform.gameObject.GetComponent<PathNode>())
+                {
+                    if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode)
+                    {
+                        gameMaster.LookForParticipants();
+                    }
+                }
+            }
         }
 
         wanderTimer -= Time.deltaTime;
@@ -134,6 +155,13 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
             transform.Translate(pathfinding.speed * Time.deltaTime * moveDirection);
 
+            if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted)
+            {
+                Vector3 finishMove = vectorPath[0];
+                vectorPath.Clear();
+                vectorPath.Add(finishMove);
+            }
+
             if (Vector2.Distance((Vector2)transform.position, targetPosition) < centeringOffset)
             {
                 if (isPlayer)
@@ -142,7 +170,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
                     playerPath.Remove(playerPath[0]);
                 }
                 vectorPath.Remove(vectorPath[0]);
-            }
+            } 
         }
 
         if (vectorPath.Count == 0 && hasBeenMoving)
@@ -220,8 +248,20 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
     private void OnDrawGizmos()
     {
+        //Wander range red
         grid = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().grid;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, wanderRange);
+        if (Application.isPlaying)
+        {
+            Gizmos.DrawWireSphere(startPosition, wanderRange);
+        }
+        else
+        {
+            Gizmos.DrawWireSphere(transform.position, wanderRange);
+        }
+
+        //Viewing range blue
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, viewRange);
     }
 }

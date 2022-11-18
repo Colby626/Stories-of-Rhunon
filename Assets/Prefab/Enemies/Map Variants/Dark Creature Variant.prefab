@@ -7,15 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 889431353082175406, guid: 331e53a6ba261a84ea64ddb3cd447501,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 889431353082175406, guid: 331e53a6ba261a84ea64ddb3cd447501,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3218323957905271692, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_Size.x
-      value: 1.5694429
+      value: 2.1568635
       objectReference: {fileID: 0}
     - target: {fileID: 3218323957905271692, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_Offset.x
-      value: -0.30277365
+      value: -0.009063363
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
@@ -25,27 +35,27 @@ PrefabInstance:
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.54038
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.54038
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
@@ -60,17 +70,17 @@ PrefabInstance:
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8589781458273479466, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
@@ -90,7 +100,7 @@ PrefabInstance:
     - target: {fileID: 8589781458273479467, guid: 331e53a6ba261a84ea64ddb3cd447501,
         type: 3}
       propertyPath: m_Name
-      value: Dark Creature
+      value: Dark Creature Variant
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9103016901211574719, guid: 331e53a6ba261a84ea64ddb3cd447501, type: 3}
@@ -116,11 +126,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   centeringOffset: 0.1
-  spriteOffsetY: 0
-  spriteOffsetX: 0.63
-  xPosition: 53
-  yPosition: 8
+  spriteFacingLeft: 0
   viewRange: 0
   wanderRange: 0
   wander: 0
-  wanderDelay: 0
+  wanderDelayMin: 0
+  wanderDelayMax: 0
+  vectorPath: []

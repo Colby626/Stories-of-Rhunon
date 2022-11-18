@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 125503779360195824, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
       propertyPath: m_Name
-      value: Skeleton
+      value: Skeleton Variant
       objectReference: {fileID: 0}
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
@@ -20,27 +20,27 @@ PrefabInstance:
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5215926
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5215926
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.09
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
@@ -55,17 +55,17 @@ PrefabInstance:
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 125503779360195825, guid: fa1811070238eea499a66e6078bc23ae,
         type: 3}
@@ -106,11 +106,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   centeringOffset: 0.1
-  spriteOffsetY: 0.09
-  spriteOffsetX: 0.5
-  xPosition: 60
-  yPosition: 8
+  spriteFacingLeft: 0
   viewRange: 0
   wanderRange: 4
   wander: 1
-  wanderDelay: 15
+  wanderDelayMin: 0
+  wanderDelayMax: 0
+  vectorPath: []

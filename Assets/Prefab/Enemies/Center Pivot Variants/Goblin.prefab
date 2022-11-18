@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801831832196101546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4971602593731468782}
   m_Father: {fileID: 0}
@@ -49,14 +49,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   centeringOffset: 0.12
-  xPosition: 64
-  yPosition: 5
-  spriteFacingLeft: 1
-  viewRange: 0
+  spriteFacingLeft: 0
+  viewRange: 2
   wanderRange: 1
   wander: 1
-  wanderDelayMin: 8
-  wanderDelayMax: 16
+  wanderDelayMin: 2
+  wanderDelayMax: 5
   vectorPath: []
 --- !u!50 &1177362864
 Rigidbody2D:
@@ -132,6 +130,31 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3706381008967612549, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3706381008967612549, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1493212987
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867020696417256110, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867020696417256110, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734655340229357327, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5676936273041208874, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
         type: 3}
       propertyPath: m_RootOrder
@@ -145,7 +168,7 @@ PrefabInstance:
     - target: {fileID: 5676936273041208874, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.36
+      value: -0.502
       objectReference: {fileID: 0}
     - target: {fileID: 5676936273041208874, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
         type: 3}
@@ -191,6 +214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360956630104493507, guid: 0f40d9cb057cf6a4fa96425c5d78c60f,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 78395780395433734, guid: 0f40d9cb057cf6a4fa96425c5d78c60f, type: 3}
