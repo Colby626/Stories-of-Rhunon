@@ -15,6 +15,7 @@ public class GameMaster : MonoBehaviour
     public PathNode partyNode;
     public PathNode targetNode;
     public bool startPositionDetermined = false;
+    public bool movedOnTurn = false;
 
     private Collider2D[] colliders;
 
@@ -34,10 +35,7 @@ public class GameMaster : MonoBehaviour
 
     private void Update()
     {
-        //Starts battle when an enemy is within one square of the players 
-        //Will be changed to when an enemy is within viewing range of the player 
-        //The Look for participants will be centered on the enemy that saw the player
-        //It will also search from the center of any enemy that is within the range of the first one 
+        party.GetComponent<Movement>().occupyingNode = partyNode;
     }
 
     public void LookForParticipants(GameObject caller)

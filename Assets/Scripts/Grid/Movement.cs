@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     [Tooltip("How close to the center of a tile an entity must be to consider itself in that tile for movement")]
     public float centeringOffset = 0.1f;
     public bool spriteFacingLeft;
+    public PathNode occupyingNode;
 
     [Header("Enemy Stuff:")]
     [Tooltip("Blue circle")]
@@ -156,7 +157,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
             transform.Translate(pathfinding.speed * Time.deltaTime * moveDirection);
 
-            if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted)
+            if (lookingForParticipants)
             {
                 Vector3 finishMove = vectorPath[0];
                 vectorPath.Clear();

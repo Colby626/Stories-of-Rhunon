@@ -39,6 +39,7 @@ public class BattleMaster : MonoBehaviour
     public bool turnOrderCalculated = false;
     public bool battleStarted;
     public int howFarInTheFutureYouCalculateTurnOrder = 50;
+    public List<PathNode> moveableNodes;
 
     #endregion
 
@@ -46,6 +47,8 @@ public class BattleMaster : MonoBehaviour
     private GameObject[] characterArray;
     private int characterindex = 0;
     private int turnCounter = 0;
+    private GameMaster gameMaster;
+    private CustomGrid grid;
 
     [Header("Inventory:")]
     public GameObject inventory;
@@ -78,30 +81,6 @@ public class BattleMaster : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
-
-        /* this comment makes my demo scene not work. Working on Pathfinding for now
-        //Finds all the participants
-        characterArray = GameObject.FindGameObjectsWithTag("Participant");
-        characters = new List<GameObject>(characterArray);
-
-        //Gets a list of the players
-        foreach (GameObject character in characterArray)
-        {
-            if (character.GetComponent<CharacterSheet>().isPlayer)
-            {
-                livingPlayers.Add(character);
-            }
-        }
-
-        //Gets a list of the enemies
-        foreach (GameObject character in characterArray)
-        {
-            if (!character.GetComponent<CharacterSheet>().isPlayer)
-            {
-                livingEnemies.Add(character);
-            }
-        }
-        */
     }
 
     private void Start()
@@ -112,6 +91,9 @@ public class BattleMaster : MonoBehaviour
             characters = new List<GameObject>(characterArray);
             StartBattle(characters);
         }
+
+        gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        grid = gameMaster.grid;
     }
 
     void Update()
@@ -126,6 +108,11 @@ public class BattleMaster : MonoBehaviour
             if (attackDone)
             {
                 attackButton.interactable = false;
+            }
+
+            if (gameMaster.movedOnTurn)
+            {
+                ResetMovementLimit();
             }
 
             //checks if the turn counter is closer than 20 from the furthest calculated the list has gone and if so calculates the list further
@@ -198,11 +185,46 @@ public class BattleMaster : MonoBehaviour
         {
             StartCoroutine(EnemyTurn()); //Delay for enemy turns
         }
+
+        LimitMovement();
+    }
+
+    private void LimitMovement()
+    {
+        int maxMoveDistance = currentCharacter.GetComponent<CharacterSheet>().characterStats.Speed / 5;
+        for (int x = currentCharacter.GetComponentInParent<Movement>().occupyingNode.x - maxMoveDistance; x <= currentCharacter.GetComponentInParent<Movement>().occupyingNode.x + maxMoveDistance; x++)
+        {
+            for (int y = currentCharacter.GetComponentInParent<Movement>().occupyingNode.y - maxMoveDistance; y <= currentCharacter.GetComponentInParent<Movement>().occupyingNode.y + maxMoveDistance; y++)
+            {
+                if (grid.GetGridObject(x, y) != null) //Position is walkable
+                {
+                    if (gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, grid.GetGridObject(x, y)).Count <= maxMoveDistance) //If you can get there within the amount of movement
+                    {
+                        moveableNodes.Add(grid.GetGridObject(x, y));
+                        grid.GetGridObject(x, y).transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+                        grid.GetGridObject(x, y).transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+                        grid.GetGridObject(x, y).validMovePosition = true;
+                    }
+                }
+            }
+        }
+    }
+
+    private void ResetMovementLimit()
+    {
+        foreach (PathNode node in moveableNodes)
+        {
+            node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.whiteTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+            node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.whiteTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+            node.validMovePosition = false;
+        }
+        moveableNodes.Clear();
     }
 
     //Used for the button to go to the next turn
     public void NextTurn()
     {
+        ResetMovementLimit();
         attackPressed = false;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
@@ -211,7 +233,9 @@ public class BattleMaster : MonoBehaviour
         attackDone = false;
         turnCounter++;
         attackButton.interactable = true;
+        gameMaster.movedOnTurn = false;
 
+        LimitMovement();
         LoadPortraits();
 
         //If the next person in line is not a player the AI will attack one of them at random

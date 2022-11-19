@@ -11,10 +11,10 @@ public class PathNode : MonoBehaviour
     public int fCost;
 
     public bool occupied;
+    public bool validMovePosition;
     public PathNode[] adjacentNodes;
     public PathNode cameFromNode;
     public List<PathNode> neighborsList = new();
-
 
     private CustomGrid grid;
     public GameMaster gameMaster;
@@ -23,6 +23,7 @@ public class PathNode : MonoBehaviour
     {
         gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         grid = gameMaster.grid;
+        validMovePosition = false;
     }
 
     private void OnMouseDown()
@@ -31,11 +32,18 @@ public class PathNode : MonoBehaviour
         {
             gameMaster.targetNode = this;
         }
+
+        if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !occupied && Time.timeScale > 0 && validMovePosition && !gameMaster.movedOnTurn)
+        {
+            gameMaster.targetNode = this;
+            gameMaster.movedOnTurn = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         occupied = true;
+        collision.GetComponent<Movement>().occupyingNode = this;
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(false);
     }
