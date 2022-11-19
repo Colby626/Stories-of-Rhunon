@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections.Generic; //For lists
 using UnityEngine;
 
 public class Movement : MonoBehaviour //Base Movement class that certain enemy AIs can derive from
@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     public float wanderDelayMin;
     public float wanderDelayMax;
     public RaycastHit2D[] visibleRange;
+    public bool lookingForParticipants = false;
 
     private GameMaster gameMaster;
     private Pathfinding pathfinding;
@@ -37,7 +38,6 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     private bool wanderSetup = false;
     private float wanderTimer;
     private Vector3 startPosition;
-    
 
     private void Start()
     {
@@ -95,7 +95,8 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
                 {
                     if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode)
                     {
-                        gameMaster.LookForParticipants();
+                        gameMaster.LookForParticipants(gameObject);
+                        lookingForParticipants = true;
                     }
                 }
             }
@@ -263,5 +264,11 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         //Viewing range blue
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, viewRange);
+
+        if (lookingForParticipants)
+        {
+            Gizmos.color = Color.green; //Sets the color of the distance it looks for participants
+            Gizmos.DrawWireCube(transform.position, new Vector3(gameMaster.distanceToLookForParticipants, gameMaster.distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
+        }
     }
 }

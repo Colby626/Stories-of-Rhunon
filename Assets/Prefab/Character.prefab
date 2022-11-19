@@ -395,9 +395,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -1493212987
+  m_SortingLayer: 5
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
     type: 3}
   m_Color: {r: 0.83921576, g: 0.18431373, b: 0.18431373, a: 1}
@@ -463,13 +463,11 @@ MonoBehaviour:
   - {fileID: 0}
   characterAttacks:
     attackNames: []
-  movementSpeed: 100
+  moveDistance: 0
   turnOrderPriority: 0
-  battleMaster: {fileID: 0}
   isPlayer: 0
   isDead: 0
-  _time: 0.2
-  _distance: 0.1
+  attackSound: 
 --- !u!114 &1234056286237845227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,8 +742,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: -1493212987
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &561926055552928934
 MonoBehaviour:

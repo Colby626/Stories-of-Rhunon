@@ -55,6 +55,7 @@ MonoBehaviour:
   wander: 1
   wanderDelayMin: 2
   wanderDelayMax: 5
+  lookingForParticipants: 0
   vectorPath: []
 --- !u!50 &1177362864
 Rigidbody2D:
@@ -90,7 +91,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00000017881393, y: 0.055266142}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -101,7 +102,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25}
+  m_Size: {x: 1.0322292, y: 1.1257565}
   m_EdgeRadius: 0
 --- !u!1001 &735820950634818500
 PrefabInstance:

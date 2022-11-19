@@ -81,7 +81,7 @@ public class CharacterSheet : MonoBehaviour
     public CharacterAttacks characterAttacks;
 
     [Header("Programmer stuff:")]
-    public float movementSpeed;
+    public float moveDistance;
     public int turnOrderPriority;
     public bool isPlayer;
     public bool isDead = false;
@@ -257,41 +257,8 @@ public class CharacterSheet : MonoBehaviour
         battleMaster.NextTurn();
     }
 
-    /////////////////////// Everything below here for shaking
-
-    [Header("Info")]
-    private Vector3 _startPos;
-    private float _timer;
-    private Vector3 _randomPos;
-
-    [Header("Shake Settings")]
-    [Range(0f, 2f)]
-    public float _time = 0.2f;
-    [Range(0f, 2f)]
-    public float _distance = 0.1f;
-
-    public void Begin()
+    public void DisplayTurnMovement()
     {
-        StopAllCoroutines();
-        StartCoroutine(Shake());
+        moveDistance = characterStats.Speed / 5; //Can move speed / 5 number of spaces when it is their turn
     }
-
-    private IEnumerator Shake()
-    {
-        _timer = 0f;
-
-        while (_timer < _time)
-        {
-            _timer += Time.deltaTime;
-
-            _randomPos = _startPos + (Random.insideUnitSphere * _distance);
-
-            transform.position = _randomPos;
-
-            yield return null;
-        }
-
-        transform.position = _startPos;
-    }
-
 }

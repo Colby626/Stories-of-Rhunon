@@ -1,10 +1,10 @@
-using System.Collections.Generic;
+using System.Collections.Generic; //For lists
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
 {
-    private const int diagonalMovementCost = 14;
-    private const int straightMovementCost = 10;
+    private const int DIAGONAL_MOVEMENT_COST = 14;
+    private const int STRAIGHT_MOVEMENT_COST = 10;
 
     private List<PathNode> openList;
     private HashSet<PathNode> closedList;
@@ -100,7 +100,7 @@ public class Pathfinding : MonoBehaviour
         int xDistance = Mathf.Abs(a.x - b.x);
         int yDistance = Mathf.Abs(a.y - b.y);
         int remaining = Mathf.Abs(xDistance - yDistance);
-        return diagonalMovementCost * Mathf.Min(xDistance, yDistance) + straightMovementCost * remaining;
+        return DIAGONAL_MOVEMENT_COST * Mathf.Min(xDistance, yDistance) + STRAIGHT_MOVEMENT_COST * remaining;
     }
 
     private PathNode GetLowestFCostNode(List<PathNode> pathNodeList)

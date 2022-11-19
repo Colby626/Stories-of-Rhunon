@@ -135,7 +135,6 @@ public class BattleMaster : MonoBehaviour
             }
 
             //Displays the character to go's name on the screen
-            //will be removed
             turn.text = "It is " + currentCharacter.GetComponent<CharacterSheet>().Name + "'s turn";
 
             if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
@@ -149,6 +148,7 @@ public class BattleMaster : MonoBehaviour
                 nextTurnButton.interactable = true;
                 attackButton.interactable = true;
                 inventoryButton.interactable = true;
+                currentCharacter.GetComponent<CharacterSheet>().DisplayTurnMovement();
             }
         }
     }
@@ -196,7 +196,7 @@ public class BattleMaster : MonoBehaviour
         //If the next person in line is not a player the AI will attack one of them at random
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            StartCoroutine(EnemyTurn()); //Delay for enemey turns
+            StartCoroutine(EnemyTurn()); //Delay for enemy turns
         }
     }
 
