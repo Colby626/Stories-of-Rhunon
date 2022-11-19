@@ -214,6 +214,11 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     {
         wanderTimer = Random.Range(wanderDelayMin, wanderDelayMax);
         wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)]; 
+        if (wanderNode.occupied) //If choosing an occupied node in the wander radius, rechoose
+        {
+            Wander();
+            return;
+        }
         MoveOnPath(pathfinding.FindPath(wanderNode, startingNode));
     }
 

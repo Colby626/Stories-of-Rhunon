@@ -10,11 +10,13 @@ public class PathNode : MonoBehaviour
     public int hCost;
     public int fCost;
 
+    public bool occupied;
     public PathNode[] adjacentNodes;
     public PathNode cameFromNode;
     public List<PathNode> neighborsList = new();
-    private CustomGrid grid;
 
+
+    private CustomGrid grid;
     public GameMaster gameMaster;
 
     private void Awake()
@@ -25,10 +27,24 @@ public class PathNode : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && Time.timeScale > 0) //If a battle isn't happening and the game isn't paused
+        if (!gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !occupied && Time.timeScale > 0) //If a battle isn't happening and the game isn't paused
         {
             gameMaster.targetNode = this;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        occupied = true;
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        occupied = false;
+        transform.GetChild(1).gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(true);
     }
 
     public void CalculateFCost()
@@ -38,7 +54,7 @@ public class PathNode : MonoBehaviour
 
     public void OnMouseOver()
     {
-        if (Time.timeScale != 0) //If the game isn't paused
+        if (Time.timeScale != 0 && !occupied) //If the game isn't paused
         {
             transform.GetChild(0).gameObject.SetActive(true);
         }
