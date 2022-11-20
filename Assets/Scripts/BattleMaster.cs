@@ -41,7 +41,7 @@ public class BattleMaster : MonoBehaviour
     public bool battleStarted;
     public int howFarInTheFutureYouCalculateTurnOrder = 50;
     public List<PathNode> moveableNodes;
-    public bool cantReach = false;
+    public GameMaster gameMaster;
 
     #endregion
 
@@ -49,7 +49,6 @@ public class BattleMaster : MonoBehaviour
     private GameObject[] characterArray;
     private int characterindex = 0;
     private int turnCounter = 0;
-    private GameMaster gameMaster;
     private CustomGrid grid;
 
     [Header("Inventory:")]
@@ -227,7 +226,6 @@ public class BattleMaster : MonoBehaviour
     public void NextTurn()
     {
         ResetMovementLimit();
-        cantReach = false;
         attackPressed = false;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
@@ -571,12 +569,20 @@ public class BattleMaster : MonoBehaviour
                 shortestPath = tempPath;
             }
         }
-        foreach (PathNode node in shortestPath.ToList())
+        PathNode lastNodeRemoved = null;
+        foreach (PathNode node in shortestPath.ToList()) //I know shortestPath is a list, but it needs ToList() to not error
         {
             if (!node.validMovePosition) //Remove any node that is outside of the range of the enemy 
             {
-                cantReach = true;
+                lastNodeRemoved = node;
                 shortestPath.Remove(node);
+            }
+        }
+        if (lastNodeRemoved != null)
+        {
+            if (lastNodeRemoved == gameMaster.partyNode)
+            {
+                currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
             }
         }
         return shortestPath;

@@ -43,7 +43,6 @@ public class PathNode : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         occupied = true;
-        collision.GetComponent<Movement>().occupyingNode = this;
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(false);
     }

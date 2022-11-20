@@ -202,7 +202,7 @@ public class CharacterSheet : MonoBehaviour
         if (GetComponentInParent<MouseOver>()) //MouseOver should only be on the character after a battle has started, this prevents an error if you click on them outside of battle
         {
             //Checks if the player is clicking attack on a character
-            if (battleMaster.attackPressed && !isPlayer && battleMaster.battleStarted)
+            if (battleMaster.attackPressed && !isPlayer && battleMaster.battleStarted && GetComponentInParent<Movement>().occupyingNode.GetNeighborNodes().Contains(battleMaster.gameMaster.partyNode))
             {
                 battleMaster.attackPressed = false;
                 battleMaster.targetedEnemy = gameObject;

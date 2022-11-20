@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     private List<PathNode> playerPath;
     private RaycastHit2D[] raycast;
     private Collider2D[] colliders;
+    private RaycastHit2D[] findNode;
     public List<Vector2> vectorPath;
     private Vector2 targetPosition;
     private Vector2 moveDirection;
@@ -82,6 +83,17 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
             startPositionDetermined = true;
             gameMaster.startPositionDetermined = true;
             DetermineStartPosition();
+        }
+        if (grid.gridFinished) //Surely this can be more performant than raycasting in update to find the occupyingNode, but putting it in the occupying node OnTriggerEnter2D wasn't consistant
+        {
+            findNode = Physics2D.BoxCastAll(transform.position, new Vector2(0.1f, 0.1f), 0, Vector2.zero);
+            foreach (RaycastHit2D hit in findNode)
+            {
+                if (hit.transform.gameObject.GetComponent<PathNode>())
+                {
+                    occupyingNode = hit.transform.gameObject.GetComponent<PathNode>();
+                }
+            }
         }
         if (grid.gridFinished && !wanderSetup && wander && !isPlayer)
         {
