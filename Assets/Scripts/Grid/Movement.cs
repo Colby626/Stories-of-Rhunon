@@ -192,6 +192,10 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
                 gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
                 AudioManager.instance.Play(gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().attackSound);
             }
+            else if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+            {
+                gameMaster.battleMaster.GetComponent<BattleMaster>().NextTurn();
+            }
         }
 
         if (isPlayer && !isMoving)
@@ -249,23 +253,10 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
         if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().isPlayer) //If a battle is happening and its an enemy's turn
         {
-            foreach (PathNode node in path)
-            {
-                if (!node.validMovePosition) //Remove any node that is outside of the range of the enemy 
-                {
-                    path.Remove(node);
-                }
-            }
-
-            Debug.Log("end of path: " + path[0]);
-            Debug.Log("partyNode " + gameMaster.partyNode);
             if (path[0] == gameMaster.partyNode) //If the end of their path was the player, remove that node from the path and set to attack when they get one node away
             {
-                Debug.Log(path.Count);
-                Debug.Log("attackAtEnd = true");
                 attackAtEnd = true;
-                path.RemoveAt(path.Count - 1);
-                Debug.Log(path.Count);
+                path.RemoveAt(0);
             }
         }
         

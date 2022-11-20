@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Linq; //For getting list counts
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
+using System.IO;
 
 public class BattleMaster : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class BattleMaster : MonoBehaviour
     public bool battleStarted;
     public int howFarInTheFutureYouCalculateTurnOrder = 50;
     public List<PathNode> moveableNodes;
+    public bool cantReach = false;
 
     #endregion
 
@@ -225,6 +227,7 @@ public class BattleMaster : MonoBehaviour
     public void NextTurn()
     {
         ResetMovementLimit();
+        cantReach = false;
         attackPressed = false;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
@@ -566,6 +569,14 @@ public class BattleMaster : MonoBehaviour
             {
                 targetedPlayer = player;
                 shortestPath = tempPath;
+            }
+        }
+        foreach (PathNode node in shortestPath.ToList())
+        {
+            if (!node.validMovePosition) //Remove any node that is outside of the range of the enemy 
+            {
+                cantReach = true;
+                shortestPath.Remove(node);
             }
         }
         return shortestPath;
