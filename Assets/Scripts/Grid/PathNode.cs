@@ -33,7 +33,7 @@ public class PathNode : MonoBehaviour
             gameMaster.targetNode = this;
         }
 
-        if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !occupied && Time.timeScale > 0 && validMovePosition && !gameMaster.movedOnTurn)
+        if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !occupied && Time.timeScale > 0 && validMovePosition && !gameMaster.movedOnTurn && gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             gameMaster.targetNode = this;
             gameMaster.movedOnTurn = true;

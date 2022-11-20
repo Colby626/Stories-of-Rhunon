@@ -48,14 +48,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  centeringOffset: 0.12
+  centeringOffset: 0.05
   spriteFacingLeft: 0
+  occupyingNode: {fileID: 0}
   viewRange: 1
   wanderRange: 4
   wander: 1
-  wanderDelayMin: 1
-  wanderDelayMax: 3
+  wanderDelayMin: 0.3
+  wanderDelayMax: 1
   lookingForParticipants: 0
+  attackAtEnd: 0
   vectorPath: []
 --- !u!50 &2065164964
 Rigidbody2D:

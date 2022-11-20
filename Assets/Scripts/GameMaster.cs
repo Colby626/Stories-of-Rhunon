@@ -47,7 +47,7 @@ public class GameMaster : MonoBehaviour
         //check tiles outward from contact with enemy and player with a distance of distanceToLookForPartcipants and put them in participants list then call StartBattle
         colliders = Physics2D.OverlapBoxAll(caller.transform.position, new Vector2(distanceToLookForParticipants, distanceToLookForParticipants), 0);
 
-        foreach (Collider2D collider in colliders)
+        foreach (Collider2D collider in colliders) //This should be redone for optimization and just set in the editor 
         {
             if (collider.transform.gameObject.CompareTag("Participant"))
             {

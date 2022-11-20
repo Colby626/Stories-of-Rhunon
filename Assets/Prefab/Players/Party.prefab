@@ -49,14 +49,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   centeringOffset: 0.1
-  xPosition: 59
-  yPosition: 6
   spriteFacingLeft: 0
+  occupyingNode: {fileID: 0}
   viewRange: 0
   wanderRange: 0
   wander: 0
   wanderDelayMin: 0
   wanderDelayMax: 0
+  lookingForParticipants: 0
+  attackAtEnd: 0
   vectorPath: []
 --- !u!1001 &542170189452386740
 PrefabInstance:

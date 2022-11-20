@@ -55864,16 +55864,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1262898058}
     m_Modifications:
-    - target: {fileID: 801831832196101544, guid: a21a8a16f2631104aa75599cd2abc91d,
-        type: 3}
-      propertyPath: viewRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 801831832196101544, guid: a21a8a16f2631104aa75599cd2abc91d,
-        type: 3}
-      propertyPath: centeringOffset
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -55952,16 +55942,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4034010280295920521, guid: 6b5a578cd864e16419d09731727a9b31,
-        type: 3}
-      propertyPath: viewRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4034010280295920521, guid: 6b5a578cd864e16419d09731727a9b31,
-        type: 3}
-      propertyPath: centeringOffset
-      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4034010280295920522, guid: 6b5a578cd864e16419d09731727a9b31,
         type: 3}
@@ -56051,26 +56031,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dark Creature
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
-        type: 3}
-      propertyPath: viewRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
-        type: 3}
-      propertyPath: wanderDelayMax
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
-        type: 3}
-      propertyPath: wanderDelayMin
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
-        type: 3}
-      propertyPath: centeringOffset
-      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5526921149599871478, guid: 14aa5a369edc5404092a96ae78a24712,
         type: 3}

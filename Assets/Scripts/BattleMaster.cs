@@ -198,7 +198,7 @@ public class BattleMaster : MonoBehaviour
             {
                 if (grid.GetGridObject(x, y) != null) //Position is walkable
                 {
-                    if (gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, grid.GetGridObject(x, y)).Count <= maxMoveDistance) //If you can get there within the amount of movement
+                    if (gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, grid.GetGridObject(x, y)).Count <= maxMoveDistance) //It is within max move distance
                     {
                         moveableNodes.Add(grid.GetGridObject(x, y));
                         grid.GetGridObject(x, y).transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
@@ -241,7 +241,7 @@ public class BattleMaster : MonoBehaviour
         //If the next person in line is not a player the AI will attack one of them at random
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            StartCoroutine(EnemyTurn()); //Delay for enemey turns
+            StartCoroutine(EnemyTurn()); //Delay for enemy turns
         }
 
         //Display the levelup button if the currentCharacter has more XP than they need to level up
@@ -514,36 +514,70 @@ public class BattleMaster : MonoBehaviour
 
         if (livingPlayers.Count > 0)
         {
-            targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count())];
-            //If the player is to the right of the enemy
-            if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x < 0)
+            List<PathNode> closestPlayerPath = FindNearestPlayer(); //Also determines the targetedPlayer
+            if (closestPlayerPath.Count == 2) //If the player is right next to the enemy (the 2 are the start node and end node)
             {
-                //If the enemy is facing left flip them
-                if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == false) 
+                //If the player is to the right of the enemy
+                if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x < 0)
                 {
-                    currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                    //If the enemy is facing left flip them
+                    if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                    }
                 }
-                else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == true) 
+                //If the player is to the left or directly above/below the enemy
+                if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x >= 0)
                 {
-                    currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                    //If the enemy is facing right flip them
+                    if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                    }
                 }
+                currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+                AudioManager.instance.Play(currentCharacter.GetComponent<CharacterSheet>().attackSound);
             }
-            //If the player is to the left or directly above/below the enemy
-            if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x >= 0)
+            //targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count())];
+            else
             {
-                //If the enemy is facing right flip them
-                if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == false) 
-                {
-                    currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
-                }
-                else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == true) 
-                {
-                    currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
-                }
+                //Pathfind along that path until they are no longer validMovementNodes
+                currentCharacter.GetComponentInParent<Movement>().MoveOnPath(closestPlayerPath);
             }
-            currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-            AudioManager.instance.Play(currentCharacter.GetComponent<CharacterSheet>().attackSound);
         }
+    }
+
+    private List<PathNode> FindNearestPlayer() //Searches for every player path, could be optimized by searching outward until hitting a player
+    {
+        List<PathNode> shortestPath = new List<PathNode> (new PathNode [500]); //Initalize the shorest path as 500 nodes
+        List<PathNode> tempPath = new();
+        foreach(GameObject player in livingPlayers)
+        {
+            tempPath = gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, player.GetComponentInParent<Movement>().occupyingNode);
+            if (tempPath.Count < shortestPath.Count)
+            {
+                targetedPlayer = player;
+                shortestPath = tempPath;
+            }
+        }
+        return shortestPath;
+    }
+
+    private void Approach()
+    {
+        //Move towards the player's party
+        //If player party within view range, wander = false;
+
+        //Find the node closest to the player's party from the side the enemy is on and start moving towards it 
+        //If player party leaves view range, wander = true;
     }
 
     void LoadPortraits()
