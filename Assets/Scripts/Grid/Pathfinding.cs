@@ -1,4 +1,5 @@
 using System.Collections.Generic; //For lists
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
@@ -27,9 +28,12 @@ public class Pathfinding : MonoBehaviour
                 PathNode node = grid.GetGridObject(x, y);
                 if (node != null)
                 {
-                    node.gCost = int.MaxValue;
-                    node.CalculateFCost();
-                    node.cameFromNode = null;
+                    if (!node.occupied)
+                    {
+                        node.gCost = int.MaxValue;
+                        node.CalculateFCost();
+                        node.cameFromNode = null;
+                    }s
                 }
             }
         }
@@ -51,7 +55,7 @@ public class Pathfinding : MonoBehaviour
 
             foreach (PathNode neighborNode in currentNode.GetNeighborNodes())
             {
-                if (closedList.Contains(neighborNode))
+                if (closedList.Contains(neighborNode) || neighborNode.occupied)
                 {
                     continue;
                 }

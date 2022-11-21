@@ -22,23 +22,9 @@ public class PathNode : MonoBehaviour
 
     private void Awake()
     {
-        gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        gameMaster = GameMaster.instance;
         grid = gameMaster.grid;
         validMovePosition = false;
-    }
-
-    private void OnMouseDown()
-    {
-        if (!gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !occupied && Time.timeScale > 0) //If a battle isn't happening and the game isn't paused
-        {
-            gameMaster.targetNode = this;
-        }
-
-        if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !occupied && Time.timeScale > 0 && validMovePosition && !gameMaster.movedOnTurn && gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().isPlayer)
-        {
-            gameMaster.targetNode = this;
-            gameMaster.movedOnTurn = true;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,9 +48,30 @@ public class PathNode : MonoBehaviour
 
     public void OnMouseOver()
     {
-        if (Time.timeScale != 0 && !occupied) //If the game isn't paused
+        if (!gameMaster.hoveringOverButton) //Deadzone for mouse at the bottom of the screen
         {
-            transform.GetChild(0).gameObject.SetActive(true);
+            if (Time.timeScale != 0 && !occupied) //If the game isn't paused
+            {
+                transform.GetChild(0).gameObject.SetActive(true);
+            }
+            if (grid.gridClicked)
+            {
+                if (!gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !occupied && Time.timeScale > 0) //If a battle isn't happening and the game isn't paused
+                {
+                    gameMaster.targetNode = this;
+                }
+
+                if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !occupied && Time.timeScale > 0 && validMovePosition && !gameMaster.movedOnTurn && gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+                {
+                    gameMaster.targetNode = this;
+                    gameMaster.movedOnTurn = true;
+                }
+                grid.gridClicked = false;
+            }
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 

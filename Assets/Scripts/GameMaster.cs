@@ -16,6 +16,7 @@ public class GameMaster : MonoBehaviour
     public PathNode targetNode;
     public bool startPositionDetermined = false;
     public bool movedOnTurn = false;
+    public bool hoveringOverButton;
 
     private Collider2D[] colliders;
 
