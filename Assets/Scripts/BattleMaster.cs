@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using System.Linq; //For getting list counts
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
-using System.IO;
 
 public class BattleMaster : MonoBehaviour
 {

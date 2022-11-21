@@ -177,6 +177,7 @@ public class CharacterSheet : MonoBehaviour
         //If there are no more enemies, display the win screen
         if (battleMaster.livingEnemies.Count() == 0)
         {
+            battleMaster.gameMaster.GetComponent<GameMaster>().EndBattle();
             battleMaster.battleStarted = false;
             battleMaster.battleHud.SetActive(false);
             battleMaster.winScreen.SetActive(true);
@@ -187,14 +188,23 @@ public class CharacterSheet : MonoBehaviour
         //If there are no more players alive, display the lose screen
         if (battleMaster.livingPlayers.Count() == 0)
         {
+            battleMaster.gameMaster.GetComponent<GameMaster>().EndBattle();
             battleMaster.battleStarted = false;
+            gameObject.transform.parent.gameObject.SetActive(false);
             battleMaster.battleHud.SetActive(false);
             battleMaster.loseScreen.SetActive(true);
             AudioManager.instance.Stop("BattleMusic");
             AudioManager.instance.Play("LoseSound");
         }
 
-        gameObject.SetActive(false);
+        if (!isPlayer) 
+        { 
+            gameObject.transform.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void OnMouseDown()

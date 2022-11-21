@@ -108,7 +108,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
             {
                 if (hit.transform.gameObject.GetComponent<PathNode>())
                 {
-                    if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode)
+                    if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode) 
                     {
                         gameMaster.LookForParticipants(gameObject);
                         lookingForParticipants = true;

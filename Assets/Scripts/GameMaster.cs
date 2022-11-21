@@ -35,7 +35,10 @@ public class GameMaster : MonoBehaviour
 
     private void Update()
     {
-        party.GetComponent<Movement>().occupyingNode = partyNode;
+        if (party != null)
+        {
+            party.GetComponent<Movement>().occupyingNode = partyNode;
+        }
     }
 
     public void LookForParticipants(GameObject caller)
@@ -113,6 +116,7 @@ public class GameMaster : MonoBehaviour
         //Set movement active again
         AudioManager.instance.Stop("BattleMusic");
         AudioManager.instance.Play("ExploringMusic");
+        partyNode = null;
         battleMaster.GetComponent<BattleMaster>().Reset();
         participants.Clear();
     }
