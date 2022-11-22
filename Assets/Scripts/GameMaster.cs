@@ -32,6 +32,7 @@ public class GameMaster : MonoBehaviour
             instance.grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<CustomGrid>();
             instance.battleMaster = GameObject.FindGameObjectWithTag("BattleMaster");
             instance.party = GameObject.FindGameObjectWithTag("Party");
+            instance.hoveringOverButton = false;
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this);

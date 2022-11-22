@@ -55000,7 +55000,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleMaster
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1452812865, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
+    - {fileID: 480594386, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
 --- !u!1001 &560035223
 PrefabInstance:
