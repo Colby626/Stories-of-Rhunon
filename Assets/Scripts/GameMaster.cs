@@ -29,9 +29,16 @@ public class GameMaster : MonoBehaviour
         }
         else
         {
+            instance.grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<CustomGrid>();
+            instance.battleMaster = GameObject.FindGameObjectWithTag("BattleMaster");
+            instance.party = GameObject.FindGameObjectWithTag("Party");
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
+
+        grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<CustomGrid>();
+        instance.battleMaster = GameObject.FindGameObjectWithTag("BattleMaster");
+        instance.party = GameObject.FindGameObjectWithTag("Party");
     }
 
     private void Update()
@@ -118,6 +125,8 @@ public class GameMaster : MonoBehaviour
         AudioManager.instance.Stop("BattleMusic");
         AudioManager.instance.Play("ExploringMusic");
         partyNode = null;
+        startPositionDetermined = false;
+        movedOnTurn = false;
         battleMaster.GetComponent<BattleMaster>().Reset();
         participants.Clear();
     }

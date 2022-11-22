@@ -1,5 +1,4 @@
 using System.Collections.Generic; //For lists
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
@@ -9,8 +8,10 @@ public class Pathfinding : MonoBehaviour
 
     private List<PathNode> openList;
     private HashSet<PathNode> closedList;
+    [HideInInspector]
     public List<PathNode> path;
 
+    [HideInInspector]
     public Collider2D[] colliders;
     private CustomGrid grid;
     public float speed = .01f;
@@ -28,12 +29,9 @@ public class Pathfinding : MonoBehaviour
                 PathNode node = grid.GetGridObject(x, y);
                 if (node != null)
                 {
-                    if (!node.occupied)
-                    {
-                        node.gCost = int.MaxValue;
-                        node.CalculateFCost();
-                        node.cameFromNode = null;
-                    }s
+                    node.gCost = int.MaxValue;
+                    node.CalculateFCost();
+                    node.cameFromNode = null;
                 }
             }
         }
@@ -55,7 +53,7 @@ public class Pathfinding : MonoBehaviour
 
             foreach (PathNode neighborNode in currentNode.GetNeighborNodes())
             {
-                if (closedList.Contains(neighborNode) || neighborNode.occupied)
+                if (closedList.Contains(neighborNode))
                 {
                     continue;
                 }

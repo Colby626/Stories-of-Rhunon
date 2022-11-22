@@ -12,6 +12,8 @@ TagManager:
   - Walkable
   - UnWalkable
   - GameMaster
+  - Grid
+  - Party
   layers:
   - Default
   - TransparentFX

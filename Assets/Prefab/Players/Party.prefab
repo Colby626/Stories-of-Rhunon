@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1539894390840498754}
   m_Layer: 0
   m_Name: Party
-  m_TagString: Untagged
+  m_TagString: Party
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,7 +69,7 @@ PrefabInstance:
     - target: {fileID: 1608594177355874916, guid: 4cf0570e631a7114eac00a291f7963e7,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 49
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1608594177355874918, guid: 4cf0570e631a7114eac00a291f7963e7,
         type: 3}
@@ -286,7 +286,7 @@ PrefabInstance:
     - target: {fileID: 5128575946561506810, guid: 3b6cff6183a5f954bbbabcd09725fdf7,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 49
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5642233782101489516, guid: 3b6cff6183a5f954bbbabcd09725fdf7,
         type: 3}
@@ -408,7 +408,7 @@ PrefabInstance:
     - target: {fileID: 5931714502351080162, guid: fc538c9b0b4ca654fb566b3bd6bf334b,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6570980503315034228, guid: fc538c9b0b4ca654fb566b3bd6bf334b,
         type: 3}

@@ -22,7 +22,7 @@ public class PathNode : MonoBehaviour
 
     private void Awake()
     {
-        gameMaster = GameMaster.instance;
+        gameMaster = GameMaster.instance.GetComponent<GameMaster>();
         grid = gameMaster.grid;
         validMovePosition = false;
     }

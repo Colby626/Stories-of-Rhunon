@@ -37,7 +37,7 @@ public class BattleMaster : MonoBehaviour
     public bool attackDone = false;
     [HideInInspector]
     public bool turnOrderCalculated = false;
-    public bool battleStarted;
+    public bool battleStarted = false;
     public int howFarInTheFutureYouCalculateTurnOrder = 50;
     public List<PathNode> moveableNodes;
     public GameMaster gameMaster;
@@ -69,20 +69,6 @@ public class BattleMaster : MonoBehaviour
     public GameObject enduranceText;
     #endregion
 
-    public static BattleMaster instance;
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(this);
-    }
-
     private void Start()
     {
         if (battleStarted)
@@ -92,7 +78,7 @@ public class BattleMaster : MonoBehaviour
             StartBattle(characters);
         }
 
-        gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        gameMaster = GameMaster.instance.GetComponent<GameMaster>();
         grid = gameMaster.grid;
     }
 
@@ -201,9 +187,12 @@ public class BattleMaster : MonoBehaviour
                     if (gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, grid.GetGridObject(x, y)).Count <= maxMoveDistance) //It is within max move distance
                     {
                         moveableNodes.Add(grid.GetGridObject(x, y));
-                        grid.GetGridObject(x, y).transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                        grid.GetGridObject(x, y).transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
                         grid.GetGridObject(x, y).validMovePosition = true;
+                        if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
+                        {
+                            grid.GetGridObject(x, y).transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+                            grid.GetGridObject(x, y).transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+                        }
                     }
                 }
             }

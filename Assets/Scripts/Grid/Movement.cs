@@ -46,7 +46,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     private void Start()
     {
         startPosition = transform.position;
-        gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        gameMaster = GameMaster.instance;
         grid = gameMaster.GetComponent<GameMaster>().grid;
         pathfinding = gameMaster.GetComponent<Pathfinding>();
         vectorPath = new List<Vector2>(); //Prevents an error in the console
@@ -263,15 +263,18 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         }
         vectorPath = new List<Vector2>();
 
-        if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().isPlayer) //If a battle is happening and its an enemy's turn
+        if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted)
         {
-            if (path[0] == gameMaster.partyNode) //If the end of their path was the player, remove that node from the path and set to attack when they get one node away
+            if (!gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().isPlayer) //If a battle is happening and its an enemy's turn)
             {
-                attackAtEnd = true;
-                path.RemoveAt(0);
+                if (path[0] == gameMaster.partyNode) //If the end of their path was the player, remove that node from the path and set to attack when they get one node away
+                {
+                    attackAtEnd = true;
+                    path.RemoveAt(0);
+                }
             }
         }
-        
+
         foreach (PathNode node in path)
         {
             vectorPath.Add(node.GetWorldSpace()); //Makes a vector2 list storing worldspace locations of each node on the path we want to take

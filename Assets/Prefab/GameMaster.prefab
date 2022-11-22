@@ -54,6 +54,8 @@ MonoBehaviour:
   partyNode: {fileID: 0}
   targetNode: {fileID: 0}
   startPositionDetermined: 0
+  movedOnTurn: 0
+  hoveringOverButton: 0
 --- !u!114 &1659767146
 MonoBehaviour:
   m_ObjectHideFlags: 0

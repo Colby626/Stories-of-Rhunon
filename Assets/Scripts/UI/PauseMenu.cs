@@ -64,6 +64,7 @@ public class PauseMenu : MonoBehaviour
         if (gamePaused)
         {
             audioMixer.SetFloat("PausedMasterVolume", 0);
+            Unpause();
             gamePaused = false;
         }
         battleMaster.Reset();
