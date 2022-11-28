@@ -84,10 +84,11 @@ public class CharacterSheet : MonoBehaviour
     public float moveDistance;
     public int turnOrderPriority;
     public bool isPlayer;
+    public bool killToWin = false;
     public bool isDead = false;
     #endregion
 
-    private BattleMaster battleMaster;
+    public BattleMaster battleMaster;
 
     #region Sound Variables
     private string noWhitespaceName;
@@ -174,17 +175,6 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.levelUpButton.SetActive(false);
         }
 
-        //If there are no more enemies, display the win screen
-        if (battleMaster.livingEnemies.Count() == 0)
-        {
-            battleMaster.gameMaster.GetComponent<GameMaster>().EndBattle();
-            battleMaster.battleStarted = false;
-            battleMaster.battleHud.SetActive(false);
-            battleMaster.winScreen.SetActive(true);
-            AudioManager.instance.Stop("BattleMusic");
-            AudioManager.instance.Play("WinSound");
-        }
-
         //If there are no more players alive, display the lose screen
         if (battleMaster.livingPlayers.Count() == 0)
         {
@@ -196,6 +186,31 @@ public class CharacterSheet : MonoBehaviour
             AudioManager.instance.Stop("BattleMusic");
             AudioManager.instance.Play("LoseSound");
         }
+
+        if (killToWin) //An enemy marked with killToWin was killed
+        {
+            battleMaster.willWin = true;
+        }
+
+        //If there are no more enemies, display the win screen
+        if (battleMaster.livingEnemies.Count() == 0)
+        {
+            battleMaster.gameMaster.GetComponent<GameMaster>().EndBattle();
+            battleMaster.battleHud.SetActive(false);
+            battleMaster.Reset();
+
+            if (battleMaster.willWin) //Won the game
+            {
+                battleMaster.winScreen.SetActive(true);
+                AudioManager.instance.Stop("BattleMusic");
+                AudioManager.instance.Play("WinSound");
+            }
+            else //Won the battle
+            {
+                AudioManager.instance.Stop("BattleMusic");
+                AudioManager.instance.Play("ExploringMusic");
+            }
+        }        
 
         if (!isPlayer) 
         { 

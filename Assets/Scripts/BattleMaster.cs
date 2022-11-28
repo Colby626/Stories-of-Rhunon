@@ -48,6 +48,7 @@ public class BattleMaster : MonoBehaviour
     private GameObject[] characterArray;
     private int characterindex = 0;
     private int turnCounter = 0;
+    public bool willWin = false;
     private CustomGrid grid;
 
     [Header("Inventory:")]
@@ -163,7 +164,7 @@ public class BattleMaster : MonoBehaviour
         //Display status of current character is they are a player
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            currentCharacter.GetComponentInParent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
+            currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
         }
 
         //If the next person in line is not a player the AI will attack one of them at random
@@ -245,7 +246,7 @@ public class BattleMaster : MonoBehaviour
 
         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            currentCharacter.GetComponentInParent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>()); //Activates the status menu at the bottom to match the current character
+            currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>()); //Activates the status menu at the bottom to match the current character
         }
     }
 
@@ -576,15 +577,6 @@ public class BattleMaster : MonoBehaviour
         return shortestPath;
     }
 
-    private void Approach()
-    {
-        //Move towards the player's party
-        //If player party within view range, wander = false;
-
-        //Find the node closest to the player's party from the side the enemy is on and start moving towards it 
-        //If player party leaves view range, wander = true;
-    }
-
     void LoadPortraits()
     {
         //Display portraits, names, and healths for the turn order
@@ -600,17 +592,20 @@ public class BattleMaster : MonoBehaviour
 
     public void Reset()
     {
-        turnOrderCalculated = false;
-        turnCounter = 0;
-        characterindex = 0;
         if (battleStarted)
         {
             battleStarted = false;
+            turnOrderCalculated = false;
+            turnCounter = 0;
+            characterindex = 0;
+            attackDone = false;
+            attackPressed = false;
             gameMaster.GetComponent<GameMaster>().participants.Clear();
             turnOrder.Clear();
             characters.Clear();
+            livingPlayers.Clear();
             livingEnemies.Clear();
-            livingEnemies.Clear();
+            ResetMovementLimit();
         }
     }
 }

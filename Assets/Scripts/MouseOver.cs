@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class MouseOver : MonoBehaviour
 {
-    private SpriteRenderer characterSprite;
     private CharacterSheet character;
     private Material characterMaterial;
     public bool doMouseOver = true;
@@ -26,21 +25,36 @@ public class MouseOver : MonoBehaviour
 
     private void Start()
     {
-        if (GetComponent<CharacterSheet>())
+        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
+        if (GetComponent<CharacterSheet>()) //Is a player
         {
-            if (GetComponent<CharacterSheet>().isPlayer)
-            {
-                characterSprite = GetComponent<SpriteRenderer>();
-            }
+            character = GetComponent<CharacterSheet>();
+            characterMaterial = GetComponent<SpriteRenderer>().material;
+        }
+        else //Is an enemy
+        {
+            character = transform.GetChild(0).GetComponent<CharacterSheet>();
+            characterMaterial = transform.GetChild(0).GetComponent<SpriteRenderer>().material;
+        }
+        pauseMenu = FindObjectOfType<PauseMenu>();
+
+        healthBar = battleMaster.status.transform.GetChild(1).GetComponent<StatBar>();
+        manaBar = battleMaster.status.transform.GetChild(2).GetComponent<StatBar>();
+        staminaBar = battleMaster.status.transform.GetChild(3).GetComponent<StatBar>();
+        portrait = battleMaster.status.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
+        nameText = battleMaster.status.transform.GetChild(4).GetComponent<Text>();
+        highlightMaterial = GameMaster.instance.highlightMaterial;
+
+        if (character.isPlayer)
+        {
+            overheadHealthBar = transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
+            overheadNameText = transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
         }
         else
         {
-            characterSprite = transform.GetChild(0).GetComponent<SpriteRenderer>(); //SpriteRenderer is on the child
+            overheadHealthBar = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<StatBar>();
+            overheadNameText = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
         }
-        character = characterSprite.GetComponent<CharacterSheet>();
-        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
-        characterMaterial = character.GetComponent<SpriteRenderer>().material;
-        pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
     //Highlights the character when the mouse is over them and displays their status menu
@@ -93,14 +107,17 @@ public class MouseOver : MonoBehaviour
     //Remove status window and unhighlight
     private void OnMouseExit()
     {
-        if (character.gameObject != battleMaster.currentCharacter && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        if (battleMaster.battleStarted)
         {
-            //Display status of current character
-            ActivateStatus(battleMaster.currentCharacter.GetComponent<CharacterSheet>());
+            if (character.gameObject != battleMaster.currentCharacter && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+            {
+                //Display status of current character
+                ActivateStatus(battleMaster.currentCharacter.GetComponent<CharacterSheet>());
+            }
+            character.transform.GetChild(0).gameObject.SetActive(false);
+            character.GetComponent<SpriteRenderer>().material = characterMaterial;
+            isHighlighted = false;
         }
-        character.transform.GetChild(0).gameObject.SetActive(false);
-        character.GetComponent<SpriteRenderer>().material = characterMaterial;
-        isHighlighted = false;
     }
 
     public void ActivateStatus(CharacterSheet participant)

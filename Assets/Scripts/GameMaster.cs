@@ -65,39 +65,11 @@ public class GameMaster : MonoBehaviour
             {
                 participants.Add(collider.gameObject);
 
-                if (collider.GetComponent<CharacterSheet>().isPlayer)
-                {
-                    collider.gameObject.AddComponent<MouseOver>();
-                    collider.GetComponent<MouseOver>().battleMaster = battleMaster.GetComponent<BattleMaster>();
-                    collider.GetComponent<MouseOver>().overheadHealthBar = collider.transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
-                    collider.GetComponent<MouseOver>().healthBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(1).GetComponent<StatBar>();
-                    collider.GetComponent<MouseOver>().manaBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(2).GetComponent<StatBar>();
-                    collider.GetComponent<MouseOver>().staminaBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(3).GetComponent<StatBar>();
-                    collider.GetComponent<MouseOver>().portrait = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
-                    collider.GetComponent<MouseOver>().nameText = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(4).GetComponent<Text>();
-                    collider.GetComponent<MouseOver>().overheadNameText = collider.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-                    collider.GetComponent<MouseOver>().highlightMaterial = highlightMaterial;
-                }
-                else
+                if (!collider.GetComponent<CharacterSheet>().isPlayer)
                 {
                     LookForParticipants(collider.gameObject);
                     collider.GetComponentInParent<Movement>().lookingForParticipants = true;
-                    collider.transform.parent.gameObject.AddComponent<MouseOver>();
-                    collider.transform.parent.gameObject.GetComponent<MouseOver>().battleMaster = battleMaster.GetComponent<BattleMaster>();
-                    collider.transform.parent.gameObject.GetComponent<MouseOver>().overheadHealthBar = collider.transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
-                    collider.transform.parent.gameObject.GetComponent<MouseOver>().healthBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(1).GetComponent<StatBar>();
-                    collider.transform.parent.gameObject.GetComponent<MouseOver>().manaBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(2).GetComponent<StatBar>();
-                    collider.transform.parent.gameObject.GetComponent<MouseOver>().staminaBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(3).GetComponent<StatBar>();
-                    collider.transform.parent.gameObject.GetComponent<MouseOver>().portrait = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
-                    collider.transform.parent.gameObject.GetComponent<MouseOver>().nameText = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(4).GetComponent<Text>();
-                    collider.transform.parent.gameObject.GetComponent<MouseOver>().overheadNameText = collider.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-                    collider.transform.parent.gameObject.GetComponent<MouseOver>().highlightMaterial = highlightMaterial;
                 }
-                collider.gameObject.AddComponent<StatusManager>();
-                collider.gameObject.GetComponent<StatusManager>().overheadHealthBar = collider.transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
-                collider.gameObject.GetComponent<StatusManager>().healthBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(1).GetComponent<StatBar>();
-                collider.gameObject.GetComponent<StatusManager>().magicBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(2).GetComponent<StatBar>();
-                collider.gameObject.GetComponent<StatusManager>().staminaBar = battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(3).GetComponent<StatBar>();
             }
         }
 
@@ -123,12 +95,10 @@ public class GameMaster : MonoBehaviour
     public void EndBattle()
     {
         //Set movement active again
-        AudioManager.instance.Stop("BattleMusic");
-        AudioManager.instance.Play("ExploringMusic");
         partyNode = null;
         startPositionDetermined = false;
         movedOnTurn = false;
-        battleMaster.GetComponent<BattleMaster>().Reset();
         participants.Clear();
+        hoveringOverButton = false;
     }
 }
