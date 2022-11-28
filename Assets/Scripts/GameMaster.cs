@@ -27,7 +27,7 @@ public class GameMaster : MonoBehaviour
         {
             instance = this;
         }
-        else
+        else //On new scene load when there is already a GameMaster
         {
             instance.grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<CustomGrid>();
             instance.battleMaster = GameObject.FindGameObjectWithTag("BattleMaster");

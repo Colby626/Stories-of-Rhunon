@@ -29,9 +29,12 @@ public class Pathfinding : MonoBehaviour
                 PathNode node = grid.GetGridObject(x, y);
                 if (node != null)
                 {
-                    node.gCost = int.MaxValue;
-                    node.CalculateFCost();
-                    node.cameFromNode = null;
+                    //if (!node.occupied || node == startNode)
+                    //{
+                        node.gCost = int.MaxValue;
+                        node.CalculateFCost();
+                        node.cameFromNode = null;
+                    //}
                 }
             }
         }

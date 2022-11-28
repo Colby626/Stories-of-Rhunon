@@ -600,13 +600,17 @@ public class BattleMaster : MonoBehaviour
 
     public void Reset()
     {
-        battleStarted = false;
-        turnOrder.Clear();
-        characters.Clear();
-        livingEnemies.Clear();
-        livingEnemies.Clear();
         turnOrderCalculated = false;
         turnCounter = 0;
         characterindex = 0;
+        if (battleStarted)
+        {
+            battleStarted = false;
+            gameMaster.GetComponent<GameMaster>().participants.Clear();
+            turnOrder.Clear();
+            characters.Clear();
+            livingEnemies.Clear();
+            livingEnemies.Clear();
+        }
     }
 }

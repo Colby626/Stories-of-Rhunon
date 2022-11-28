@@ -88,10 +88,6 @@ public class CustomGrid : MonoBehaviour
         {
             return null;   
         }
-        if (nodes[x, y] == null)
-        {
-            return null;
-        }
         return nodes[x, y];
     }
 

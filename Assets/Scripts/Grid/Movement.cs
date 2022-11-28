@@ -101,7 +101,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         }
 
         //If a pathnode within an enemies visible range is the partynode, start the battle sequence
-        if (grid.gridFinished && !isPlayer && !gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted)
+        if (grid.gridFinished && !isPlayer && !gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !lookingForParticipants) //Could change the repeated raycast into a large collider and use OnTriggerEnter to do this
         {
             visibleRange = Physics2D.CircleCastAll(transform.position, viewRange, Vector2.zero);
             foreach (RaycastHit2D hit in visibleRange)
@@ -110,8 +110,8 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
                 {
                     if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode) 
                     {
-                        gameMaster.LookForParticipants(gameObject);
                         lookingForParticipants = true;
+                        gameMaster.LookForParticipants(gameObject);
                     }
                 }
             }
