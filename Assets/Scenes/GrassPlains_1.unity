@@ -56119,11 +56119,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dark Creature
       objectReference: {fileID: 0}
-    - target: {fileID: 5526921149599871478, guid: 14aa5a369edc5404092a96ae78a24712,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7728418505946430317, guid: 14aa5a369edc5404092a96ae78a24712,
         type: 3}
       propertyPath: m_RootOrder
