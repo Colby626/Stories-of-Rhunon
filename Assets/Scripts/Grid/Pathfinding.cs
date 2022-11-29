@@ -109,10 +109,8 @@ public class Pathfinding : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Looking : " + i);
 
         //Out of nodes on the open list
-        Debug.Log("return null");
         return null;
     }
 

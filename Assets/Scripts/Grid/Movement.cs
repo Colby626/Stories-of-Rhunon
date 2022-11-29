@@ -217,6 +217,9 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
             {
                 transform.GetChild(i).GetComponent<Animator>().SetBool("Moving", false);
             }
+            //Snap to center of node
+            transform.position = occupyingNode.transform.position;
+
             isMoving = false;
             hasBeenMoving = false;
 
