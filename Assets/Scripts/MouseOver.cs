@@ -25,7 +25,7 @@ public class MouseOver : MonoBehaviour
 
     private void Start()
     {
-        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
+        battleMaster = FindObjectOfType<BattleMaster>();
         if (GetComponent<CharacterSheet>()) //Is a player
         {
             character = GetComponent<CharacterSheet>();

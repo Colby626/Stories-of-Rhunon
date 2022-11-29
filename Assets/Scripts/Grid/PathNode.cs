@@ -26,20 +26,6 @@ public class PathNode : MonoBehaviour
         validMovePosition = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        occupied = true;
-        transform.GetChild(1).gameObject.SetActive(false);
-        transform.GetChild(2).gameObject.SetActive(false);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        occupied = false;
-        transform.GetChild(1).gameObject.SetActive(true);
-        transform.GetChild(2).gameObject.SetActive(true);
-    }
-
     public void CalculateFCost()
     {
         fCost = gCost + hCost;
@@ -91,28 +77,19 @@ public class PathNode : MonoBehaviour
         {
             if (grid.GetGridObject(x - 1, y) != null)
             {
-                //if (!grid.GetGridObject(x - 1, y).occupied)
-                //{
-                    neighborsList.Add(grid.GetGridObject(x - 1, y));
-                //}
+                neighborsList.Add(grid.GetGridObject(x - 1, y));
             }
 
             //Check Left Down
             if (y - 1 >= 0 && grid.GetGridObject(x - 1, y - 1) != null)
             {
-                //if(!grid.GetGridObject(x - 1, y - 1).occupied)
-                //{
-                    neighborsList.Add(grid.GetGridObject(x - 1, y - 1));
-                //}
+                neighborsList.Add(grid.GetGridObject(x - 1, y - 1));
             }
 
             //Check Left Up
             if (y + 1 <= grid.GetGridHeight() && grid.GetGridObject(x - 1, y + 1) != null)
             {
-                //if (!grid.GetGridObject(x - 1, y + 1).occupied)
-                //{
-                    neighborsList.Add(grid.GetGridObject(x - 1, y + 1));
-                //}
+                neighborsList.Add(grid.GetGridObject(x - 1, y + 1));
             }
         }
 
@@ -121,49 +98,33 @@ public class PathNode : MonoBehaviour
         {
             if (grid.GetGridObject(x + 1, y) != null)
             {
-                //if (!grid.GetGridObject(x + 1, y).occupied)
-                //{
-                    neighborsList.Add(grid.GetGridObject(x + 1, y));
-                //}
+                neighborsList.Add(grid.GetGridObject(x + 1, y));
             }
 
             //Check Right Down
             if (y - 1 >= 0 && grid.GetGridObject(x + 1, y - 1) != null)
             {
-                //if(!grid.GetGridObject(x + 1, y - 1).occupied)
-                //{
-                    neighborsList.Add(grid.GetGridObject(x + 1, y - 1));
-                //}
+                neighborsList.Add(grid.GetGridObject(x + 1, y - 1));
             }
 
             //Check Right Up
             if (y + 1 <= grid.GetGridHeight() && grid.GetGridObject(x + 1, y + 1) != null)
             {
-                //if (!grid.GetGridObject(x + 1, y + 1).occupied)
-                //{
-                    neighborsList.Add(grid.GetGridObject(x + 1, y + 1));
-                //}
+                neighborsList.Add(grid.GetGridObject(x + 1, y + 1));
             }
         }
 
         //Check Down
         if (y - 1 >= 0 && grid.GetGridObject(x, y - 1) != null)
         {
-            //if(!grid.GetGridObject(x, y - 1).occupied)
-            //{
-                neighborsList.Add(grid.GetGridObject(x, y - 1));
-            //}
+            neighborsList.Add(grid.GetGridObject(x, y - 1));
         }
 
         //Check Up
         if (y + 1 <= grid.GetGridHeight() && grid.GetGridObject(x, y + 1) != null)
         {
-            //if(grid.GetGridObject(x, y + 1).occupied)
-            //{
-                neighborsList.Add(grid.GetGridObject(x, y + 1));
-            //}
+            neighborsList.Add(grid.GetGridObject(x, y + 1));
         }
-        
     }
 
     public List<PathNode> GetNeighborNodes()

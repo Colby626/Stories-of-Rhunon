@@ -102,7 +102,7 @@ public class BattleMaster : MonoBehaviour
                 ResetMovementLimit();
             }
 
-            //checks if the turn counter is closer than 20 from the furthest calculated the list has gone and if so calculates the list further
+            //checks if the turn counter is closer than the variable below from the furthest calculated the list has gone and if so calculates the list further
             if (turnCounter >= (turnOrder.Count() - howFarInTheFutureYouCalculateTurnOrder))
             {
                 CalculateTurnOrder();
@@ -110,6 +110,7 @@ public class BattleMaster : MonoBehaviour
 
             //Displays the character to go's name on the screen
             turn.text = "It is " + currentCharacter.GetComponent<CharacterSheet>().Name + "'s turn";
+
 
             if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
             {
@@ -167,10 +168,10 @@ public class BattleMaster : MonoBehaviour
             currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
         }
 
-        //If the next person in line is not a player the AI will attack one of them at random
+        //If the next person in line is not a player the AI will attack the nearest one
         if (!currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
-            StartCoroutine(EnemyTurn()); //Delay for enemy turns
+            StartCoroutine(EnemyTurn());
         }
 
         LimitMovement();
@@ -185,6 +186,10 @@ public class BattleMaster : MonoBehaviour
             {
                 if (grid.GetGridObject(x, y) != null) //Position is walkable
                 {
+                    if (gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, grid.GetGridObject(x, y)) == null)
+                    {
+                        continue;
+                    }
                     if (gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, grid.GetGridObject(x, y)).Count <= maxMoveDistance) //It is within max move distance
                     {
                         moveableNodes.Add(grid.GetGridObject(x, y));
@@ -283,7 +288,7 @@ public class BattleMaster : MonoBehaviour
         bool exit = false;
 
         //adjusts the priority in the turn order of all characters
-        while (!exit)     //runs when nothing is in tempList
+        while (!exit) //runs when nothing is in tempList
         {
             foreach (GameObject character in characters)
             {
@@ -505,7 +510,7 @@ public class BattleMaster : MonoBehaviour
         if (livingPlayers.Count > 0)
         {
             List<PathNode> closestPlayerPath = FindNearestPlayer(); //Also determines the targetedPlayer
-            if (closestPlayerPath.Count == 2) //If the player is right next to the enemy (the 2 are the start node and end node)
+            if (closestPlayerPath.Count == 1) //If the player is right next to the enemy (the 2 are the start node and end node)
             {
                 //If the player is to the right of the enemy
                 if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x < 0)
@@ -536,7 +541,6 @@ public class BattleMaster : MonoBehaviour
                 currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
                 AudioManager.instance.Play(currentCharacter.GetComponent<CharacterSheet>().attackSound);
             }
-            //targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count())];
             else
             {
                 //Pathfind along that path until they are no longer validMovementNodes

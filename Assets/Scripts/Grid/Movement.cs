@@ -1,4 +1,5 @@
 using System.Collections.Generic; //For lists
+using System.Linq;
 using UnityEngine;
 
 public class Movement : MonoBehaviour //Base Movement class that certain enemy AIs can derive from
@@ -86,14 +87,35 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         }
         if (grid.gridFinished) //Surely this can be more performant than raycasting in update to find the occupyingNode, but putting it in the occupying node OnTriggerEnter2D wasn't consistant
         {
+            int c = 0;
+            float minDistance = float.PositiveInfinity;
             findNode = Physics2D.BoxCastAll(transform.position, new Vector2(0.1f, 0.1f), 0, Vector2.zero);
-            foreach (RaycastHit2D hit in findNode)
+
+            // Setting occupied node to the nearest center of a node
+            for (int i = 0; i < findNode.Count(); i++)
             {
-                if (hit.transform.gameObject.GetComponent<PathNode>())
+                if (findNode[i].transform.GetComponent<PathNode>())
                 {
-                    occupyingNode = hit.transform.gameObject.GetComponent<PathNode>();
+                    if (Vector3.Distance(transform.position, findNode[i].transform.position) < minDistance)
+                    {
+                        minDistance = Vector3.Distance(transform.position, findNode[i].transform.position);
+                        c = i;
+                    }
                 }
             }
+            if (occupyingNode != null)
+            {
+                if (findNode[c].transform.gameObject.GetComponent<PathNode>() != occupyingNode) //Switched occupying nodes
+                {
+                    occupyingNode.occupied = false;
+                    occupyingNode.transform.GetChild(1).gameObject.SetActive(true);
+                    occupyingNode.transform.GetChild(2).gameObject.SetActive(true);
+                }
+            }
+            occupyingNode = findNode[c].transform.gameObject.GetComponent<PathNode>();
+            occupyingNode.occupied = true;
+            occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
+            occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
         }
         if (grid.gridFinished && !wanderSetup && wander && !isPlayer)
         {

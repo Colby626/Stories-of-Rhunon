@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class GameMaster : MonoBehaviour
 {
@@ -29,16 +27,16 @@ public class GameMaster : MonoBehaviour
         }
         else //On new scene load when there is already a GameMaster
         {
-            instance.grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<CustomGrid>();
-            instance.battleMaster = GameObject.FindGameObjectWithTag("BattleMaster");
+            instance.grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
+            instance.battleMaster = FindObjectOfType<BattleMaster>().gameObject;
             instance.party = GameObject.FindGameObjectWithTag("Party");
             instance.hoveringOverButton = false;
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
 
-        grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<CustomGrid>();
-        instance.battleMaster = GameObject.FindGameObjectWithTag("BattleMaster");
+        instance.grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
+        instance.battleMaster = FindObjectOfType<BattleMaster>().gameObject;
         instance.party = GameObject.FindGameObjectWithTag("Party");
     }
 

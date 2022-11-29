@@ -18,7 +18,36 @@ public class Pathfinding : MonoBehaviour
 
     public List<PathNode> FindPath(PathNode endNode, PathNode startNode) //Will need to make sure that locations gameobjects tagged as participants are on are not put into a path to traverse
     {
+        if (startNode == endNode)
+        {
+            return CalculatePath(endNode);
+        }
         grid = GetComponent<GameMaster>().grid;
+        if (endNode.occupied)
+        {
+            Vector2 temp = new Vector2(startNode.x, startNode.y) - new Vector2(endNode.x, endNode.y);
+            int xSign = 0;
+            int ySign = 0;
+            if (temp.x < 0)
+            {
+                xSign--;
+            } 
+            else if (temp.x > 0)
+            {
+                xSign++;
+            }
+            if (temp.y < 0)
+            {
+                ySign--;
+            }
+            else if (temp.y > 0)
+            {
+                ySign++;
+            }
+            
+            return FindPath(grid.GetGridObject(xSign + endNode.x, ySign + endNode.y), startNode);
+        }
+        
         openList = new List<PathNode> { startNode };
         closedList = new HashSet<PathNode> { };
 
@@ -29,12 +58,9 @@ public class Pathfinding : MonoBehaviour
                 PathNode node = grid.GetGridObject(x, y);
                 if (node != null)
                 {
-                    //if (!node.occupied || node == startNode)
-                    //{
-                        node.gCost = int.MaxValue;
-                        node.CalculateFCost();
-                        node.cameFromNode = null;
-                    //}
+                    node.gCost = int.MaxValue;
+                    node.CalculateFCost();
+                    node.cameFromNode = null;
                 }
             }
         }
@@ -42,6 +68,7 @@ public class Pathfinding : MonoBehaviour
         startNode.gCost = 0;
         startNode.hCost = CalculateDistance(startNode, endNode);
         startNode.CalculateFCost();
+        int i = 0;
 
         while(openList.Count > 0)
         {
@@ -56,10 +83,16 @@ public class Pathfinding : MonoBehaviour
 
             foreach (PathNode neighborNode in currentNode.GetNeighborNodes())
             {
+                if (neighborNode.occupied)
+                {
+                    closedList.Add(neighborNode);
+                }
                 if (closedList.Contains(neighborNode))
                 {
                     continue;
                 }
+
+                i++;
 
                 int tentativeGCost = currentNode.gCost + CalculateDistance(currentNode, neighborNode);
                 if (tentativeGCost < neighborNode.gCost)
@@ -76,8 +109,10 @@ public class Pathfinding : MonoBehaviour
                 }
             }
         }
+        Debug.Log("Looking : " + i);
 
         //Out of nodes on the open list
+        Debug.Log("return null");
         return null;
     }
 
