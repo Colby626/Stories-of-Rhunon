@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3444737388573469852}
   - component: {fileID: 6276197854949121670}
-  - component: {fileID: 1888620513}
   m_Layer: 0
   m_Name: BattleMaster
   m_TagString: BattleMaster
@@ -102,6 +101,7 @@ MonoBehaviour:
   howFarInTheFutureYouCalculateTurnOrder: 50
   moveableNodes: []
   gameMaster: {fileID: 0}
+  willWin: 0
   inventory: {fileID: 6240885341862363}
   inventoryUI: {fileID: 6240885864010387}
   equipmentPortrait: {fileID: 6240883962523704}
@@ -115,24 +115,6 @@ MonoBehaviour:
   precisionText: {fileID: 1484349831247213783}
   constitutionText: {fileID: 8611405923718852090}
   enduranceText: {fileID: 5419841209239859856}
---- !u!114 &1888620513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6714195307129551134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 803618bf4d62d0c498a10b32f0052674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCanvas: {fileID: 0}
-  names:
-  - Attack
-  - Inventory
-  - Position
-  - Run
 --- !u!1001 &8600682595573929128
 PrefabInstance:
   m_ObjectHideFlags: 0

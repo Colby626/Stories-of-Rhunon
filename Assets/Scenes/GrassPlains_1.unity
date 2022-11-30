@@ -54862,6 +54862,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameMaster
       objectReference: {fileID: 0}
+    - target: {fileID: 904247318507742507, guid: 72d6962769709fb4e9f5b9f3046fa175,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1211944257266054045, guid: 72d6962769709fb4e9f5b9f3046fa175,
         type: 3}
       propertyPath: m_RootOrder
@@ -55137,6 +55142,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6240884737694314, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240884909635474, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 156276985257187180, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -55207,9 +55220,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleMaster
       objectReference: {fileID: 0}
+    - target: {fileID: 6714195307129551134, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1452812865, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
     - {fileID: 480594386, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
+    - {fileID: 1888620513, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
 --- !u!1 &445504127 stripped
 GameObject:
@@ -56762,6 +56781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Party
+      objectReference: {fileID: 0}
+    - target: {fileID: 542170188930115356, guid: 9e2d3be66e742304fa8a776cfa0678d5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 542170188930115357, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
