@@ -33,7 +33,7 @@ public class CustomGrid : MonoBehaviour
 
                 //Puts all colliders within a tile in a colliders array
                 tilePlaced = false;
-                colliders = Physics2D.OverlapBoxAll(new Vector2(x + origin.x + .5f, y + origin.y + .5f), new Vector2(0.5f, 0.5f), 0);
+                colliders = Physics2D.OverlapBoxAll(new Vector2(x + origin.x + .5f, y + origin.y + .5f), new Vector2(0.99f, 0.99f), 0);
 
                 //Don't display anything on tiles that contain something with unwalkable on it
                 for (int i = 0; i < colliders.Length; i++)

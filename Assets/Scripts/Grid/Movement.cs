@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour //Base Movement class that certain enemy AIs can derive from
 {
     public bool isPlayer;
-    [Tooltip("How close to the center of a tile an entity must be to consider itself in that tile for movement")]
+    [Tooltip("How close to the center of a tile an entity must be to consider itself in that tile for movement.")]
     public float centeringOffset = 0.1f;
     public bool spriteFacingLeft;
     public PathNode occupyingNode;
@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
     private void Update()
     {
-        if (grid.gridFinished && !startPositionDetermined)
+        if (grid.gridFinished && !startPositionDetermined) //Make gridFinished a UnityEvent
         {
             startPositionDetermined = true;
             gameMaster.startPositionDetermined = true;
@@ -87,7 +87,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         }
         if (grid.gridFinished) //Surely this can be more performant than raycasting in update to find the occupyingNode, but putting it in the occupying node OnTriggerEnter2D wasn't consistant
         {
-            int c = 0;
+            int closestNode = 0;
             float minDistance = float.PositiveInfinity;
             findNode = Physics2D.BoxCastAll(transform.position, new Vector2(0.1f, 0.1f), 0, Vector2.zero);
 
@@ -99,23 +99,24 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
                     if (Vector3.Distance(transform.position, findNode[i].transform.position) < minDistance)
                     {
                         minDistance = Vector3.Distance(transform.position, findNode[i].transform.position);
-                        c = i;
+                        closestNode = i;
                     }
                 }
             }
-            if (occupyingNode != null)
+            if (occupyingNode != findNode[closestNode].transform.GetComponent<PathNode>())
             {
-                if (findNode[c].transform.gameObject.GetComponent<PathNode>() != occupyingNode) //Switched occupying nodes
+                if (occupyingNode != null)
                 {
                     occupyingNode.occupied = false;
                     occupyingNode.transform.GetChild(1).gameObject.SetActive(true);
                     occupyingNode.transform.GetChild(2).gameObject.SetActive(true);
                 }
+
+                occupyingNode = findNode[closestNode].transform.GetComponent<PathNode>();
+                occupyingNode.occupied = true;
+                occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
+                occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
             }
-            occupyingNode = findNode[c].transform.gameObject.GetComponent<PathNode>();
-            occupyingNode.occupied = true;
-            occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
-            occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
         }
         if (grid.gridFinished && !wanderSetup && wander && !isPlayer)
         {
