@@ -113,7 +113,7 @@ public class CharacterSheet : MonoBehaviour
         MaxStamina = characterStats.Endurance;
         characterStats.Damage = characterStats.Strength;
         characterStats.XPtoLevelUp = 10; //This is the starting value for the amount of XP it takes to level up
-        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
+        battleMaster = FindObjectOfType<BattleMaster>();
 
         characterEquipment = new List<Equipment> { GetComponent<CharacterEquipment>().Head, GetComponent<CharacterEquipment>().Torso,
             GetComponent<CharacterEquipment>().Arms, GetComponent<CharacterEquipment>().Legs, GetComponent<CharacterEquipment>().ArmSlot1,

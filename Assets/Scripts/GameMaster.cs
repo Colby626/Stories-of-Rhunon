@@ -8,7 +8,7 @@ public class GameMaster : MonoBehaviour
     public Material highlightMaterial;
 
     public GameObject party;
-    public GameObject battleMaster;
+    public BattleMaster battleMaster;
     public CustomGrid grid;
     public PathNode partyNode;
     public PathNode targetNode;
@@ -27,16 +27,16 @@ public class GameMaster : MonoBehaviour
         }
         else //On new scene load when there is already a GameMaster
         {
-            instance.grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
-            instance.battleMaster = FindObjectOfType<BattleMaster>().gameObject;
+            instance.grid = FindObjectOfType<CustomGrid>();
+            instance.battleMaster = FindObjectOfType<BattleMaster>();
             instance.party = GameObject.FindGameObjectWithTag("Party");
             instance.hoveringOverButton = false;
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
 
-        instance.grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
-        instance.battleMaster = FindObjectOfType<BattleMaster>().gameObject;
+        instance.grid = FindObjectOfType<CustomGrid>();
+        instance.battleMaster = FindObjectOfType<BattleMaster>();
         instance.party = GameObject.FindGameObjectWithTag("Party");
     }
 
