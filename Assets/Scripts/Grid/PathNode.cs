@@ -11,6 +11,7 @@ public class PathNode : MonoBehaviour
     public int fCost;
 
     public bool occupied = false;
+    public GameObject occupyingAgent;
     public bool validMovePosition;
     public PathNode[] adjacentNodes;
     public PathNode cameFromNode;

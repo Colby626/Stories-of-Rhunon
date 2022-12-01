@@ -160,6 +160,11 @@ public class CharacterSheet : MonoBehaviour
 
     public void FinishDie()
     {
+        GetComponentInParent<Movement>().occupyingNode.occupied = false;
+        GetComponentInParent<Movement>().occupyingNode.occupyingAgent = null;
+        GetComponentInParent<Movement>().occupyingNode.transform.GetChild(1).gameObject.SetActive(true);
+        GetComponentInParent<Movement>().occupyingNode.transform.GetChild(2).gameObject.SetActive(true);
+
         if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
         {
             battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.XP += characterStats.XP;

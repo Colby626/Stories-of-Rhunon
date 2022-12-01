@@ -62,6 +62,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
             if (colliders[i].GetComponent<PathNode>() == true)
             {
                 startingNode = colliders[i].GetComponent<PathNode>();
+                occupyingNode = startingNode;
                 break;
             }
         }
@@ -89,21 +90,35 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         {
             int closestNode = 0;
             float minDistance = float.PositiveInfinity;
-            findNode = Physics2D.BoxCastAll(transform.position, new Vector2(0.1f, 0.1f), 0, Vector2.zero);
+            findNode = Physics2D.CircleCastAll(transform.position, 1.5f, Vector2.zero);
 
             // Setting occupied node to the nearest center of a node
             for (int i = 0; i < findNode.Count(); i++)
             {
-                if (findNode[i].transform.GetComponent<PathNode>())
+                if (findNode[i].transform.GetComponent<PathNode>() is PathNode pathNode)
                 {
-                    if (Vector3.Distance(transform.position, findNode[i].transform.position) < minDistance)
+                    if (pathNode.occupyingAgent == null || pathNode.occupyingAgent == gameObject)
                     {
-                        minDistance = Vector3.Distance(transform.position, findNode[i].transform.position);
+                        pathNode.occupied = false;
+                        pathNode.occupyingAgent = null;
+                        pathNode.transform.GetChild(1).gameObject.SetActive(true);
+                        pathNode.transform.GetChild(2).gameObject.SetActive(true);
+                    }
+                    if (Vector3.Distance(transform.position, pathNode.transform.position) < minDistance)
+                    {
+                        minDistance = Vector3.Distance(transform.position, pathNode.transform.position);
                         closestNode = i;
                     }
                 }
             }
-            if (occupyingNode != findNode[closestNode].transform.GetComponent<PathNode>())
+
+            occupyingNode = findNode[closestNode].transform.GetComponent<PathNode>();
+            occupyingNode.occupied = true;
+            occupyingNode.occupyingAgent = gameObject;
+            occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
+            occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
+
+            /*if (occupyingNode != findNode[closestNode].transform.GetComponent<PathNode>())
             {
                 if (occupyingNode != null)
                 {
@@ -114,9 +129,10 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
                 occupyingNode = findNode[closestNode].transform.GetComponent<PathNode>();
                 occupyingNode.occupied = true;
+                occupyingNode.occupyingAgent = gameObject;
                 occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
                 occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
-            }
+            }*/
         }
         if (grid.gridFinished && !wanderSetup && wander && !isPlayer)
         {
