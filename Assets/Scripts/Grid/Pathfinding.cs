@@ -18,6 +18,10 @@ public class Pathfinding : MonoBehaviour
 
     public List<PathNode> FindPath(PathNode endNode, PathNode startNode) //Will need to make sure that locations gameobjects tagged as participants are on are not put into a path to traverse
     {
+        if (endNode == null)
+        {
+            return null;
+        }
         if (startNode == endNode)
         {
             return CalculatePath(endNode);

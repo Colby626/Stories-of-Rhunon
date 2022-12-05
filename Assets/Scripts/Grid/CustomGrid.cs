@@ -101,33 +101,33 @@ public class CustomGrid : MonoBehaviour
         return numRows - 1;
     }
 
-    private void OnDrawGizmos()
-    {
-        for (int x = 0; x < numColumns; x+=5) //Drawing every tile cripples performance
-        {
-            for (int y = 0; y < numRows; y+=5) //Drawing every tile cripples performance
-            {
-                Handles.Label(new Vector2(origin.x + x, origin.y + y + cellSize), x + " " + y);
-            }
-        }
-        //Draw the grid in the editor with Gizmos.DrawLines
-        for (int x = 0; x < numColumns * cellSize; x += cellSize)
-        {
-            for (int y = 0; y < numRows * cellSize; y += cellSize)
-            {
-                //Drawing the boxes
-                Gizmos.DrawLine(new Vector2(x + origin.x, y + origin.y), new Vector2(x + origin.x, y + origin.y + cellSize));
-                Gizmos.DrawLine(new Vector2(x + origin.x, y + origin.y), new Vector2(x + origin.x + cellSize, y + origin.y));
+    //private void OnDrawGizmos()
+    //{
+    //    for (int x = 0; x < numColumns; x+=5) //Drawing every tile cripples performance
+    //    {
+    //        for (int y = 0; y < numRows; y+=5) //Drawing every tile cripples performance
+    //        {
+    //            Handles.Label(new Vector2(origin.x + x, origin.y + y + cellSize), x + " " + y);
+    //        }
+    //    }
+    //    //Draw the grid in the editor with Gizmos.DrawLines
+    //    for (int x = 0; x < numColumns * cellSize; x += cellSize)
+    //    {
+    //        for (int y = 0; y < numRows * cellSize; y += cellSize)
+    //        {
+    //            //Drawing the boxes
+    //            Gizmos.DrawLine(new Vector2(x + origin.x, y + origin.y), new Vector2(x + origin.x, y + origin.y + cellSize));
+    //            Gizmos.DrawLine(new Vector2(x + origin.x, y + origin.y), new Vector2(x + origin.x + cellSize, y + origin.y));
 
-                if (y == numRows * cellSize - cellSize)
-                {
-                    Gizmos.DrawLine(new Vector2(x + origin.x, y + origin.y + cellSize), new Vector2(x + origin.x + cellSize, y + origin.y + cellSize));
-                }
-                if (x == numColumns * cellSize - cellSize)
-                {
-                    Gizmos.DrawLine(new Vector2(x + origin.x + cellSize, y + origin.y), new Vector2(x + origin.x + cellSize, y + origin.y + cellSize));
-                }
-            }
-        }
-    }
+    //            if (y == numRows * cellSize - cellSize)
+    //            {
+    //                Gizmos.DrawLine(new Vector2(x + origin.x, y + origin.y + cellSize), new Vector2(x + origin.x + cellSize, y + origin.y + cellSize));
+    //            }
+    //            if (x == numColumns * cellSize - cellSize)
+    //            {
+    //                Gizmos.DrawLine(new Vector2(x + origin.x + cellSize, y + origin.y), new Vector2(x + origin.x + cellSize, y + origin.y + cellSize));
+    //            }
+    //        }
+    //    }
+    //}
 }

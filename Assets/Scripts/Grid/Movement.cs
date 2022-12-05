@@ -323,28 +323,28 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        //Wander range red
-        grid = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().grid;
-        Gizmos.color = Color.red;
-        if (Application.isPlaying)
-        {
-            Gizmos.DrawWireSphere(startPosition, wanderRange);
-        }
-        else
-        {
-            Gizmos.DrawWireSphere(transform.position, wanderRange);
-        }
+    //private void OnDrawGizmos()
+    //{
+    //    //Wander range red
+    //    grid = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().grid;
+    //    Gizmos.color = Color.red;
+    //    if (Application.isPlaying)
+    //    {
+    //        Gizmos.DrawWireSphere(startPosition, wanderRange);
+    //    }
+    //    else
+    //    {
+    //        Gizmos.DrawWireSphere(transform.position, wanderRange);
+    //    }
 
-        //Viewing range blue
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, viewRange);
+    //    //Viewing range blue
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawWireSphere(transform.position, viewRange);
 
-        if (lookingForParticipants)
-        {
-            Gizmos.color = Color.green; //Sets the color of the distance it looks for participants
-            Gizmos.DrawWireCube(transform.position, new Vector3(gameMaster.distanceToLookForParticipants, gameMaster.distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
-        }
-    }
+    //    if (lookingForParticipants)
+    //    {
+    //        Gizmos.color = Color.green; //Sets the color of the distance it looks for participants
+    //        Gizmos.DrawWireCube(transform.position, new Vector3(gameMaster.distanceToLookForParticipants, gameMaster.distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
+    //    }
+    //}
 }

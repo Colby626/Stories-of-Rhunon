@@ -61591,7 +61591,7 @@ PrefabInstance:
     - target: {fileID: 1535606136392239002, guid: 72d6962769709fb4e9f5b9f3046fa175,
         type: 3}
       propertyPath: distanceToLookForParticipants
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72d6962769709fb4e9f5b9f3046fa175, type: 3}
@@ -102443,8 +102443,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3536630918814662491, guid: 14aa5a369edc5404092a96ae78a24712,
         type: 3}
+      propertyPath: Health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536630918814662491, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
       propertyPath: killToWin
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536630918814662491, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: characterStats.Strength
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3960179391295818991, guid: 14aa5a369edc5404092a96ae78a24712,
         type: 3}
