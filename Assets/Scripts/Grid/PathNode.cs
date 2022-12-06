@@ -16,7 +16,7 @@ public class PathNode : MonoBehaviour
     public PathNode[] adjacentNodes;
     public PathNode cameFromNode;
     public List<PathNode> neighborsList = new();
-    public bool wanderingDestination = false;
+    public bool destinationNode = false;
 
     private CustomGrid grid;
     public GameMaster gameMaster;

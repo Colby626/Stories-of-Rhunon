@@ -114,7 +114,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
             occupyingNode = findNode[closestNode].transform.GetComponent<PathNode>();
             occupyingNode.occupied = true;
-            occupyingNode.wanderingDestination = false;
+            occupyingNode.destinationNode= false;
             occupyingNode.occupyingAgent = gameObject;
             occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
             occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
@@ -265,15 +265,31 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
     public void Wander() //Randomly pick areas within range to move to 
     {
-        wanderTimer = Random.Range(wanderDelayMin, wanderDelayMax);
-        wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)]; 
-        if (wanderNode.occupied || wanderNode.wanderingDestination) //If choosing an occupied node in the wander radius, rechoose
+        int numberOfOccupiedNeighbors = 0;
+        foreach (PathNode neighborNode in occupyingNode.GetNeighborNodes())
         {
-            Wander();
-            return;
+            if (neighborNode.occupied == false)
+            {
+                break;
+            }
+            else
+            {
+                numberOfOccupiedNeighbors += 1;
+            }
         }
-        wanderNode.wanderingDestination = true;
-        MoveOnPath(pathfinding.FindPath(wanderNode, startingNode));
+        if (numberOfOccupiedNeighbors != occupyingNode.GetNeighborNodes().Count)
+        {
+        
+            wanderTimer = Random.Range(wanderDelayMin, wanderDelayMax);
+            wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)];
+            if (wanderNode.occupied || wanderNode.destinationNode) //If choosing an occupied node in the wander radius, rechoose
+            {
+                Wander();
+                return;
+            }
+            wanderNode.destinationNode = true;
+            MoveOnPath(pathfinding.FindPath(wanderNode, startingNode));
+        }
     }
 
     public void MoveOnPath(List<PathNode> path)

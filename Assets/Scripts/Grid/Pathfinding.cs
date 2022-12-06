@@ -24,7 +24,7 @@ public class Pathfinding : MonoBehaviour
         }
         if (startNode == endNode)
         {
-            return CalculatePath(endNode);
+            return new List<PathNode> { endNode };
         }
         grid = GetComponent<GameMaster>().grid;
         if (endNode.occupied)

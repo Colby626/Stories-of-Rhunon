@@ -169,7 +169,7 @@ public class CharacterSheet : MonoBehaviour
         GetComponentInParent<Movement>().occupyingNode.transform.GetChild(1).gameObject.SetActive(true);
         GetComponentInParent<Movement>().occupyingNode.transform.GetChild(2).gameObject.SetActive(true);
 
-        if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+        if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer && !isPlayer)
         {
             battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.XP += characterStats.XP;
         }

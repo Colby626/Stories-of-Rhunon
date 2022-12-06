@@ -52,7 +52,7 @@ public class CustomGrid : MonoBehaviour
                     {
                         if (colliders[i].CompareTag("Walkable"))
                         {
-                            GameObject instance = Instantiate(whiteTile, new Vector2(x + origin.x + .5f, y + origin.y + .5f), Quaternion.identity);
+                            GameObject instance = Instantiate(whiteTile, new Vector2(x + origin.x + .5f, y + origin.y + .5f), Quaternion.identity, transform);
                             instance.transform.localScale = new Vector3(.5f, .5f, 0);
                             instance.GetComponent<PathNode>().x = x;
                             instance.GetComponent<PathNode>().y = y;
