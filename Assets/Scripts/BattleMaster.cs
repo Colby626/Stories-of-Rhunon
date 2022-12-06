@@ -180,24 +180,29 @@ public class BattleMaster : MonoBehaviour
     private void LimitMovement()
     {
         int maxMoveDistance = currentCharacter.GetComponent<CharacterSheet>().characterStats.Speed / 5;
-        for (int x = currentCharacter.GetComponentInParent<Movement>().occupyingNode.x - maxMoveDistance; x <= currentCharacter.GetComponentInParent<Movement>().occupyingNode.x + maxMoveDistance; x++)
+        List<PathNode> tempPath = null;
+        PathNode oNode = currentCharacter.GetComponentInParent<Movement>().occupyingNode;
+        PathNode tempNode = null;
+        for (int x = oNode.x - maxMoveDistance; x <= oNode.x + maxMoveDistance; x++)
         {
-            for (int y = currentCharacter.GetComponentInParent<Movement>().occupyingNode.y - maxMoveDistance; y <= currentCharacter.GetComponentInParent<Movement>().occupyingNode.y + maxMoveDistance; y++)
+            for (int y = oNode.y - maxMoveDistance; y <= oNode.y + maxMoveDistance; y++)
             {
-                if (grid.GetGridObject(x, y) != null) //Position is walkable
+                tempNode = grid.GetGridObject(x, y);
+                if (tempNode != null) //Position is walkable
                 {
-                    if (gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, grid.GetGridObject(x, y)) == null)
+                    tempPath = gameMaster.GetComponent<Pathfinding>().FindPath(oNode, tempNode);
+                    if (tempPath == null)
                     {
                         continue;
                     }
-                    if (gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, grid.GetGridObject(x, y)).Count <= maxMoveDistance) //It is within max move distance
+                    if (tempPath.Count <= maxMoveDistance) //It is within max move distance
                     {
-                        moveableNodes.Add(grid.GetGridObject(x, y));
-                        grid.GetGridObject(x, y).validMovePosition = true;
+                        moveableNodes.Add(tempNode);
+                        tempNode.validMovePosition = true;
                         if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
                         {
-                            grid.GetGridObject(x, y).transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                            grid.GetGridObject(x, y).transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+                            tempNode.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+                            tempNode.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
                         }
                     }
                 }
@@ -281,9 +286,9 @@ public class BattleMaster : MonoBehaviour
                 exit = true;
             }
         }
-    }
+    } //do for instead of foreach
 
-    private void StartingTurnOrder()
+    private void StartingTurnOrder() //do for instead of foreach
     {
         bool exit = false;
 
