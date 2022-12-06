@@ -272,6 +272,7 @@ public class CharacterSheet : MonoBehaviour
 
     public void DealDamage()
     {
+        battleMaster.gameMaster.grid.gridClicked = false; //If not here, grid will register a click on the pathnodes below the enemy clicked
         if (!isPlayer)
         {
             battleMaster.targetedPlayer.GetComponent<CharacterSheet>().TakeDamage(characterStats.Damage + 1);

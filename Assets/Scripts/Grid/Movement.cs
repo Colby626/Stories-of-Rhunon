@@ -114,25 +114,10 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
             occupyingNode = findNode[closestNode].transform.GetComponent<PathNode>();
             occupyingNode.occupied = true;
+            occupyingNode.wanderingDestination = false;
             occupyingNode.occupyingAgent = gameObject;
             occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
             occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
-
-            /*if (occupyingNode != findNode[closestNode].transform.GetComponent<PathNode>())
-            {
-                if (occupyingNode != null)
-                {
-                    occupyingNode.occupied = false;
-                    occupyingNode.transform.GetChild(1).gameObject.SetActive(true);
-                    occupyingNode.transform.GetChild(2).gameObject.SetActive(true);
-                }
-
-                occupyingNode = findNode[closestNode].transform.GetComponent<PathNode>();
-                occupyingNode.occupied = true;
-                occupyingNode.occupyingAgent = gameObject;
-                occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
-                occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
-            }*/
         }
         if (grid.gridFinished && !wanderSetup && wander && !isPlayer)
         {
@@ -282,11 +267,12 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     {
         wanderTimer = Random.Range(wanderDelayMin, wanderDelayMax);
         wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)]; 
-        if (wanderNode.occupied) //If choosing an occupied node in the wander radius, rechoose
+        if (wanderNode.occupied || wanderNode.wanderingDestination) //If choosing an occupied node in the wander radius, rechoose
         {
             Wander();
             return;
         }
+        wanderNode.wanderingDestination = true;
         MoveOnPath(pathfinding.FindPath(wanderNode, startingNode));
     }
 
@@ -323,28 +309,28 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         }
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    //Wander range red
-    //    grid = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().grid;
-    //    Gizmos.color = Color.red;
-    //    if (Application.isPlaying)
-    //    {
-    //        Gizmos.DrawWireSphere(startPosition, wanderRange);
-    //    }
-    //    else
-    //    {
-    //        Gizmos.DrawWireSphere(transform.position, wanderRange);
-    //    }
+    private void OnDrawGizmos()
+    {
+        //Wander range red
+        grid = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().grid;
+        Gizmos.color = Color.red;
+        if (Application.isPlaying)
+        {
+            Gizmos.DrawWireSphere(startPosition, wanderRange);
+        }
+        else
+        {
+            Gizmos.DrawWireSphere(transform.position, wanderRange);
+        }
 
-    //    //Viewing range blue
-    //    Gizmos.color = Color.blue;
-    //    Gizmos.DrawWireSphere(transform.position, viewRange);
+        //Viewing range blue
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, viewRange);
 
-    //    if (lookingForParticipants)
-    //    {
-    //        Gizmos.color = Color.green; //Sets the color of the distance it looks for participants
-    //        Gizmos.DrawWireCube(transform.position, new Vector3(gameMaster.distanceToLookForParticipants, gameMaster.distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
-    //    }
-    //}
+        if (lookingForParticipants)
+        {
+            Gizmos.color = Color.green; //Sets the color of the distance it looks for participants
+            Gizmos.DrawWireCube(transform.position, new Vector3(gameMaster.distanceToLookForParticipants, gameMaster.distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
+        }
+    }
 }

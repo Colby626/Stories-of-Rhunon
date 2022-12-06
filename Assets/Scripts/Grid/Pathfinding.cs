@@ -16,7 +16,7 @@ public class Pathfinding : MonoBehaviour
     private CustomGrid grid;
     public float speed = .01f;
 
-    public List<PathNode> FindPath(PathNode endNode, PathNode startNode) //Will need to make sure that locations gameobjects tagged as participants are on are not put into a path to traverse
+    public List<PathNode> FindPath(PathNode endNode, PathNode startNode)
     {
         if (endNode == null)
         {

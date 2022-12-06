@@ -16,13 +16,16 @@ public class PathNode : MonoBehaviour
     public PathNode[] adjacentNodes;
     public PathNode cameFromNode;
     public List<PathNode> neighborsList = new();
+    public bool wanderingDestination = false;
 
     private CustomGrid grid;
     public GameMaster gameMaster;
+    private BattleMaster battleMaster;
 
     private void Awake()
     {
         gameMaster = GameMaster.instance.GetComponent<GameMaster>();
+        battleMaster = gameMaster.battleMaster;
         grid = gameMaster.grid;
         validMovePosition = false;
     }
@@ -34,7 +37,7 @@ public class PathNode : MonoBehaviour
 
     public void OnMouseOver()
     {
-        if (!gameMaster.hoveringOverButton) //Deadzone for mouse at the bottom of the screen
+        if (!gameMaster.hoveringOverButton && !battleMaster.attackPressed)
         {
             if (Time.timeScale != 0 && !occupied) //If the game isn't paused
             {
@@ -42,12 +45,12 @@ public class PathNode : MonoBehaviour
             }
             if (grid.gridClicked)
             {
-                if (!gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !occupied && Time.timeScale > 0) //If a battle isn't happening and the game isn't paused
+                if (!battleMaster.battleStarted && !occupied && Time.timeScale > 0) //If a battle isn't happening and the game isn't paused
                 {
                     gameMaster.targetNode = this;
                 }
 
-                if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !occupied && Time.timeScale > 0 && validMovePosition && !gameMaster.movedOnTurn && gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+                if (battleMaster.battleStarted && !occupied && Time.timeScale > 0 && validMovePosition && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
                 {
                     gameMaster.targetNode = this;
                     gameMaster.movedOnTurn = true;

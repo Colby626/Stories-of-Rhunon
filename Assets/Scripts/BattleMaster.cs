@@ -551,7 +551,7 @@ public class BattleMaster : MonoBehaviour
 
     private List<PathNode> FindNearestPlayer() //Searches for every player path, could be optimized by searching outward until hitting a player
     {
-        List<PathNode> shortestPath = new List<PathNode> (new PathNode [500]); //Initalize the shorest path as 500 nodes
+        List<PathNode> shortestPath = new List<PathNode> (new PathNode [500]); //Initalize the shortest path as 500 nodes
         List<PathNode> tempPath = new();
         foreach(GameObject player in livingPlayers)
         {
