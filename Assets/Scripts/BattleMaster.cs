@@ -47,7 +47,7 @@ public class BattleMaster : MonoBehaviour
     private List<GameObject> tempList = new();
     private GameObject[] characterArray;
     private int characterindex = 0;
-    private int turnCounter = 0;
+    public int turnCounter = 0;
     public bool willWin = false;
     private CustomGrid grid;
 
