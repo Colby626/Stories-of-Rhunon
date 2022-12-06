@@ -6,22 +6,20 @@ public class MouseOver : MonoBehaviour
 {
     private CharacterSheet character;
     private Material characterMaterial;
-    public bool doMouseOver = true;
 
-    //public GameObject status;
-    public Image portrait;
-    public StatBar healthBar;
-    public StatBar manaBar;
-    public StatBar staminaBar;
-    public StatBar overheadHealthBar;
-    public TextMeshProUGUI overheadNameText;
-    public Text nameText;
-    public float animationTime = 1f;
-    public Material highlightMaterial;
-    public BattleMaster battleMaster;
+    private Image portrait;
+    private StatBar healthBar;
+    private StatBar manaBar;
+    private StatBar staminaBar;
+    private StatBar overheadHealthBar;
+    private TextMeshProUGUI overheadNameText;
+    private Text nameText;
+    private Material highlightMaterial;
 
     private bool isHighlighted = false;
+
     private PauseMenu pauseMenu;
+    private BattleMaster battleMaster;
 
     private void Start()
     {
@@ -38,10 +36,10 @@ public class MouseOver : MonoBehaviour
         }
         pauseMenu = FindObjectOfType<PauseMenu>();
 
+        portrait = battleMaster.status.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
         healthBar = battleMaster.status.transform.GetChild(1).GetComponent<StatBar>();
         manaBar = battleMaster.status.transform.GetChild(2).GetComponent<StatBar>();
         staminaBar = battleMaster.status.transform.GetChild(3).GetComponent<StatBar>();
-        portrait = battleMaster.status.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
         nameText = battleMaster.status.transform.GetChild(4).GetComponent<Text>();
         highlightMaterial = GameMaster.instance.highlightMaterial;
 

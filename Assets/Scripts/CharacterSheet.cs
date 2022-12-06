@@ -41,9 +41,9 @@ public class CharacterStats
     [Range(0, 99)]
     public int Attunement; //Magical prowess
     [Range(0, 99)]
-    public int Reflexes; //Determines how much you go at the start of combat
+    public int Reflexes; //Determines how often it will be your turn
     [Range(0, 99)]
-    public int Speed; //Determines how often you go
+    public int Speed; //Determines how far you can travel in a turn
     [Range(0, 99)]
     public int Precision; //Critical chance
     [Range(0, 99)]
@@ -52,7 +52,7 @@ public class CharacterStats
     public int Endurance; //Determines max stamina
     [HideInInspector]
     public int Defense; //Decreases damage taken
-    public int Damage;
+    public int Damage; 
     public int XP;
     public int XPtoLevelUp;
 }
@@ -152,10 +152,7 @@ public class CharacterSheet : MonoBehaviour
         battleMaster.characters.Remove(gameObject);
         while (battleMaster.turnOrder.Contains(gameObject))
         {
-            //if (battleMaster.turnOrder.IndexOf(gameObject) > battleMaster.turnCounter) //If removing an enemy from the list is to the left of the current turn counter, also move the turn counter back one
-            // Edited for removing turnCounter
-                battleMaster.turnOrder.Remove(gameObject);
-            //}
+            battleMaster.turnOrder.Remove(gameObject);
         }
         isDead = true;
         AudioManager.instance.Play(deathSound); //Need to play this sound after the take hit animation and sound has finished

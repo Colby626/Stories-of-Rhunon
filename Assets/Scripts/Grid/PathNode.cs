@@ -12,14 +12,14 @@ public class PathNode : MonoBehaviour
 
     public bool occupied = false;
     public GameObject occupyingAgent;
+    public bool destinationNode = false;
     public bool validMovePosition;
-    public PathNode[] adjacentNodes;
+
     public PathNode cameFromNode;
     public List<PathNode> neighborsList = new();
-    public bool destinationNode = false;
 
     private CustomGrid grid;
-    public GameMaster gameMaster;
+    private GameMaster gameMaster;
     private BattleMaster battleMaster;
 
     private void Awake()

@@ -47,7 +47,6 @@ public class BattleMaster : MonoBehaviour
     private List<GameObject> tempList = new();
     private GameObject[] characterArray;
     private int characterindex = 0;
-    //public int turnCounter = 0; Edited for removing turnCounter
     public bool willWin = false;
     private CustomGrid grid;
 
@@ -103,12 +102,7 @@ public class BattleMaster : MonoBehaviour
                 ResetMovementLimit();
             }
 
-            //checks if the turn counter is closer than the variable below from the furthest calculated the list has gone and if so calculates the list further
-            //if (turnCounter >= (turnOrder.Count() - howFarInTheFutureYouCalculateTurnOrder)) //Edited for removing turnCounter
-            //{
-            //    CalculateTurnOrder();
-            //}
-            if (turnOrder.Count() < howFarInTheFutureYouCalculateTurnOrder) //Edited for removing turnCounter
+            if (turnOrder.Count() < howFarInTheFutureYouCalculateTurnOrder)
             {
                 CalculateTurnOrder();
             }
@@ -234,10 +228,9 @@ public class BattleMaster : MonoBehaviour
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         characterindex++;
-        currentCharacter = turnOrder[1].GetComponent<CharacterSheet>(); //Edited for removing turnCounter
+        currentCharacter = turnOrder[1].GetComponent<CharacterSheet>();
         attackDone = false;
-        //turnCounter++; //Edited for removing turnCounter
-        turnOrder.RemoveAt(0); //Edited for removing turnCounter
+        turnOrder.RemoveAt(0); 
         attackButton.interactable = true;
         gameMaster.movedOnTurn = false;
 
@@ -275,7 +268,7 @@ public class BattleMaster : MonoBehaviour
         {
             foreach (GameObject character in characters)
             {
-                character.GetComponent<CharacterSheet>().turnOrderPriority += character.GetComponent<CharacterSheet>().characterStats.Speed;
+                character.GetComponent<CharacterSheet>().turnOrderPriority += character.GetComponent<CharacterSheet>().characterStats.Reflexes;
 
                 while (character.GetComponent<CharacterSheet>().turnOrderPriority >= multiTurnThreshold)
                 {
@@ -292,9 +285,9 @@ public class BattleMaster : MonoBehaviour
                 exit = true;
             }
         }
-    } //do for instead of foreach
+    }
 
-    private void StartingTurnOrder() //do for instead of foreach
+    private void StartingTurnOrder()
     {
         bool exit = false;
 
@@ -597,7 +590,7 @@ public class BattleMaster : MonoBehaviour
         //Display portraits, names, and healths for the turn order
         for (int i = 0; i < portraits.Count(); i++)
         {
-            portraits[i].sprite = turnOrder[i].GetComponent<CharacterSheet>().Portrait; //Edited for removing turnCounter (was turnCounter + i)
+            portraits[i].sprite = turnOrder[i].GetComponent<CharacterSheet>().Portrait; 
             portraits[i].preserveAspect = true;
             namesList[i].text = turnOrder[i].GetComponent<CharacterSheet>().Name;
             healthBars[i].SetBarMax(turnOrder[i].GetComponent<CharacterSheet>().MaxHealth);
@@ -611,7 +604,6 @@ public class BattleMaster : MonoBehaviour
         {
             battleStarted = false;
             turnOrderCalculated = false;
-            //turnCounter = 0; Edited for removing turnCounter
             characterindex = 0;
             attackDone = false;
             attackPressed = false;

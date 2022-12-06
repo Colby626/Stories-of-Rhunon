@@ -3,17 +3,21 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
-    public List<GameObject> participants;
     public Material highlightMaterial;
 
-    public GameObject party;
-    public BattleMaster battleMaster;
-    public CustomGrid grid;
     public PathNode partyNode;
     public PathNode targetNode;
     public bool startPositionDetermined = false;
     public bool movedOnTurn = false;
     public bool hoveringOverButton;
+    public List<GameObject> participants;
+
+    [HideInInspector]
+    public GameObject party;
+    [HideInInspector]
+    public BattleMaster battleMaster;
+    [HideInInspector]
+    public CustomGrid grid;
 
     private Collider2D[] colliders;
 
