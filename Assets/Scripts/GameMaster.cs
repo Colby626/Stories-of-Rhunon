@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
-    public int distanceToLookForParticipants;
     public List<GameObject> participants;
     public Material highlightMaterial;
 
@@ -55,7 +54,7 @@ public class GameMaster : MonoBehaviour
             return;
         }
         //check tiles outward from contact with enemy and player with a distance of distanceToLookForPartcipants and put them in participants list then call StartBattle
-        colliders = Physics2D.OverlapBoxAll(caller.transform.position, new Vector2(distanceToLookForParticipants, distanceToLookForParticipants), 0);
+        colliders = Physics2D.OverlapBoxAll(caller.transform.position, new Vector2(caller.GetComponentInParent<Movement>().distanceToLookForParticipants, caller.GetComponentInParent<Movement>().distanceToLookForParticipants), 0);
 
         foreach (Collider2D collider in colliders) //This should be redone for optimization and just set in the editor 
         {

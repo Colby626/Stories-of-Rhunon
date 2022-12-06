@@ -169,13 +169,13 @@ public class CharacterSheet : MonoBehaviour
         GetComponentInParent<Movement>().occupyingNode.transform.GetChild(1).gameObject.SetActive(true);
         GetComponentInParent<Movement>().occupyingNode.transform.GetChild(2).gameObject.SetActive(true);
 
-        if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer && !isPlayer)
+        if (battleMaster.currentCharacter.isPlayer && !isPlayer)
         {
-            battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.XP += characterStats.XP;
+            battleMaster.currentCharacter.characterStats.XP += characterStats.XP;
         }
 
         //Display the levelup button if the currentCharacter has more XP than they need to level up
-        if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer && battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.XP > battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.XPtoLevelUp)
+        if (battleMaster.currentCharacter.isPlayer && battleMaster.currentCharacter.characterStats.XP > battleMaster.currentCharacter.characterStats.XPtoLevelUp)
         {
             battleMaster.levelUpButton.SetActive(true);
         }
@@ -267,7 +267,7 @@ public class CharacterSheet : MonoBehaviour
                     }
                 }
                 battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-                FindObjectOfType<AudioManager>().Play(battleMaster.currentCharacter.GetComponent<CharacterSheet>().attackSound);
+                FindObjectOfType<AudioManager>().Play(battleMaster.currentCharacter.attackSound);
                 battleMaster.attackDone = true;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
@@ -283,7 +283,7 @@ public class CharacterSheet : MonoBehaviour
         }
         else
         {
-            battleMaster.targetedEnemy.GetComponent<CharacterSheet>().TakeDamage(battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage + 1);
+            battleMaster.targetedEnemy.GetComponent<CharacterSheet>().TakeDamage(battleMaster.currentCharacter.characterStats.Damage + 1);
         }
     }
 

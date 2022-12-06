@@ -198,8 +198,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1365105143, guid: 1460b875301680a43bba83718d66204c,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 296969344244551535, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_PreserveAspect
@@ -244,8 +243,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1365105143, guid: 1460b875301680a43bba83718d66204c,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1695816319784453617, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_PreserveAspect
@@ -270,8 +268,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1926118635, guid: bdb0e0549a3866848b5775d0c8055556,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2948496956145361670, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_PreserveAspect
@@ -306,8 +303,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1136747794, guid: b78019da60b049546930aecb5d26db94,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3349696520081215568, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_PreserveAspect
@@ -352,8 +348,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1365105143, guid: 1460b875301680a43bba83718d66204c,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4388932290231636344, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_PreserveAspect
@@ -363,8 +358,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -303719009, guid: fd2b5bd306a872c40a3610f175472a38,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4554929328376737482, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_PreserveAspect
@@ -374,8 +368,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -942805443, guid: 1a83910cff68041479c3f181f6fda0af,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5063522142858609677, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_PreserveAspect
@@ -535,8 +528,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1136747794, guid: b78019da60b049546930aecb5d26db94,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8338074491525090864, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_PreserveAspect
@@ -556,8 +548,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -303719009, guid: fd2b5bd306a872c40a3610f175472a38,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8571994693881723979, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_PreserveAspect
@@ -582,12 +573,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1365105143, guid: 1460b875301680a43bba83718d66204c,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8596790380126149401, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_Text
-      value: Dues
+      value: Name
       objectReference: {fileID: 0}
     - target: {fileID: 8596790380521690738, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
@@ -704,7 +694,7 @@ PrefabInstance:
     - target: {fileID: 8596790381319742263, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8596790381319742267, guid: 2199af7bbaab32e49b0d46c58326c0db,
         type: 3}

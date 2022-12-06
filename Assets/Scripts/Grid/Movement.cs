@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
     public bool lookingForParticipants = false;
     [HideInInspector]
     public bool attackAtEnd = false;
+    public int distanceToLookForParticipants = 15;
 
     private GameMaster gameMaster;
     private Pathfinding pathfinding;
@@ -346,7 +347,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         if (lookingForParticipants)
         {
             Gizmos.color = Color.green; //Sets the color of the distance it looks for participants
-            Gizmos.DrawWireCube(transform.position, new Vector3(gameMaster.distanceToLookForParticipants, gameMaster.distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
+            Gizmos.DrawWireCube(transform.position, new Vector3(distanceToLookForParticipants, distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
         }
     }
 }
