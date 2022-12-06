@@ -152,11 +152,10 @@ public class CharacterSheet : MonoBehaviour
         battleMaster.characters.Remove(gameObject);
         while (battleMaster.turnOrder.Contains(gameObject))
         {
-            if (battleMaster.turnOrder.IndexOf(gameObject) < battleMaster.turnCounter) //If removing an enemy from the list is to the left of the current turn counter, also move the turn counter back one
-            {
-                battleMaster.turnCounter -= 1;
-            }
-            battleMaster.turnOrder.Remove(gameObject);
+            //if (battleMaster.turnOrder.IndexOf(gameObject) > battleMaster.turnCounter) //If removing an enemy from the list is to the left of the current turn counter, also move the turn counter back one
+            // Edited for removing turnCounter
+                battleMaster.turnOrder.Remove(gameObject);
+            //}
         }
         isDead = true;
         AudioManager.instance.Play(deathSound); //Need to play this sound after the take hit animation and sound has finished

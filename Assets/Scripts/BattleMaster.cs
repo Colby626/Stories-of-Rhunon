@@ -47,7 +47,7 @@ public class BattleMaster : MonoBehaviour
     private List<GameObject> tempList = new();
     private GameObject[] characterArray;
     private int characterindex = 0;
-    public int turnCounter = 0;
+    //public int turnCounter = 0; Edited for removing turnCounter
     public bool willWin = false;
     private CustomGrid grid;
 
@@ -104,7 +104,11 @@ public class BattleMaster : MonoBehaviour
             }
 
             //checks if the turn counter is closer than the variable below from the furthest calculated the list has gone and if so calculates the list further
-            if (turnCounter >= (turnOrder.Count() - howFarInTheFutureYouCalculateTurnOrder))
+            //if (turnCounter >= (turnOrder.Count() - howFarInTheFutureYouCalculateTurnOrder)) //Edited for removing turnCounter
+            //{
+            //    CalculateTurnOrder();
+            //}
+            if (turnOrder.Count() < howFarInTheFutureYouCalculateTurnOrder) //Edited for removing turnCounter
             {
                 CalculateTurnOrder();
             }
@@ -230,9 +234,10 @@ public class BattleMaster : MonoBehaviour
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         characterindex++;
-        currentCharacter = turnOrder[characterindex].GetComponent<CharacterSheet>();
+        currentCharacter = turnOrder[1].GetComponent<CharacterSheet>(); //Edited for removing turnCounter
         attackDone = false;
-        turnCounter++;
+        //turnCounter++; //Edited for removing turnCounter
+        turnOrder.RemoveAt(0); //Edited for removing turnCounter
         attackButton.interactable = true;
         gameMaster.movedOnTurn = false;
 
@@ -592,11 +597,11 @@ public class BattleMaster : MonoBehaviour
         //Display portraits, names, and healths for the turn order
         for (int i = 0; i < portraits.Count(); i++)
         {
-            portraits[i].sprite = turnOrder[turnCounter + i].GetComponent<CharacterSheet>().Portrait;
+            portraits[i].sprite = turnOrder[i].GetComponent<CharacterSheet>().Portrait; //Edited for removing turnCounter (was turnCounter + i)
             portraits[i].preserveAspect = true;
-            namesList[i].text = turnOrder[turnCounter + i].GetComponent<CharacterSheet>().Name;
-            healthBars[i].SetBarMax(turnOrder[turnCounter + i].GetComponent<CharacterSheet>().MaxHealth);
-            healthBars[i].SetBar(turnOrder[turnCounter + i].GetComponent<CharacterSheet>().Health);
+            namesList[i].text = turnOrder[i].GetComponent<CharacterSheet>().Name;
+            healthBars[i].SetBarMax(turnOrder[i].GetComponent<CharacterSheet>().MaxHealth);
+            healthBars[i].SetBar(turnOrder[i].GetComponent<CharacterSheet>().Health); 
         }
     }
 
@@ -606,7 +611,7 @@ public class BattleMaster : MonoBehaviour
         {
             battleStarted = false;
             turnOrderCalculated = false;
-            turnCounter = 0;
+            //turnCounter = 0; Edited for removing turnCounter
             characterindex = 0;
             attackDone = false;
             attackPressed = false;
