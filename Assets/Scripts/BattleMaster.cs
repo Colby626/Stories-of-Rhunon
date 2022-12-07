@@ -15,6 +15,9 @@ public class BattleMaster : MonoBehaviour
     [Tooltip("The time in seconds it waits before letting an AI run their turn")]
     [SerializeField]
     private int delayBeforeEnemyTurns = 1;
+    public float timeToDestroyFloatingDamageNumbers = 1.5f;
+    public float textSpeed = 150f;
+    public GameObject damagePopUp;
     public bool battleStarted = false;
 
     public List<GameObject> turnOrder = new();

@@ -1,6 +1,8 @@
 using System.Collections.Generic; //for Lists
 using UnityEngine;
 using System.Linq; //for livingEnemies.Count()
+using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 [System.Serializable]
 public class CharacterEquipment : Component
@@ -186,21 +188,26 @@ public class CharacterSheet : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (damage - characterStats.Defense > 0) //To make sure they don't heal what they negate
-        {
-            Health -= (damage - characterStats.Defense);
-        }
-
-        //Criticals deal 150% damage
         int rand = Random.Range(1, 100);
-        if (rand > 100 - battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Precision && damage - characterStats.Defense > 0)
+        if (rand > 100 - battleMaster.currentCharacter.characterStats.Precision && damage - characterStats.Defense > 0)
         {
             Debug.Log("Critical Hit!");
-            Health -= (damage - characterStats.Defense) / 2;
+            damage = Mathf.RoundToInt(damage * 1.5f);
+        }
+
+        if (damage - characterStats.Defense > 0) //To make sure they don't heal what they negate
+        {
+            damage -= characterStats.Defense;
+            Health -= damage;
+        }
+        else
+        {
+            damage = 0;
         }
 
         GetComponent<Animator>().SetTrigger("TakingHit");
         AudioManager.instance.Play(hitSound);
+        PopUpDamage(damage);
 
         if (Health <= 0)
         {
@@ -290,5 +297,18 @@ public class CharacterSheet : MonoBehaviour
             gameObject.SetActive(false);
         }
     } //Called from animation event
+
+    private void PopUpDamage(int damage)
+    {
+        GameObject damagePopUpInstance = Instantiate(battleMaster.damagePopUp, transform.position, Quaternion.identity);
+        damagePopUpInstance.GetComponent<TextMeshPro>().text = damage.ToString();
+        Vector2 direction = new (Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        damagePopUpInstance.GetComponent<Rigidbody2D>().AddForce(battleMaster.textSpeed * Time.deltaTime * direction, ForceMode2D.Impulse);
+        if (isPlayer)
+        {
+            damagePopUpInstance.GetComponent<TextMeshPro>().color = Color.red;
+        }
+        Destroy(damagePopUpInstance, battleMaster.timeToDestroyFloatingDamageNumbers);
+    }
 
 }
