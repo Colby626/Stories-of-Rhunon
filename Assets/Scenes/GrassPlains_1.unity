@@ -1858,17 +1858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &106655791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: a0a71fda412ad0941ab44f1732ea4c1e,
@@ -4134,17 +4123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &210997417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5662,17 +5640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &259943056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61442,17 +61409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &325462018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63028,17 +62984,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &423134899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63190,6 +63135,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: turnText
+      value: 
+      objectReference: {fileID: 1204776289}
+    - target: {fileID: 6276197854949121670, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: attackCursorTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 0dee58cf3f17a8e4289138b97b910a05, type: 3}
     - target: {fileID: 6347934449704604080, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -66316,17 +66271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &586665007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66837,17 +66781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1 &602411275
 GameObject:
   m_ObjectHideFlags: 0
@@ -67308,17 +67241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &623915638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70730,17 +70652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &806707138 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 9e7797bb065982d4497d030f065d6e2f,
@@ -71695,17 +71606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &848685282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72402,17 +72302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &858690321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72607,17 +72496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &860729054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: a0a71fda412ad0941ab44f1732ea4c1e,
@@ -75071,17 +74949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &999529053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 0505844a909d2ea4996c19b67b2a40b9,
@@ -75324,17 +75191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1009614011 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 0505844a909d2ea4996c19b67b2a40b9,
@@ -76552,17 +76408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1085885156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 0505844a909d2ea4996c19b67b2a40b9,
@@ -77387,17 +77232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &1141772250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79152,17 +78986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &1197518099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79422,6 +79245,18 @@ Transform:
   m_Father: {fileID: 266631857}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1204776289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6240884803448336, guid: fc242547518354a45b9ba120ed6135f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 423134899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1205097337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 39562e88b536753438a3153c5fbdf7b8,
@@ -80768,17 +80603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1 &1262898057
 GameObject:
   m_ObjectHideFlags: 0
@@ -81083,17 +80907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &1269186731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83011,17 +82824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1342044641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 39562e88b536753438a3153c5fbdf7b8,
@@ -84240,17 +84042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1385989920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 4bd7b41600416b54395bf9936a05dc8e,
@@ -85475,17 +85266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &1406854797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87154,17 +86934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &1491788563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89627,17 +89396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &1587608392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90025,17 +89783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1615026665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 0505844a909d2ea4996c19b67b2a40b9,
@@ -90380,17 +90127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1623050722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 4bd7b41600416b54395bf9936a05dc8e,
@@ -90421,17 +90157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &1628448031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91411,17 +91136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1678931305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 4bd7b41600416b54395bf9936a05dc8e,
@@ -91849,17 +91563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &1693526007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95059,17 +94762,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &1852510971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96318,17 +96010,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1887079273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 0505844a909d2ea4996c19b67b2a40b9,
@@ -97548,17 +97229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1946426006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: a0a71fda412ad0941ab44f1732ea4c1e,
@@ -97854,17 +97524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &1959555636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98039,17 +97698,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1964664061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 0505844a909d2ea4996c19b67b2a40b9,
@@ -99140,17 +98788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!4 &1993524407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 0505844a909d2ea4996c19b67b2a40b9,
@@ -100527,17 +100164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &2052616981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101602,17 +101228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &2084887068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101833,17 +101448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &2090692659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101969,17 +101573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &2091436791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102728,17 +102321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &2109377603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103017,17 +102599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &2121725338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103228,17 +102799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
-  highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
 --- !u!1001 &2126049367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103742,6 +103302,16 @@ PrefabInstance:
     - target: {fileID: 542170188930115357, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539894390840498754, guid: 9e2d3be66e742304fa8a776cfa0678d5,
+        type: 3}
+      propertyPath: isParty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539894390840498754, guid: 9e2d3be66e742304fa8a776cfa0678d5,
+        type: 3}
+      propertyPath: lookingForParticipants
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

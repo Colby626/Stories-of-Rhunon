@@ -35,7 +35,7 @@ public class PathNode : MonoBehaviour
         fCost = gCost + hCost;
     }
 
-    public void OnMouseOver()
+    void OnMouseOver()
     {
         if (!gameMaster.hoveringOverButton && !battleMaster.attackPressed)
         {
@@ -64,7 +64,7 @@ public class PathNode : MonoBehaviour
         }
     }
 
-    private void OnMouseExit()
+    void OnMouseExit()
     {
         transform.GetChild(0).gameObject.SetActive(false);
     }

@@ -10,7 +10,7 @@ public class LevelUpMouseOver : MonoBehaviour
     private int tensPlace;
     private bool hasTens;
 
-    public void ChangeColor()
+    private void ChangeColor()
     {
         originalText = correspondingText.text;
         finalIndex = correspondingText.text.Length - 1;
@@ -51,12 +51,12 @@ public class LevelUpMouseOver : MonoBehaviour
         }
     }
 
-    public void LevelupPressed()
+    private void LevelupPressed()
     {
         ChangeColor();
     }
 
-    public void DefaultColor()
+    private void DefaultColor()
     {
         correspondingText.text = originalText;
     }

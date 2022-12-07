@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic; //for Lists
 using UnityEngine;
 using System.Linq; //for livingEnemies.Count()
@@ -66,7 +65,7 @@ public class CharacterAttacks
 
 public class CharacterSheet : MonoBehaviour
 {
-    #region Public Variables
+    #region Variables
     public string Name;
     public int Health;
     public int MaxHealth;
@@ -81,14 +80,16 @@ public class CharacterSheet : MonoBehaviour
     public CharacterAttacks characterAttacks;
 
     [Header("Programmer stuff:")]
-    public float moveDistance;
-    public int turnOrderPriority;
     public bool isPlayer;
-    public bool killToWin = false;
-    public bool isDead = false;
-    #endregion
+    [SerializeField]
+    private bool killToWin = false;
 
-    public BattleMaster battleMaster;
+    [HideInInspector]
+    public int turnOrderPriority;
+    [HideInInspector]
+    public bool isDead = false;
+    private BattleMaster battleMaster;
+    private GameMaster gameMaster;
 
     #region Sound Variables
     private string noWhitespaceName;
@@ -97,8 +98,9 @@ public class CharacterSheet : MonoBehaviour
     public string attackSound;
     private string hitSound;
     #endregion
+    #endregion
 
-    private void Awake()
+    private void Start()
     {
         noWhitespaceName = Name;
         while (noWhitespaceName.Contains(" "))
@@ -114,6 +116,7 @@ public class CharacterSheet : MonoBehaviour
         characterStats.Damage = characterStats.Strength;
         characterStats.XPtoLevelUp = 10; //This is the starting value for the amount of XP it takes to level up
         battleMaster = FindObjectOfType<BattleMaster>();
+        gameMaster = GameMaster.instance.GetComponent<GameMaster>();
 
         characterEquipment = new List<Equipment> { GetComponent<CharacterEquipment>().Head, GetComponent<CharacterEquipment>().Torso,
             GetComponent<CharacterEquipment>().Arms, GetComponent<CharacterEquipment>().Legs, GetComponent<CharacterEquipment>().ArmSlot1,
@@ -145,7 +148,7 @@ public class CharacterSheet : MonoBehaviour
         }
     }
 
-    void StartDie() //Called from animation event
+    private void StartDie() //Called from animation event
     {
         battleMaster.livingPlayers.Remove(gameObject);
         battleMaster.livingEnemies.Remove(gameObject);
@@ -158,7 +161,7 @@ public class CharacterSheet : MonoBehaviour
         AudioManager.instance.Play(deathSound); //Need to play this sound after the take hit animation and sound has finished
     }
 
-    public void FinishDie()
+    private void FinishDie()
     {
         GetComponentInParent<Movement>().occupyingNode.occupied = false;
         GetComponentInParent<Movement>().occupyingNode.occupyingAgent = null;
@@ -183,7 +186,7 @@ public class CharacterSheet : MonoBehaviour
         //If there are no more players alive, display the lose screen
         if (battleMaster.livingPlayers.Count() == 0)
         {
-            battleMaster.gameMaster.GetComponent<GameMaster>().EndBattle();
+            gameMaster.EndBattle();
             battleMaster.battleStarted = false;
             gameObject.transform.parent.gameObject.SetActive(false);
             battleMaster.battleHud.SetActive(false);
@@ -200,7 +203,7 @@ public class CharacterSheet : MonoBehaviour
         //If there are no more enemies, display the win screen
         if (battleMaster.livingEnemies.Count() == 0)
         {
-            battleMaster.gameMaster.GetComponent<GameMaster>().EndBattle();
+            gameMaster.EndBattle();
             battleMaster.battleHud.SetActive(false);
             battleMaster.Reset();
 
@@ -225,14 +228,14 @@ public class CharacterSheet : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-    }
+    } //Called from animation event
 
     public void OnMouseDown()
     {
         if (GetComponentInParent<MouseOver>()) //MouseOver should only be on the character after a battle has started, this prevents an error if you click on them outside of battle
         {
             //Checks if the player is clicking attack on a character
-            if (battleMaster.attackPressed && !isPlayer && battleMaster.battleStarted && GetComponentInParent<Movement>().occupyingNode.GetNeighborNodes().Contains(battleMaster.gameMaster.partyNode))
+            if (battleMaster.attackPressed && !isPlayer && battleMaster.battleStarted && GetComponentInParent<Movement>().occupyingNode.GetNeighborNodes().Contains(gameMaster.partyNode))
             {
                 battleMaster.attackPressed = false;
                 battleMaster.targetedEnemy = gameObject;
@@ -268,11 +271,11 @@ public class CharacterSheet : MonoBehaviour
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
         }
-    }
+    } //Must be public for MouseOver to access it
 
-    public void DealDamage()
+    public void DealDamage() //Called from animation event
     {
-        battleMaster.gameMaster.grid.gridClicked = false; //If not here, grid will register a click on the pathnodes below the enemy clicked
+        gameMaster.grid.gridClicked = false; //If not here, grid will register a click on the pathnodes below the enemy clicked
         if (!isPlayer)
         {
             battleMaster.targetedPlayer.GetComponent<CharacterSheet>().TakeDamage(characterStats.Damage + 1);
@@ -283,13 +286,8 @@ public class CharacterSheet : MonoBehaviour
         }
     }
 
-    public void FinishedAttack()
+    private void FinishedAttack()
     {
         battleMaster.NextTurn();
-    }
-
-    public void DisplayTurnMovement()
-    {
-        moveDistance = characterStats.Speed / 5; //Can move speed / 5 number of spaces when it is their turn
-    }
+    } //Called from animation event
 }

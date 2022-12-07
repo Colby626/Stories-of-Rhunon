@@ -77,7 +77,7 @@ public class GameMaster : MonoBehaviour
         StartBattle();
     }
 
-    public void StartBattle()
+    private void StartBattle()
     {
         foreach (GameObject participant in participants)
         {

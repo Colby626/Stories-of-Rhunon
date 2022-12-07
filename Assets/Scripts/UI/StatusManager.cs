@@ -7,16 +7,15 @@ public class StatusManager : MonoBehaviour
     public StatBar magicBar;
     public StatBar staminaBar;
 
-    private CharacterSheet character;
-
-    void Start()
+    private void Start()
     {
-        character = GetComponent<CharacterSheet>();
+        CharacterSheet character = GetComponent<CharacterSheet>();
+        BattleMaster battleMaster = FindObjectOfType<BattleMaster>();
 
         overheadHealthBar = transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
-        healthBar = character.battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(1).GetComponent<StatBar>();
-        magicBar = character.battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(2).GetComponent<StatBar>();
-        staminaBar = character.battleMaster.GetComponent<BattleMaster>().status.transform.GetChild(3).GetComponent<StatBar>();
+        healthBar = battleMaster.status.transform.GetChild(1).GetComponent<StatBar>();
+        magicBar = battleMaster.status.transform.GetChild(2).GetComponent<StatBar>();
+        staminaBar = battleMaster.status.transform.GetChild(3).GetComponent<StatBar>();
 
         healthBar.SetBarMax(character.MaxHealth);
         magicBar.SetBarMax(character.MaxMana);

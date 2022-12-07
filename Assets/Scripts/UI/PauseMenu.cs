@@ -50,7 +50,7 @@ public class PauseMenu : MonoBehaviour
         gamePaused = false;
     }
 
-    void Pause()
+    private void Pause()
     {
         battleHud.SetActive(false);
         pauseMenu.SetActive(true);

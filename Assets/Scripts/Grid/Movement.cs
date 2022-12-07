@@ -2,62 +2,70 @@ using System.Collections.Generic; //For lists
 using System.Linq;
 using UnityEngine;
 
-public class Movement : MonoBehaviour //Base Movement class that certain enemy AIs can derive from
+public class Movement : MonoBehaviour
 {
-    public bool isPlayer;
+    [SerializeField]
+    private bool isParty;
     [Tooltip("How close to the center of a tile an entity must be to consider itself in that tile for movement.")]
-    public float centeringOffset = 0.1f;
+    [SerializeField]
+    private float centeringOffset = 0.1f;
     public bool spriteFacingLeft;
-    public PathNode occupyingNode;
 
+    public PathNode occupyingNode;
     [Header("Enemy Stuff:")]
     [Tooltip("Blue circle")]
-    public int viewRange;
+    [SerializeField]
+    private int viewRange;
     [Tooltip("Red circle")]
-    public int wanderRange;
-    public bool wander = false;
-    public float wanderDelayMin;
-    public float wanderDelayMax;
-    public RaycastHit2D[] visibleRange;
-    public bool lookingForParticipants = false;
-    [HideInInspector]
-    public bool attackAtEnd = false;
+    [SerializeField]
+    private int wanderRange;
+    [SerializeField]
+    private bool wander = false;
+    [SerializeField]
+    private float wanderDelayMin;
+    [SerializeField]
+    private float wanderDelayMax;
+    [Tooltip("Green box (will appear if lookingForParticipants is true")]
     public int distanceToLookForParticipants = 15;
+    public bool lookingForParticipants = false;
 
-    private GameMaster gameMaster;
-    private Pathfinding pathfinding;
-    private CustomGrid grid;
-    private PathNode startingNode;
-    private List<PathNode> playerPath;
-    private RaycastHit2D[] raycast;
-    private Collider2D[] colliders;
-    private RaycastHit2D[] findNode;
-    public List<Vector2> vectorPath;
-    private Vector2 targetPosition;
-    private Vector2 moveDirection;
     private bool isMoving = false;
     private bool hasBeenMoving = false;
     private bool startPositionDetermined = false;
-
-    private List<PathNode> wanderNodes;
-    private PathNode wanderNode;
     private bool wanderSetup = false;
-    private float wanderTimer;
+    [HideInInspector]
+    public bool attackAtEnd = false;
+
+    private PathNode startingNode;
     private Vector3 startPosition;
+    private Vector2 targetPosition;
+    private Vector2 moveDirection;
+    private List<PathNode> playerPath;
+    [HideInInspector]
+    public List<Vector2> vectorPath;
+    
+    private List<PathNode> wanderNodes;
+    private float wanderTimer;
+
+    private GameMaster gameMaster;
+    private BattleMaster battleMaster;
+    private Pathfinding pathfinding;
+    private CustomGrid grid;
 
     private void Start()
     {
         startPosition = transform.position;
-        gameMaster = GameMaster.instance;
-        grid = gameMaster.GetComponent<GameMaster>().grid;
-        pathfinding = gameMaster.GetComponent<Pathfinding>();
+        gameMaster = GameMaster.instance.GetComponent<GameMaster>();
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
+        grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
+        pathfinding = FindObjectOfType<Pathfinding>().GetComponent<Pathfinding>();
         vectorPath = new List<Vector2>(); //Prevents an error in the console
     }
 
     private void DetermineStartPosition()
     {
         //Set the startingNode from wherever they are 
-        colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.5f, 0.5f), 0);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.5f, 0.5f), 0);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].GetComponent<PathNode>() == true)
@@ -70,10 +78,10 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
         if (startingNode == null)
         {
-            Debug.LogError("Starting position not determined");
+            Debug.LogError("Starting position not determined. Character not over the grid.");
         }
 
-        if (isPlayer)
+        if (isParty)
         {
             gameMaster.partyNode = startingNode;
         }
@@ -91,7 +99,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         {
             int closestNode = 0;
             float minDistance = float.PositiveInfinity;
-            findNode = Physics2D.CircleCastAll(transform.position, 1.5f, Vector2.zero);
+            RaycastHit2D[] findNode = Physics2D.CircleCastAll(transform.position, 1.5f, Vector2.zero);
 
             // Setting occupied node to the nearest center of a node
             for (int i = 0; i < findNode.Count(); i++)
@@ -120,15 +128,15 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
             occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
             occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
         }
-        if (grid.gridFinished && !wanderSetup && wander && !isPlayer)
+        if (grid.gridFinished && !wanderSetup && wander && !isParty)
         {
             SetupWander();
         }
 
         //If a pathnode within an enemies visible range is the partynode, start the battle sequence
-        if (grid.gridFinished && !isPlayer && !gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !lookingForParticipants) //Could change the repeated raycast into a large collider and use OnTriggerEnter to do this
+        if (grid.gridFinished && !isParty && !battleMaster.battleStarted && !lookingForParticipants) //Could change the repeated raycast into a large collider and use OnTriggerEnter to do this
         {
-            visibleRange = Physics2D.CircleCastAll(transform.position, viewRange, Vector2.zero);
+            RaycastHit2D[] visibleRange = Physics2D.CircleCastAll(transform.position, viewRange, Vector2.zero);
             foreach (RaycastHit2D hit in visibleRange)
             {
                 if (hit.transform.gameObject.GetComponent<PathNode>())
@@ -143,7 +151,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         }
 
         wanderTimer -= Time.deltaTime;
-        if (wander && wanderSetup && !isMoving && !isPlayer && wanderTimer <= 0 && !gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted)
+        if (wander && wanderSetup && !isMoving && !isParty && wanderTimer <= 0 && !battleMaster.battleStarted)
         {
             Wander();
         }
@@ -205,9 +213,9 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
             if (Vector2.Distance((Vector2)transform.position, targetPosition) < centeringOffset)
             {
-                if (isPlayer)
+                if (isParty)
                 {
-                    gameMaster.partyNode = playerPath[0];
+                    gameMaster.partyNode = playerPath[0];  
                     playerPath.Remove(playerPath[0]);
                 }
                 vectorPath.Remove(vectorPath[0]);
@@ -226,19 +234,19 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
             isMoving = false;
             hasBeenMoving = false;
 
-            if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && attackAtEnd)
+            if (battleMaster.battleStarted && attackAtEnd)
             {
                 attackAtEnd = false;
-                gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-                AudioManager.instance.Play(gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().attackSound);
+                battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+                AudioManager.instance.Play(battleMaster.currentCharacter.attackSound);
             }
-            else if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted && !gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+            else if (battleMaster.battleStarted && !battleMaster.currentCharacter.isPlayer)
             {
-                gameMaster.battleMaster.GetComponent<BattleMaster>().NextTurn();
+                battleMaster.NextTurn();
             }
         }
 
-        if (isPlayer && !isMoving)
+        if (isParty && !isMoving)
         {
             if (gameMaster.targetNode != null)
             {
@@ -248,10 +256,10 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         }
     }
 
-    public void SetupWander()
+    private void SetupWander()
     {
         wanderNodes = new List<PathNode>();
-        raycast = Physics2D.CircleCastAll(new Vector2(transform.position.x, transform.position.y), wanderRange, Vector2.zero);
+        RaycastHit2D[] raycast = Physics2D.CircleCastAll(new Vector2(transform.position.x, transform.position.y), wanderRange, Vector2.zero);
         for (int i = 0; i < raycast.Length; i++)
         {
             if (raycast[i].collider.GetComponent<PathNode>() == true)
@@ -264,7 +272,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         Wander();
     }
 
-    public void Wander() //Randomly pick areas within range to move to 
+    private void Wander() //Randomly pick areas within range to move to 
     {
         int numberOfOccupiedNeighbors = 0;
         foreach (PathNode neighborNode in occupyingNode.GetNeighborNodes())
@@ -282,7 +290,7 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
         {
         
             wanderTimer = Random.Range(wanderDelayMin, wanderDelayMax);
-            wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)];
+            PathNode wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)];
             if (wanderNode.occupied || wanderNode.destinationNode) //If choosing an occupied node in the wander radius, rechoose
             {
                 Wander();
@@ -302,15 +310,15 @@ public class Movement : MonoBehaviour //Base Movement class that certain enemy A
 
         isMoving = true;
         startingNode = path[path.Count- 1]; //Sets the new starting location to whereever the end position is
-        if (isPlayer)
+        if (isParty)
         {
             playerPath = path;
         }
         vectorPath = new List<Vector2>();
 
-        if (gameMaster.battleMaster.GetComponent<BattleMaster>().battleStarted)
+        if (battleMaster.battleStarted)
         {
-            if (!gameMaster.battleMaster.GetComponent<BattleMaster>().currentCharacter.GetComponent<CharacterSheet>().isPlayer) //If a battle is happening and its an enemy's turn)
+            if (!battleMaster.currentCharacter.isPlayer) //If a battle is happening and its an enemy's turn)
             {
                 if (path[0] == gameMaster.partyNode) //If the end of their path was the player, remove that node from the path and set to attack when they get one node away
                 {

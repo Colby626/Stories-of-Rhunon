@@ -7,66 +7,91 @@ using System.Collections; //For IEnumerator like Timer
 
 public class BattleMaster : MonoBehaviour
 {
-    #region Public Variables
-    public int multiTurnThreshold = 50;
-    public Text turn;
-    public List<GameObject> turnOrder = new();
-    public Texture2D cursorTexture;
-    public Button attackButton;
-    public Button nextTurnButton;
-    public Button inventoryButton;
+    #region Variables
+    [SerializeField]
+    private int multiTurnThreshold = 50;
+    [SerializeField]
+    private int howFarInTheFutureYouCalculateTurnOrder = 50;
     [Tooltip("The time in seconds it waits before letting an AI run their turn")]
-    public int delayBeforeEnemyTurns = 1;
-    
-    public List<Image> portraits;
-    public List<TextMeshProUGUI> namesList;
-    public List<StatBar> healthBars;
+    [SerializeField]
+    private int delayBeforeEnemyTurns = 1;
+    public bool battleStarted = false;
+
+    public List<GameObject> turnOrder = new();
     public List<GameObject> characters;
     public List<GameObject> livingPlayers;
     public List<GameObject> livingEnemies;
     public CharacterSheet currentCharacter;
     public GameObject targetedPlayer;
     public GameObject targetedEnemy;
+
+    [Header("GUI Elements")]
+    [SerializeField]
+    private Texture2D attackCursorTexture;
+    [SerializeField]
+    private Button attackButton;
+    [SerializeField]
+    private Button nextTurnButton;
+    [SerializeField]
+    private Button inventoryButton;
+    [SerializeField]
+    private Text turnText;
+    [SerializeField]
+    private List<Image> portraits;
+    [SerializeField]
+    private List<TextMeshProUGUI> namesList;
+    [SerializeField]
+    private List<StatBar> healthBars;
     public GameObject loseScreen;
     public GameObject winScreen;
     public GameObject battleHud;
     public GameObject status;
+    
+    private GameObject[] characterArray;
+    private GameMaster gameMaster;
+    private CustomGrid grid;
+
+    [HideInInspector]
+    public List<PathNode> moveableNodes; //Must be public or becomes null
+    [HideInInspector]
+    public bool willWin = false;
     [HideInInspector]
     public bool attackPressed = false;
     [HideInInspector]
     public bool attackDone = false;
     [HideInInspector]
     public bool turnOrderCalculated = false;
-    public bool battleStarted = false;
-    public int howFarInTheFutureYouCalculateTurnOrder = 50;
-    public List<PathNode> moveableNodes;
-    public GameMaster gameMaster;
-
-    #endregion
-
-    private List<GameObject> tempList = new();
-    private GameObject[] characterArray;
-    private int characterindex = 0;
-    public bool willWin = false;
-    private CustomGrid grid;
 
     [Header("Inventory:")]
-    public GameObject inventory;
-    public InventoryUI inventoryUI;
-    public Image equipmentPortrait;
+    [SerializeField]
+    private GameObject inventory;
+    [SerializeField]
+    private InventoryUI inventoryUI;
+    [SerializeField]
+    private Image equipmentPortrait;
 
     #region Leveling Variables
     [Header("Leveling:")]
     public GameObject levelUpButton;
-    public GameObject levelUpPanel;
-    public GameObject levelUpPortrait;
-    public GameObject strengthText;
-    public GameObject attunementText;
-    public GameObject reflexesText;
-    public GameObject speedText;
-    public GameObject precisionText;
-    public GameObject constitutionText;
-    public GameObject enduranceText;
+    [SerializeField]
+    private GameObject levelUpPanel;
+    [SerializeField]
+    private GameObject levelUpPortrait;
+    [SerializeField]
+    private GameObject strengthText;
+    [SerializeField]
+    private GameObject attunementText;
+    [SerializeField]
+    private GameObject reflexesText;
+    [SerializeField]
+    private GameObject speedText;
+    [SerializeField]
+    private GameObject precisionText;
+    [SerializeField]
+    private GameObject constitutionText;
+    [SerializeField]
+    private GameObject enduranceText;
+    #endregion
     #endregion
 
     private void Start()
@@ -80,10 +105,10 @@ public class BattleMaster : MonoBehaviour
 
         gameMaster = GameMaster.instance.GetComponent<GameMaster>();
         battleHud.SetActive(false);
-        grid = gameMaster.grid;
+        grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
     }
 
-    void Update()
+    private void Update()
     {
         if (turnOrderCalculated && battleStarted)
         {
@@ -108,7 +133,7 @@ public class BattleMaster : MonoBehaviour
             }
 
             //Displays the character to go's name on the screen
-            turn.text = "It is " + currentCharacter.Name + "'s turn";
+            turnText.text = "It is " + currentCharacter.Name + "'s turn";
 
 
             if (!currentCharacter.isPlayer)
@@ -122,7 +147,6 @@ public class BattleMaster : MonoBehaviour
                 nextTurnButton.interactable = true;
                 attackButton.interactable = true;
                 inventoryButton.interactable = true;
-                currentCharacter.DisplayTurnMovement();
             }
         }
     }
@@ -227,7 +251,6 @@ public class BattleMaster : MonoBehaviour
         attackPressed = false;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-        characterindex++;
         currentCharacter = turnOrder[1].GetComponent<CharacterSheet>();
         attackDone = false;
         turnOrder.RemoveAt(0); 
@@ -278,7 +301,7 @@ public class BattleMaster : MonoBehaviour
                 }
             }
 
-            tempList = turnOrder.Intersect(characters).ToList();
+            List<GameObject> tempList = turnOrder.Intersect(characters).ToList();
 
             if (tempList.Count == characters.Count)
             {
@@ -306,7 +329,7 @@ public class BattleMaster : MonoBehaviour
                 }
             }
 
-            tempList = turnOrder.Intersect(characters).ToList();
+            List<GameObject> tempList = turnOrder.Intersect(characters).ToList();
 
             if (tempList.Count == characters.Count && turnOrder.Count >= portraits.Count) //Once each character is in the list once AND there are enough characters in the turn order to fill all the portraits 
             {
@@ -335,8 +358,8 @@ public class BattleMaster : MonoBehaviour
         }
 
         attackPressed = true;
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
-    }
+        Cursor.SetCursor(attackCursorTexture, Vector2.zero, CursorMode.Auto);
+    } //Called from button
 
     public void OpenInventory()
     {
@@ -352,7 +375,7 @@ public class BattleMaster : MonoBehaviour
             equipmentPortrait.sprite = currentCharacter.GetComponent<SpriteRenderer>().sprite;
             GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI(); //Updates inventory to match the current character
         }
-    }
+    } //Called from button
 
     public void CloseInventory()
     {
@@ -361,7 +384,7 @@ public class BattleMaster : MonoBehaviour
         inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
         GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
         inventory.SetActive(false);
-    }
+    } //Called from button
 
     public void LevelUp()
     {
@@ -376,7 +399,7 @@ public class BattleMaster : MonoBehaviour
         precisionText.GetComponent<TextMeshProUGUI>().text = "Precision: " + currentCharacter.characterStats.Precision.ToString();
         constitutionText.GetComponent<TextMeshProUGUI>().text = "Constitution: " + currentCharacter.characterStats.Constitution.ToString();
         enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + currentCharacter.characterStats.Endurance.ToString();
-    }
+    } //Called from button
 
     #region LevelUp Stat Functions
     public void LevelUpStrength()
@@ -396,7 +419,7 @@ public class BattleMaster : MonoBehaviour
             AudioManager.instance.Play("CloseBookSound");
         }
         strengthText.GetComponent<TextMeshProUGUI>().text = "Strength: " + currentCharacter.characterStats.Strength.ToString();
-    }
+    } //Called from button
 
     public void LevelUpAttunement()
     {
@@ -414,7 +437,7 @@ public class BattleMaster : MonoBehaviour
             AudioManager.instance.Play("CloseBookSound");
         }
         attunementText.GetComponent<TextMeshProUGUI>().text = "Attunement: " + currentCharacter.characterStats.Attunement.ToString();
-    }
+    } //Called from button
 
     public void LevelUpReflexes()
     {
@@ -432,7 +455,7 @@ public class BattleMaster : MonoBehaviour
             AudioManager.instance.Play("CloseBookSound");
         }
         reflexesText.GetComponent<TextMeshProUGUI>().text = "Reflexes: " + currentCharacter.characterStats.Reflexes.ToString();
-    }
+    } //Called from button
 
     public void LevelUpSpeed()
     {
@@ -450,7 +473,7 @@ public class BattleMaster : MonoBehaviour
             AudioManager.instance.Play("CloseBookSound");
         }
         speedText.GetComponent<TextMeshProUGUI>().text = "Speed: " + currentCharacter.characterStats.Speed.ToString();
-    }
+    } //Called from button
 
     public void LevelUpPrecision()
     {
@@ -468,7 +491,7 @@ public class BattleMaster : MonoBehaviour
             AudioManager.instance.Play("CloseBookSound");
         }
         precisionText.GetComponent<TextMeshProUGUI>().text = "Precision: " + currentCharacter.characterStats.Precision.ToString();
-    }
+    } //Called from button
 
     public void LevelUpConstitution()
     {
@@ -486,7 +509,7 @@ public class BattleMaster : MonoBehaviour
             AudioManager.instance.Play("CloseBookSound");
         }
         constitutionText.GetComponent<TextMeshProUGUI>().text = "Constitution: " + currentCharacter.characterStats.Constitution.ToString();
-    }
+    } //Called from button
 
     public void LevelUpEndurance()
     {
@@ -504,7 +527,7 @@ public class BattleMaster : MonoBehaviour
             AudioManager.instance.Play("CloseBookSound");
         }
         enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + currentCharacter.characterStats.Endurance.ToString();
-    }
+    } //Called from button
     #endregion
 
     IEnumerator EnemyTurn()
@@ -585,7 +608,7 @@ public class BattleMaster : MonoBehaviour
         return shortestPath;
     }
 
-    void LoadPortraits()
+    private void LoadPortraits()
     {
         //Display portraits, names, and healths for the turn order
         for (int i = 0; i < portraits.Count(); i++)
@@ -604,7 +627,6 @@ public class BattleMaster : MonoBehaviour
         {
             battleStarted = false;
             turnOrderCalculated = false;
-            characterindex = 0;
             attackDone = false;
             attackPressed = false;
             gameMaster.GetComponent<GameMaster>().participants.Clear();
