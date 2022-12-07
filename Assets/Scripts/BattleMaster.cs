@@ -390,6 +390,7 @@ public class BattleMaster : MonoBehaviour
 
     private List<PathNode> FindNearestPlayer() //Searches for every player path, could be optimized by searching outward until hitting a player instead of comparing the distance of every path to each player
     {
+        /* For when the party is split
         List<PathNode> shortestPath = new List<PathNode> (new PathNode [500]); //Initalize the shortest path as 500 nodes
         List<PathNode> tempPath = new();
         foreach(GameObject player in livingPlayers)
@@ -401,6 +402,9 @@ public class BattleMaster : MonoBehaviour
                 shortestPath = tempPath;
             }
         }
+        */
+        targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count())]; //Randomly pick a player to attack
+        List<PathNode> shortestPath = gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, gameMaster.party.GetComponent<Movement>().occupyingNode);
         PathNode lastNodeRemoved = null;
         foreach (PathNode node in shortestPath.ToList()) //I know shortestPath is a list, but it needs ToList() to not error
         {
