@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025697029933871740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.780354, y: -1.6913239, z: 52.692963}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -260,6 +260,14 @@ MonoBehaviour:
     audioSource: {fileID: 0}
   - name: EquipSound
     clip: {fileID: 8300000, guid: 53dbc39a799587d4d8e58e7506deb58f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: SuccessSound
+    clip: {fileID: 8300000, guid: 848550335ad01984ba26bcd783e44ab7, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

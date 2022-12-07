@@ -237,6 +237,7 @@ public class CharacterSheet : MonoBehaviour
         if (battleMaster.currentCharacter.isPlayer && battleMaster.currentCharacter.characterStats.XP > battleMaster.currentCharacter.characterStats.XPtoLevelUp)
         {
             battleMaster.levelUpButton.SetActive(true);
+            AudioManager.instance.Play("SuccessSound");
         }
         else
         {
