@@ -17,9 +17,12 @@ public class CustomGrid : MonoBehaviour
     private PathNode[,] nodes;
     private Collider2D[] colliders;
     private bool tilePlaced;
+    private BattleMaster battleMaster;
 
     private void Start()
     {
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
+
         nodes = new PathNode[numColumns, numRows];
         for (int x = 0; x < numColumns; x++)
         {
@@ -79,7 +82,10 @@ public class CustomGrid : MonoBehaviour
 
     public void SetGridClicked()
     {
-        gridClicked = true;
+        if (!battleMaster.attackPressed)
+        {
+            gridClicked = true;
+        }
     }
 
     public PathNode GetGridObject(int x, int y)
