@@ -135,7 +135,6 @@ public class BattleMaster : MonoBehaviour
             //Displays the character to go's name on the screen
             turnText.text = "It is " + currentCharacter.Name + "'s turn";
 
-
             if (!currentCharacter.isPlayer)
             {
                 nextTurnButton.interactable = false;
@@ -244,7 +243,6 @@ public class BattleMaster : MonoBehaviour
         moveableNodes.Clear();
     }
 
-    //Used for the button to go to the next turn
     public void NextTurn()
     {
         ResetMovementLimit();
@@ -282,34 +280,6 @@ public class BattleMaster : MonoBehaviour
         }
     }
 
-    private void CalculateTurnOrder()
-    {
-        bool exit = false;
-
-        //adjusts the priority in the turn order of all characters
-        while (!exit)     //runs while nothing is in tempList
-        {
-            foreach (GameObject character in characters)
-            {
-                character.GetComponent<CharacterSheet>().turnOrderPriority += character.GetComponent<CharacterSheet>().characterStats.Reflexes;
-
-                while (character.GetComponent<CharacterSheet>().turnOrderPriority >= multiTurnThreshold)
-                {
-                    character.GetComponent<CharacterSheet>().turnOrderPriority -= multiTurnThreshold;
-
-                    turnOrder.Add(character);
-                }
-            }
-
-            List<GameObject> tempList = turnOrder.Intersect(characters).ToList();
-
-            if (tempList.Count == characters.Count)
-            {
-                exit = true;
-            }
-        }
-    }
-
     private void StartingTurnOrder()
     {
         bool exit = false;
@@ -339,6 +309,125 @@ public class BattleMaster : MonoBehaviour
         currentCharacter = turnOrder[0].GetComponent<CharacterSheet>();
         turnOrderCalculated = true;
         LoadPortraits();
+    }
+
+    private void CalculateTurnOrder()
+    {
+        bool exit = false;
+
+        //adjusts the priority in the turn order of all characters
+        while (!exit)     //runs while nothing is in tempList
+        {
+            foreach (GameObject character in characters)
+            {
+                character.GetComponent<CharacterSheet>().turnOrderPriority += character.GetComponent<CharacterSheet>().characterStats.Reflexes;
+
+                while (character.GetComponent<CharacterSheet>().turnOrderPriority >= multiTurnThreshold)
+                {
+                    character.GetComponent<CharacterSheet>().turnOrderPriority -= multiTurnThreshold;
+
+                    turnOrder.Add(character);
+                }
+            }
+
+            List<GameObject> tempList = turnOrder.Intersect(characters).ToList();
+
+            if (tempList.Count == characters.Count)
+            {
+                exit = true;
+            }
+        }
+    }
+
+    IEnumerator EnemyTurn()
+    {
+        yield return new WaitForSeconds(delayBeforeEnemyTurns);
+
+        if (livingPlayers.Count > 0)
+        {
+            List<PathNode> closestPlayerPath = FindNearestPlayer(); //Also determines the targetedPlayer
+            if (closestPlayerPath.Count == 1) //If the player is right next to the enemy (the 2 are the start node and end node)
+            {
+                //If the player is to the right of the enemy
+                if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x < 0)
+                {
+                    //If the enemy is facing left flip them
+                    if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                }
+                //If the player is to the left or directly above/below the enemy
+                if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x >= 0)
+                {
+                    //If the enemy is facing right flip them
+                    if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                }
+                currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+                AudioManager.instance.Play(currentCharacter.attackSound);
+            }
+            else
+            {
+                //Pathfind along that path until they are no longer validMovementNodes
+                currentCharacter.GetComponentInParent<Movement>().MoveOnPath(closestPlayerPath);
+            }
+        }
+    }
+
+    private List<PathNode> FindNearestPlayer() //Searches for every player path, could be optimized by searching outward until hitting a player instead of comparing the distance of every path to each player
+    {
+        List<PathNode> shortestPath = new List<PathNode> (new PathNode [500]); //Initalize the shortest path as 500 nodes
+        List<PathNode> tempPath = new();
+        foreach(GameObject player in livingPlayers)
+        {
+            tempPath = gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, player.GetComponentInParent<Movement>().occupyingNode);
+            if (tempPath.Count < shortestPath.Count)
+            {
+                targetedPlayer = player;
+                shortestPath = tempPath;
+            }
+        }
+        PathNode lastNodeRemoved = null;
+        foreach (PathNode node in shortestPath.ToList()) //I know shortestPath is a list, but it needs ToList() to not error
+        {
+            if (!node.validMovePosition) //Remove any node that is outside of the range of the enemy 
+            {
+                lastNodeRemoved = node;
+                shortestPath.Remove(node);
+            }
+        }
+        if (lastNodeRemoved != null)
+        {
+            if (lastNodeRemoved == gameMaster.partyNode)
+            {
+                currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
+            }
+        }
+        return shortestPath;
+    }
+
+    private void LoadPortraits()
+    {
+        //Display portraits, names, and healths for the turn order
+        for (int i = 0; i < portraits.Count(); i++)
+        {
+            portraits[i].sprite = turnOrder[i].GetComponent<CharacterSheet>().Portrait; 
+            portraits[i].preserveAspect = true;
+            namesList[i].text = turnOrder[i].GetComponent<CharacterSheet>().Name;
+            healthBars[i].SetBarMax(turnOrder[i].GetComponent<CharacterSheet>().MaxHealth);
+            healthBars[i].SetBar(turnOrder[i].GetComponent<CharacterSheet>().Health); 
+        }
     }
 
     public void Attack()
@@ -529,97 +618,6 @@ public class BattleMaster : MonoBehaviour
         enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + currentCharacter.characterStats.Endurance.ToString();
     } //Called from button
     #endregion
-
-    IEnumerator EnemyTurn()
-    {
-        yield return new WaitForSeconds(delayBeforeEnemyTurns);
-
-        if (livingPlayers.Count > 0)
-        {
-            List<PathNode> closestPlayerPath = FindNearestPlayer(); //Also determines the targetedPlayer
-            if (closestPlayerPath.Count == 1) //If the player is right next to the enemy (the 2 are the start node and end node)
-            {
-                //If the player is to the right of the enemy
-                if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x < 0)
-                {
-                    //If the enemy is facing left flip them
-                    if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
-                    {
-                        currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
-                    }
-                    else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
-                    {
-                        currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
-                    }
-                }
-                //If the player is to the left or directly above/below the enemy
-                if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x >= 0)
-                {
-                    //If the enemy is facing right flip them
-                    if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
-                    {
-                        currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
-                    }
-                    else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
-                    {
-                        currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
-                    }
-                }
-                currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-                AudioManager.instance.Play(currentCharacter.attackSound);
-            }
-            else
-            {
-                //Pathfind along that path until they are no longer validMovementNodes
-                currentCharacter.GetComponentInParent<Movement>().MoveOnPath(closestPlayerPath);
-            }
-        }
-    }
-
-    private List<PathNode> FindNearestPlayer() //Searches for every player path, could be optimized by searching outward until hitting a player
-    {
-        List<PathNode> shortestPath = new List<PathNode> (new PathNode [500]); //Initalize the shortest path as 500 nodes
-        List<PathNode> tempPath = new();
-        foreach(GameObject player in livingPlayers)
-        {
-            tempPath = gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, player.GetComponentInParent<Movement>().occupyingNode);
-            if (tempPath.Count < shortestPath.Count)
-            {
-                targetedPlayer = player;
-                shortestPath = tempPath;
-            }
-        }
-        PathNode lastNodeRemoved = null;
-        foreach (PathNode node in shortestPath.ToList()) //I know shortestPath is a list, but it needs ToList() to not error
-        {
-            if (!node.validMovePosition) //Remove any node that is outside of the range of the enemy 
-            {
-                lastNodeRemoved = node;
-                shortestPath.Remove(node);
-            }
-        }
-        if (lastNodeRemoved != null)
-        {
-            if (lastNodeRemoved == gameMaster.partyNode)
-            {
-                currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
-            }
-        }
-        return shortestPath;
-    }
-
-    private void LoadPortraits()
-    {
-        //Display portraits, names, and healths for the turn order
-        for (int i = 0; i < portraits.Count(); i++)
-        {
-            portraits[i].sprite = turnOrder[i].GetComponent<CharacterSheet>().Portrait; 
-            portraits[i].preserveAspect = true;
-            namesList[i].text = turnOrder[i].GetComponent<CharacterSheet>().Name;
-            healthBars[i].SetBarMax(turnOrder[i].GetComponent<CharacterSheet>().MaxHealth);
-            healthBars[i].SetBar(turnOrder[i].GetComponent<CharacterSheet>().Health); 
-        }
-    }
 
     public void Reset()
     {

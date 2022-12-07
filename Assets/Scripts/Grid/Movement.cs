@@ -62,8 +62,51 @@ public class Movement : MonoBehaviour
         vectorPath = new List<Vector2>(); //Prevents an error in the console
     }
 
+    private void Update()
+    {
+        if (grid.gridFinished) //Make gridFinished a UnityEvent
+        {
+            if (!startPositionDetermined) 
+            {
+                DetermineStartPosition();
+            }
+
+            if (!isParty)
+            {
+                if (!wanderSetup && wander)
+                {
+                    SetupWander();
+                }
+
+                PlayerInRangeCheck();
+            }
+            OccupyingNodeCheck();
+        }
+
+        wanderTimer -= Time.deltaTime;
+        if (wander && wanderSetup && !isMoving && !isParty && wanderTimer <= 0 && !battleMaster.battleStarted)
+        {
+            Wander();
+        }
+
+        Translation(); //Handles the actual movement of the gameObject in the scene
+        PostTranslation(); //Handles stopping
+
+        if (isParty && !isMoving) //Party movement
+        {
+            if (gameMaster.targetNode != null)
+            {
+                MoveOnPath(pathfinding.FindPath(gameMaster.targetNode, startingNode));
+                gameMaster.targetNode = null;
+            }
+        }
+    }
+
     private void DetermineStartPosition()
     {
+        startPositionDetermined = true;
+        gameMaster.startPositionDetermined = true;
+
         //Set the startingNode from wherever they are 
         Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.5f, 0.5f), 0);
         for (int i = 0; i < colliders.Length; i++)
@@ -87,61 +130,85 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void MoveOnPath(List<PathNode> path)
     {
-        if (grid.gridFinished && !startPositionDetermined) //Make gridFinished a UnityEvent
+        if (path == null)
         {
-            startPositionDetermined = true;
-            gameMaster.startPositionDetermined = true;
-            DetermineStartPosition();
+            return;
         }
-        if (grid.gridFinished) //Surely this can be more performant than raycasting in update to find the occupyingNode, but putting it in the occupying node OnTriggerEnter2D wasn't consistant
-        {
-            int closestNode = 0;
-            float minDistance = float.PositiveInfinity;
-            RaycastHit2D[] findNode = Physics2D.CircleCastAll(transform.position, 1.5f, Vector2.zero);
 
-            // Setting occupied node to the nearest center of a node
-            for (int i = 0; i < findNode.Count(); i++)
+        isMoving = true;
+        startingNode = path[path.Count- 1]; //Sets the new starting location to whereever the end position is
+        if (isParty)
+        {
+            playerPath = path;
+        }
+        vectorPath = new List<Vector2>();
+
+        if (battleMaster.battleStarted)
+        {
+            if (!battleMaster.currentCharacter.isPlayer) //If a battle is happening and its an enemy's turn)
             {
-                if (findNode[i].transform.GetComponent<PathNode>() is PathNode pathNode)
+                if (path[0] == gameMaster.partyNode) //If the end of their path was the player, remove that node from the path and set to attack when they get one node away
                 {
-                    if (pathNode.occupyingAgent == null || pathNode.occupyingAgent == gameObject)
-                    {
-                        pathNode.occupied = false;
-                        pathNode.occupyingAgent = null;
-                        pathNode.transform.GetChild(1).gameObject.SetActive(true);
-                        pathNode.transform.GetChild(2).gameObject.SetActive(true);
-                    }
-                    if (Vector3.Distance(transform.position, pathNode.transform.position) < minDistance)
-                    {
-                        minDistance = Vector3.Distance(transform.position, pathNode.transform.position);
-                        closestNode = i;
-                    }
+                    attackAtEnd = true;
+                    path.RemoveAt(0);
                 }
             }
-
-            occupyingNode = findNode[closestNode].transform.GetComponent<PathNode>();
-            occupyingNode.occupied = true;
-            occupyingNode.destinationNode= false;
-            occupyingNode.occupyingAgent = gameObject;
-            occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
-            occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
         }
-        if (grid.gridFinished && !wanderSetup && wander && !isParty)
+
+        foreach (PathNode node in path)
         {
-            SetupWander();
+            vectorPath.Add(node.GetWorldSpace()); //Makes a vector2 list storing worldspace locations of each node on the path we want to take
+        }
+    }
+
+    private void OccupyingNodeCheck()
+    {
+        //Surely this can be more performant than raycasting in update to find the occupyingNode, but putting it in the occupying node OnTriggerEnter2D wasn't consistant
+        int closestNode = 0;
+        float minDistance = float.PositiveInfinity;
+        RaycastHit2D[] findNode = Physics2D.CircleCastAll(transform.position, 1.5f, Vector2.zero);
+
+        // Setting occupied node to the nearest center of a node
+        for (int i = 0; i < findNode.Count(); i++)
+        {
+            if (findNode[i].transform.GetComponent<PathNode>() is PathNode pathNode)
+            {
+                if (pathNode.occupyingAgent == null || pathNode.occupyingAgent == gameObject)
+                {
+                    pathNode.occupied = false;
+                    pathNode.occupyingAgent = null;
+                    pathNode.transform.GetChild(1).gameObject.SetActive(true);
+                    pathNode.transform.GetChild(2).gameObject.SetActive(true);
+                }
+                if (Vector3.Distance(transform.position, pathNode.transform.position) < minDistance)
+                {
+                    minDistance = Vector3.Distance(transform.position, pathNode.transform.position);
+                    closestNode = i;
+                }
+            }
         }
 
+        occupyingNode = findNode[closestNode].transform.GetComponent<PathNode>();
+        occupyingNode.occupied = true;
+        occupyingNode.destinationNode = false;
+        occupyingNode.occupyingAgent = gameObject;
+        occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
+        occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
+    }
+
+    private void PlayerInRangeCheck()
+    {
         //If a pathnode within an enemies visible range is the partynode, start the battle sequence
-        if (grid.gridFinished && !isParty && !battleMaster.battleStarted && !lookingForParticipants) //Could change the repeated raycast into a large collider and use OnTriggerEnter to do this
+        if (!battleMaster.battleStarted && !lookingForParticipants) //Could change the repeated raycast into a large collider and use OnTriggerEnter to do this
         {
             RaycastHit2D[] visibleRange = Physics2D.CircleCastAll(transform.position, viewRange, Vector2.zero);
             foreach (RaycastHit2D hit in visibleRange)
             {
                 if (hit.transform.gameObject.GetComponent<PathNode>())
                 {
-                    if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode) 
+                    if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode)
                     {
                         lookingForParticipants = true;
                         gameMaster.LookForParticipants(gameObject);
@@ -149,13 +216,10 @@ public class Movement : MonoBehaviour
                 }
             }
         }
+    }
 
-        wanderTimer -= Time.deltaTime;
-        if (wander && wanderSetup && !isMoving && !isParty && wanderTimer <= 0 && !battleMaster.battleStarted)
-        {
-            Wander();
-        }
-
+    private void Translation()
+    {
         if (vectorPath.Count > 0)
         {
             hasBeenMoving = true;
@@ -215,13 +279,16 @@ public class Movement : MonoBehaviour
             {
                 if (isParty)
                 {
-                    gameMaster.partyNode = playerPath[0];  
+                    gameMaster.partyNode = playerPath[0];
                     playerPath.Remove(playerPath[0]);
                 }
                 vectorPath.Remove(vectorPath[0]);
-            } 
+            }
         }
+    }
 
+    private void PostTranslation()
+    {
         if (vectorPath.Count == 0 && hasBeenMoving)
         {
             for (int i = 0; i < transform.childCount; i++)
@@ -243,15 +310,6 @@ public class Movement : MonoBehaviour
             else if (battleMaster.battleStarted && !battleMaster.currentCharacter.isPlayer)
             {
                 battleMaster.NextTurn();
-            }
-        }
-
-        if (isParty && !isMoving)
-        {
-            if (gameMaster.targetNode != null)
-            {
-                MoveOnPath(pathfinding.FindPath(gameMaster.targetNode, startingNode));
-                gameMaster.targetNode = null;
             }
         }
     }
@@ -298,39 +356,6 @@ public class Movement : MonoBehaviour
             }
             wanderNode.destinationNode = true;
             MoveOnPath(pathfinding.FindPath(wanderNode, startingNode));
-        }
-    }
-
-    public void MoveOnPath(List<PathNode> path)
-    {
-        if (path == null)
-        {
-            return;
-        }
-
-        isMoving = true;
-        startingNode = path[path.Count- 1]; //Sets the new starting location to whereever the end position is
-        if (isParty)
-        {
-            playerPath = path;
-        }
-        vectorPath = new List<Vector2>();
-
-        if (battleMaster.battleStarted)
-        {
-            if (!battleMaster.currentCharacter.isPlayer) //If a battle is happening and its an enemy's turn)
-            {
-                if (path[0] == gameMaster.partyNode) //If the end of their path was the player, remove that node from the path and set to attack when they get one node away
-                {
-                    attackAtEnd = true;
-                    path.RemoveAt(0);
-                }
-            }
-        }
-
-        foreach (PathNode node in path)
-        {
-            vectorPath.Add(node.GetWorldSpace()); //Makes a vector2 list storing worldspace locations of each node on the path we want to take
         }
     }
 

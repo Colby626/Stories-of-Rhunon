@@ -30,11 +30,6 @@ public class PathNode : MonoBehaviour
         validMovePosition = false;
     }
 
-    public void CalculateFCost()
-    {
-        fCost = gCost + hCost;
-    }
-
     void OnMouseOver()
     {
         if (!gameMaster.hoveringOverButton && !battleMaster.attackPressed)
@@ -67,6 +62,11 @@ public class PathNode : MonoBehaviour
     void OnMouseExit()
     {
         transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public void CalculateFCost()
+    {
+        fCost = gCost + hCost;
     }
 
     public Vector2 GetWorldSpace()
