@@ -90,7 +90,7 @@ public class CustomGrid : MonoBehaviour
 
     public PathNode GetGridObject(int x, int y)
     {
-        if (x < 0 || y < 0)
+        if (x < 0 || y < 0 || x > numColumns || y > numRows)
         {
             return null;   
         }
