@@ -19,6 +19,9 @@ public class GameMaster : MonoBehaviour
     [HideInInspector]
     public CustomGrid grid;
 
+    private float gridTimer = 0.1f;
+    private float gridTime;
+    private bool timerSet = false;
     private Collider2D[] colliders;
 
     public static GameMaster instance;
@@ -48,6 +51,19 @@ public class GameMaster : MonoBehaviour
         if (party != null)
         {
             party.GetComponent<Movement>().occupyingNode = partyNode;
+        }
+
+        if (grid.gridClicked && !timerSet)
+        {
+            gridTime = gridTimer;
+            timerSet = true;
+        }
+
+        gridTime -= Time.deltaTime;
+        if (gridTime <= 0.0f)
+        {
+            grid.gridClicked = false;
+            timerSet = false;
         }
     }
 
