@@ -66,8 +66,7 @@ public class BattleMaster : MonoBehaviour
     public bool turnOrderCalculated = false;
 
     [Header("Inventory:")]
-    [SerializeField]
-    private GameObject inventory;
+    public GameObject inventory;
     [SerializeField]
     private InventoryUI inventoryUI;
     [SerializeField]
@@ -76,8 +75,7 @@ public class BattleMaster : MonoBehaviour
     #region Leveling Variables
     [Header("Leveling:")]
     public GameObject levelUpButton;
-    [SerializeField]
-    private GameObject levelUpPanel;
+    public GameObject levelUpPanel;
     [SerializeField]
     private GameObject levelUpPortrait;
     [SerializeField]
@@ -250,6 +248,7 @@ public class BattleMaster : MonoBehaviour
     {
         ResetMovementLimit();
         attackPressed = false;
+        grid.gridClicked = false;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         currentCharacter = turnOrder[1].GetComponent<CharacterSheet>();
@@ -477,6 +476,8 @@ public class BattleMaster : MonoBehaviour
     {
         AudioManager.instance.Play("CloseBookSound");
         battleHud.SetActive(true);
+        grid.gridClicked = false;
+        gameMaster.hoveringOverButton = false;
         inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
         GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
         inventory.SetActive(false);
@@ -509,10 +510,7 @@ public class BattleMaster : MonoBehaviour
         //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
         if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
         {
-            battleHud.SetActive(true);
-            levelUpButton.SetActive(false);
-            levelUpPanel.SetActive(false);
-            AudioManager.instance.Play("CloseBookSound");
+            CloseLevelUpPanel();
         }
         strengthText.GetComponent<TextMeshProUGUI>().text = "Strength: " + currentCharacter.characterStats.Strength.ToString();
     } //Called from button
@@ -527,10 +525,7 @@ public class BattleMaster : MonoBehaviour
         //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
         if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
         {
-            battleHud.SetActive(true);
-            levelUpButton.SetActive(false);
-            levelUpPanel.SetActive(false);
-            AudioManager.instance.Play("CloseBookSound");
+            CloseLevelUpPanel();
         }
         attunementText.GetComponent<TextMeshProUGUI>().text = "Attunement: " + currentCharacter.characterStats.Attunement.ToString();
     } //Called from button
@@ -545,10 +540,7 @@ public class BattleMaster : MonoBehaviour
         //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
         if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
         {
-            battleHud.SetActive(true);
-            levelUpButton.SetActive(false);
-            levelUpPanel.SetActive(false);
-            AudioManager.instance.Play("CloseBookSound");
+             CloseLevelUpPanel();
         }
         reflexesText.GetComponent<TextMeshProUGUI>().text = "Reflexes: " + currentCharacter.characterStats.Reflexes.ToString();
     } //Called from button
@@ -563,10 +555,7 @@ public class BattleMaster : MonoBehaviour
         //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
         if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
         {
-            battleHud.SetActive(true);
-            levelUpButton.SetActive(false);
-            levelUpPanel.SetActive(false);
-            AudioManager.instance.Play("CloseBookSound");
+            CloseLevelUpPanel();
         }
         speedText.GetComponent<TextMeshProUGUI>().text = "Speed: " + currentCharacter.characterStats.Speed.ToString();
     } //Called from button
@@ -581,10 +570,7 @@ public class BattleMaster : MonoBehaviour
         //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
         if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
         {
-            battleHud.SetActive(true);
-            levelUpButton.SetActive(false);
-            levelUpPanel.SetActive(false);
-            AudioManager.instance.Play("CloseBookSound");
+            CloseLevelUpPanel();
         }
         precisionText.GetComponent<TextMeshProUGUI>().text = "Precision: " + currentCharacter.characterStats.Precision.ToString();
     } //Called from button
@@ -599,10 +585,7 @@ public class BattleMaster : MonoBehaviour
         //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
         if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
         {
-            battleHud.SetActive(true);
-            levelUpButton.SetActive(false);
-            levelUpPanel.SetActive(false);
-            AudioManager.instance.Play("CloseBookSound");
+            CloseLevelUpPanel();
         }
         constitutionText.GetComponent<TextMeshProUGUI>().text = "Constitution: " + currentCharacter.characterStats.Constitution.ToString();
     } //Called from button
@@ -617,13 +600,20 @@ public class BattleMaster : MonoBehaviour
         //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
         if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
         {
-            battleHud.SetActive(true);
-            levelUpButton.SetActive(false);
-            levelUpPanel.SetActive(false);
-            AudioManager.instance.Play("CloseBookSound");
+            CloseLevelUpPanel();
         }
         enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + currentCharacter.characterStats.Endurance.ToString();
     } //Called from button
+
+    private void CloseLevelUpPanel()
+    {
+        battleHud.SetActive(true);
+        grid.gridClicked = false;
+        gameMaster.hoveringOverButton = false;
+        levelUpButton.SetActive(false);
+        levelUpPanel.SetActive(false);
+        AudioManager.instance.Play("CloseBookSound");
+    }
     #endregion
 
     public void Reset()

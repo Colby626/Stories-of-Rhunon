@@ -43,8 +43,9 @@ public class Movement : MonoBehaviour
     private List<PathNode> playerPath;
     [HideInInspector]
     public List<Vector2> vectorPath;
-    
+
     private List<PathNode> wanderNodes;
+    private PathNode wanderNode;
     private float wanderTimer;
 
     private GameMaster gameMaster;
@@ -211,6 +212,7 @@ public class Movement : MonoBehaviour
                     if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode)
                     {
                         lookingForParticipants = true;
+                        wanderNode.destinationNode = false;
                         gameMaster.LookForParticipants(gameObject);
                     }
                 }
@@ -348,7 +350,7 @@ public class Movement : MonoBehaviour
         {
         
             wanderTimer = Random.Range(wanderDelayMin, wanderDelayMax);
-            PathNode wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)];
+            wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)];
             if (wanderNode.occupied || wanderNode.destinationNode) //If choosing an occupied node in the wander radius, rechoose
             {
                 Wander();
