@@ -16,6 +16,16 @@ public class Pathfinding : MonoBehaviour
     private CustomGrid grid;
     public float speed = .01f;
 
+    private BattleMaster battleMaster;
+    private GameMaster gameMaster;
+
+    private void Start()
+    {
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
+        gameMaster = FindObjectOfType<GameMaster>().GetComponent<GameMaster>();
+        grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
+    }
+
     public List<PathNode> FindPath(PathNode endNode, PathNode startNode)
     {
         if (endNode == null)
@@ -26,8 +36,7 @@ public class Pathfinding : MonoBehaviour
         {
             return new List<PathNode> { endNode };
         }
-        grid = GetComponent<GameMaster>().grid;
-        if (endNode.occupied)
+        if (endNode.occupied) //causes a bug when enemies attack and pathfind to a new spot that is also occupied
         {
             Vector2 temp = new Vector2(startNode.x, startNode.y) - new Vector2(endNode.x, endNode.y);
             int xSign = 0;
@@ -48,7 +57,7 @@ public class Pathfinding : MonoBehaviour
             {
                 ySign++;
             }
-            
+
             return FindPath(grid.GetGridObject(xSign + endNode.x, ySign + endNode.y), startNode);
         }
         

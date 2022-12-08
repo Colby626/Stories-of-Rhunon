@@ -107,7 +107,7 @@ public class CustomGrid : MonoBehaviour
         return numRows - 1;
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         for (int x = 0; x < numColumns; x += 5) //Drawing every tile cripples performance
         {
@@ -135,5 +135,5 @@ public class CustomGrid : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }

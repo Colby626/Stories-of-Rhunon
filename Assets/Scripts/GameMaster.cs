@@ -103,10 +103,11 @@ public class GameMaster : MonoBehaviour
                 participant.GetComponentInParent<Movement>().vectorPath.Clear();
                 participant.GetComponentInParent<Movement>().vectorPath.Add(finishMove);
             }
+            participant.GetComponentInParent<Movement>().lookingForParticipants = false;
         }
         AudioManager.instance.Stop("ExploringMusic");
         AudioManager.instance.Play("BattleMusic");
-        battleMaster.GetComponent<BattleMaster>().StartBattle(participants);
+        battleMaster.StartBattle(participants);
     }
 
     public void EndBattle()

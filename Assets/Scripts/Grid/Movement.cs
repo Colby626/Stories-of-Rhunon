@@ -1,6 +1,7 @@
 using System.Collections.Generic; //For lists
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Movement : MonoBehaviour
 {
@@ -79,7 +80,10 @@ public class Movement : MonoBehaviour
                     SetupWander();
                 }
 
-                PlayerInRangeCheck();
+                if (!lookingForParticipants)
+                {
+                    PlayerInRangeCheck();
+                }
             }
             OccupyingNodeCheck();
         }
@@ -139,24 +143,12 @@ public class Movement : MonoBehaviour
         }
 
         isMoving = true;
-        startingNode = path[path.Count- 1]; //Sets the new starting location to whereever the end position is
+        startingNode = path[path.Count - 1]; //Sets the new starting location to whereever the end position is
         if (isParty)
         {
             playerPath = path;
         }
         vectorPath = new List<Vector2>();
-
-        if (battleMaster.battleStarted)
-        {
-            if (!battleMaster.currentCharacter.isPlayer) //If a battle is happening and its an enemy's turn)
-            {
-                if (path[0] == gameMaster.partyNode) //If the end of their path was the player, remove that node from the path and set to attack when they get one node away
-                {
-                    attackAtEnd = true;
-                    path.RemoveAt(0);
-                }
-            }
-        }
 
         foreach (PathNode node in path)
         {
@@ -270,13 +262,6 @@ public class Movement : MonoBehaviour
 
             transform.Translate(pathfinding.speed * Time.deltaTime * moveDirection);
 
-            if (lookingForParticipants)
-            {
-                Vector3 finishMove = vectorPath[0];
-                vectorPath.Clear();
-                vectorPath.Add(finishMove);
-            }
-
             if (Vector2.Distance((Vector2)transform.position, targetPosition) < centeringOffset)
             {
                 if (isParty)
@@ -361,7 +346,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         //Wander range red
         grid = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().grid;
@@ -384,5 +369,5 @@ public class Movement : MonoBehaviour
             Gizmos.color = Color.green; //Sets the color of the distance it looks for participants
             Gizmos.DrawWireCube(transform.position, new Vector3(distanceToLookForParticipants, distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
         }
-    }
+    }*/
 }

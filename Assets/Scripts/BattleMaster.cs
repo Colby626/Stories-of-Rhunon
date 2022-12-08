@@ -213,7 +213,7 @@ public class BattleMaster : MonoBehaviour
                 tempNode = grid.GetGridObject(x, y);
                 if (tempNode != null) //Position is walkable
                 {
-                    tempPath = gameMaster.GetComponent<Pathfinding>().FindPath(oNode, tempNode);
+                    tempPath = gameMaster.GetComponent<Pathfinding>().FindPath(tempNode, oNode);
                     if (tempPath == null)
                     {
                         continue;
@@ -348,7 +348,7 @@ public class BattleMaster : MonoBehaviour
         if (livingPlayers.Count > 0)
         {
             List<PathNode> closestPlayerPath = FindNearestPlayer(); //Also determines the targetedPlayer
-            if (closestPlayerPath.Count == 1) //If the player is right next to the enemy (the 2 are the start node and end node)
+            if (closestPlayerPath.Count == 1) //If the player is right next to the enemy
             {
                 //If the player is to the right of the enemy
                 if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x < 0)
@@ -403,22 +403,32 @@ public class BattleMaster : MonoBehaviour
         }
         */
         targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count())]; //Randomly pick a player to attack
-        List<PathNode> shortestPath = gameMaster.GetComponent<Pathfinding>().FindPath(currentCharacter.GetComponentInParent<Movement>().occupyingNode, gameMaster.party.GetComponent<Movement>().occupyingNode);
+        List<PathNode> shortestPath = gameMaster.GetComponent<Pathfinding>().FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode);
         PathNode lastNodeRemoved = null;
-        foreach (PathNode node in shortestPath.ToList()) //I know shortestPath is a list, but it needs ToList() to not error
+        for (int i = 0; i < shortestPath.Count; i++)
         {
-            if (!node.validMovePosition) //Remove any node that is outside of the range of the enemy 
+            if (!shortestPath[i].validMovePosition) //Remove any node that is outside of the range of the enemy 
             {
-                lastNodeRemoved = node;
-                shortestPath.Remove(node);
+                lastNodeRemoved = shortestPath[i];
+                shortestPath.RemoveAt(i);
             }
         }
         if (lastNodeRemoved != null)
         {
             if (lastNodeRemoved == gameMaster.partyNode)
             {
+                //Debug.Log("Party one space outside of move range");
                 currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
             }
+            //else
+            //{
+            //    Debug.Log("Party outside of move range");
+            //}
+        }
+        else
+        {
+            //Debug.Log("Party within move range");
+            currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
         }
         return shortestPath;
     }
