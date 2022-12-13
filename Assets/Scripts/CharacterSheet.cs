@@ -2,7 +2,6 @@ using System.Collections.Generic; //for Lists
 using UnityEngine;
 using System.Linq; //for livingEnemies.Count()
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 
 [System.Serializable]
 public class CharacterEquipment : Component
