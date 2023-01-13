@@ -105165,6 +105165,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
+      propertyPath: textSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
       propertyPath: levelUpButton
       value: 
       objectReference: {fileID: 852445002206840455}

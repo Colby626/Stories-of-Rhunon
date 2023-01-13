@@ -187,10 +187,12 @@ public class CharacterSheet : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        bool critical = false;
         int rand = Random.Range(1, 100);
         if (rand > 100 - battleMaster.currentCharacter.characterStats.Precision && damage - characterStats.Defense > 0)
         {
             Debug.Log("Critical Hit!");
+            critical = true;
             damage = Mathf.RoundToInt(damage * 1.5f);
         }
 
@@ -206,10 +208,11 @@ public class CharacterSheet : MonoBehaviour
 
         GetComponent<Animator>().SetTrigger("TakingHit");
         AudioManager.instance.Play(hitSound);
-        PopUpDamage(damage);
+        PopUpDamage(damage, critical);
 
         if (Health <= 0)
         {
+            Health = 0;
             GetComponent<Animator>().SetBool("Death", true);
         }
     }
@@ -297,7 +300,7 @@ public class CharacterSheet : MonoBehaviour
         }
     } //Called from animation event
 
-    private void PopUpDamage(int damage)
+    private void PopUpDamage(int damage, bool critical)
     {
         GameObject damagePopUpInstance = Instantiate(battleMaster.damagePopUp, transform.position, Quaternion.identity);
         damagePopUpInstance.GetComponent<TextMeshPro>().text = damage.ToString();
@@ -305,7 +308,11 @@ public class CharacterSheet : MonoBehaviour
         damagePopUpInstance.GetComponent<Rigidbody2D>().AddForce(battleMaster.textSpeed * Time.deltaTime * direction, ForceMode2D.Impulse);
         if (isPlayer)
         {
-            damagePopUpInstance.GetComponent<TextMeshPro>().color = Color.red;
+            damagePopUpInstance.GetComponent<TextMeshPro>().color = (critical) ? Color.red : Color.yellow; 
+        }
+        else
+        {
+            damagePopUpInstance.GetComponent<TextMeshPro>().color = (critical) ? Color.cyan : Color.white;
         }
         Destroy(damagePopUpInstance, battleMaster.timeToDestroyFloatingDamageNumbers);
     }
