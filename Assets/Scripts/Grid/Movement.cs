@@ -36,14 +36,16 @@ public class Movement : MonoBehaviour
     private bool wanderSetup = false;
     [HideInInspector]
     public bool attackAtEnd = false;
+    [HideInInspector]
+    public List<PathNode> playerPath;
+    [HideInInspector]
+    public PathNode startingNode;
+    [HideInInspector]
+    public List<Vector2> vectorPath;
 
-    private PathNode startingNode;
     private Vector3 startPosition;
     private Vector2 targetPosition;
     private Vector2 moveDirection;
-    private List<PathNode> playerPath;
-    [HideInInspector]
-    public List<Vector2> vectorPath;
 
     private List<PathNode> wanderNodes;
     private PathNode wanderNode;

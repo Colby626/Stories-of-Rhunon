@@ -99,9 +99,13 @@ public class GameMaster : MonoBehaviour
         {
             if (participant.GetComponentInParent<Movement>().vectorPath.Count > 0)
             {
+                PathNode finishMoveNode = participant.GetComponentInParent<Movement>().playerPath[0];
+                participant.GetComponentInParent<Movement>().playerPath.Clear();
+                participant.GetComponentInParent<Movement>().playerPath.Add(finishMoveNode);
                 Vector3 finishMove = participant.GetComponentInParent<Movement>().vectorPath[0];
                 participant.GetComponentInParent<Movement>().vectorPath.Clear();
                 participant.GetComponentInParent<Movement>().vectorPath.Add(finishMove);
+                participant.GetComponentInParent<Movement>().startingNode = finishMoveNode;
             }
             participant.GetComponentInParent<Movement>().lookingForParticipants = false;
         }
