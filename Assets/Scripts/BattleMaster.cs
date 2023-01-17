@@ -511,116 +511,144 @@ public class BattleMaster : MonoBehaviour
     #region LevelUp Stat Functions
     public void LevelUpStrength()
     {
-        AudioManager.instance.Play("LevelupSound");
-        currentCharacter.characterStats.Strength += 1;
-        currentCharacter.characterStats.Damage += 1;
-        currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
-        currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
-
-        //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
-        if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+        if (currentCharacter.characterStats.Strength < 99)
         {
-            CloseLevelUpPanel();
+            AudioManager.instance.Play("LevelupSound");
+            currentCharacter.characterStats.Strength += 1;
+            currentCharacter.characterStats.Damage += 1;
+            currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
+            currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+
+            //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
+            if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+            {
+                CloseLevelUpPanel();
+            }
+            strengthText.GetComponent<TextMeshProUGUI>().text = "Strength: " + currentCharacter.characterStats.Strength.ToString();
         }
-        strengthText.GetComponent<TextMeshProUGUI>().text = "Strength: " + currentCharacter.characterStats.Strength.ToString();
     } //Called from button
 
     public void LevelUpAttunement()
     {
-        AudioManager.instance.Play("LevelupSound");
-        currentCharacter.characterStats.Attunement += 1;
-        currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
-        currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
-
-        //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
-        if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+        if (currentCharacter.characterStats.Attunement < 99)
         {
-            CloseLevelUpPanel();
+            AudioManager.instance.Play("LevelupSound");
+            currentCharacter.characterStats.Attunement += 1;
+            currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
+            currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+
+            //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
+            if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+            {
+                CloseLevelUpPanel();
+            }
+            attunementText.GetComponent<TextMeshProUGUI>().text = "Attunement: " + currentCharacter.characterStats.Attunement.ToString();
         }
-        attunementText.GetComponent<TextMeshProUGUI>().text = "Attunement: " + currentCharacter.characterStats.Attunement.ToString();
     } //Called from button
 
     public void LevelUpReflexes()
     {
-        AudioManager.instance.Play("LevelupSound");
-        currentCharacter.characterStats.Reflexes += 1;
-        currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
-        currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
-
-        //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
-        if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+        if (currentCharacter.characterStats.Reflexes < 99)
         {
-             CloseLevelUpPanel();
+            AudioManager.instance.Play("LevelupSound");
+            currentCharacter.characterStats.Reflexes += 1;
+            currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
+            currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+
+            //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
+            if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+            {
+                CloseLevelUpPanel();
+            }
+            reflexesText.GetComponent<TextMeshProUGUI>().text = "Reflexes: " + currentCharacter.characterStats.Reflexes.ToString();
         }
-        reflexesText.GetComponent<TextMeshProUGUI>().text = "Reflexes: " + currentCharacter.characterStats.Reflexes.ToString();
     } //Called from button
 
     public void LevelUpSpeed()
     {
-        AudioManager.instance.Play("LevelupSound");
-        currentCharacter.characterStats.Speed += 1;
-        currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
-        currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
-
-        //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
-        if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+        if (currentCharacter.characterStats.Speed < 99)
         {
-            CloseLevelUpPanel();
+            AudioManager.instance.Play("LevelupSound");
+            currentCharacter.characterStats.Speed += 1;
+            currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
+            currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+
+            //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
+            if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+            {
+                CloseLevelUpPanel();
+            }
+            speedText.GetComponent<TextMeshProUGUI>().text = "Speed: " + currentCharacter.characterStats.Speed.ToString();
         }
-        speedText.GetComponent<TextMeshProUGUI>().text = "Speed: " + currentCharacter.characterStats.Speed.ToString();
     } //Called from button
 
     public void LevelUpPrecision()
     {
-        AudioManager.instance.Play("LevelupSound");
-        currentCharacter.characterStats.Precision += 1;
-        currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
-        currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
-
-        //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
-        if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+        if (currentCharacter.characterStats.Precision < 99)
         {
-            CloseLevelUpPanel();
+            AudioManager.instance.Play("LevelupSound");
+            currentCharacter.characterStats.Precision += 1;
+            currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
+            currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+
+            //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
+            if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+            {
+                CloseLevelUpPanel();
+            }
+            precisionText.GetComponent<TextMeshProUGUI>().text = "Precision: " + currentCharacter.characterStats.Precision.ToString();
         }
-        precisionText.GetComponent<TextMeshProUGUI>().text = "Precision: " + currentCharacter.characterStats.Precision.ToString();
     } //Called from button
 
     public void LevelUpConstitution()
     {
-        AudioManager.instance.Play("LevelupSound");
-        currentCharacter.characterStats.Constitution += 1;
-        currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
-        currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
-
-        //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
-        if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+        if (currentCharacter.characterStats.Constitution < 99)
         {
-            CloseLevelUpPanel();
+            AudioManager.instance.Play("LevelupSound");
+            currentCharacter.characterStats.Constitution += 1;
+            currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
+            currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+
+            //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
+            if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+            {
+                CloseLevelUpPanel();
+            }
+            constitutionText.GetComponent<TextMeshProUGUI>().text = "Constitution: " + currentCharacter.characterStats.Constitution.ToString();
         }
-        constitutionText.GetComponent<TextMeshProUGUI>().text = "Constitution: " + currentCharacter.characterStats.Constitution.ToString();
     } //Called from button
 
     public void LevelUpEndurance()
     {
-        AudioManager.instance.Play("LevelupSound");
-        currentCharacter.characterStats.Endurance += 1;
-        currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
-        currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
-
-        //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
-        if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+        if (currentCharacter.characterStats.Endurance < 99)
         {
-            CloseLevelUpPanel();
+            AudioManager.instance.Play("LevelupSound");
+            currentCharacter.characterStats.Endurance += 1;
+            currentCharacter.characterStats.XP -= currentCharacter.characterStats.XPtoLevelUp;
+            currentCharacter.characterStats.XPtoLevelUp += 10; //It requires 10 more xp per levelup to level up again
+
+            //Keep the levelup screen up if the currentCharacter has more XP than they need to level up
+            if (currentCharacter.characterStats.XP < currentCharacter.characterStats.XPtoLevelUp)
+            {
+                CloseLevelUpPanel();
+            }
+            enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + currentCharacter.characterStats.Endurance.ToString();
         }
-        enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + currentCharacter.characterStats.Endurance.ToString();
     } //Called from button
 
-    private void CloseLevelUpPanel()
+    public void CloseLevelUpPanel()
     {
         battleHud.SetActive(true);
         grid.gridClicked = false;
         gameMaster.hoveringOverButton = false;
-        levelUpButton.SetActive(false);
+        if (currentCharacter.characterStats.XP >= currentCharacter.characterStats.XPtoLevelUp)
+        {
+            levelUpButton.SetActive(true);
+        }
+        else
+        {
+            levelUpButton.SetActive(false);
+        }
         levelUpPanel.SetActive(false);
         AudioManager.instance.Play("CloseBookSound");
     }

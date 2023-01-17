@@ -29,12 +29,15 @@ public class LevelUpMouseOver : MonoBehaviour
                 onesPlace = 0;
             }
 
-            correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex-1].ToString(), tensPlace.ToString());
-            correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex].ToString(), onesPlace.ToString());
-            finalIndex = correspondingText.text.Length - 1;
-            correspondingText.text = correspondingText.text.Insert(finalIndex - 1, "<color=#49AE04>");
-            finalIndex = correspondingText.text.Length;
-            correspondingText.text = correspondingText.text.Insert(finalIndex, "</color>");
+            if (tensPlace != 10) //If not at max level
+            {
+                correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex - 1].ToString(), tensPlace.ToString());
+                correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex].ToString(), onesPlace.ToString());
+                finalIndex = correspondingText.text.Length - 1;
+                correspondingText.text = correspondingText.text.Insert(finalIndex - 1, "<color=#49AE04>");
+                finalIndex = correspondingText.text.Length;
+                correspondingText.text = correspondingText.text.Insert(finalIndex, "</color>");
+            }
         }
         else //Doesn't have a tens place
         {
