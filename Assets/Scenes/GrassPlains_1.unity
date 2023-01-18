@@ -102394,7 +102394,7 @@ PrefabInstance:
     - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: characterStats.Strength
-      value: 95
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -103509,6 +103509,11 @@ PrefabInstance:
     - target: {fileID: 1054812316540613395, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689450005322157988, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1786497958297881576, guid: fc242547518354a45b9ba120ed6135f3,

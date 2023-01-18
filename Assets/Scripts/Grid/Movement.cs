@@ -207,7 +207,7 @@ public class Movement : MonoBehaviour
                     {
                         lookingForParticipants = true;
                         wanderNode.destinationNode = false;
-                        gameMaster.LookForParticipants(gameObject);
+                        gameMaster.LookForParticipants(gameObject); //Causes an index out of range error at the start of battle sometimes
                     }
                 }
             }
@@ -333,9 +333,8 @@ public class Movement : MonoBehaviour
                 numberOfOccupiedNeighbors += 1;
             }
         }
-        if (numberOfOccupiedNeighbors != occupyingNode.GetNeighborNodes().Count)
+        if (numberOfOccupiedNeighbors != occupyingNode.GetNeighborNodes().Count) //If not surrounded
         {
-        
             wanderTimer = Random.Range(wanderDelayMin, wanderDelayMax);
             wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)];
             if (wanderNode.occupied || wanderNode.destinationNode) //If choosing an occupied node in the wander radius, rechoose
@@ -345,6 +344,10 @@ public class Movement : MonoBehaviour
             }
             wanderNode.destinationNode = true;
             MoveOnPath(pathfinding.FindPath(wanderNode, startingNode));
+        }
+        else //If surrounded, wait and try again
+        {
+            wanderTimer = Random.Range(wanderDelayMin, wanderDelayMax);
         }
     }
 
