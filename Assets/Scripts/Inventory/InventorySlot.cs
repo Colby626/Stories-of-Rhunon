@@ -9,9 +9,7 @@ public class InventorySlot : MonoBehaviour
     public void AddItem(Item newItem)
     {
         item = newItem;
-
         icon.sprite = newItem.icon;
-
         icon.enabled = true;
     }
 

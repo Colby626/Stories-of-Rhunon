@@ -1,5 +1,4 @@
 using System; //for Enum.GetNames()
-using System.Collections.Generic; //for Lists
 using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
@@ -8,15 +7,14 @@ public class EquipmentManager : MonoBehaviour
 
     Inventory inventory;
     InventoryUI inventoryUI;
-
     BattleMaster battleMaster;
+
     int numSlots;
 
     void Awake()
     {
         inventoryUI = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryUI>();
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
-        inventory = battleMaster.currentCharacter.GetComponent<Inventory>();
         numSlots = Enum.GetNames(typeof(EquipmentSlot)).Length;
     }
 
@@ -31,33 +29,30 @@ public class EquipmentManager : MonoBehaviour
 
         // If there was already an item in the slot
         // make sure to put it back in the inventory
-        if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[slotIndex] != null)
+        CharacterSheet character = (battleMaster.battleStarted) ? battleMaster.currentCharacter : battleMaster.defaultCharacter;
+        if (character.characterEquipment[slotIndex] != null)
         {
-            oldItem = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[slotIndex];
+            oldItem = character.characterEquipment[slotIndex];
 
             inventory.Add(oldItem);
         }
 
-        battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[slotIndex] = newItem;
+        character.characterEquipment[slotIndex] = newItem;
 
         EquipmentSlot slot = newItem.equipSlot;
         UpdateEquipmentUI(slot, newItem);
         AudioManager.instance.Play("EquipSound");
 
-        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
-        battleMaster.currentCharacter.GetComponent<Inventory>().items.Remove(newItem);
-        inventoryUI = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryUI>();
+        character.GetComponent<Inventory>().items.Remove(newItem);
         inventoryUI.UpdateUI();
 
         //Increase damage or armor
-        battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Damage += newItem.damageIncrease;
-        battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Defense += newItem.damageNegation;
+        character.characterStats.Damage += newItem.damageIncrease;
+        character.characterStats.Defense += newItem.damageNegation;
     }
 
     public void Unequip(Equipment oldItem)
     {
-        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
-
         EquipmentSlot slot = oldItem.equipSlot;
         switch (slot)
         {
@@ -125,16 +120,17 @@ public class EquipmentManager : MonoBehaviour
                     break;
                 }
         }
-        battleMaster.currentCharacter.GetComponent<Inventory>().items.Add(oldItem);
+        CharacterSheet character = (battleMaster.battleStarted) ? battleMaster.currentCharacter : battleMaster.defaultCharacter;
+        character.GetComponent<Inventory>().items.Add(oldItem);
         inventoryUI.UpdateUI();
         AudioManager.instance.Play("EquipSound");
 
-        battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[(int)slot] = null;
+        character.characterEquipment[(int)slot] = null;
         UpdateEquipmentUI();
 
         //Reduce damage or armor
-        battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Strength -= oldItem.damageIncrease;
-        battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterStats.Defense -= oldItem.damageNegation;
+        character.characterStats.Damage -= oldItem.damageIncrease;
+        character.characterStats.Defense -= oldItem.damageNegation;
     }
 
     private void UpdateEquipmentUI(EquipmentSlot slot, Equipment newItem)
@@ -220,12 +216,27 @@ public class EquipmentManager : MonoBehaviour
     {
         for (int i = 0; i < numSlots; i++)
         {
-            if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[i] != null)
+            if (battleMaster.battleStarted)
             {
-                equipmentSlots[i].item = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[i];
-                equipmentSlots[i].icon.sprite = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[i].icon;
-                equipmentSlots[i].icon.enabled = true;
-                equipmentSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+                Equipment currentCharacterEquipment = battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment[i];
+                if (currentCharacterEquipment != null)
+                {
+                    equipmentSlots[i].item = currentCharacterEquipment;
+                    equipmentSlots[i].icon.sprite = currentCharacterEquipment.icon;
+                    equipmentSlots[i].icon.enabled = true;
+                    equipmentSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                Equipment defaultCharacterEquipment = battleMaster.defaultCharacter.GetComponent<CharacterSheet>().characterEquipment[i];
+                if (defaultCharacterEquipment != null)
+                {
+                    equipmentSlots[i].item = defaultCharacterEquipment;
+                    equipmentSlots[i].icon.sprite = defaultCharacterEquipment.icon;
+                    equipmentSlots[i].icon.enabled = true;
+                    equipmentSlots[i].transform.GetChild(1).gameObject.SetActive(false);
+                }
             }
         }
     }

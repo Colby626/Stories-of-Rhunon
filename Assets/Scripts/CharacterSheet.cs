@@ -37,7 +37,7 @@ public class CharacterStats
 {
     [Header("Stats:")]
     [Range(0, 99)]
-    public int Strength; //Increases damage done
+    public int Strength; //Increases Damage
     [Range(0, 99)]
     public int Attunement; //Magical prowess
     [Range(0, 99)]
@@ -50,9 +50,8 @@ public class CharacterStats
     public int Constitution; //Determines max health
     [Range(0, 99)]
     public int Endurance; //Determines max stamina
-    [HideInInspector]
     public int Defense; //Decreases damage taken
-    public int Damage; 
+    public int Damage; //Increases damage done
     public int XP;
     public int XPtoLevelUp;
 }

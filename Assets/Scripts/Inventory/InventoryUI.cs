@@ -7,7 +7,7 @@ public class InventoryUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        inventory = battleMaster.currentCharacter.GetComponent<Inventory>();
+        inventory = (battleMaster.battleStarted) ? battleMaster.currentCharacter.GetComponent<Inventory>() : battleMaster.defaultCharacter.GetComponent<Inventory>();
 
         InventorySlot[] slots = GetComponentsInChildren<InventorySlot>(); 
 
