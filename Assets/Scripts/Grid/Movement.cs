@@ -348,7 +348,9 @@ public class Movement : MonoBehaviour
         }
     }
 
-    /*private void OnDrawGizmos()
+    #if (UNITY_EDITOR)
+
+    private void OnDrawGizmos()
     {
         //Wander range red
         grid = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().grid;
@@ -371,5 +373,7 @@ public class Movement : MonoBehaviour
             Gizmos.color = Color.green; //Sets the color of the distance it looks for participants
             Gizmos.DrawWireCube(transform.position, new Vector3(distanceToLookForParticipants, distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
         }
-    }*/
+    }
+
+   #endif
 }
