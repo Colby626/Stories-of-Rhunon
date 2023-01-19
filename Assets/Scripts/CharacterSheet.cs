@@ -273,7 +273,7 @@ public class CharacterSheet : MonoBehaviour
         if (battleMaster.livingEnemies.Count() == 0)
         {
             gameMaster.EndBattle();
-            battleMaster.battleHud.SetActive(false);
+            battleMaster.battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", false);
             battleMaster.Reset();
 
             if (battleMaster.willWin) //Won the game

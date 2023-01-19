@@ -169,11 +169,14 @@ public class BattleMaster : MonoBehaviour
         }
     }
 
+    #region Battle Functions
     public void StartBattle(List<GameObject> participants)
     {
         characters = participants;
         battleStarted = true;
         battleHud.SetActive(true);
+        battleHud.GetComponentInChildren<Animator>().SetTrigger("BattleStart");
+        battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", true);
         StartingTurnOrder();
 
         foreach (GameObject character in characters)
@@ -486,6 +489,9 @@ public class BattleMaster : MonoBehaviour
         Cursor.SetCursor(attackCursorTexture, Vector2.zero, CursorMode.Auto);
     } //Called from button
 
+    #endregion
+
+    #region Inventory Functions
     public void OpenInventory()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
@@ -494,6 +500,7 @@ public class BattleMaster : MonoBehaviour
         AudioManager.instance.Play("TurningPageInBookSound");
         inventory.SetActive(true);
         openInventoryButton.SetActive(false);
+        levelUpButton.SetActive(false);
         inventoryUI.GetComponent<InventoryUI>().UpdateUI();
         GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI(); //Updates inventory to match the right character
 
@@ -518,6 +525,21 @@ public class BattleMaster : MonoBehaviour
         if (battleStarted)
         {
             battleHud.SetActive(true);
+            battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", true);
+            if (currentCharacter.characterStats.XP >= currentCharacter.characterStats.XPtoLevelUp)
+            {
+                levelUpButton.SetActive(true);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < characterList.Count - 1; i++)
+            {
+                if (characterList[i].characterStats.XP >= characterList[i].characterStats.XPtoLevelUp)
+                {
+                    levelUpButton.SetActive(true);
+                }
+            }
         }
         openInventoryButton.SetActive(true);
         grid.gridClicked = false;
@@ -527,6 +549,43 @@ public class BattleMaster : MonoBehaviour
         inventory.SetActive(false);
     } //Called from button
 
+    public void NextCharacter() //remove buttons during battle
+    {
+        characterListIndex++;
+        if (characterListIndex > characterList.Count - 1)
+        {
+            characterListIndex = 0;
+        }
+        defaultCharacter = characterList[characterListIndex];
+
+        AudioManager.instance.Play("TurningPageInBookSound");
+        inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
+        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
+
+        inventoryUI.GetComponent<InventoryUI>().UpdateUI();
+        equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
+        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI();
+    } //Called from button
+    public void PreviousCharacter() //remove buttons during battle
+    {
+        characterListIndex--;
+        if (characterListIndex < 0)
+        {
+            characterListIndex = characterList.Count - 1;
+        }
+        defaultCharacter = characterList[characterListIndex];
+        AudioManager.instance.Play("TurningPageInBookSound");
+        inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
+        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
+
+        inventoryUI.GetComponent<InventoryUI>().UpdateUI();
+        equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
+        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI();
+    } //Called from button
+
+    #endregion
+
+    #region LevelUp Functions
     public void LevelUp()
     {
         AudioManager.instance.Play("TurningPageInBookSound");
@@ -543,8 +602,6 @@ public class BattleMaster : MonoBehaviour
         constitutionText.GetComponent<TextMeshProUGUI>().text = "Constitution: " + levelUpCharacter.characterStats.Constitution.ToString();
         enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + levelUpCharacter.characterStats.Endurance.ToString();
     } //Called from button
-
-    #region LevelUp Stat Functions
     public void LevelUpStrength()
     {
         if (levelUpCharacter.characterStats.Strength < 99)
@@ -677,6 +734,7 @@ public class BattleMaster : MonoBehaviour
         if (battleStarted)
         {
             battleHud.SetActive(true);
+            battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", true);
         }
         else
         {
@@ -696,40 +754,6 @@ public class BattleMaster : MonoBehaviour
         AudioManager.instance.Play("CloseBookSound");
     }
     #endregion
-
-    public void NextCharacter() //remove buttons during battle
-    {
-        characterListIndex++;
-        if (characterListIndex > characterList.Count - 1)
-        {
-            characterListIndex = 0;
-        }
-        defaultCharacter = characterList[characterListIndex];
-
-        AudioManager.instance.Play("TurningPageInBookSound");
-        inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
-        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
-
-        inventoryUI.GetComponent<InventoryUI>().UpdateUI();
-        equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
-        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI();
-    } //Called from button
-    public void PreviousCharacter() //remove buttons during battle
-    {
-        characterListIndex--;
-        if (characterListIndex < 0)
-        {
-            characterListIndex = characterList.Count - 1;
-        }
-        defaultCharacter = characterList[characterListIndex];
-        AudioManager.instance.Play("TurningPageInBookSound");
-        inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
-        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
-        
-        inventoryUI.GetComponent<InventoryUI>().UpdateUI();
-        equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
-        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI();
-    } //Called from button
 
     public void Reset()
     {
