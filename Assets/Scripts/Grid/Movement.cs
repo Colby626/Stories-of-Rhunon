@@ -1,7 +1,6 @@
 using System.Collections.Generic; //For lists
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Movement : MonoBehaviour
 {
@@ -68,28 +67,10 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        if (grid.gridFinished) //Make gridFinished a UnityEvent
+        if (grid.gridFinished)
         {
-            if (!startPositionDetermined) 
-            {
-                DetermineStartPosition();
-            }
-
-            if (!isParty)
-            {
-                if (!wanderSetup && wander)
-                {
-                    SetupWander();
-                }
-
-                if (!lookingForParticipants)
-                {
-                    PlayerInRangeCheck();
-                }
-            }
-            OccupyingNodeCheck();
+            SetupMovement();
         }
-
         wanderTimer -= Time.deltaTime;
         if (wander && wanderSetup && !isMoving && !isParty && wanderTimer <= 0 && !battleMaster.battleStarted)
         {
@@ -107,6 +88,28 @@ public class Movement : MonoBehaviour
                 gameMaster.targetNode = null;
             }
         }
+    }
+
+    private void SetupMovement()
+    {
+        if (!startPositionDetermined)
+        {
+            DetermineStartPosition();
+        }
+
+        if (!isParty)
+        {
+            if (!wanderSetup && wander)
+            {
+                SetupWander();
+            }
+
+            if (!lookingForParticipants)
+            {
+                PlayerInRangeCheck();
+            }
+        }
+        OccupyingNodeCheck();
     }
 
     private void DetermineStartPosition()

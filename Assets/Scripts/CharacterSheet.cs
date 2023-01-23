@@ -315,5 +315,4 @@ public class CharacterSheet : MonoBehaviour
         }
         Destroy(damagePopUpInstance, battleMaster.timeToDestroyFloatingDamageNumbers);
     }
-
 }

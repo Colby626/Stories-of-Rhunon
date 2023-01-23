@@ -12,8 +12,6 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    private int EricsInt;
-
     private void Awake()
     {
         if (instance == null)
@@ -41,7 +39,7 @@ public class AudioManager : MonoBehaviour
             {
                 sound.audioSource.outputAudioMixerGroup = soundEffectMixer;
             }
-            
+
         }
     }
 
@@ -61,18 +59,11 @@ public class AudioManager : MonoBehaviour
         {
             Play("BattleMusic");
         }
-
-        //Everything under this within Start is for Eric
-        else
-        {
-            EricsInt = 1;
-            Play("MainMenuMusic");
-        }
     }
 
     public void Play(string name)
     {
-        Sound sound = Array.Find(sounds, sound=>sound.name == name);
+        Sound sound = Array.Find(sounds, sound => sound.name == name);
         if (sound != null)
         {
             sound.audioSource.Play();
@@ -96,36 +87,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void StopAll ()
+    public void StopAll()
     {
         foreach (Sound sound in sounds)
         {
             sound.audioSource.Stop();
-        }
-    }
-
-    //This function is for Eric
-    public void NextSong()
-    {
-        switch (EricsInt)
-        {
-            case 1:
-                Stop("MainMenuMusic");
-                Play("ExploringMusic");
-                EricsInt++;
-                break;
-
-            case 2:
-                Stop("ExploringMusic");
-                Play("BattleMusic");
-                EricsInt++;
-                break;
-
-            case 3:
-                Stop("BattleMusic");
-                Play("MainMenuMusic");
-                EricsInt = 1;
-                break;
         }
     }
 }

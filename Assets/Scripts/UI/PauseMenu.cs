@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     public Slider musicVolumeSlider;
     public Slider soundEffectVolumeSlider;
     public BattleMaster battleMaster;
+    public GameMaster gameMaster;
     public AudioMixer audioMixer;
     [Range(-80f, 0f)]
     public float amountQuieterWhenPaused;
@@ -68,6 +69,7 @@ public class PauseMenu : MonoBehaviour
             gamePaused = false;
         }
         battleMaster.Reset();
+        gameMaster.EndBattle();
         pauseMenu.SetActive(false);
 
         SceneManager.LoadScene("MainMenu");

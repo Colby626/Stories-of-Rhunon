@@ -6139,7 +6139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269281400}
   m_LocalRotation: {x: 0, y: 1e-45, z: 0, w: 1}
-  m_LocalPosition: {x: -44.44, y: -0.5, z: -10}
+  m_LocalPosition: {x: -44.5, y: -0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -70318,7 +70318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795253457}
   m_LocalRotation: {x: 0, y: 1e-45, z: 0, w: 1}
-  m_LocalPosition: {x: -44.44, y: -0.5, z: -10}
+  m_LocalPosition: {x: -44.5, y: -0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -82249,6 +82249,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 90830854}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1308789667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1535606136392239002, guid: 72d6962769709fb4e9f5b9f3046fa175,
+    type: 3}
+  m_PrefabInstance: {fileID: 337290168}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6fdd27f8a2939340b4065c554a2003c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1310381076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103112,7 +103124,7 @@ PrefabInstance:
     - target: {fileID: 542170188930115357, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.44
+      value: -44.5
       objectReference: {fileID: 0}
     - target: {fileID: 542170188930115357, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
@@ -103213,6 +103225,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isParty
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539894390840498754, guid: 9e2d3be66e742304fa8a776cfa0678d5,
+        type: 3}
+      propertyPath: centeringOffset
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1539894390840498754, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
@@ -103634,6 +103651,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067279701696419320, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: gameMaster
+      value: 
+      objectReference: {fileID: 1308789667}
     - target: {fileID: 2067279701696419322, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
