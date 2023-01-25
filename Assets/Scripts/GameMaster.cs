@@ -37,6 +37,11 @@ public class GameMaster : MonoBehaviour
             instance.battleMaster = FindObjectOfType<BattleMaster>();
             instance.party = GameObject.FindGameObjectWithTag("Party");
             instance.hoveringOverButton = false;
+            instance.participants.Clear();
+            for (int i = 0; i < participants.Count; i++)
+            {
+                instance.participants.RemoveAt(0);
+            }
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
@@ -75,6 +80,7 @@ public class GameMaster : MonoBehaviour
         }
         //check tiles outward from contact with enemy and player with a distance of distanceToLookForPartcipants and put them in participants list then call StartBattle
         colliders = Physics2D.OverlapBoxAll(caller.transform.position, new Vector2(caller.GetComponentInParent<Movement>().distanceToLookForParticipants, caller.GetComponentInParent<Movement>().distanceToLookForParticipants), 0);
+        Debug.Log(colliders.Length);
 
         foreach (Collider2D collider in colliders) //This should be redone for optimization and just set in the editor 
         {

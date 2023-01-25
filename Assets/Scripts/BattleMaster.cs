@@ -763,7 +763,6 @@ public class BattleMaster : MonoBehaviour
             turnOrderCalculated = false;
             attackDone = false;
             attackPressed = false;
-            gameMaster.GetComponent<GameMaster>().participants.Clear();
             turnOrder.Clear();
             characters.Clear();
             livingPlayers.Clear();

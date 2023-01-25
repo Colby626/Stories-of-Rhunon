@@ -68,8 +68,8 @@ public class PauseMenu : MonoBehaviour
             Unpause();
             gamePaused = false;
         }
-        battleMaster.Reset();
         gameMaster.EndBattle();
+        battleMaster.Reset();
         pauseMenu.SetActive(false);
 
         SceneManager.LoadScene("MainMenu");
