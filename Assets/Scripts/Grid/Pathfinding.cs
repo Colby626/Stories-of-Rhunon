@@ -15,6 +15,8 @@ public class Pathfinding : MonoBehaviour
     public Collider2D[] colliders;
     private CustomGrid grid;
     public float speed = .01f;
+    [Tooltip("The smaller this number the better the performance")]
+    public int furthestAnyoneCanMove = 30;
 
     private BattleMaster battleMaster;
     private GameMaster gameMaster;
@@ -63,10 +65,12 @@ public class Pathfinding : MonoBehaviour
         
         openList = new List<PathNode> { startNode };
         closedList = new HashSet<PathNode> { };
+        int _numColumns = GetComponent<GameMaster>().grid.numColumns;
+        int _numRows = GetComponent<GameMaster>().grid.numRows;
 
-        for (int x = 0; x < GetComponent<GameMaster>().grid.numColumns; x++)
+        for (int x = startNode.x - furthestAnyoneCanMove; x < startNode.x + furthestAnyoneCanMove; x++)
         {
-            for (int y = 0; y < GetComponent<GameMaster>().grid.numRows; y++)
+            for (int y = startNode.y - furthestAnyoneCanMove; y < startNode.y + furthestAnyoneCanMove; y++)
             {
                 PathNode node = grid.GetGridObject(x, y);
                 if (node != null)

@@ -1,6 +1,7 @@
 using System.Collections.Generic; //For lists
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class Movement : MonoBehaviour
 {
@@ -67,6 +68,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        Profiler.BeginSample("Movement.Update()");
         if (grid.gridFinished)
         {
             SetupMovement();
@@ -88,6 +90,7 @@ public class Movement : MonoBehaviour
                 gameMaster.targetNode = null;
             }
         }
+        Profiler.EndSample();
     }
 
     private void SetupMovement()
@@ -103,7 +106,7 @@ public class Movement : MonoBehaviour
             {
                 SetupWander();
             }
-
+            
             if (!lookingForParticipants)
             {
                 PlayerInRangeCheck();
@@ -161,17 +164,17 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void OccupyingNodeCheck()
+    private void OccupyingNodeCheck() //Biggest performance hit during general play 
     {
         //Surely this can be more performant than raycasting in update to find the occupyingNode, but putting it in the occupying node OnTriggerEnter2D wasn't consistant
         int closestNode = 0;
         float minDistance = float.PositiveInfinity;
-        RaycastHit2D[] findNode = Physics2D.CircleCastAll(transform.position, 1.5f, Vector2.zero);
+        RaycastHit2D[] findNode = Physics2D.CircleCastAll(transform.position, 1.5f, Vector2.zero); //Bad performance
 
         // Setting occupied node to the nearest center of a node
         for (int i = 0; i < findNode.Count(); i++)
         {
-            if (findNode[i].transform.GetComponent<PathNode>() is PathNode pathNode)
+            if (findNode[i].transform.GetComponent<PathNode>() is PathNode pathNode) //GetComponent is bad and so is transform for performance
             {
                 if (pathNode.occupyingAgent == null || pathNode.occupyingAgent == gameObject)
                 {
@@ -196,7 +199,7 @@ public class Movement : MonoBehaviour
         occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
     }
 
-    private void PlayerInRangeCheck()
+    private void PlayerInRangeCheck() //This is terribly bad for performance
     {
         //If a pathnode within an enemies visible range is the partynode, start the battle sequence
         if (!battleMaster.battleStarted && !lookingForParticipants) //Could change the repeated raycast into a large collider and use OnTriggerEnter to do this

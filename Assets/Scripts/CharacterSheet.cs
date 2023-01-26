@@ -56,12 +56,14 @@ public class CharacterStats
     public int XPtoLevelUp;
 }
 
+/* For when there are more than one types of attacks
 [System.Serializable]
 public class CharacterAttacks
 {
     [Header("Attacks:")]
     public List<string> attackNames;
 }
+*/
 
 public class CharacterSheet : MonoBehaviour
 {
@@ -77,7 +79,7 @@ public class CharacterSheet : MonoBehaviour
     public CharacterStats characterStats;
     public CharacterProficiencies characterProficiencies;
     public List<Equipment> characterEquipment;
-    public CharacterAttacks characterAttacks;
+    //public CharacterAttacks characterAttacks; For when there are multiple types of attacks
 
     [Header("Programmer stuff:")]
     public bool isPlayer;

@@ -57,8 +57,11 @@ MonoBehaviour:
   wanderDelayMin: 2
   wanderDelayMax: 5
   distanceToLookForParticipants: 15
+  playerInRangeCheckWaitTime: 0.1
   lookingForParticipants: 0
   attackAtEnd: 0
+  playerPath: []
+  startingNode: {fileID: 0}
   vectorPath: []
 --- !u!50 &1177362864
 Rigidbody2D:

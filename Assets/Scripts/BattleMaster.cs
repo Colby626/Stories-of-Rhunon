@@ -222,12 +222,123 @@ public class BattleMaster : MonoBehaviour
         LimitMovement();
     }
 
-    private void LimitMovement()
+    private void LimitMovement() //Giant performance hog 
     {
         int maxMoveDistance = currentCharacter.characterStats.Speed / 5;
         List<PathNode> tempPath = null;
         PathNode oNode = currentCharacter.GetComponentInParent<Movement>().occupyingNode;
         PathNode tempNode = null;
+        Pathfinding pathFinder = gameMaster.GetComponent<Pathfinding>();
+
+
+        for (int x = oNode.x - maxMoveDistance; x <= oNode.x + maxMoveDistance; x++)
+        {
+            tempNode = grid.GetGridObject(x, oNode.y - maxMoveDistance);
+            if (tempNode != null) //Position is walkable
+            {
+                if (!tempNode.validMovePosition)
+                {
+                    tempPath = pathFinder.FindPath(tempNode, oNode); //Here is where all the performance is eaten at battleStart
+                    if (tempPath != null)
+                    {
+                        if (tempPath.Count <= maxMoveDistance) //It is within max move distance
+                        {
+                            foreach (PathNode node in tempPath)
+                            {
+                                moveableNodes.Add(node);
+                                node.validMovePosition = true;
+                                if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
+                                {
+                                    node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+                                    node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            tempNode = grid.GetGridObject(x, oNode.y + maxMoveDistance);
+            if (tempNode != null) //Position is walkable
+            {
+                if (!tempNode.validMovePosition)
+                {
+                    tempPath = pathFinder.FindPath(tempNode, oNode); //Here is where all the performance is eaten at battleStart
+                    if (tempPath != null)
+                    {
+                        if (tempPath.Count <= maxMoveDistance) //It is within max move distance
+                        {
+                            foreach (PathNode node in tempPath)
+                            {
+                                moveableNodes.Add(node);
+                                node.validMovePosition = true;
+                                if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
+                                {
+                                    node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+                                    node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int y = oNode.y - maxMoveDistance; y <= oNode.y + maxMoveDistance; y++)
+        {
+            tempNode = grid.GetGridObject(oNode.x - maxMoveDistance, y);
+            if (tempNode != null) //Position is walkable
+            {
+                if (!tempNode.validMovePosition)
+                {
+                    tempPath = pathFinder.FindPath(tempNode, oNode); //Here is where all the performance is eaten at battleStart
+                    if (tempPath != null)
+                    {
+                        if (tempPath.Count <= maxMoveDistance) //It is within max move distance
+                        {
+                            foreach (PathNode node in tempPath)
+                            {
+                                moveableNodes.Add(node);
+                                node.validMovePosition = true;
+                                if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
+                                {
+                                    node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+                                    node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            /*
+            tempNode = grid.GetGridObject(oNode.x + maxMoveDistance, y);
+            if (tempNode != null) //Position is walkable
+            {
+                if (!tempNode.validMovePosition)
+                {
+                    tempPath = pathFinder.FindPath(tempNode, oNode); //Here is where all the performance is eaten at battleStart
+                    if (tempPath != null)
+                    {
+                        if (tempPath.Count <= maxMoveDistance) //It is within max move distance
+                        {
+                            foreach (PathNode node in tempPath)
+                            {
+                                moveableNodes.Add(node);
+                                node.validMovePosition = true;
+                                if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
+                                {
+                                    node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+                                    node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            */
+        }
+
         for (int x = oNode.x - maxMoveDistance; x <= oNode.x + maxMoveDistance; x++)
         {
             for (int y = oNode.y - maxMoveDistance; y <= oNode.y + maxMoveDistance; y++)
@@ -235,19 +346,25 @@ public class BattleMaster : MonoBehaviour
                 tempNode = grid.GetGridObject(x, y);
                 if (tempNode != null) //Position is walkable
                 {
-                    tempPath = gameMaster.GetComponent<Pathfinding>().FindPath(tempNode, oNode);
-                    if (tempPath == null)
+                    if (!tempNode.validMovePosition)
                     {
-                        continue;
-                    }
-                    if (tempPath.Count <= maxMoveDistance) //It is within max move distance
-                    {
-                        moveableNodes.Add(tempNode);
-                        tempNode.validMovePosition = true;
-                        if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
+                        tempPath = pathFinder.FindPath(tempNode, oNode); //Here is where all the performance is eaten at battleStart
+                        if (tempPath == null)
                         {
-                            tempNode.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                            tempNode.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+                            continue;
+                        }
+                        if (tempPath.Count <= maxMoveDistance) //It is within max move distance
+                        {
+                            foreach (PathNode node in tempPath)
+                            {
+                                moveableNodes.Add(node);
+                                node.validMovePosition = true;
+                                if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
+                                {
+                                    node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+                                    node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+                                }
+                            }
                         }
                     }
                 }

@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-
 public class CustomGrid : MonoBehaviour
 {
     public int numColumns;

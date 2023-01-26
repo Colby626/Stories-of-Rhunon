@@ -61942,6 +61942,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1659767146, guid: 72d6962769709fb4e9f5b9f3046fa175, type: 3}
+      propertyPath: furthestAnyoneCanMove
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 904247318507742507, guid: 72d6962769709fb4e9f5b9f3046fa175,
         type: 3}
       propertyPath: m_Name
@@ -103261,6 +103265,11 @@ PrefabInstance:
       propertyPath: characterStats.Constitution
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4659660240272881195, guid: 9e2d3be66e742304fa8a776cfa0678d5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6185555566667531716, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
       propertyPath: Health
@@ -103285,6 +103294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: characterStats.Constitution
       value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185555566667531719, guid: 9e2d3be66e742304fa8a776cfa0678d5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e2d3be66e742304fa8a776cfa0678d5, type: 3}
