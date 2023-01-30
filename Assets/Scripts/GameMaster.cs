@@ -80,7 +80,6 @@ public class GameMaster : MonoBehaviour
         }
         //check tiles outward from contact with enemy and player with a distance of distanceToLookForPartcipants and put them in participants list then call StartBattle
         colliders = Physics2D.OverlapBoxAll(caller.transform.position, new Vector2(caller.GetComponentInParent<Movement>().distanceToLookForParticipants, caller.GetComponentInParent<Movement>().distanceToLookForParticipants), 0);
-        Debug.Log(colliders.Length);
 
         foreach (Collider2D collider in colliders) //This should be redone for optimization and just set in the editor 
         {
@@ -105,13 +104,11 @@ public class GameMaster : MonoBehaviour
         {
             if (participant.GetComponentInParent<Movement>().vectorPath.Count > 0)
             {
-                PathNode finishMoveNode = participant.GetComponentInParent<Movement>().playerPath[0];
-                participant.GetComponentInParent<Movement>().playerPath.Clear();
-                participant.GetComponentInParent<Movement>().playerPath.Add(finishMoveNode);
                 Vector3 finishMove = participant.GetComponentInParent<Movement>().vectorPath[0];
                 participant.GetComponentInParent<Movement>().vectorPath.Clear();
                 participant.GetComponentInParent<Movement>().vectorPath.Add(finishMove);
-                participant.GetComponentInParent<Movement>().startingNode = finishMoveNode;
+                //Random -1 on next line is required to match with where they end up, I don't know why it is needed
+                participant.GetComponentInParent<Movement>().startingNode = grid.GetGridObject((int)participant.GetComponentInParent<Movement>().vectorPath[0].x - grid.origin.x - 1, (int)participant.GetComponentInParent<Movement>().vectorPath[0].y - grid.origin.y);
             }
             participant.GetComponentInParent<Movement>().lookingForParticipants = false;
         }

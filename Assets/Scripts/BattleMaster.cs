@@ -222,7 +222,7 @@ public class BattleMaster : MonoBehaviour
         LimitMovement();
     }
 
-    private void LimitMovement() //Giant performance hog 
+    private void LimitMovement()
     {
         int maxMoveDistance = currentCharacter.characterStats.Speed / 5;
         List<PathNode> tempPath = null;
@@ -238,7 +238,7 @@ public class BattleMaster : MonoBehaviour
             {
                 if (!tempNode.validMovePosition)
                 {
-                    tempPath = pathFinder.FindPath(tempNode, oNode); //Here is where all the performance is eaten at battleStart
+                    tempPath = pathFinder.FindPath(tempNode, oNode);
                     if (tempPath != null)
                     {
                         if (tempPath.Count <= maxMoveDistance) //It is within max move distance
@@ -263,7 +263,7 @@ public class BattleMaster : MonoBehaviour
             {
                 if (!tempNode.validMovePosition)
                 {
-                    tempPath = pathFinder.FindPath(tempNode, oNode); //Here is where all the performance is eaten at battleStart
+                    tempPath = pathFinder.FindPath(tempNode, oNode); 
                     if (tempPath != null)
                     {
                         if (tempPath.Count <= maxMoveDistance) //It is within max move distance
@@ -291,7 +291,7 @@ public class BattleMaster : MonoBehaviour
             {
                 if (!tempNode.validMovePosition)
                 {
-                    tempPath = pathFinder.FindPath(tempNode, oNode); //Here is where all the performance is eaten at battleStart
+                    tempPath = pathFinder.FindPath(tempNode, oNode); 
                     if (tempPath != null)
                     {
                         if (tempPath.Count <= maxMoveDistance) //It is within max move distance

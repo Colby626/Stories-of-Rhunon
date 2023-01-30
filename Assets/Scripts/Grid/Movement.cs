@@ -37,8 +37,6 @@ public class Movement : MonoBehaviour
     [HideInInspector]
     public bool attackAtEnd = false;
     [HideInInspector]
-    public List<PathNode> playerPath;
-    [HideInInspector]
     public PathNode startingNode;
     [HideInInspector]
     public List<Vector2> vectorPath;
@@ -71,7 +69,7 @@ public class Movement : MonoBehaviour
         Profiler.BeginSample("Movement.Update()");
         if (grid.gridFinished)
         {
-            SetupMovement();
+            SetupMovement(); 
         }
         wanderTimer -= Time.deltaTime;
         if (wander && wanderSetup && !isMoving && !isParty && wanderTimer <= 0 && !battleMaster.battleStarted)
@@ -152,10 +150,6 @@ public class Movement : MonoBehaviour
 
         isMoving = true;
         startingNode = path[path.Count - 1]; //Sets the new starting location to whereever the end position is
-        if (isParty)
-        {
-            playerPath = path;
-        }
         vectorPath = new List<Vector2>();
 
         foreach (PathNode node in path)
@@ -169,12 +163,12 @@ public class Movement : MonoBehaviour
         //Surely this can be more performant than raycasting in update to find the occupyingNode, but putting it in the occupying node OnTriggerEnter2D wasn't consistant
         int closestNode = 0;
         float minDistance = float.PositiveInfinity;
-        RaycastHit2D[] findNode = Physics2D.CircleCastAll(transform.position, 1.5f, Vector2.zero); //Bad performance
+        RaycastHit2D[] findNode = Physics2D.CircleCastAll(transform.position, 1.5f, Vector2.zero); 
 
         // Setting occupied node to the nearest center of a node
         for (int i = 0; i < findNode.Count(); i++)
         {
-            if (findNode[i].transform.GetComponent<PathNode>() is PathNode pathNode) //GetComponent is bad and so is transform for performance
+            if (findNode[i].transform.GetComponent<PathNode>() is PathNode pathNode)
             {
                 if (pathNode.occupyingAgent == null || pathNode.occupyingAgent == gameObject)
                 {
@@ -199,7 +193,7 @@ public class Movement : MonoBehaviour
         occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
     }
 
-    private void PlayerInRangeCheck() //This is terribly bad for performance
+    private void PlayerInRangeCheck()
     {
         //If a pathnode within an enemies visible range is the partynode, start the battle sequence
         if (!battleMaster.battleStarted && !lookingForParticipants) //Could change the repeated raycast into a large collider and use OnTriggerEnter to do this
@@ -213,7 +207,7 @@ public class Movement : MonoBehaviour
                     {
                         lookingForParticipants = true;
                         wanderNode.destinationNode = false;
-                        gameMaster.LookForParticipants(gameObject); //Causes an index out of range error at the start of battle sometimes
+                        gameMaster.LookForParticipants(gameObject); 
                     }
                 }
             }
@@ -274,8 +268,7 @@ public class Movement : MonoBehaviour
             {
                 if (isParty)
                 {
-                    gameMaster.partyNode = playerPath[0];
-                    playerPath.Remove(playerPath[0]);
+                    gameMaster.partyNode = occupyingNode;
                 }
                 vectorPath.Remove(vectorPath[0]);
             }
