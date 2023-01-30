@@ -219,6 +219,13 @@ public class BattleMaster : MonoBehaviour
             StartCoroutine(EnemyTurn());
         }
 
+        //Add a delay so that participants can finish their move
+        StartCoroutine(WaitHalfASecond());
+    }
+
+    IEnumerator WaitHalfASecond()
+    {
+        yield return new WaitForSeconds(0.5f);
         LimitMovement();
     }
 
