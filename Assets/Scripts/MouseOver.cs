@@ -5,18 +5,22 @@ using UnityEngine.UI;
 public class MouseOver : MonoBehaviour
 {
     private CharacterSheet character;
-    private Material characterMaterial;
-
     private Image portrait;
     private StatBar healthBar;
     private StatBar manaBar;
     private StatBar staminaBar;
-    private StatBar overheadHealthBar;
-    private TextMeshProUGUI overheadNameText;
     private Text nameText;
-    private Material highlightMaterial;
 
-    private bool isHighlighted = false;
+    [HideInInspector]
+    public Material characterMaterial;
+    [HideInInspector]
+    public StatBar overheadHealthBar;
+    [HideInInspector]
+    public TextMeshProUGUI overheadNameText;
+    [HideInInspector]
+    public Material highlightMaterial;
+    [HideInInspector]
+    public bool isHighlighted = false;
 
     private PauseMenu pauseMenu;
     private BattleMaster battleMaster;
@@ -55,6 +59,7 @@ public class MouseOver : MonoBehaviour
         }
     }
 
+    /* MouseOver, MouseExit, and MouseDown functions that have been overruled by CursorOverlapCircle
     //Highlights the character when the mouse is over them and displays their status menu
     void OnMouseOver()
     {
@@ -117,6 +122,7 @@ public class MouseOver : MonoBehaviour
             isHighlighted = false;
         }
     }
+    */
 
     public void ActivateStatus(CharacterSheet participant)
     {

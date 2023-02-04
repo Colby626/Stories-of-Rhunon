@@ -30,6 +30,7 @@ public class PathNode : MonoBehaviour
         validMovePosition = false;
     }
 
+    /* MouseOver and MouseExit replaced by CursorOverlapCircle
     void OnMouseOver()
     {
         if (!gameMaster.hoveringOverButton && !battleMaster.attackPressed)
@@ -63,6 +64,7 @@ public class PathNode : MonoBehaviour
     {
         transform.GetChild(0).gameObject.SetActive(false);
     }
+    */
 
     public void CalculateFCost()
     {
