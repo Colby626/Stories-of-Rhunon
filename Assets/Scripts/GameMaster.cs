@@ -7,7 +7,6 @@ public class GameMaster : MonoBehaviour
 
     public PathNode partyNode;
     public PathNode targetNode;
-    public bool startPositionDetermined = false;
     public bool movedOnTurn = false;
     public bool hoveringOverButton;
     public List<GameObject> participants;
@@ -121,7 +120,6 @@ public class GameMaster : MonoBehaviour
     {
         //Set movement active again
         partyNode = null;
-        startPositionDetermined = false;
         movedOnTurn = false;
         participants.Clear();
         hoveringOverButton = false;

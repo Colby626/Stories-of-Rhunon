@@ -1,7 +1,6 @@
 using System.Collections.Generic; //For lists
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Profiling;
 
 public class Movement : MonoBehaviour
 {
@@ -32,7 +31,6 @@ public class Movement : MonoBehaviour
 
     private bool isMoving = false;
     private bool hasBeenMoving = false;
-    private bool startPositionDetermined = false;
     private bool wanderSetup = false;
     [HideInInspector]
     public bool attackAtEnd = false;
@@ -62,15 +60,16 @@ public class Movement : MonoBehaviour
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
         pathfinding = FindObjectOfType<Pathfinding>().GetComponent<Pathfinding>();
         vectorPath = new List<Vector2>(); //Prevents an error in the console
+        grid.gridFinishedEvent.AddListener(DetermineStartPosition);
     }
 
     private void Update()
     {
-        Profiler.BeginSample("Movement.Update()");
         if (grid.gridFinished)
         {
             SetupMovement(); 
         }
+
         wanderTimer -= Time.deltaTime;
         if (wander && wanderSetup && !isMoving && !isParty && wanderTimer <= 0 && !battleMaster.battleStarted)
         {
@@ -88,23 +87,12 @@ public class Movement : MonoBehaviour
                 gameMaster.targetNode = null;
             }
         }
-        Profiler.EndSample();
     }
 
     private void SetupMovement()
     {
-        if (!startPositionDetermined)
-        {
-            DetermineStartPosition();
-        }
-
         if (!isParty)
-        {
-            if (!wanderSetup && wander)
-            {
-                SetupWander();
-            }
-            
+        {            
             if (!lookingForParticipants)
             {
                 PlayerInRangeCheck();
@@ -115,9 +103,6 @@ public class Movement : MonoBehaviour
 
     private void DetermineStartPosition()
     {
-        startPositionDetermined = true;
-        gameMaster.startPositionDetermined = true;
-
         //Set the startingNode from wherever they are 
         Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.5f, 0.5f), 0);
         for (int i = 0; i < colliders.Length; i++)
@@ -138,6 +123,11 @@ public class Movement : MonoBehaviour
         if (isParty)
         {
             gameMaster.partyNode = startingNode;
+        }
+
+        if (!isParty && wander)
+        {
+            SetupWander();
         }
     }
 

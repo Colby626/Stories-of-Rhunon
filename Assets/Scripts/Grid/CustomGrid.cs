@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 public class CustomGrid : MonoBehaviour
 {
     public int numColumns;
@@ -11,6 +12,7 @@ public class CustomGrid : MonoBehaviour
     [HideInInspector]
     public bool gridFinished = false;
     public bool gridClicked = false;
+    public UnityEvent gridFinishedEvent;
 
     private const int cellSize = 1;
     private PathNode[,] nodes;
@@ -77,6 +79,7 @@ public class CustomGrid : MonoBehaviour
             }
         }
         gridFinished = true;
+        gridFinishedEvent.Invoke();
     }
 
     public void SetGridClicked()
