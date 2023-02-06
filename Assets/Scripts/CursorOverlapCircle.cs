@@ -59,6 +59,7 @@ public class CursorOverlapCircle : MonoBehaviour
                     }
                     character = colliders[i].GetComponent<CharacterSheet>();
                     characterFound = true;
+                    break;
                 }
                 if (i == colliders.Length - 1 && !characterFound)
                 {
@@ -153,6 +154,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 }
                 node = colliders[i].GetComponent<PathNode>();
                 nodeFound = true;
+                break;
             }
             if (i == colliders.Length - 1 && !nodeFound) //If not over a node
             {
