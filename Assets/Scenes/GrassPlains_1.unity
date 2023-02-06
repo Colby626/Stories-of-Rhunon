@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -1701,6 +1702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -2067,6 +2069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -4320,6 +4323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -5871,6 +5875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -61643,6 +61648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -63204,6 +63210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -66275,6 +66282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -66789,6 +66797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -67253,6 +67262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -70656,6 +70666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -71660,6 +71671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -72435,6 +72447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -72633,6 +72646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -75105,6 +75119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -76391,6 +76406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -77219,6 +77235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -78977,6 +78994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -80643,6 +80661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -80951,6 +80970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -81174,6 +81194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -83038,6 +83059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -84150,6 +84172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -85378,6 +85401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -87044,6 +87068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -87699,6 +87724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -89670,6 +89696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -90061,6 +90088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -90409,6 +90437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -90443,6 +90472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -91404,6 +91434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -95022,6 +95053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -97350,6 +97382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -97649,6 +97682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -97827,6 +97861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -98921,6 +98956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -101347,6 +101383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -101583,6 +101620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -101712,6 +101750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -102671,6 +102710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
@@ -102875,6 +102915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}

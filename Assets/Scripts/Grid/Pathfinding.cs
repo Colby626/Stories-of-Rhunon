@@ -38,30 +38,6 @@ public class Pathfinding : MonoBehaviour
         {
             return new List<PathNode> { endNode };
         }
-        if (endNode.occupied) //causes a bug when enemies attack and pathfind to a new spot that is also occupied
-        {
-            Vector2 temp = new Vector2(startNode.x, startNode.y) - new Vector2(endNode.x, endNode.y);
-            int xSign = 0;
-            int ySign = 0;
-            if (temp.x < 0)
-            {
-                xSign--;
-            } 
-            else if (temp.x > 0)
-            {
-                xSign++;
-            }
-            if (temp.y < 0)
-            {
-                ySign--;
-            }
-            else if (temp.y > 0)
-            {
-                ySign++;
-            }
-
-            return FindPath(grid.GetGridObject(xSign + endNode.x, ySign + endNode.y), startNode);
-        }
         
         openList = new List<PathNode> { startNode };
         closedList = new HashSet<PathNode> { };
@@ -92,6 +68,13 @@ public class Pathfinding : MonoBehaviour
             PathNode currentNode = GetLowestFCostNode(openList);
             if (currentNode == endNode)
             {
+                
+                if (endNode.occupied) //causes a bug when enemies attack and pathfind to a new spot that is also occupied
+                {
+                    List<PathNode> finalPath = CalculatePath(endNode);
+                    finalPath.RemoveAt(finalPath.Count - 1);
+                    return finalPath;
+                }
                 return CalculatePath(endNode);
             }
 
@@ -100,7 +83,7 @@ public class Pathfinding : MonoBehaviour
 
             foreach (PathNode neighborNode in currentNode.GetNeighborNodes())
             {
-                if (neighborNode.occupied)
+                if (neighborNode.occupied && neighborNode != gameMaster.partyNode)
                 {
                     closedList.Add(neighborNode);
                 }

@@ -551,6 +551,7 @@ public class BattleMaster : MonoBehaviour
         */
         targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count())]; //Randomly pick a player to attack
         List<PathNode> shortestPath = gameMaster.GetComponent<Pathfinding>().FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode);
+        //If shortest path is null (can't reach the player) move as close to the player as possible without erroring please
         PathNode lastNodeRemoved = null;
         for (int i = 0; i < shortestPath.Count; i++)
         {
