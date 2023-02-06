@@ -19,52 +19,12 @@ public class PathNode : MonoBehaviour
     public List<PathNode> neighborsList = new();
 
     private CustomGrid grid;
-    private GameMaster gameMaster;
-    private BattleMaster battleMaster;
 
     private void Awake()
     {
-        gameMaster = GameMaster.instance.GetComponent<GameMaster>();
-        battleMaster = gameMaster.battleMaster;
-        grid = gameMaster.grid;
+        grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
         validMovePosition = false;
     }
-
-    /* MouseOver and MouseExit replaced by CursorOverlapCircle
-    void OnMouseOver()
-    {
-        if (!gameMaster.hoveringOverButton && !battleMaster.attackPressed)
-        {
-            if (Time.timeScale != 0 && !occupied) //If the game isn't paused
-            {
-                transform.GetChild(0).gameObject.SetActive(true);
-            }
-            if (grid.gridClicked)
-            {
-                if (!battleMaster.battleStarted && !occupied && Time.timeScale > 0) //If a battle isn't happening and the game isn't paused
-                {
-                    gameMaster.targetNode = this;
-                }
-
-                if (battleMaster.battleStarted && !occupied && Time.timeScale > 0 && validMovePosition && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
-                {
-                    gameMaster.targetNode = this;
-                    gameMaster.movedOnTurn = true;
-                }
-                grid.gridClicked = false;
-            }
-        }
-        else
-        {
-            transform.GetChild(0).gameObject.SetActive(false);
-        }
-    }
-
-    void OnMouseExit()
-    {
-        transform.GetChild(0).gameObject.SetActive(false);
-    }
-    */
 
     public void CalculateFCost()
     {

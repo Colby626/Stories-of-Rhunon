@@ -16,14 +16,12 @@ public class Pathfinding : MonoBehaviour
     private CustomGrid grid;
     public float speed = .01f;
     [Tooltip("The smaller this number the better the performance")]
-    public int furthestAnyoneCanMove = 30;
+    public int furthestAnyoneCanMove = 20; //99 speed
 
-    private BattleMaster battleMaster;
     private GameMaster gameMaster;
 
     private void Start()
     {
-        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
         gameMaster = FindObjectOfType<GameMaster>().GetComponent<GameMaster>();
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
     }
@@ -41,8 +39,6 @@ public class Pathfinding : MonoBehaviour
         
         openList = new List<PathNode> { startNode };
         closedList = new HashSet<PathNode> { };
-        int _numColumns = GetComponent<GameMaster>().grid.numColumns;
-        int _numRows = GetComponent<GameMaster>().grid.numRows;
 
         for (int x = startNode.x - furthestAnyoneCanMove; x < startNode.x + furthestAnyoneCanMove; x++)
         {
@@ -68,8 +64,7 @@ public class Pathfinding : MonoBehaviour
             PathNode currentNode = GetLowestFCostNode(openList);
             if (currentNode == endNode)
             {
-                
-                if (endNode.occupied) //causes a bug when enemies attack and pathfind to a new spot that is also occupied
+                if (endNode.occupied) //Only when an enemy chooses to move to the player during battle
                 {
                     List<PathNode> finalPath = CalculatePath(endNode);
                     finalPath.RemoveAt(finalPath.Count - 1);
