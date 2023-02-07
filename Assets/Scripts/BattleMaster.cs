@@ -257,7 +257,6 @@ public class BattleMaster : MonoBehaviour
                                 if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
                                 {
                                     node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                                    node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
                                 }
                             }
                         }
@@ -282,7 +281,6 @@ public class BattleMaster : MonoBehaviour
                                 if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
                                 {
                                     node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                                    node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
                                 }
                             }
                         }
@@ -310,7 +308,6 @@ public class BattleMaster : MonoBehaviour
                                 if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
                                 {
                                     node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                                    node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
                                 }
                             }
                         }
@@ -335,7 +332,6 @@ public class BattleMaster : MonoBehaviour
                                 if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
                                 {
                                     node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                                    node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
                                 }
                             }
                         }
@@ -369,7 +365,6 @@ public class BattleMaster : MonoBehaviour
                                 if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
                                 {
                                     node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                                    node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
                                 }
                             }
                         }
@@ -384,7 +379,6 @@ public class BattleMaster : MonoBehaviour
         foreach (PathNode node in moveableNodes)
         {
             node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.whiteTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-            node.transform.GetChild(2).GetComponent<SpriteRenderer>().color = grid.whiteTile.transform.GetChild(2).GetComponent<SpriteRenderer>().color;
             node.validMovePosition = false;
         }
         moveableNodes.Clear();

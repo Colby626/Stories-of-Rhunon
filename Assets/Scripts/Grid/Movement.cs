@@ -165,7 +165,6 @@ public class Movement : MonoBehaviour
                     pathNode.occupied = false;
                     pathNode.occupyingAgent = null;
                     pathNode.transform.GetChild(1).gameObject.SetActive(true);
-                    pathNode.transform.GetChild(2).gameObject.SetActive(true);
                 }
                 if (Vector3.Distance(transform.position, pathNode.transform.position) < minDistance)
                 {
@@ -180,7 +179,6 @@ public class Movement : MonoBehaviour
         occupyingNode.destinationNode = false;
         occupyingNode.occupyingAgent = gameObject;
         occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
-        occupyingNode.transform.GetChild(2).gameObject.SetActive(false);
     }
 
     private void PlayerInRangeCheck()
