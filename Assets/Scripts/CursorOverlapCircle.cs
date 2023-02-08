@@ -174,13 +174,14 @@ public class CursorOverlapCircle : MonoBehaviour
                 {
                     node.transform.GetChild(0).gameObject.SetActive(true);
                 }
-                if (grid.gridClicked)
+                if (grid.gridClicked) //Player movement
                 {
                     if (!battleMaster.battleStarted && !node.occupied && Time.timeScale > 0) //If a battle isn't happening and the game isn't paused
                     {
                         gameMaster.targetNode = node;
+                        node.destinationNode = true;
                     }
-
+                    //Player movement in battle
                     if (battleMaster.battleStarted && !node.occupied && Time.timeScale > 0 && node.validMovePosition && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
                     {
                         gameMaster.targetNode = node;

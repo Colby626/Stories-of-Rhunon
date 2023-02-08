@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6666
     height: 869.7778
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 350}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 23
+  controlID: 72
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 24
+  controlID: 73
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 85
+  controlID: 74
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 86
+  controlID: 75
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -295,8 +295,8 @@ MonoBehaviour:
     y: 0
     width: 369.7777
     height: 819.7778
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -432,9 +432,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: f4250000
       m_LastClickedID: 0
-      m_ExpandedIDs: 8cfef8ff42b9ffff0afbffff1c6400009e690000
+      m_ExpandedIDs: d8c8ffff0afbffff346e0000786e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -706,9 +706,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -40.715244, y: 5.1969423, z: 0.030890215}
+    m_Target: {x: 1140.0403, y: 1519.0734, z: 12.89657}
     speed: 2
-    m_Value: {x: -40.715244, y: 5.1969423, z: 0.030890215}
+    m_Value: {x: 1140.0403, y: 1519.0734, z: 12.89657}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -759,9 +759,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 5.5713835
+    m_Target: 913.24945
     speed: 2
-    m_Value: 5.5713835
+    m_Value: 913.24945
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -997,22 +997,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefab/Grid
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Prefab/Grid
+  - Assets/Scripts
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\marka\Documents\GameDevelopment\Stories-Of-Rhunon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 188.33331}
-    m_SelectedIDs: b4830000
-    m_LastClickedID: 33716
-    m_ExpandedIDs: 000000007283000074830000768300009a830000a083000000ca9a3b
+    scrollPos: {x: 0, y: 268.3333}
+    m_SelectedIDs: 4e830000
+    m_LastClickedID: 33614
+    m_ExpandedIDs: 000000004c8300004e83000050830000528300005883000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1040,7 +1040,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000728300007483000076830000
+    m_ExpandedIDs: 000000004c8300004e8300005083000052830000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1068,7 +1068,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300002e79ffff000000006465000064980000328e0000ec7c0000a0810000f46800008c7500005a6900001268000060690000526900000e680000fa6d0000fe6d0000a0bc0000066e0000f46d0000f66d0000006e0000e86c0000f26d00000e6a00007c9202008c670000e0670000de8b01002a8e0100a2690000ac6e00001a790000aa6700000e7500007e780000c07800002c7a00000c77000012770000b0670000c2750000f667000046980000ce750000c0750000686e00002e9500006c760000a46e0000bc6e0000aa74000040e4ffff70e4ffff42670000e26600001c7f0000d27800006c77000082800000ae800000d6650000ea700000
+    m_ExpandedInstanceIDs: c62300002e79ffff000000006465000064980000328e0000ec7c0000a0810000f46800008c7500005a6900001268000060690000526900000e680000fa6d0000fe6d0000a0bc0000066e0000f46d0000f66d0000006e0000e86c0000f26d00000e6a00007c9202008c670000e0670000de8b01002a8e0100a2690000ac6e00001a790000aa6700000e7500007e780000c07800002c7a00000c77000012770000b0670000c2750000f667000046980000ce750000c0750000686e00002e9500006c760000a46e0000bc6e0000aa74000040e4ffff70e4ffff42670000e26600001c7f0000d27800006c77000082800000ae800000d6650000ea700000ce700000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_MipLevel: 0
   m_Zoom: -1
   m_ScrollPosition: {x: 0, y: 0}
-  m_SelectedObject: {fileID: 0}
+  m_SelectedObject: {fileID: 11500000, guid: f6fdd27f8a2939340b4065c554a2003c, type: 3}
   m_SelectedSpriteRectGUID: 00000000000000000000000000000000
   m_LastUsedModuleTypeName: 
 --- !u!114 &23
