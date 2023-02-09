@@ -237,29 +237,24 @@ public class BattleMaster : MonoBehaviour
         List<PathNode> tempPath = null;
         PathNode oNode = currentCharacter.GetComponentInParent<Movement>().occupyingNode;
         PathNode tempNode = null;
-        Pathfinding pathFinder = gameMaster.GetComponent<Pathfinding>();
 
-
-        for (int x = oNode.x - maxMoveDistance; x <= oNode.x + maxMoveDistance; x++)
+        for (int x = oNode.x - maxMoveDistance; x <= oNode.x + maxMoveDistance; x++) //Check all the bottom nodes
         {
             tempNode = grid.GetGridObject(x, oNode.y - maxMoveDistance);
             if (tempNode != null) //Position is walkable
             {
                 if (!tempNode.validMovePosition)
                 {
-                    tempPath = pathFinder.FindPath(tempNode, oNode, maxMoveDistance);
-                    if (tempPath != null)
+                    tempPath = pathfinding.FindPath(tempNode, oNode, maxMoveDistance);
+                    if (tempPath != null) //Necessary not to fail sometimes
                     {
-                        if (tempPath.Count <= maxMoveDistance) //It is within max move distance
+                        foreach (PathNode node in tempPath)
                         {
-                            foreach (PathNode node in tempPath)
+                            moveableNodes.Add(node);
+                            node.validMovePosition = true;
+                            if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
                             {
-                                moveableNodes.Add(node);
-                                node.validMovePosition = true;
-                                if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
-                                {
-                                    node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                                }
+                                node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
                             }
                         }
                     }
@@ -271,19 +266,16 @@ public class BattleMaster : MonoBehaviour
             {
                 if (!tempNode.validMovePosition)
                 {
-                    tempPath = pathFinder.FindPath(tempNode, oNode, maxMoveDistance); 
-                    if (tempPath != null)
+                    tempPath = pathfinding.FindPath(tempNode, oNode, maxMoveDistance); 
+                    if (tempPath != null) //Necessary not to fail sometimes
                     {
-                        if (tempPath.Count <= maxMoveDistance) //It is within max move distance
+                        foreach (PathNode node in tempPath)
                         {
-                            foreach (PathNode node in tempPath)
+                            moveableNodes.Add(node);
+                            node.validMovePosition = true;
+                            if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
                             {
-                                moveableNodes.Add(node);
-                                node.validMovePosition = true;
-                                if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
-                                {
-                                    node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                                }
+                                node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
                             }
                         }
                     }
@@ -291,26 +283,23 @@ public class BattleMaster : MonoBehaviour
             }
         }
 
-        for (int y = oNode.y - maxMoveDistance; y <= oNode.y + maxMoveDistance; y++)
+        for (int y = oNode.y - maxMoveDistance; y <= oNode.y + maxMoveDistance; y++) //Check all the left nodes
         {
             tempNode = grid.GetGridObject(oNode.x - maxMoveDistance, y);
             if (tempNode != null) //Position is walkable
             {
                 if (!tempNode.validMovePosition)
                 {
-                    tempPath = pathFinder.FindPath(tempNode, oNode, maxMoveDistance); 
-                    if (tempPath != null)
+                    tempPath = pathfinding.FindPath(tempNode, oNode, maxMoveDistance); 
+                    if (tempPath != null) //Necessary not to fail sometimes
                     {
-                        if (tempPath.Count <= maxMoveDistance) //It is within max move distance
+                        foreach (PathNode node in tempPath)
                         {
-                            foreach (PathNode node in tempPath)
+                            moveableNodes.Add(node);
+                            node.validMovePosition = true;
+                            if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
                             {
-                                moveableNodes.Add(node);
-                                node.validMovePosition = true;
-                                if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
-                                {
-                                    node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                                }
+                                node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
                             }
                         }
                     }
@@ -327,21 +316,18 @@ public class BattleMaster : MonoBehaviour
                 {
                     if (!tempNode.validMovePosition)
                     {
-                        tempPath = pathFinder.FindPath(tempNode, oNode, maxMoveDistance); //Here is where all the performance is eaten at battleStart
+                        tempPath = pathfinding.FindPath(tempNode, oNode, maxMoveDistance); //Here is where all the performance is eaten at battleStart
                         if (tempPath == null)
                         {
                             continue;
                         }
-                        if (tempPath.Count <= maxMoveDistance) //It is within max move distance
+                        foreach (PathNode node in tempPath)
                         {
-                            foreach (PathNode node in tempPath)
+                            moveableNodes.Add(node);
+                            node.validMovePosition = true;
+                            if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
                             {
-                                moveableNodes.Add(node);
-                                node.validMovePosition = true;
-                                if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
-                                {
-                                    node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                                }
+                                node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
                             }
                         }
                     }

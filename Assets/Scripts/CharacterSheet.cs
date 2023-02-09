@@ -192,7 +192,6 @@ public class CharacterSheet : MonoBehaviour
         int rand = Random.Range(1, 100);
         if (rand > 100 - battleMaster.currentCharacter.characterStats.Precision && damage - characterStats.Defense > 0)
         {
-            Debug.Log("Critical Hit!");
             critical = true;
             damage = Mathf.RoundToInt(damage * 1.5f);
         }
