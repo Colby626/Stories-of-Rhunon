@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     public AudioMixer audioMixer;
     public GameObject mainMenu;
     public GameObject optionsMenu;
+    public GameObject howToPlayMenu;
     public Slider masterVolumeSlider;
     public Slider musicVolumeSlider;
     public Slider soundEffectVolumeSlider;
@@ -48,6 +49,18 @@ public class MainMenu : MonoBehaviour
     public void CloseOptions()
     {
         optionsMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
+    public void OpenHowTo()
+    {
+        howToPlayMenu.SetActive(true);
+        mainMenu.SetActive(false);
+    }
+
+    public void CloseHowTo()
+    {
+        howToPlayMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
 

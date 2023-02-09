@@ -2648,7 +2648,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5458318016279073046}
         m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
         m_MethodName: LevelUp
         m_Mode: 1
@@ -4016,7 +4016,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4080,6 +4080,7 @@ MonoBehaviour:
   musicVolumeSlider: {fileID: 3683096495000870278}
   soundEffectVolumeSlider: {fileID: 8053496123330919963}
   battleMaster: {fileID: 5458318016279073046}
+  gameMaster: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 7090519acf7a01540b6e4549811fd3f5, type: 2}
   amountQuieterWhenPaused: -5
 --- !u!1 &2067279701729049803

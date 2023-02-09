@@ -105704,16 +105704,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenInventory
       objectReference: {fileID: 0}
-    - target: {fileID: 5972738956418782924, guid: fc242547518354a45b9ba120ed6135f3,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6276197855371139125}
-    - target: {fileID: 5972738956418782924, guid: fc242547518354a45b9ba120ed6135f3,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LevelUp
-      objectReference: {fileID: 0}
     - target: {fileID: 5984936105660197246, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_AnchorMax.y
