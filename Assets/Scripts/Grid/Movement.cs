@@ -83,7 +83,7 @@ public class Movement : MonoBehaviour
         {
             if (gameMaster.targetNode != null)
             {
-                MoveOnPath(pathfinding.FindPath(gameMaster.targetNode, startingNode));
+                MoveOnPath(pathfinding.FindPath(gameMaster.targetNode, startingNode, pathfinding.furthestAnyoneCanMove));
                 gameMaster.targetNode = null;
             }
         }
@@ -330,7 +330,7 @@ public class Movement : MonoBehaviour
                 return;
             }
             wanderNode.destinationNode = true;
-            MoveOnPath(pathfinding.FindPath(wanderNode, startingNode));
+            MoveOnPath(pathfinding.FindPath(wanderNode, startingNode, pathfinding.furthestAnyoneCanMove));
         }
         else //If surrounded, wait and try again
         {

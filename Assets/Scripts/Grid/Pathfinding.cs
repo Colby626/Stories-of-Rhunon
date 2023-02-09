@@ -17,16 +17,19 @@ public class Pathfinding : MonoBehaviour
     public float speed = .01f;
     [Tooltip("The smaller this number the better the performance")]
     public int furthestAnyoneCanMove = 20; //99 speed
+    public PathNode lastNodeRemoved;
 
     private GameMaster gameMaster;
+    private BattleMaster battleMaster;
 
     private void Start()
     {
         gameMaster = FindObjectOfType<GameMaster>().GetComponent<GameMaster>();
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
     }
 
-    public List<PathNode> FindPath(PathNode endNode, PathNode startNode)
+    public List<PathNode> FindPath(PathNode endNode, PathNode startNode, int maxNodes)
     {
         if (endNode == null)
         {
@@ -68,9 +71,9 @@ public class Pathfinding : MonoBehaviour
                 {
                     List<PathNode> finalPath = CalculatePath(endNode);
                     finalPath.RemoveAt(finalPath.Count - 1);
-                    return finalPath;
+                    return TrimPath(finalPath, maxNodes);
                 }
-                return CalculatePath(endNode);
+                return TrimPath(CalculatePath(endNode), maxNodes);
             }
 
             openList.Remove(currentNode);
@@ -119,6 +122,17 @@ public class Pathfinding : MonoBehaviour
             currentNode = currentNode.cameFromNode;
         }
         path.Reverse();
+        return path;
+    }
+
+    private List<PathNode> TrimPath(List<PathNode> path, int maxNodes)
+    {
+        lastNodeRemoved = null;
+        while (path.Count > maxNodes)
+        {
+            lastNodeRemoved = path[path.Count - 1];
+            path.RemoveAt(path.Count - 1);
+        }
         return path;
     }
 

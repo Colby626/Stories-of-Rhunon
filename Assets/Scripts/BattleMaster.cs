@@ -60,6 +60,7 @@ public class BattleMaster : MonoBehaviour
     
     private GameObject[] characterArray;
     private GameMaster gameMaster;
+    private Pathfinding pathfinding;
     private CustomGrid grid;
 
     [HideInInspector]
@@ -114,6 +115,7 @@ public class BattleMaster : MonoBehaviour
 
         defaultCharacter = characterList[characterListIndex];
         gameMaster = GameMaster.instance.GetComponent<GameMaster>();
+        pathfinding = FindObjectOfType<Pathfinding>().GetComponent<Pathfinding>(); 
         battleHud.SetActive(false);
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
 
@@ -245,7 +247,7 @@ public class BattleMaster : MonoBehaviour
             {
                 if (!tempNode.validMovePosition)
                 {
-                    tempPath = pathFinder.FindPath(tempNode, oNode);
+                    tempPath = pathFinder.FindPath(tempNode, oNode, maxMoveDistance);
                     if (tempPath != null)
                     {
                         if (tempPath.Count <= maxMoveDistance) //It is within max move distance
@@ -269,7 +271,7 @@ public class BattleMaster : MonoBehaviour
             {
                 if (!tempNode.validMovePosition)
                 {
-                    tempPath = pathFinder.FindPath(tempNode, oNode); 
+                    tempPath = pathFinder.FindPath(tempNode, oNode, maxMoveDistance); 
                     if (tempPath != null)
                     {
                         if (tempPath.Count <= maxMoveDistance) //It is within max move distance
@@ -296,7 +298,7 @@ public class BattleMaster : MonoBehaviour
             {
                 if (!tempNode.validMovePosition)
                 {
-                    tempPath = pathFinder.FindPath(tempNode, oNode); 
+                    tempPath = pathFinder.FindPath(tempNode, oNode, maxMoveDistance); 
                     if (tempPath != null)
                     {
                         if (tempPath.Count <= maxMoveDistance) //It is within max move distance
@@ -314,32 +316,6 @@ public class BattleMaster : MonoBehaviour
                     }
                 }
             }
-            /*
-            tempNode = grid.GetGridObject(oNode.x + maxMoveDistance, y);
-            if (tempNode != null) //Position is walkable
-            {
-                if (!tempNode.validMovePosition)
-                {
-                    tempPath = pathFinder.FindPath(tempNode, oNode); //Here is where all the performance is eaten at battleStart
-                    if (tempPath != null)
-                    {
-                        if (tempPath.Count <= maxMoveDistance) //It is within max move distance
-                        {
-                            foreach (PathNode node in tempPath)
-                            {
-                                moveableNodes.Add(node);
-                                node.validMovePosition = true;
-                                if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
-                                {
-                                    node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-            */
         }
 
         for (int x = oNode.x - maxMoveDistance; x <= oNode.x + maxMoveDistance; x++)
@@ -351,7 +327,7 @@ public class BattleMaster : MonoBehaviour
                 {
                     if (!tempNode.validMovePosition)
                     {
-                        tempPath = pathFinder.FindPath(tempNode, oNode); //Here is where all the performance is eaten at battleStart
+                        tempPath = pathFinder.FindPath(tempNode, oNode, maxMoveDistance); //Here is where all the performance is eaten at battleStart
                         if (tempPath == null)
                         {
                             continue;
@@ -543,35 +519,20 @@ public class BattleMaster : MonoBehaviour
             }
         }
         */
+        int maxMoveDistance = currentCharacter.characterStats.Speed / 5;
         targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count())]; //Randomly pick a player to attack
-        List<PathNode> shortestPath = gameMaster.GetComponent<Pathfinding>().FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode);
-        //If shortest path is null (can't reach the player) move as close to the player as possible without erroring please
-        PathNode lastNodeRemoved = null;
-        for (int i = 0; i < shortestPath.Count; i++)
+        List<PathNode> shortestPath = gameMaster.GetComponent<Pathfinding>().FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance);
+        if (pathfinding.lastNodeRemoved == null) //If the party is within the move range
         {
-            if (!shortestPath[i].validMovePosition) //Remove any node that is outside of the range of the enemy 
-            {
-                lastNodeRemoved = shortestPath[i];
-                shortestPath.RemoveAt(i);
-            }
-        }
-        if (lastNodeRemoved != null)
-        {
-            if (lastNodeRemoved == gameMaster.partyNode)
-            {
-                //Debug.Log("Party one space outside of move range");
-                currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
-            }
-            //else
-            //{
-            //    Debug.Log("Party outside of move range");
-            //}
-        }
-        else
-        {
-            //Debug.Log("Party within move range");
             currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
         }
+        /*
+        else
+        {
+            Debug.Log("The party is outside of move range");
+        }
+        */
+
         return shortestPath;
     }
 
