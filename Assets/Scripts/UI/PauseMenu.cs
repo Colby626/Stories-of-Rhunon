@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject battleHud;
     public GameObject optionsMenu;
+    public GameObject statsMenu;
     public Slider masterVolumeSlider;
     public Slider musicVolumeSlider;
     public Slider soundEffectVolumeSlider;
@@ -45,6 +46,10 @@ public class PauseMenu : MonoBehaviour
         if (optionsMenu.activeSelf)
         {
             optionsMenu.SetActive(false);
+        }
+        if (statsMenu.activeSelf)
+        {
+            statsMenu.SetActive(false);
         }
         audioMixer.SetFloat("PausedMasterVolume", 0);
         Time.timeScale = 1f;
