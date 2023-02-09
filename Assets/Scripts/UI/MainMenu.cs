@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject optionsMenu;
     public GameObject howToPlayMenu;
+    public GameObject statsMenu;
     public Slider masterVolumeSlider;
     public Slider musicVolumeSlider;
     public Slider soundEffectVolumeSlider;
@@ -62,6 +63,18 @@ public class MainMenu : MonoBehaviour
     {
         howToPlayMenu.SetActive(false);
         mainMenu.SetActive(true);
+    }
+
+    public void OpenStats()
+    {
+        statsMenu.SetActive(true);
+        howToPlayMenu.SetActive(false);
+    }
+
+    public void CloseStats()
+    {
+        statsMenu.SetActive(false);
+        howToPlayMenu.SetActive(true);
     }
 
     public void MasterVolumeSlider(float value)
