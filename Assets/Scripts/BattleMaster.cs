@@ -668,6 +668,7 @@ public class BattleMaster : MonoBehaviour
         constitutionText.GetComponent<TextMeshProUGUI>().text = "Constitution: " + levelUpCharacter.characterStats.Constitution.ToString();
         enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + levelUpCharacter.characterStats.Endurance.ToString();
     } //Called from button
+
     public void LevelUpStrength()
     {
         if (levelUpCharacter.characterStats.Strength < 99)

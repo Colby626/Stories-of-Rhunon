@@ -280,6 +280,34 @@ public class Movement : MonoBehaviour
             if (battleMaster.battleStarted && attackAtEnd)
             {
                 attackAtEnd = false;
+
+                //If the player is to the right of the enemy
+                if (battleMaster.currentCharacter.transform.position.x - battleMaster.targetedPlayer.transform.position.x < 0)
+                {
+                    //If the enemy is facing left flip them
+                    if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                }
+                //If the player is to the left or directly above/below the enemy
+                if (battleMaster.currentCharacter.transform.position.x - battleMaster.targetedPlayer.transform.position.x >= 0)
+                {
+                    //If the enemy is facing right flip them
+                    if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                }
+
                 battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
                 AudioManager.instance.Play(battleMaster.currentCharacter.attackSound);
             }

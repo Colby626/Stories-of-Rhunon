@@ -20,12 +20,10 @@ public class Pathfinding : MonoBehaviour
     public PathNode lastNodeRemoved;
 
     private GameMaster gameMaster;
-    private BattleMaster battleMaster;
 
     private void Start()
     {
         gameMaster = FindObjectOfType<GameMaster>().GetComponent<GameMaster>();
-        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
     }
 
