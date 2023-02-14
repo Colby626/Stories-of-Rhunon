@@ -48,7 +48,7 @@ public class BattleMaster : MonoBehaviour
     [SerializeField]
     private List<CharacterSheet> characterList;
     private int characterListIndex = 0;
-    private CharacterSheet levelUpCharacter;
+    public CharacterSheet levelUpCharacter;
     public CharacterSheet defaultCharacter;
     public GameObject loseScreen;
     public GameObject winScreen;
@@ -640,6 +640,7 @@ public class BattleMaster : MonoBehaviour
             characterListIndex = characterList.Count - 1;
         }
         defaultCharacter = characterList[characterListIndex];
+
         AudioManager.instance.Play("TurningPageInBookSound");
         inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
         GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
@@ -835,6 +836,16 @@ public class BattleMaster : MonoBehaviour
             livingPlayers.Clear();
             livingEnemies.Clear();
             ResetMovementLimit();
+
+            //At the end of battle, if anyone can level up, display the button for that character
+            for (int i = 0; i < characterList.Count(); i++)
+            {
+                if (characterList[i].characterStats.XP >= characterList[i].characterStats.XPtoLevelUp)
+                {
+                    levelUpButton.SetActive(true);
+                    levelUpCharacter = characterList[i];
+                }
+            }
         }
     }
 }

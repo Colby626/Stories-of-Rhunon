@@ -242,9 +242,10 @@ public class CharacterSheet : MonoBehaviour
         }
 
         //Display the levelup button if the currentCharacter has more XP than they need to level up
-        if (battleMaster.currentCharacter.isPlayer && battleMaster.currentCharacter.characterStats.XP > battleMaster.currentCharacter.characterStats.XPtoLevelUp)
+        if (battleMaster.currentCharacter.isPlayer && battleMaster.currentCharacter.characterStats.XP >= battleMaster.currentCharacter.characterStats.XPtoLevelUp)
         {
             battleMaster.levelUpButton.SetActive(true);
+            battleMaster.levelUpCharacter = battleMaster.currentCharacter;
             AudioManager.instance.Play("SuccessSound");
         }
         else
