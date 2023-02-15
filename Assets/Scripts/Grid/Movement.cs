@@ -104,7 +104,7 @@ public class Movement : MonoBehaviour
     private void DetermineStartPosition()
     {
         //Set the startingNode from wherever they are 
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.5f, 0.5f), 0);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.1f, 0.1f), 0);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].GetComponent<PathNode>() == true)
