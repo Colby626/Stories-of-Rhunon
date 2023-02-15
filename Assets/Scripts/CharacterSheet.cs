@@ -266,6 +266,8 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.battleStarted = false;
             gameObject.transform.parent.gameObject.SetActive(false);
             battleMaster.battleHud.SetActive(false);
+            battleMaster.openInventoryButton.SetActive(false);
+            battleMaster.levelUpButton.SetActive(false);
             battleMaster.loseScreen.SetActive(true);
             AudioManager.instance.Stop("BattleMusic");
             AudioManager.instance.Play("LoseSound");
@@ -286,6 +288,8 @@ public class CharacterSheet : MonoBehaviour
             if (battleMaster.willWin) //Won the game
             {
                 battleMaster.winScreen.SetActive(true);
+                battleMaster.openInventoryButton.SetActive(false);
+                battleMaster.levelUpButton.SetActive(false);
                 AudioManager.instance.Stop("BattleMusic");
                 AudioManager.instance.Play("WinSound");
             }

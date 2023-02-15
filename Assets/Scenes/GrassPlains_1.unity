@@ -116836,6 +116836,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4659660240272881192, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
+      propertyPath: Health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659660240272881192, guid: 9e2d3be66e742304fa8a776cfa0678d5,
+        type: 3}
       propertyPath: characterStats.Speed
       value: 15
       objectReference: {fileID: 0}
