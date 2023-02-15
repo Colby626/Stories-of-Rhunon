@@ -232,14 +232,20 @@ public class CharacterSheet : MonoBehaviour
 
     private void FinishDie()
     {
-        GetComponentInParent<Movement>().occupyingNode.occupied = false;
-        GetComponentInParent<Movement>().occupyingNode.occupyingAgent = null;
-        GetComponentInParent<Movement>().occupyingNode.transform.GetChild(1).gameObject.SetActive(true);
-
         if (battleMaster.currentCharacter.isPlayer && !isPlayer)
         {
             battleMaster.currentCharacter.characterStats.XP += characterStats.XP;
+            if (!gameMaster.movedOnTurn)
+            {
+                GetComponentInParent<Movement>().occupyingNode.validMovePosition = true;
+                battleMaster.moveableNodes.Add(GetComponentInParent<Movement>().occupyingNode);
+                GetComponentInParent<Movement>().occupyingNode.transform.GetChild(1).gameObject.SetActive(true);
+                GetComponentInParent<Movement>().occupyingNode.transform.GetChild(1).GetComponent<SpriteRenderer>().color = gameMaster.grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+            }
         }
+
+        GetComponentInParent<Movement>().occupyingNode.occupied = false;
+        GetComponentInParent<Movement>().occupyingNode.occupyingAgent = null;
 
         //Display the levelup button if the currentCharacter has more XP than they need to level up
         if (battleMaster.currentCharacter.isPlayer && battleMaster.currentCharacter.characterStats.XP >= battleMaster.currentCharacter.characterStats.XPtoLevelUp)
