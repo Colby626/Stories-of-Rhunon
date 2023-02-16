@@ -31,8 +31,7 @@ public class BattleMaster : MonoBehaviour
     [Header("GUI Elements")]
     [SerializeField]
     private Texture2D attackCursorTexture;
-    [SerializeField]
-    private Button attackButton;
+    public Button attackButton;
     [SerializeField]
     private Button nextTurnButton;
     [SerializeField]
@@ -118,6 +117,7 @@ public class BattleMaster : MonoBehaviour
         pathfinding = FindObjectOfType<Pathfinding>().GetComponent<Pathfinding>(); 
         battleHud.SetActive(false);
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
+        gameMaster.movedOnTurnEvent.AddListener(ResetMovementLimit);
 
         for (int i = 0; i < characterList.Count(); i++)
         {
@@ -127,6 +127,7 @@ public class BattleMaster : MonoBehaviour
                 levelUpCharacter = characterList[i];
             }
         }
+
     }
 
     private void Update()
@@ -138,16 +139,6 @@ public class BattleMaster : MonoBehaviour
                 NextTurn();
             }
 
-            if (attackDone)
-            {
-                attackButton.interactable = false;
-            }
-
-            if (gameMaster.movedOnTurn)
-            {
-                ResetMovementLimit();
-            }
-
             if (turnOrder.Count() < howFarInTheFutureYouCalculateTurnOrder)
             {
                 CalculateTurnOrder();
@@ -155,19 +146,6 @@ public class BattleMaster : MonoBehaviour
 
             //Displays the character to go's name on the screen
             turnText.text = "It is " + currentCharacter.Name + "'s turn";
-
-            if (!currentCharacter.isPlayer)
-            {
-                nextTurnButton.interactable = false;
-                attackButton.interactable = false;
-                inventoryButton.interactable = false;
-            }
-            else
-            {
-                nextTurnButton.interactable = true;
-                attackButton.interactable = true;
-                inventoryButton.interactable = true;
-            }
         }
     }
 
@@ -365,7 +343,15 @@ public class BattleMaster : MonoBehaviour
         //If the next person in line is not a player the AI will attack one of them at random
         if (!currentCharacter.isPlayer)
         {
+            nextTurnButton.interactable = false;
+            attackButton.interactable = false;
+            inventoryButton.interactable = false;
             StartCoroutine(EnemyTurn()); //Delay for enemy turns
+        }
+        else
+        {
+            nextTurnButton.interactable = true;
+            inventoryButton.interactable = true;
         }
 
         //Display the levelup button if the currentCharacter has more XP than they need to level up

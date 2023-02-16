@@ -163,6 +163,7 @@ public class CharacterSheet : MonoBehaviour
                 battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
                 FindObjectOfType<AudioManager>().Play(battleMaster.currentCharacter.attackSound);
                 battleMaster.attackDone = true;
+                battleMaster.attackButton.interactable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
         }

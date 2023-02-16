@@ -186,6 +186,7 @@ public class CursorOverlapCircle : MonoBehaviour
                     {
                         gameMaster.targetNode = node;
                         gameMaster.movedOnTurn = true;
+                        gameMaster.movedOnTurnEvent.Invoke();
                     }
                     grid.gridClicked = false;
                 }

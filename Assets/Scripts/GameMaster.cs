@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameMaster : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameMaster : MonoBehaviour
     public PathNode partyNode;
     public PathNode targetNode;
     public bool movedOnTurn = false;
+    public UnityEvent movedOnTurnEvent;
     public bool hoveringOverButton;
     public List<GameObject> participants;
 
