@@ -92,7 +92,7 @@ public class CursorOverlapCircle : MonoBehaviour
             {
                 characterHadBeenFound = true;
                 //Things to do when hovering over players (OnMouseOver)
-                mouseOver = (character.isPlayer) ? character.GetComponent<MouseOver>() : character.GetComponentInParent<MouseOver>(); //Put MouseOver at same place as CharacterSheet in enemies
+                mouseOver = character.GetComponent<MouseOver>();
                 if (!character.isDead && character.isPlayer)
                 {
                     mouseOver.ActivateStatus(character);

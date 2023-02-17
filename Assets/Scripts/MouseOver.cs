@@ -28,16 +28,8 @@ public class MouseOver : MonoBehaviour
     private void Start()
     {
         battleMaster = FindObjectOfType<BattleMaster>();
-        if (GetComponent<CharacterSheet>()) //Is a player
-        {
-            character = GetComponent<CharacterSheet>();
-            characterMaterial = GetComponent<SpriteRenderer>().material;
-        }
-        else //Is an enemy
-        {
-            character = transform.GetChild(0).GetComponent<CharacterSheet>();
-            characterMaterial = transform.GetChild(0).GetComponent<SpriteRenderer>().material;
-        }
+        character = GetComponent<CharacterSheet>();
+        characterMaterial = GetComponent<SpriteRenderer>().material;
         pauseMenu = FindObjectOfType<PauseMenu>();
 
         portrait = battleMaster.status.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
@@ -47,16 +39,8 @@ public class MouseOver : MonoBehaviour
         nameText = battleMaster.status.transform.GetChild(4).GetComponent<Text>();
         highlightMaterial = GameMaster.instance.highlightMaterial;
 
-        if (character.isPlayer)
-        {
-            overheadHealthBar = transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
-            overheadNameText = transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-        }
-        else
-        {
-            overheadHealthBar = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<StatBar>();
-            overheadNameText = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-        }
+        overheadHealthBar = transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
+        overheadNameText = transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
     }
 
     public void ActivateStatus(CharacterSheet participant)
