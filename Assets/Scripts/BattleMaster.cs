@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Linq; //For getting list counts
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class BattleMaster : MonoBehaviour
 {
@@ -491,9 +492,10 @@ public class BattleMaster : MonoBehaviour
             }
         }
         */
+        Pathfinding pathfinding = gameMaster.GetComponent<Pathfinding>();
         int maxMoveDistance = currentCharacter.characterStats.Speed / 5;
         targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count())]; //Randomly pick a player to attack
-        List<PathNode> shortestPath = gameMaster.GetComponent<Pathfinding>().FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance);
+        List<PathNode> shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance);
         if (pathfinding.lastNodeRemoved == null) //If the party is within the move range
         {
             currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
@@ -504,7 +506,18 @@ public class BattleMaster : MonoBehaviour
             Debug.Log("The party is outside of move range");
         }
         */
-
+        if (shortestPath == null) //If the enemy cannot reach the player, check if they could if occupied nodes were stopping it 
+        {
+            shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, true);
+        }
+        if (shortestPath == null) //If the enemy still cannot reach the player, check if they could reach them if they traveled further than the maximum move distance
+        {
+            shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, false, true); //Causes enemies to travel too far
+        }
+        if (shortestPath == null) //If they enemy still cannot reach the player, check if they could reach them through occupied nodes and further than maximum move distance
+        {
+            shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, true, true);
+        }
         return shortestPath;
     }
 

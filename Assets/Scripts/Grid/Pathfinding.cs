@@ -27,7 +27,7 @@ public class Pathfinding : MonoBehaviour
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
     }
 
-    public List<PathNode> FindPath(PathNode endNode, PathNode startNode, int maxNodes)
+    public List<PathNode> FindPath(PathNode endNode, PathNode startNode, int maxNodes, bool ignoreOccupied = false, bool ignoreMoveDistance = false)
     {
         if (endNode == null)
         {
@@ -41,16 +41,35 @@ public class Pathfinding : MonoBehaviour
         openList = new List<PathNode> { startNode };
         closedList = new HashSet<PathNode> { };
 
-        for (int x = startNode.x - furthestAnyoneCanMove; x < startNode.x + furthestAnyoneCanMove; x++)
+        if (!ignoreMoveDistance)
         {
-            for (int y = startNode.y - furthestAnyoneCanMove; y < startNode.y + furthestAnyoneCanMove; y++)
+            for (int x = startNode.x - furthestAnyoneCanMove; x < startNode.x + furthestAnyoneCanMove; x++)
             {
-                PathNode node = grid.GetGridObject(x, y);
-                if (node != null)
+                for (int y = startNode.y - furthestAnyoneCanMove; y < startNode.y + furthestAnyoneCanMove; y++)
                 {
-                    node.gCost = int.MaxValue;
-                    node.CalculateFCost();
-                    node.cameFromNode = null;
+                    PathNode node = grid.GetGridObject(x, y);
+                    if (node != null)
+                    {
+                        node.gCost = int.MaxValue;
+                        node.CalculateFCost();
+                        node.cameFromNode = null;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int x = 0; x < grid.numColumns; x++)
+            {
+                for (int y = 0; y < grid.numRows; y++)
+                {
+                    PathNode node = grid.GetGridObject(x, y);
+                    if (node != null)
+                    {
+                        node.gCost = int.MaxValue;
+                        node.CalculateFCost();
+                        node.cameFromNode = null;
+                    }
                 }
             }
         }
@@ -79,7 +98,7 @@ public class Pathfinding : MonoBehaviour
 
             foreach (PathNode neighborNode in currentNode.GetNeighborNodes())
             {
-                if (neighborNode.occupied && neighborNode != gameMaster.partyNode)
+                if (ignoreOccupied == false && neighborNode.occupied && neighborNode != gameMaster.partyNode)
                 {
                     closedList.Add(neighborNode);
                 }
