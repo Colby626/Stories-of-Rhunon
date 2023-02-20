@@ -21,6 +21,12 @@ public class MainMenu : MonoBehaviour
         AudioManager.instance.StopAll();
         AudioManager.instance.Play("ExploringMusic");
     }
+    public void PlayShortButton()
+    {
+        SceneManager.LoadScene("GrassPlainsDemo");
+        AudioManager.instance.StopAll();
+        AudioManager.instance.Play("ExploringMusic");
+    }
 
     public void QuitButton()
     {
