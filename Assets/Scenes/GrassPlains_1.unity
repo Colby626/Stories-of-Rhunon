@@ -1242,7 +1242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &85144525
 Transform:
   m_ObjectHideFlags: 0
@@ -5480,7 +5480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &266631857
 Transform:
   m_ObjectHideFlags: 0
@@ -78966,7 +78966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &602411276
 Transform:
   m_ObjectHideFlags: 0
@@ -85141,7 +85141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &919556307
 Transform:
   m_ObjectHideFlags: 0
@@ -87907,6 +87907,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 801831832196101546, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
@@ -96025,6 +96030,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 801831832196101546, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: characterStats.Strength
@@ -101254,6 +101264,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 801831832196101546, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
