@@ -130,7 +130,6 @@ public class CharacterSheet : MonoBehaviour
         //Checks if the player is clicking attack on a character
         if (!battleMaster.attackDone && !isPlayer && battleMaster.battleStarted && GetComponentInParent<Movement>().occupyingNode.GetNeighborNodes().Contains(gameMaster.partyNode))
         {
-            //battleMaster.attackPressed = false;
             battleMaster.targetedEnemy = gameObject;
             //If the enemy is to the right of the player
             if (battleMaster.currentCharacter.transform.position.x - transform.position.x < 0)

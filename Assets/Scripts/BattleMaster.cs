@@ -30,8 +30,7 @@ public class BattleMaster : MonoBehaviour
     public GameObject targetedEnemy;
 
     [Header("GUI Elements")]
-    [SerializeField]
-    private Texture2D attackCursorTexture;
+    public Texture2D attackCursorTexture;
     public Button attackButton;
     [SerializeField]
     private Button nextTurnButton;

@@ -76,6 +76,7 @@ public class CursorOverlapCircle : MonoBehaviour
             //Thing to do when no longer hovering over a character that you were hovering over (OnMouseExit)
             if (mouseExit)
             {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 mouseExit = false;
                 characterHadBeenFound = false;
                 if (oldCharacter.gameObject != battleMaster.currentCharacter && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
@@ -97,6 +98,37 @@ public class CursorOverlapCircle : MonoBehaviour
                 {
                     mouseOver.ActivateStatus(character);
                 }
+
+                if (!character.isPlayer && battleMaster.currentCharacter.isPlayer && !battleMaster.attackDone)
+                {
+                    if (!gameMaster.movedOnTurn) //Doing the raycast from the player's move speed
+                    {
+                        //The plus 2.5 is for the player being able to attack enemies 1 space away from the distance they can move to and the .5 is from the half of the node they are in
+                        //Will be changed to circleCast when limitMovement works properly
+                        RaycastHit2D[] boxCast = Physics2D.BoxCastAll(gameMaster.partyNode.transform.position, new Vector2(battleMaster.currentCharacter.characterStats.Speed/5 + 2.5f, battleMaster.currentCharacter.characterStats.Speed / 5 + 2.5f), 0, Vector2.zero);
+                        foreach (RaycastHit2D hit in boxCast)
+                        {
+                            if (hit.transform.GetComponent<CharacterSheet>() == character)
+                            {
+                                Cursor.SetCursor(battleMaster.attackCursorTexture, Vector2.zero, CursorMode.Auto);
+                            }
+                        }
+                    }
+                    else //Doing the raycast from 1 space away from the player
+                    {
+                        //The 1.5 in size is for the half a node to get to the edge of the node you are at and 1 node further
+                        //Will be changed to circleCast when limitMovement works properly
+                        RaycastHit2D[] boxCast = Physics2D.BoxCastAll(gameMaster.partyNode.transform.position, new Vector2(1.5f, 1.5f), 0, Vector2.zero); 
+                        foreach (RaycastHit2D hit in boxCast)
+                        {
+                            if (hit.transform.GetComponent<CharacterSheet>() == character)
+                            {
+                                Cursor.SetCursor(battleMaster.attackCursorTexture, Vector2.zero, CursorMode.Auto);
+                            }
+                        }
+                    }
+                }
+                 
 
                 if (!character.isPlayer && !character.isDead && !pauseMenu.gamePaused)
                 {
