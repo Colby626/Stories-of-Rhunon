@@ -54,7 +54,7 @@ MonoBehaviour:
   wander: 1
   wanderDelayMin: 1
   wanderDelayMax: 20
-  distanceToLookForParticipants: 15
+  distanceToLookForParticipants: 20
   lookingForParticipants: 0
   attackAtEnd: 0
   startingNode: {fileID: 0}

@@ -128,40 +128,48 @@ public class CharacterSheet : MonoBehaviour
     public void OnMouseDown()
     {
         //Checks if the player is clicking attack on a character
-        if (!battleMaster.attackDone && !isPlayer && battleMaster.battleStarted && GetComponentInParent<Movement>().occupyingNode.GetNeighborNodes().Contains(gameMaster.partyNode))
+        if (!battleMaster.attackDone && !isPlayer)
         {
-            battleMaster.targetedEnemy = gameObject;
-            //If the enemy is to the right of the player
-            if (battleMaster.currentCharacter.transform.position.x - transform.position.x < 0)
+            if (GetComponentInParent<Movement>().occupyingNode.GetNeighborNodes().Contains(gameMaster.partyNode))
             {
-                //If the player is facing left flip them
-                if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                battleMaster.targetedEnemy = gameObject;
+                //If the enemy is to the right of the player
+                if (battleMaster.currentCharacter.transform.position.x - transform.position.x < 0)
                 {
-                    battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                    //If the player is facing left flip them
+                    if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                    }
                 }
-                else if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                //If the enemy is to the left or directly above/below the player
+                if (battleMaster.currentCharacter.transform.position.x - transform.position.x >= 0)
                 {
-                    battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                    //If the player is facing right flip them
+                    if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else if(battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                    }
                 }
+                battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+                FindObjectOfType<AudioManager>().Play(battleMaster.currentCharacter.attackSound);
+                battleMaster.attackDone = true;
+                battleMaster.attackButton.interactable = false;
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
-            //If the enemy is to the left or directly above/below the player
-            if (battleMaster.currentCharacter.transform.position.x - transform.position.x >= 0)
+            else
             {
-                //If the player is facing right flip them
-                if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
-                {
-                    battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
-                }
-                else if(battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
-                {
-                    battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
-                }
+                //Pathfind to the enemy the player clicked
+                //Will be done the same as enemies on their turn, and so cannot be implemented until enemy pathfinding during their turns is not so glitchy
             }
-            battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
-            FindObjectOfType<AudioManager>().Play(battleMaster.currentCharacter.attackSound);
-            battleMaster.attackDone = true;
-            battleMaster.attackButton.interactable = false;
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     } //Must be public for MouseOver to access it
 

@@ -18,6 +18,7 @@ public class Pathfinding : MonoBehaviour
     public int furthestAnyoneCanMove = 20; //99 speed
     [Tooltip("The distance away from enemies you have to be for them to leave the battle")]
     public int giveUpDistance = 40;
+    [HideInInspector]
     public PathNode lastNodeRemoved;
 
     private GameMaster gameMaster;
