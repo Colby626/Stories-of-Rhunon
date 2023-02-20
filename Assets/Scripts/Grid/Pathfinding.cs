@@ -13,13 +13,15 @@ public class Pathfinding : MonoBehaviour
 
     [HideInInspector]
     public Collider2D[] colliders;
-    private CustomGrid grid;
     public float speed = .01f;
     [Tooltip("The smaller this number the better the performance")]
     public int furthestAnyoneCanMove = 20; //99 speed
+    [Tooltip("The distance away from enemies you have to be for them to leave the battle")]
+    public int giveUpDistance = 40;
     public PathNode lastNodeRemoved;
 
     private GameMaster gameMaster;
+    private CustomGrid grid;
 
     private void Start()
     {
@@ -57,11 +59,11 @@ public class Pathfinding : MonoBehaviour
                 }
             }
         }
-        else
+        else //Does within furthestAnyoneCanMove distance twice
         {
-            for (int x = 0; x < grid.numColumns; x++)
+            for (int x = startNode.x - giveUpDistance; x < startNode.x + giveUpDistance; x++)
             {
-                for (int y = 0; y < grid.numRows; y++)
+                for (int y = startNode.y - giveUpDistance; y < startNode.y + giveUpDistance; y++)
                 {
                     PathNode node = grid.GetGridObject(x, y);
                     if (node != null)
@@ -77,7 +79,6 @@ public class Pathfinding : MonoBehaviour
         startNode.gCost = 0;
         startNode.hCost = CalculateDistance(startNode, endNode);
         startNode.CalculateFCost();
-        int i = 0;
 
         while(openList.Count > 0)
         {
@@ -106,8 +107,6 @@ public class Pathfinding : MonoBehaviour
                 {
                     continue;
                 }
-
-                i++;
 
                 int tentativeGCost = currentNode.gCost + CalculateDistance(currentNode, neighborNode);
                 if (tentativeGCost < neighborNode.gCost)
@@ -146,6 +145,11 @@ public class Pathfinding : MonoBehaviour
     {
         lastNodeRemoved = null;
         while (path.Count > maxNodes)
+        {
+            lastNodeRemoved = path[path.Count - 1];
+            path.RemoveAt(path.Count - 1);
+        }
+        while (path[path.Count - 1].occupied) //For when ignoreOccupied == true
         {
             lastNodeRemoved = path[path.Count - 1];
             path.RemoveAt(path.Count - 1);
