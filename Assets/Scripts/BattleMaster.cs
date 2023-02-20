@@ -494,7 +494,7 @@ public class BattleMaster : MonoBehaviour
         */
         Pathfinding pathfinding = gameMaster.GetComponent<Pathfinding>();
         int maxMoveDistance = currentCharacter.characterStats.Speed / 5;
-        targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count())]; //Randomly pick a player to attack
+        targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count)]; //Randomly pick a player to attack
         List<PathNode> shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance);
         if (shortestPath == null)
         {
@@ -502,7 +502,7 @@ public class BattleMaster : MonoBehaviour
             Debug.Log("Checking if occupied nodes stopped it");
             shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, true); //This makes the enemies intersect each other 
         }
-        else if (shortestPath.Count() > 0 && pathfinding.lastNodeRemoved == null) //If the party is within the move range
+        else if (shortestPath.Count > 0 && pathfinding.lastNodeRemoved == null) //If the party is within the move range
         {
             currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
         }
@@ -516,7 +516,7 @@ public class BattleMaster : MonoBehaviour
         {
             Debug.Log(pathnode.name);
         }
-        if (shortestPath.Count() == 0) //If the enemy still cannot reach the player, check if they could reach them if they traveled further than the maximum move distance
+        if (shortestPath.Count == 0) //If the enemy still cannot reach the player, check if they could reach them if they traveled further than the maximum move distance
         {
             Debug.Log("Checking if distance stopped it");
             shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, false, true); //finds a path right by the end node and not from the start node
@@ -526,7 +526,7 @@ public class BattleMaster : MonoBehaviour
             Debug.Log("Checking if occupied nodes and distance stopped it");
             shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, true, true);
         }
-        if (shortestPath.Count() == 0) //If the player moved further away than gameMaster.giveUpDistance, leave the battle
+        if (shortestPath.Count == 0) //If the player moved further away than gameMaster.giveUpDistance, leave the battle
         {
             livingEnemies.Remove(currentCharacter.gameObject);
             characters.Remove(currentCharacter.gameObject);

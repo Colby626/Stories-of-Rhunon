@@ -149,21 +149,31 @@ public class Pathfinding : MonoBehaviour
             lastNodeRemoved = path[path.Count - 1];
             path.RemoveAt(path.Count - 1);
         }
-        while (path[path.Count - 1].occupied) //For when ignoreOccupied == true
+
+        if (path[path.Count - 1].occupied)
         {
-            lastNodeRemoved = path[path.Count - 1];
-            path.RemoveAt(path.Count - 1);
+            while (path[path.Count - 1].occupied) //For when ignoreOccupied == true 
+            {
+                if (path.Count == 1) //Prevents an error when right next to the target
+                {
+                    break;
+                }
+                lastNodeRemoved = path[path.Count - 1];
+                path.RemoveAt(path.Count - 1);
+            }
         }
         return path;
     }
 
     private int CalculateDistance(PathNode a, PathNode b)
     {
+        /* I've never seen this error message so I'll comment it to be more efficient
         if (a == null || b == null)
         {
             Debug.LogWarning("CalculateDistance called on null node");
             return -1;
         }
+        */
 
         int xDistance = Mathf.Abs(a.x - b.x);
         int yDistance = Mathf.Abs(a.y - b.y);

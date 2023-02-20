@@ -83578,6 +83578,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: characterStats.Strength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: characterStats.Precision
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
 --- !u!1001 &846628464
@@ -87897,6 +87907,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: characterStats.Strength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: characterStats.Precision
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -96005,6 +96025,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: characterStats.Strength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: characterStats.Precision
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
 --- !u!4 &1388147889 stripped
@@ -98542,12 +98572,12 @@ PrefabInstance:
     - target: {fileID: 4034010280295920522, guid: 6b5a578cd864e16419d09731727a9b31,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.477909
+      value: 1.5220909
       objectReference: {fileID: 0}
     - target: {fileID: 4034010280295920522, guid: 6b5a578cd864e16419d09731727a9b31,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.76978683
+      value: 3.2302132
       objectReference: {fileID: 0}
     - target: {fileID: 4034010280295920522, guid: 6b5a578cd864e16419d09731727a9b31,
         type: 3}
@@ -101224,6 +101254,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: characterStats.Strength
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: characterStats.Precision
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -112694,7 +112734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2110465112
 Transform:
   m_ObjectHideFlags: 0
