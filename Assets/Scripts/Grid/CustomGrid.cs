@@ -84,7 +84,7 @@ public class CustomGrid : MonoBehaviour
 
     public void SetGridClicked()
     {
-        if (!battleMaster.attackPressed && !battleMaster.inventory.activeSelf && !battleMaster.levelUpPanel.activeSelf)
+        if (!battleMaster.inventory.activeSelf && !battleMaster.levelUpPanel.activeSelf)
         {
             gridClicked = true;
         }

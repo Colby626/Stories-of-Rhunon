@@ -162,13 +162,14 @@ public class CharacterSheet : MonoBehaviour
                 battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
                 FindObjectOfType<AudioManager>().Play(battleMaster.currentCharacter.attackSound);
                 battleMaster.attackDone = true;
-                battleMaster.attackButton.interactable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
             else
             {
                 //Pathfind to the enemy the player clicked
                 Debug.Log("clicking on an enemy when they are not in the tile next to the player");
+                int maxMoveNodes = battleMaster.currentCharacter.characterStats.Speed / 5;
+                gameMaster.party.GetComponent<Movement>().MoveOnPath(gameMaster.GetComponent<Pathfinding>().FindPath(GetComponentInParent<Movement>().occupyingNode, gameMaster.partyNode, maxMoveNodes));
             }
         }
     } //Must be public for MouseOver to access it

@@ -31,7 +31,6 @@ public class BattleMaster : MonoBehaviour
 
     [Header("GUI Elements")]
     public Texture2D attackCursorTexture;
-    public Button attackButton;
     [SerializeField]
     private Button nextTurnButton;
     [SerializeField]
@@ -66,8 +65,6 @@ public class BattleMaster : MonoBehaviour
     public List<PathNode> moveableNodes; //Must be public or becomes null
     [HideInInspector]
     public bool willWin = false;
-    [HideInInspector]
-    public bool attackPressed = false;
     [HideInInspector]
     public bool attackDone = false;
     [HideInInspector]
@@ -343,14 +340,12 @@ public class BattleMaster : MonoBehaviour
     public void NextTurn()
     {
         ResetMovementLimit();
-        attackPressed = false;
         grid.gridClicked = false;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         currentCharacter = turnOrder[1].GetComponent<CharacterSheet>();
         attackDone = false;
         turnOrder.RemoveAt(0); 
-        attackButton.interactable = true;
         gameMaster.movedOnTurn = false;
 
         LimitMovement();
@@ -360,7 +355,6 @@ public class BattleMaster : MonoBehaviour
         if (!currentCharacter.isPlayer)
         {
             nextTurnButton.interactable = false;
-            attackButton.interactable = false;
             inventoryButton.interactable = false;
             StartCoroutine(EnemyTurn()); //Delay for enemy turns
         }
@@ -576,15 +570,6 @@ public class BattleMaster : MonoBehaviour
             return;
         }
 
-        //If the player is pressing the attack button after they already pressed it 
-        if (attackPressed)
-        {
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-            attackPressed = false;
-            return;
-        }
-
-        attackPressed = true;
         Cursor.SetCursor(attackCursorTexture, Vector2.zero, CursorMode.Auto);
     } //Called from button
 
@@ -594,7 +579,6 @@ public class BattleMaster : MonoBehaviour
     public void OpenInventory()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        attackPressed = false;
 
         AudioManager.instance.Play("TurningPageInBookSound");
         inventory.SetActive(true);
@@ -863,7 +847,6 @@ public class BattleMaster : MonoBehaviour
             battleStarted = false;
             turnOrderCalculated = false;
             attackDone = false;
-            attackPressed = false;
             turnOrder.Clear();
             characters.Clear();
             livingPlayers.Clear();

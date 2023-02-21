@@ -194,28 +194,28 @@ public class CursorOverlapCircle : MonoBehaviour
         }
         if (nodeFound)
         {
-            if (!gameMaster.hoveringOverButton && !battleMaster.attackPressed)
+            if (!gameMaster.hoveringOverButton && Time.timeScale > 0)
             {
-                if (Time.timeScale != 0 && !node.occupied) //If the game isn't paused
+                if (!node.occupied) //If the game isn't paused
                 {
                     node.transform.GetChild(0).gameObject.SetActive(true);
                 }
                 if (grid.gridClicked) //Player movement
                 {
-                    if (!battleMaster.battleStarted && !node.occupied && Time.timeScale > 0) //If a battle isn't happening and the game isn't paused
+                    if (!battleMaster.battleStarted && !node.occupied) //If a battle isn't happening
                     {
                         gameMaster.targetNode = node;
                         node.destinationNode = true;
                     }
                     //Player movement in battle
-                    if (battleMaster.battleStarted && !node.occupied && Time.timeScale > 0 && node.validMovePosition && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+                    if (battleMaster.battleStarted && !node.occupied && node.validMovePosition && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
                     {
                         gameMaster.targetNode = node;
                         gameMaster.movedOnTurn = true;
                         gameMaster.movedOnTurnEvent.Invoke();
                     }
                     //If clicking on an enemy during battle
-                    else if (battleMaster.battleStarted && Time.timeScale > 0 && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer && !node.occupyingAgent.GetComponentInChildren<CharacterSheet>().isPlayer)
+                    else if (battleMaster.battleStarted && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer && !node.occupyingAgent.GetComponentInChildren<CharacterSheet>().isPlayer)
                     {
                         Debug.Log("Clicked on an enemy nodes tile during battle");
                         gameMaster.targetNode = node;
