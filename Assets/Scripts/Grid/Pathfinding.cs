@@ -128,7 +128,6 @@ public class Pathfinding : MonoBehaviour
         }
 
         //Out of nodes on the open list
-        Debug.Log("Out of nodes on the open list");
         return null;
     }
 
