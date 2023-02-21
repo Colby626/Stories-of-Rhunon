@@ -1,4 +1,5 @@
 using System.Collections.Generic; //For lists
+using System.IO;
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
@@ -34,6 +35,7 @@ public class Pathfinding : MonoBehaviour
     {
         if (endNode == null)
         {
+            Debug.LogWarning("endNode was null");
             return null;
         }
         if (startNode == endNode)
@@ -90,7 +92,7 @@ public class Pathfinding : MonoBehaviour
                 {
                     List<PathNode> finalPath = CalculatePath(endNode);
                     finalPath.RemoveAt(finalPath.Count - 1);
-                    return TrimPath(finalPath, maxNodes);
+                    return TrimPath(CalculatePath(endNode), maxNodes);
                 }
                 return TrimPath(CalculatePath(endNode), maxNodes);
             }
@@ -126,6 +128,7 @@ public class Pathfinding : MonoBehaviour
         }
 
         //Out of nodes on the open list
+        Debug.Log("Out of nodes on the open list");
         return null;
     }
 

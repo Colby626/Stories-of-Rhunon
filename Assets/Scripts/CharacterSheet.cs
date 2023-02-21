@@ -169,7 +169,10 @@ public class CharacterSheet : MonoBehaviour
                 //Pathfind to the enemy the player clicked
                 Debug.Log("clicking on an enemy when they are not in the tile next to the player");
                 int maxMoveNodes = battleMaster.currentCharacter.characterStats.Speed / 5;
-                gameMaster.party.GetComponent<Movement>().MoveOnPath(gameMaster.GetComponent<Pathfinding>().FindPath(GetComponentInParent<Movement>().occupyingNode, gameMaster.partyNode, maxMoveNodes));
+                Debug.Log("occupyingNode is " + GetComponentInParent<Movement>().occupyingNode.name);
+                Debug.Log("partyNode is " + gameMaster.partyNode);
+                Debug.Log("maxMoveNodes is " + maxMoveNodes);
+                gameMaster.party.GetComponent<Movement>().MoveOnPath(gameMaster.GetComponent<Pathfinding>().FindPath(GetComponentInParent<Movement>().occupyingNode, gameMaster.partyNode, maxMoveNodes, true));
             }
         }
     } //Must be public for MouseOver to access it

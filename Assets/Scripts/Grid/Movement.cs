@@ -135,6 +135,7 @@ public class Movement : MonoBehaviour
     {
         if (path == null)
         {
+            Debug.Log("Path was null");
             return;
         }
 

@@ -164,7 +164,6 @@ public class BattleMaster : MonoBehaviour
             }
         }
 
-        //Gets a list of the enemies
         foreach (GameObject character in characters)
         {
             if (!character.GetComponent<CharacterSheet>().isPlayer)
@@ -184,13 +183,13 @@ public class BattleMaster : MonoBehaviour
             levelUpButton.SetActive(false);
         }
 
-        //Display status of current character is they are a player
+        //Display status of current character if they are a player
         if (currentCharacter.isPlayer)
         {
             currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
         }
 
-        //If the next person in line is not a player the AI will attack the nearest one
+        //If the next person in line is not a player the AI
         if (!currentCharacter.isPlayer)
         {
             StartCoroutine(EnemyTurn());
@@ -303,7 +302,7 @@ public class BattleMaster : MonoBehaviour
                 {
                     if (!tempNode.validMovePosition)
                     {
-                        tempPath = pathfinding.FindPath(tempNode, oNode, maxMoveDistance); //Here is where all the performance is eaten at battleStart
+                        tempPath = pathfinding.FindPath(tempNode, oNode, maxMoveDistance);
                         if (tempPath == null)
                         {
                             continue;
@@ -351,12 +350,12 @@ public class BattleMaster : MonoBehaviour
         LimitMovement();
         LoadPortraits();
 
-        //If the next person in line is not a player the AI will attack one of them at random
+        //If the next person in line is not a player the AI
         if (!currentCharacter.isPlayer)
         {
             nextTurnButton.interactable = false;
             inventoryButton.interactable = false;
-            StartCoroutine(EnemyTurn()); //Delay for enemy turns
+            StartCoroutine(EnemyTurn());
         }
         else
         {
