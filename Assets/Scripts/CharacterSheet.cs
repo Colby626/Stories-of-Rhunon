@@ -168,7 +168,7 @@ public class CharacterSheet : MonoBehaviour
             else
             {
                 //Pathfind to the enemy the player clicked
-                //Will be done the same as enemies on their turn, and so cannot be implemented until enemy pathfinding during their turns is not so glitchy
+                Debug.Log("clicking on an enemy when they are not in the tile next to the player");
             }
         }
     } //Must be public for MouseOver to access it

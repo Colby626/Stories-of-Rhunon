@@ -103460,7 +103460,7 @@ MonoBehaviour:
   origin: {x: -106, y: -6}
   whiteTile: {fileID: 8817868772905004140, guid: 074ba962fc54225478f5f7ee618c511d,
     type: 3}
-  redTile: {fileID: 8817868772905004140, guid: c05dc8af43ac1b747a52571acd8f5f62, type: 3}
+  redTile: {fileID: 8817868772905004140, guid: 8ea0d765fd5712742be13da74fcf6b54, type: 3}
   blueTile: {fileID: 8817868772905004140, guid: 3934fef8f508a004a8f83656e7c803ef,
     type: 3}
   gridFinished: 0

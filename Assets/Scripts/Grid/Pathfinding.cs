@@ -60,7 +60,7 @@ public class Pathfinding : MonoBehaviour
                 }
             }
         }
-        else //Does within furthestAnyoneCanMove distance twice
+        else 
         {
             for (int x = startNode.x - giveUpDistance; x < startNode.x + giveUpDistance; x++)
             {

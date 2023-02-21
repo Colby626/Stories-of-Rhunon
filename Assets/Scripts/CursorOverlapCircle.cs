@@ -157,12 +157,6 @@ public class CursorOverlapCircle : MonoBehaviour
                 //Things to do when hovering over a character and the mouse is clicked (OnMouseDown)
                 if (Input.GetMouseButtonUp(0)) //Returns true on the frame the user releases the mouse button
                 {
-                    if (mouseOver.isHighlighted)
-                    {
-                        character.GetComponent<SpriteRenderer>().material = mouseOver.characterMaterial;
-                        mouseOver.isHighlighted = false;
-                    }
-
                     character.OnMouseDown();
                 }
             }
@@ -216,6 +210,14 @@ public class CursorOverlapCircle : MonoBehaviour
                     //Player movement in battle
                     if (battleMaster.battleStarted && !node.occupied && Time.timeScale > 0 && node.validMovePosition && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
                     {
+                        gameMaster.targetNode = node;
+                        gameMaster.movedOnTurn = true;
+                        gameMaster.movedOnTurnEvent.Invoke();
+                    }
+                    //If clicking on an enemy during battle
+                    else if (battleMaster.battleStarted && Time.timeScale > 0 && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer && !node.occupyingAgent.GetComponentInChildren<CharacterSheet>().isPlayer)
+                    {
+                        Debug.Log("Clicked on an enemy nodes tile during battle");
                         gameMaster.targetNode = node;
                         gameMaster.movedOnTurn = true;
                         gameMaster.movedOnTurnEvent.Invoke();

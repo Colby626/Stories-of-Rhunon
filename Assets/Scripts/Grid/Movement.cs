@@ -178,7 +178,6 @@ public class Movement : MonoBehaviour
         occupyingNode.occupied = true;
         occupyingNode.destinationNode = false;
         occupyingNode.occupyingAgent = gameObject;
-        occupyingNode.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     private void PlayerInRangeCheck()
