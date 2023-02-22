@@ -2,6 +2,7 @@ using System.Collections.Generic; //for Lists
 using UnityEngine;
 using System.Linq; //for livingEnemies.Count()
 using TMPro;
+using UnityEditor.Tilemaps;
 
 [System.Serializable]
 public class CharacterEquipment : Component
@@ -92,6 +93,8 @@ public class CharacterSheet : MonoBehaviour
     public bool isDead = false;
     private BattleMaster battleMaster;
     private GameMaster gameMaster;
+    private Pathfinding pathfinding;
+    private Movement partyMovement;
 
     #region Sound Variables
     private string noWhitespaceName;
@@ -119,6 +122,8 @@ public class CharacterSheet : MonoBehaviour
         characterStats.XPtoLevelUp = 10; //This is the starting value for the amount of XP it takes to level up
         battleMaster = FindObjectOfType<BattleMaster>();
         gameMaster = GameMaster.instance.GetComponent<GameMaster>();
+        partyMovement = gameMaster.party.GetComponent<Movement>();
+        pathfinding = gameMaster.GetComponent<Pathfinding>();
 
         characterEquipment = new List<Equipment> { GetComponent<CharacterEquipment>().Head, GetComponent<CharacterEquipment>().Torso,
             GetComponent<CharacterEquipment>().Arms, GetComponent<CharacterEquipment>().Legs, GetComponent<CharacterEquipment>().ArmSlot1,
@@ -168,7 +173,12 @@ public class CharacterSheet : MonoBehaviour
             {
                 //Pathfind to the enemy the player clicked
                 int maxMoveNodes = battleMaster.currentCharacter.characterStats.Speed / 5;
-                gameMaster.party.GetComponent<Movement>().MoveOnPath(gameMaster.GetComponent<Pathfinding>().FindPath(GetComponentInParent<Movement>().occupyingNode, gameMaster.partyNode, maxMoveNodes, true));
+                partyMovement.MoveOnPath(pathfinding.FindPath(GetComponentInParent<Movement>().occupyingNode, gameMaster.partyNode, maxMoveNodes, true));
+                if (pathfinding.lastNodeRemoved == GetComponentInParent<Movement>().occupyingNode)
+                {
+                    battleMaster.targetedEnemy = this.gameObject; 
+                    partyMovement.attackAtEnd = true;
+                }
                 gameMaster.movedOnTurn = true;
                 gameMaster.movedOnTurnEvent.Invoke();
             }

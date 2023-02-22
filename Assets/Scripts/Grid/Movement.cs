@@ -280,35 +280,68 @@ public class Movement : MonoBehaviour
             if (battleMaster.battleStarted && attackAtEnd)
             {
                 attackAtEnd = false;
+                CharacterSheet currentCharacter = battleMaster.currentCharacter;
 
-                //If the player is to the right of the enemy
-                if (battleMaster.currentCharacter.transform.position.x - battleMaster.targetedPlayer.transform.position.x < 0)
+                if (currentCharacter.isPlayer)
                 {
-                    //If the enemy is facing left flip them
-                    if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    //If the player is to the right of the enemy
+                    if (currentCharacter.transform.position.x - battleMaster.targetedEnemy.transform.position.x < 0)
                     {
-                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                        //If the enemy is facing left flip them
+                        if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                        {
+                            currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                        }
+                        else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                        {
+                            currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                        }
                     }
-                    else if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    //If the player is to the left or directly above/below the enemy
+                    if (battleMaster.currentCharacter.transform.position.x - battleMaster.targetedEnemy.transform.position.x >= 0)
                     {
-                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                        //If the enemy is facing right flip them
+                        if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                        {
+                            currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                        }
+                        else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                        {
+                            currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                        }
                     }
                 }
-                //If the player is to the left or directly above/below the enemy
-                if (battleMaster.currentCharacter.transform.position.x - battleMaster.targetedPlayer.transform.position.x >= 0)
+                else
                 {
-                    //If the enemy is facing right flip them
-                    if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    //If the player is to the right of the enemy
+                    if (currentCharacter.transform.position.x - battleMaster.targetedPlayer.transform.position.x < 0)
                     {
-                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                        //If the enemy is facing left flip them
+                        if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                        {
+                            currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                        }
+                        else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                        {
+                            currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                        }
                     }
-                    else if (battleMaster.currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    //If the player is to the left or directly above/below the enemy
+                    if (battleMaster.currentCharacter.transform.position.x - battleMaster.targetedPlayer.transform.position.x >= 0)
                     {
-                        battleMaster.currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                        //If the enemy is facing right flip them
+                        if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                        {
+                            currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
+                        }
+                        else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                        {
+                            currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
+                        }
                     }
                 }
 
-                battleMaster.currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+                currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
                 AudioManager.instance.Play(battleMaster.currentCharacter.attackSound);
             }
             else if (battleMaster.battleStarted && !battleMaster.currentCharacter.isPlayer)
