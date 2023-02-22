@@ -510,7 +510,7 @@ public class BattleMaster : MonoBehaviour
             Debug.Log("Checking if occupied nodes stopped it");
             shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, true); //This makes the enemies intersect each other 
         }
-        else if (shortestPath.Count > 0 && pathfinding.lastNodeRemoved == null) //If the party is within the move range
+        else if (shortestPath.Count > 0 && pathfinding.lastNodeRemoved == gameMaster.partyNode) //If the party is within the move range
         {
             currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
         }

@@ -49,7 +49,7 @@ MonoBehaviour:
   centeringOffset: 0.05
   spriteFacingLeft: 0
   occupyingNode: {fileID: 0}
-  viewRange: 2
+  viewRange: 3
   wanderRange: 1
   wander: 1
   wanderDelayMin: 2
