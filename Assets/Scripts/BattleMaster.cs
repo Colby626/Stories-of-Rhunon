@@ -253,14 +253,16 @@ public class BattleMaster : MonoBehaviour
                         {
                             moveableNodes.Add(node);
                             node.validMovePosition = true;
-                            if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
+                            if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Shows blue tiles for where the player can get to
                             {
                                 node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
                             }
+                            /* shows red tiles for where the enemy can get to
                             else
                             {
                                 node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.redTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
                             }
+                            */
                         }
                     }
                 }
@@ -281,14 +283,16 @@ public class BattleMaster : MonoBehaviour
                         {
                             moveableNodes.Add(node);
                             node.validMovePosition = true;
-                            if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
+                            if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Shows blue tiles for where the player can get to
                             {
                                 node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
                             }
+                            /* shows red tiles for where the enemy can get to
                             else
                             {
                                 node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.redTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
                             }
+                            */
                         }
                     }
                 }
@@ -313,14 +317,16 @@ public class BattleMaster : MonoBehaviour
                         {
                             moveableNodes.Add(node);
                             node.validMovePosition = true;
-                            if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Makes the color change only occur for players
+                            if (currentCharacter.GetComponent<CharacterSheet>().isPlayer) //Shows blue tiles for where the player can get to
                             {
                                 node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
                             }
+                            /* shows red tiles for where the enemy can get to
                             else
                             {
                                 node.transform.GetChild(1).GetComponent<SpriteRenderer>().color = grid.redTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
                             }
+                            */
                         }
                     }
                 }
