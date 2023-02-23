@@ -265,7 +265,7 @@ public class CharacterSheet : MonoBehaviour
         GetComponentInParent<Movement>().occupyingNode.occupyingAgent = null;
 
         //Display the levelup button if the currentCharacter has more XP than they need to level up
-        if (battleMaster.currentCharacter.isPlayer && battleMaster.currentCharacter.characterStats.XP >= battleMaster.currentCharacter.characterStats.XPtoLevelUp)
+        if (!isPlayer && battleMaster.currentCharacter.isPlayer && battleMaster.currentCharacter.characterStats.XP >= battleMaster.currentCharacter.characterStats.XPtoLevelUp)
         {
             battleMaster.levelUpButton.SetActive(true);
             battleMaster.levelUpCharacter = battleMaster.currentCharacter;

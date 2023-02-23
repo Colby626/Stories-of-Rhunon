@@ -83596,7 +83596,7 @@ PrefabInstance:
     - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: characterStats.Strength
-      value: 0
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
