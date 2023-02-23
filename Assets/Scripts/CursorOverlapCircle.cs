@@ -155,7 +155,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 }
 
                 //Things to do when hovering over a character and the mouse is clicked (OnMouseDown)
-                if (Input.GetMouseButtonUp(0)) //Returns true on the frame the user releases the mouse button
+                if (Input.GetMouseButtonUp(0) && battleMaster.currentCharacter.isPlayer) //Returns true on the frame the user releases the mouse button
                 {
                     character.OnMouseDown();
                 }

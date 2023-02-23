@@ -176,7 +176,7 @@ public class CharacterSheet : MonoBehaviour
                 partyMovement.MoveOnPath(pathfinding.FindPath(GetComponentInParent<Movement>().occupyingNode, gameMaster.partyNode, maxMoveNodes, true));
                 if (pathfinding.lastNodeRemoved == GetComponentInParent<Movement>().occupyingNode)
                 {
-                    battleMaster.targetedEnemy = this.gameObject; 
+                    battleMaster.targetedEnemy = gameObject; 
                     partyMovement.attackAtEnd = true;
                 }
                 gameMaster.movedOnTurn = true;

@@ -83580,6 +83580,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
+      propertyPath: Health
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: characterStats.Damage
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
       propertyPath: characterStats.Strength
       value: 0
       objectReference: {fileID: 0}
@@ -112749,7 +112764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2110465112
 Transform:
   m_ObjectHideFlags: 0

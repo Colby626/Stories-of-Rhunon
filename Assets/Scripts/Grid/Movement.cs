@@ -342,6 +342,7 @@ public class Movement : MonoBehaviour
                 }
 
                 currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
+                battleMaster.attackDone = true;
                 AudioManager.instance.Play(battleMaster.currentCharacter.attackSound);
             }
             else if (battleMaster.battleStarted && !battleMaster.currentCharacter.isPlayer)
