@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isParty: 0
-  centeringOffset: 0.05
+  centeringOffset: 0.1
   spriteFacingLeft: 0
   occupyingNode: {fileID: 0}
   viewRange: 5
@@ -56,6 +56,7 @@ MonoBehaviour:
   wanderDelayMax: 1
   distanceToLookForParticipants: 20
   lookingForParticipants: 0
+  isMoving: 0
   attackAtEnd: 0
   startingNode: {fileID: 0}
   vectorPath: []

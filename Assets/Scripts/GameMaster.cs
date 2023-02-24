@@ -11,6 +11,7 @@ public class GameMaster : MonoBehaviour
     public bool movedOnTurn = false;
     public UnityEvent movedOnTurnEvent;
     public bool hoveringOverButton;
+    public bool waitingOnEveryoneToStop = false;
     public List<GameObject> participants;
 
     [HideInInspector]
@@ -23,6 +24,7 @@ public class GameMaster : MonoBehaviour
     private float gridTimer = 0.1f;
     private float gridTime;
     private bool timerSet = false;
+    private bool noneMoving = true;
     private Collider2D[] colliders;
 
     public static GameMaster instance;
@@ -54,6 +56,22 @@ public class GameMaster : MonoBehaviour
 
     private void Update()
     {
+        if (waitingOnEveryoneToStop)
+        {
+            noneMoving = true;
+            foreach (GameObject participant in participants)
+            {
+                if (participant.GetComponentInParent<Movement>().isMoving)
+                {
+                    noneMoving = false;
+                }
+            }
+            if (noneMoving)
+            {
+                waitingOnEveryoneToStop = false;
+            }
+        }
+
         if (party != null)
         {
             party.GetComponent<Movement>().occupyingNode = partyNode;
@@ -103,15 +121,24 @@ public class GameMaster : MonoBehaviour
     {
         foreach (GameObject participant in participants)
         {
-            if (participant.GetComponentInParent<Movement>().vectorPath.Count > 0)
+            Movement movement = participant.GetComponentInParent<Movement>();
+            if (movement.vectorPath.Count > 0)
             {
-                Vector3 finishMove = participant.GetComponentInParent<Movement>().vectorPath[0];
-                participant.GetComponentInParent<Movement>().vectorPath.Clear();
-                participant.GetComponentInParent<Movement>().vectorPath.Add(finishMove);
+                Vector3 finishMove = movement.vectorPath[0];
+                movement.vectorPath.Clear();
+                movement.vectorPath.Add(finishMove);
                 //Random -1 on next line is required to match with where they end up, I don't know why it is needed
-                participant.GetComponentInParent<Movement>().startingNode = grid.GetGridObject((int)participant.GetComponentInParent<Movement>().vectorPath[0].x - grid.origin.x - 1, (int)participant.GetComponentInParent<Movement>().vectorPath[0].y - grid.origin.y);
+                movement.startingNode = grid.GetGridObject((int)movement.vectorPath[0].x - grid.origin.x - 1, (int)movement.vectorPath[0].y - grid.origin.y);
             }
-            participant.GetComponentInParent<Movement>().lookingForParticipants = false;
+            movement.lookingForParticipants = false;
+            if (movement.isMoving)
+            {
+                noneMoving = false;
+            }
+        }
+        if (!noneMoving)
+        {
+            waitingOnEveryoneToStop = true;
         }
         AudioManager.instance.Stop("ExploringMusic");
         AudioManager.instance.Play("BattleMusic");

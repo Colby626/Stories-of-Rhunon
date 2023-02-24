@@ -244,7 +244,7 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.turnOrder.Remove(gameObject);
         }
         isDead = true;
-        AudioManager.instance.Play(deathSound); //Need to play this sound after the take hit animation and sound has finished
+        AudioManager.instance.Play(deathSound); 
     }
 
     private void FinishDie()

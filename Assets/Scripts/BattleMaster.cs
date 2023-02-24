@@ -124,7 +124,6 @@ public class BattleMaster : MonoBehaviour
                 levelUpCharacter = characterList[i];
             }
         }
-
     }
 
     private void Update()
@@ -189,7 +188,6 @@ public class BattleMaster : MonoBehaviour
             currentCharacter.GetComponent<MouseOver>().ActivateStatus(currentCharacter.GetComponent<CharacterSheet>());
         }
 
-        //If the next person in line is not a player the AI
         if (!currentCharacter.isPlayer)
         {
             StartCoroutine(EnemyTurn());
@@ -488,6 +486,7 @@ public class BattleMaster : MonoBehaviour
             else if (closestPlayerPath.Count() != 0)
             {
                 //Pathfind along that path until they are no longer validMovementNodes
+                currentCharacter.GetComponentInParent<Movement>().endTurnAfterMove = true;
                 currentCharacter.GetComponentInParent<Movement>().MoveOnPath(closestPlayerPath);
             }
         }

@@ -48080,7 +48080,7 @@ PrefabInstance:
         type: 3}
       propertyPath: attackDoneEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2064442906182863143}
+      objectReference: {fileID: 0}
     - target: {fileID: 1284919024946422737, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
       propertyPath: attackDoneEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -48160,7 +48160,7 @@ PrefabInstance:
         type: 3}
       propertyPath: attackDoneEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2064442906182863143}
+      objectReference: {fileID: 0}
     - target: {fileID: 4659660240272881192, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
       propertyPath: attackDoneEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -48215,7 +48215,7 @@ PrefabInstance:
         type: 3}
       propertyPath: attackDoneEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2064442906182863143}
+      objectReference: {fileID: 0}
     - target: {fileID: 6185555566667531716, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
       propertyPath: attackDoneEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -50699,18 +50699,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2064442906182863139}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2064442906182863143 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2067279703341454352, guid: fc242547518354a45b9ba120ed6135f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 2064442906182863139}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5568829037743413626 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5903703869548482649, guid: fc242547518354a45b9ba120ed6135f3,
@@ -50748,6 +50736,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 85144525}
     m_Modifications:
+    - target: {fileID: 3536630918814662491, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: killToWin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3960179391295818991, guid: 14aa5a369edc5404092a96ae78a24712,
         type: 3}
       propertyPath: m_Name
