@@ -1,3 +1,4 @@
+using System.Linq; //For getting list counts
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -38,6 +39,23 @@ public class PauseMenu : MonoBehaviour
 
     public void Unpause()
     {
+        battleMaster.openInventoryButton.SetActive(true);
+        if (battleMaster.battleStarted && battleMaster.currentCharacter.isPlayer && battleMaster.currentCharacter.characterStats.XP >= battleMaster.currentCharacter.characterStats.XPtoLevelUp)
+        {
+            battleMaster.levelUpButton.SetActive(true);
+            battleMaster.levelUpCharacter = battleMaster.currentCharacter;
+        }
+        else
+        {
+            for (int i = 0; i < battleMaster.characterList.Count(); i++)
+            {
+                if (battleMaster.characterList[i].characterStats.XP >= battleMaster.characterList[i].characterStats.XPtoLevelUp)
+                {
+                    battleMaster.levelUpButton.SetActive(true);
+                    battleMaster.levelUpCharacter = battleMaster.characterList[i];
+                }
+            }
+        }
         if (battleMaster.battleStarted)
         {
             battleHud.SetActive(true);
@@ -59,6 +77,8 @@ public class PauseMenu : MonoBehaviour
     private void Pause()
     {
         battleHud.SetActive(false);
+        battleMaster.openInventoryButton.SetActive(false);
+        battleMaster.levelUpButton.SetActive(false);
         pauseMenu.SetActive(true);
         audioMixer.SetFloat("PausedMasterVolume", amountQuieterWhenPaused);
         Time.timeScale = 0f;

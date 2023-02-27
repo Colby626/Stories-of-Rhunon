@@ -43,9 +43,8 @@ public class BattleMaster : MonoBehaviour
     private List<TextMeshProUGUI> namesList;
     [SerializeField]
     private List<StatBar> healthBars;
-    [SerializeField]
-    private List<CharacterSheet> characterList;
     private int characterListIndex = 0;
+    public List<CharacterSheet> characterList;
     public CharacterSheet levelUpCharacter;
     public CharacterSheet defaultCharacter;
     public GameObject loseScreen;
