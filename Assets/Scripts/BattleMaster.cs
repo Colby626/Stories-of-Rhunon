@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using System.Linq; //For getting list counts
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
-using System.Runtime.InteropServices.WindowsRuntime;
 
 public class BattleMaster : MonoBehaviour
 {
@@ -825,6 +824,16 @@ public class BattleMaster : MonoBehaviour
         {
             battleHud.SetActive(true);
             battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", true);
+            //Displays the levelUpButton if the currentCharacter has enough XP to LevelUp
+            if (currentCharacter.isPlayer && currentCharacter.characterStats.XP >= currentCharacter.characterStats.XPtoLevelUp)
+            {
+                levelUpCharacter = currentCharacter;
+                levelUpButton.SetActive(true);
+            }
+            else
+            {
+                levelUpButton.SetActive(false);
+            }
         }
         else
         {

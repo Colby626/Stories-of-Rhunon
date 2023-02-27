@@ -59,6 +59,7 @@ public class PauseMenu : MonoBehaviour
         if (battleMaster.battleStarted)
         {
             battleHud.SetActive(true);
+            battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", true);
         }
         pauseMenu.SetActive(false);
         if (optionsMenu.activeSelf)

@@ -21093,7 +21093,6 @@ MonoBehaviour:
   targetedPlayer: {fileID: 0}
   targetedEnemy: {fileID: 0}
   attackCursorTexture: {fileID: 2800000, guid: 0dee58cf3f17a8e4289138b97b910a05, type: 3}
-  attackButton: {fileID: 0}
   nextTurnButton: {fileID: 2067279701961479043}
   inventoryButton: {fileID: 0}
   turnText: {fileID: 2067279701493768576}
@@ -21139,7 +21138,6 @@ MonoBehaviour:
   status: {fileID: 2067279701553124898}
   moveableNodes: []
   willWin: 0
-  attackPressed: 0
   attackDone: 0
   turnOrderCalculated: 1
   inventory: {fileID: 2067279703101732427}
