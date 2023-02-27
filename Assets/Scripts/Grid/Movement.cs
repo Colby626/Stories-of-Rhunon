@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    struct pathfindingNodes
+    {
+        int gCost;
+        int hCost;
+        int fCost;
+    };
+
+    private pathfindingNodes[][] pathfindingNodeArray;
+    /*   0   0   0   0   0   0      each 0 has a g, h, and f 
+     *   0   0   0   0   0   0
+     *   0   0   0   0   0   0
+     *   0   0   0   0   0   0
+     *   0   0   0   0   0   0
+     *   0   0   0   0   0   0
+     */
+
     [SerializeField]
     private bool isParty;
     [Tooltip("How close to the center of a tile an entity must be to consider itself in that tile for movement.")]

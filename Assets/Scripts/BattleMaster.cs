@@ -53,6 +53,7 @@ public class BattleMaster : MonoBehaviour
     public GameObject nextCharacterButton;
     public GameObject previousCharacterButton;
     public GameObject status;
+    public GameObject tutorialMessage;
     
     private GameObject[] characterArray;
     private GameMaster gameMaster;
@@ -67,6 +68,8 @@ public class BattleMaster : MonoBehaviour
     public bool attackDone = false;
     [HideInInspector]
     public bool turnOrderCalculated = false;
+    [HideInInspector]
+    public bool firstBattle = true;
 
     [Header("Inventory:")]
     public GameObject inventory;
@@ -193,6 +196,12 @@ public class BattleMaster : MonoBehaviour
 
         //Add a delay so that participants can finish their move
         StartCoroutine(WaitHalfASecond());
+
+        if (firstBattle)
+        {
+            firstBattle = false;
+            DisplayTutorial();
+        }
     }
 
     IEnumerator WaitHalfASecond()
@@ -338,6 +347,11 @@ public class BattleMaster : MonoBehaviour
             node.validMovePosition = false;
         }
         moveableNodes.Clear();
+    }
+
+    void DisplayTutorial()
+    {
+        tutorialMessage.SetActive(true);
     }
 
     public void NextTurn()
