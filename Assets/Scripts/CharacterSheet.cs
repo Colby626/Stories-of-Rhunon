@@ -298,8 +298,6 @@ public class CharacterSheet : MonoBehaviour
         //If there are no more enemies, display the win screen
         if (battleMaster.livingEnemies.Count() == 0)
         {
-            gameMaster.EndBattle();
-            battleMaster.battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", false);
             battleMaster.Reset();
 
             if (battleMaster.willWin) //Won the game

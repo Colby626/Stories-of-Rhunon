@@ -552,8 +552,6 @@ public class BattleMaster : MonoBehaviour
         }
         if (livingEnemies.Count == 0)
         {
-            gameMaster.EndBattle();
-            battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", false);
             Reset();
             AudioManager.instance.Stop("BattleMusic");
             AudioManager.instance.Play("ExploringMusic");
@@ -867,6 +865,7 @@ public class BattleMaster : MonoBehaviour
         if (battleStarted)
         {
             battleStarted = false;
+            gameMaster.EndBattle();
             turnOrderCalculated = false;
             attackDone = false;
             turnOrder.Clear();
@@ -874,6 +873,9 @@ public class BattleMaster : MonoBehaviour
             livingPlayers.Clear();
             livingEnemies.Clear();
             ResetMovementLimit();
+            nextTurnButton.interactable = true;
+            inventoryButton.interactable = true;
+            battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", false);
 
             //At the end of battle, if anyone can level up, display the button for that character
             for (int i = 0; i < characterList.Count(); i++)
