@@ -469,7 +469,7 @@ public class BattleMaster : MonoBehaviour
             {
                 NextTurn();
             }
-            else if (closestPlayerPath.Count == 1) //If the player is right next to the enemy
+            else if (closestPlayerPath != null && closestPlayerPath.Count == 1) //If the player is right next to the enemy
             {
                 //If the player is to the right of the enemy
                 if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x < 0)
@@ -500,7 +500,7 @@ public class BattleMaster : MonoBehaviour
                 currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
                 AudioManager.instance.Play(currentCharacter.attackSound);
             }
-            else if (closestPlayerPath.Count() != 0)
+            else if (closestPlayerPath != null && closestPlayerPath.Count() != 0)
             {
                 //Pathfind along that path until they are no longer validMovementNodes
                 currentCharacter.GetComponentInParent<Movement>().endTurnAfterMove = true;
