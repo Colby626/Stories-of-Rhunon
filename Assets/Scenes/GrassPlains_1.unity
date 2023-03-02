@@ -74654,7 +74654,7 @@ PrefabInstance:
     - target: {fileID: 4034010280295920523, guid: 6b5a578cd864e16419d09731727a9b31,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b5a578cd864e16419d09731727a9b31, type: 3}
@@ -84383,11 +84383,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
-      propertyPath: characterStats.Strength
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971602593731468780, guid: a21a8a16f2631104aa75599cd2abc91d,
-        type: 3}
       propertyPath: characterStats.Precision
       value: 0
       objectReference: {fileID: 0}
@@ -93657,6 +93652,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dark Creature (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960179391295818991, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000348811151839207, guid: 14aa5a369edc5404092a96ae78a24712,
         type: 3}

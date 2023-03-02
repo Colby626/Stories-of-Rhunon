@@ -18,7 +18,7 @@ public class Pathfinding : MonoBehaviour
     [Tooltip("The smaller this number the better the performance")]
     public int furthestAnyoneCanMove = 20; //99 speed
     [Tooltip("The distance away from enemies you have to be for them to leave the battle")]
-    public int giveUpDistance = 40;
+    public int giveUpDistance = 25;
     [HideInInspector]
     public PathNode lastNodeRemoved;
 
@@ -31,7 +31,7 @@ public class Pathfinding : MonoBehaviour
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
     }
 
-    public List<PathNode> FindPath(PathNode endNode, PathNode startNode, int maxNodes, bool ignoreOccupied = false, bool ignoreMoveDistance = false)
+    public List<PathNode> FindPath(PathNode endNode, PathNode startNode, int maxNodes, bool ignoreOccupied = false)
     {
         if (endNode == null)
         {
@@ -46,35 +46,17 @@ public class Pathfinding : MonoBehaviour
         openList = new List<PathNode> { startNode };
         closedList = new HashSet<PathNode> { };
 
-        if (!ignoreMoveDistance)
+        //I don't know why *2 is needed, but otherwise it does half
+        for (int x = startNode.x - furthestAnyoneCanMove*2; x < startNode.x + furthestAnyoneCanMove*2; x++)
         {
-            for (int x = startNode.x - furthestAnyoneCanMove; x < startNode.x + furthestAnyoneCanMove; x++)
+            for (int y = startNode.y - furthestAnyoneCanMove*2; y < startNode.y + furthestAnyoneCanMove*2; y++)
             {
-                for (int y = startNode.y - furthestAnyoneCanMove; y < startNode.y + furthestAnyoneCanMove; y++)
+                PathNode node = grid.GetGridObject(x, y);
+                if (node != null)
                 {
-                    PathNode node = grid.GetGridObject(x, y);
-                    if (node != null)
-                    {
-                        node.gCost = int.MaxValue;
-                        node.CalculateFCost();
-                        node.cameFromNode = null;
-                    }
-                }
-            }
-        }
-        else 
-        {
-            for (int x = startNode.x - giveUpDistance; x < startNode.x + giveUpDistance; x++)
-            {
-                for (int y = startNode.y - giveUpDistance; y < startNode.y + giveUpDistance; y++)
-                {
-                    PathNode node = grid.GetGridObject(x, y);
-                    if (node != null)
-                    {
-                        node.gCost = int.MaxValue;
-                        node.CalculateFCost();
-                        node.cameFromNode = null;
-                    }
+                    node.gCost = int.MaxValue;
+                    node.CalculateFCost();
+                    node.cameFromNode = null;
                 }
             }
         }
@@ -168,7 +150,7 @@ public class Pathfinding : MonoBehaviour
         return path;
     }
 
-    private int CalculateDistance(PathNode a, PathNode b)
+    public int CalculateDistance(PathNode a, PathNode b)
     {
         /* I've never seen this error message so I'll comment it to be more efficient
         if (a == null || b == null)

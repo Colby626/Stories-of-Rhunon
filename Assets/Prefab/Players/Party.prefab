@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542170188930115356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddb108cbee79004881719cf71d01f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
+  isParty: 0
   centeringOffset: 0.2
   spriteFacingLeft: 0
   occupyingNode: {fileID: 0}
@@ -56,8 +56,12 @@ MonoBehaviour:
   wander: 0
   wanderDelayMin: 0
   wanderDelayMax: 0
+  distanceToLookForParticipants: 15
   lookingForParticipants: 0
+  isMoving: 0
   attackAtEnd: 0
+  endTurnAfterMove: 0
+  startingNode: {fileID: 0}
   vectorPath: []
 --- !u!1001 &542170189452386740
 PrefabInstance:
@@ -219,17 +223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
   highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
+  isHighlighted: 0
 --- !u!4 &1284919024946422739 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1608594177355874919, guid: 4cf0570e631a7114eac00a291f7963e7,
@@ -402,17 +400,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
   highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
+  isHighlighted: 0
 --- !u!1001 &542170190759317287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -563,17 +555,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e94a4556a4fb94d8f5c2f436f3d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doMouseOver: 1
-  portrait: {fileID: 0}
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  staminaBar: {fileID: 0}
+  characterMaterial: {fileID: 0}
   overheadHealthBar: {fileID: 0}
   overheadNameText: {fileID: 0}
-  nameText: {fileID: 0}
-  animationTime: 1
   highlightMaterial: {fileID: 0}
-  battleMaster: {fileID: 0}
+  isHighlighted: 0
 --- !u!114 &1820195499
 MonoBehaviour:
   m_ObjectHideFlags: 0

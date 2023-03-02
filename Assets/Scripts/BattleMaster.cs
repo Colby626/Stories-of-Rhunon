@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Linq; //For getting list counts
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
+using UnityEditorInternal;
 
 public class BattleMaster : MonoBehaviour
 {
@@ -464,7 +465,11 @@ public class BattleMaster : MonoBehaviour
         if (livingPlayers.Count > 0)
         {
             List<PathNode> closestPlayerPath = FindNearestPlayer(); //Also determines the targetedPlayer
-            if (closestPlayerPath.Count == 1) //If the player is right next to the enemy
+            if (closestPlayerPath == null && livingEnemies.Count > 0)
+            {
+                NextTurn();
+            }
+            else if (closestPlayerPath.Count == 1) //If the player is right next to the enemy
             {
                 //If the player is to the right of the enemy
                 if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x < 0)
@@ -522,49 +527,38 @@ public class BattleMaster : MonoBehaviour
         Pathfinding pathfinding = gameMaster.GetComponent<Pathfinding>();
         int maxMoveDistance = currentCharacter.characterStats.Speed / 5;
         targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count)]; //Randomly pick a player to attack
-        List<PathNode> shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance);
-        if (shortestPath == null)
+        bool tooFarAway = (Vector2.Distance(currentCharacter.GetComponentInParent<Movement>().occupyingNode.transform.position, gameMaster.partyNode.transform.position) > pathfinding.furthestAnyoneCanMove * 2);
+        if (!tooFarAway)
         {
-            //If the enemy cannot reach the player, check if they could if occupied nodes were stopping it 
-            Debug.Log("Checking if occupied nodes stopped it");
-            shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, true); //This makes the enemies intersect each other 
-        }
-        else if (shortestPath.Count > 0 && pathfinding.lastNodeRemoved == gameMaster.partyNode) //If the party is within the move range
-        {
-            currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
-        }
-        /*
-        else
-        {
-            Debug.Log("The party is outside of move range");
-        }
-        */
-        /*
-        foreach (PathNode pathnode in shortestPath)
-        {
-            Debug.Log(pathnode.name);
-        }
-        */
-        if (shortestPath.Count == 0) //If the enemy still cannot reach the player, check if they could reach them if they traveled further than the maximum move distance
-        {
-            Debug.Log("Checking if distance stopped it");
-            shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, false, true); //finds a path right by the end node and not from the start node
-        }
-        if (shortestPath == null) //If they enemy still cannot reach the player, check if they could reach them through occupied nodes and further than maximum move distance
-        {
-            Debug.Log("Checking if occupied nodes and distance stopped it");
-            shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, true, true);
-        }
-        if (shortestPath.Count == 0) //If the player moved further away than gameMaster.giveUpDistance, leave the battle
-        {
-            livingEnemies.Remove(currentCharacter.gameObject);
-            characters.Remove(currentCharacter.gameObject);
-            while (turnOrder.Contains(currentCharacter.gameObject))
+            List<PathNode> shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance);
+            if (shortestPath == null)
             {
-                turnOrder.Remove(currentCharacter.gameObject);
+                //If the enemy cannot reach the player, check if they could if occupied nodes were stopping it 
+                Debug.Log("Checking if occupied nodes stopped it");
+                shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance, true); //This makes the enemies intersect each other 
             }
+            else if (shortestPath.Count > 0 && pathfinding.lastNodeRemoved == gameMaster.partyNode) //If the party is within the move range
+            {
+                currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
+            }
+            return shortestPath;
         }
-        return shortestPath;
+        Debug.Log("Removing current enemy, the player is too far away");
+        livingEnemies.Remove(currentCharacter.gameObject);
+        characters.Remove(currentCharacter.gameObject);
+        while (turnOrder.Contains(currentCharacter.gameObject))
+        {
+            turnOrder.Remove(currentCharacter.gameObject);
+        }
+        if (livingEnemies.Count == 0)
+        {
+            gameMaster.EndBattle();
+            battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", false);
+            Reset();
+            AudioManager.instance.Stop("BattleMusic");
+            AudioManager.instance.Play("ExploringMusic");
+        }
+        return null;
     }
 
     private void LoadPortraits()

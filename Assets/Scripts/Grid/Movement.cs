@@ -170,7 +170,6 @@ public class Movement : MonoBehaviour
 
     private void OccupyingNodeCheck() //Biggest performance hit during general play 
     {
-        //Surely this can be more performant than raycasting in update to find the occupyingNode, but putting it in the occupying node OnTriggerEnter2D wasn't consistant
         int closestNode = 0;
         float minDistance = float.PositiveInfinity;
         RaycastHit2D[] findNode = Physics2D.CircleCastAll(transform.position, 1.5f, Vector2.zero); 
@@ -449,8 +448,14 @@ public class Movement : MonoBehaviour
         if (lookingForParticipants)
         {
             Gizmos.color = Color.green; //Sets the color of the distance it looks for participants
-            Gizmos.DrawWireCube(transform.position, new Vector3(distanceToLookForParticipants, distanceToLookForParticipants, 0)); //Display for how far distance to look for participants is
+            //The minus 0.1f is to prevent the gizmo from going under the grid 
+            Gizmos.DrawWireCube(transform.position, new Vector3(distanceToLookForParticipants-0.1f, distanceToLookForParticipants-0.1f, 0)); //Display for how far distance to look for participants is
         }
+
+        /* furthestAnyoneCanMove and therefore the distance away from an enemy before they give up
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 20);
+        */
     }
 
    #endif
