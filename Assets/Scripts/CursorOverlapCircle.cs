@@ -4,6 +4,8 @@ public class CursorOverlapCircle : MonoBehaviour
 {
     [SerializeField]
     private float cursorRadius;
+    public GameObject clickHereAnimation;
+    public GameObject clickHereCircle;
 
     private Collider2D[] colliders;
     private GameMaster gameMaster;
@@ -199,6 +201,8 @@ public class CursorOverlapCircle : MonoBehaviour
                 node.transform.GetChild(0).gameObject.SetActive(true);
                 if (grid.gridClicked) //Player movement
                 {
+                    clickHereAnimation.SetActive(false);
+                    clickHereCircle.SetActive(false);
                     if (!battleMaster.battleStarted)
                     {
                         gameMaster.targetNode = node;

@@ -72,6 +72,7 @@ public class BattleMaster : MonoBehaviour
     public bool turnOrderCalculated = false;
     [HideInInspector]
     public bool firstBattle = true;
+    private bool showTutorial = true;
 
     [Header("Inventory:")]
     public GameObject inventory;
@@ -200,7 +201,7 @@ public class BattleMaster : MonoBehaviour
         //Add a delay so that participants can finish their move
         StartCoroutine(WaitHalfASecond());
 
-        if (firstBattle)
+        if (firstBattle && showTutorial)
         {
             firstBattle = false;
             DisplayTutorial();
