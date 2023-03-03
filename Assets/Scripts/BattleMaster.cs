@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using System.Linq; //For getting list counts
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
-using UnityEditorInternal;
 
 public class BattleMaster : MonoBehaviour
 {
@@ -57,6 +56,7 @@ public class BattleMaster : MonoBehaviour
     public GameObject tutorialMessage;
     
     private GameObject[] characterArray;
+    public CursorOverlapCircle cursorOverlapCircle;
     private GameMaster gameMaster;
     private Pathfinding pathfinding;
     private CustomGrid grid;
@@ -72,7 +72,8 @@ public class BattleMaster : MonoBehaviour
     public bool turnOrderCalculated = false;
     [HideInInspector]
     public bool firstBattle = true;
-    private bool showTutorial = true;
+    [HideInInspector]
+    public bool showTutorial = true;
 
     [Header("Inventory:")]
     public GameObject inventory;
@@ -118,6 +119,7 @@ public class BattleMaster : MonoBehaviour
         pauseMenu = FindObjectOfType<PauseMenu>().GetComponent<PauseMenu>();
         pathfinding = FindObjectOfType<Pathfinding>().GetComponent<Pathfinding>(); 
         battleHud.SetActive(false);
+        cursorOverlapCircle = FindObjectOfType<CursorOverlapCircle>().GetComponent<CursorOverlapCircle>();
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
         gameMaster.movedOnTurnEvent.AddListener(ResetMovementLimit);
 
@@ -362,6 +364,7 @@ public class BattleMaster : MonoBehaviour
 
     public void CloseTutorial() //Called from button
     {
+        showTutorial = false;
         nextTurnButton.interactable = true;
         pauseMenu.gamePaused = false;
     }
@@ -842,6 +845,7 @@ public class BattleMaster : MonoBehaviour
 
     public void CloseLevelUpPanel()
     {
+        cursorOverlapCircle.EnableTutorialPopups();
         if (battleStarted)
         {
             battleHud.SetActive(true);

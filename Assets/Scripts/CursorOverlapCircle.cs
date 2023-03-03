@@ -239,4 +239,14 @@ public class CursorOverlapCircle : MonoBehaviour
         clickHereCircle.SetActive(false);
         disableTutorialButton.SetActive(false);
     }
+
+    public void EnableTutorialPopups()
+    {
+        if (battleMaster.showTutorial)
+        {
+            clickHereAnimation.SetActive(true);
+            clickHereCircle.SetActive(true);
+            disableTutorialButton.SetActive(true);
+        }
+    }
 }

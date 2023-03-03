@@ -116901,6 +116901,41 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2067279702702966305, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067279702702966305, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067279702702966305, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1259859258}
+    - target: {fileID: 2067279702702966305, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067279702702966305, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableTutorialPopups
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067279702702966305, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CursorOverlapCircle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067279702702966305, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2067279702702966310, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_Type
@@ -118664,13 +118699,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903703869548482649, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903703869548482649, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903703869548482649, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6276197855371139125}
     - target: {fileID: 5903703869548482649, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1259859258}
+    - target: {fileID: 5903703869548482649, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903703869548482649, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903703869548482649, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: RemoveTutorialPopups
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903703869548482649, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CursorOverlapCircle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903703869548482649, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972738956418782924, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972738956418782924, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972738956418782924, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1259859258}
+    - target: {fileID: 5972738956418782924, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972738956418782924, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: RemoveTutorialPopups
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972738956418782924, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CursorOverlapCircle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972738956418782924, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5984936105660197246, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
@@ -118821,6 +118926,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956991916072651608, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956991916072651608, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956991916072651608, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1259859258}
+    - target: {fileID: 6956991916072651608, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956991916072651608, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableTutorialPopups
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956991916072651608, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CursorOverlapCircle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956991916072651608, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7635493296862308556, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
