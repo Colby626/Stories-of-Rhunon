@@ -6,6 +6,7 @@ public class CursorOverlapCircle : MonoBehaviour
     private float cursorRadius;
     public GameObject clickHereAnimation;
     public GameObject clickHereCircle;
+    public GameObject disableTutorialButton;
 
     private Collider2D[] colliders;
     private GameMaster gameMaster;
@@ -201,8 +202,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 node.transform.GetChild(0).gameObject.SetActive(true);
                 if (grid.gridClicked) //Player movement
                 {
-                    clickHereAnimation.SetActive(false);
-                    clickHereCircle.SetActive(false);
+                    RemoveTutorialPopups();
                     if (!battleMaster.battleStarted)
                     {
                         gameMaster.targetNode = node;
@@ -231,5 +231,12 @@ public class CursorOverlapCircle : MonoBehaviour
             previousNode.transform.GetChild(0).gameObject.SetActive(false);
             previousNode = null;
         }
+    }
+
+    public void RemoveTutorialPopups()
+    {
+        clickHereAnimation.SetActive(false);
+        clickHereCircle.SetActive(false);
+        disableTutorialButton.SetActive(false);
     }
 }

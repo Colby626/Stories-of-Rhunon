@@ -360,10 +360,15 @@ public class BattleMaster : MonoBehaviour
         pauseMenu.gamePaused = true;
     }
 
-    public void CloseTutorial()
+    public void CloseTutorial() //Called from button
     {
         nextTurnButton.interactable = true;
         pauseMenu.gamePaused = false;
+    }
+
+    public void DisableTutorial() //Called from button
+    {
+        showTutorial = false;
     }
 
     public void NextTurn()
