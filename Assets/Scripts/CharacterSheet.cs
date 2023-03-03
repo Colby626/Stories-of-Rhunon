@@ -130,7 +130,7 @@ public class CharacterSheet : MonoBehaviour
             GetComponent<CharacterEquipment>().ArmSlot2, GetComponent<CharacterEquipment>().Ring1, GetComponent<CharacterEquipment>().Ring2,
             GetComponent<CharacterEquipment>().Neck };
     }
-    public void OnMouseDown()
+    public void MouseDown()
     {
         //Checks if the player is clicking attack on a character
         if (!battleMaster.attackDone && !isPlayer)

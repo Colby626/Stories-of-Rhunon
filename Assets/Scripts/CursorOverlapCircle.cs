@@ -51,7 +51,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 }
                 if (colliders[i].GetComponent<CharacterSheet>())
                 {
-                    if (character != null && character != colliders[i].GetComponent<CharacterSheet>()) //Moved from one character to another
+                    if (character != null && character != colliders[i].GetComponent<CharacterSheet>() && character != null) //Moved from one character to another
                     {
                         oldCharacter = character;
                         oldMouseOver = mouseOver;
@@ -63,7 +63,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 }
                 if (i == colliders.Length - 1 && !characterFound)
                 {
-                    if (characterHadBeenFound) //Moved from a character to no character
+                    if (characterHadBeenFound && character != null) //Moved from a character to no character
                     {
                         oldCharacter = character;
                         oldMouseOver = mouseOver;
@@ -74,7 +74,7 @@ public class CursorOverlapCircle : MonoBehaviour
             }
 
             //Thing to do when no longer hovering over a character that you were hovering over (OnMouseExit)
-            if (mouseExit)
+            if (mouseExit && !pauseMenu.gamePaused)
             {
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 mouseExit = false;
@@ -89,7 +89,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 oldMouseOver.isHighlighted = false;
             }
 
-            if (characterFound)
+            if (characterFound && !pauseMenu.gamePaused)
             {
                 characterHadBeenFound = true;
                 //Things to do when hovering over players (OnMouseOver)
@@ -157,7 +157,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 //Things to do when hovering over a character and the mouse is clicked (OnMouseDown)
                 if (Input.GetMouseButtonUp(0) && battleMaster.currentCharacter.isPlayer) //Returns true on the frame the user releases the mouse button
                 {
-                    character.OnMouseDown();
+                    character.MouseDown();
                 }
             }
         }
@@ -194,7 +194,7 @@ public class CursorOverlapCircle : MonoBehaviour
         }
         if (nodeFound)
         {
-            if (!gameMaster.hoveringOverButton && Time.timeScale > 0 && !node.occupied)
+            if (!gameMaster.hoveringOverButton && !pauseMenu.gamePaused && !node.occupied)
             {
                 node.transform.GetChild(0).gameObject.SetActive(true);
                 if (grid.gridClicked) //Player movement

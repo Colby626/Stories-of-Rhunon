@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    /* For when the pathfinding is on each character
     struct pathfindingNodes
     {
         int gCost;

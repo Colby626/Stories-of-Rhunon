@@ -60,6 +60,7 @@ public class BattleMaster : MonoBehaviour
     private GameMaster gameMaster;
     private Pathfinding pathfinding;
     private CustomGrid grid;
+    private PauseMenu pauseMenu;
 
     [HideInInspector]
     public List<PathNode> moveableNodes; //Must be public or becomes null
@@ -113,6 +114,7 @@ public class BattleMaster : MonoBehaviour
 
         defaultCharacter = characterList[characterListIndex];
         gameMaster = GameMaster.instance.GetComponent<GameMaster>();
+        pauseMenu = FindObjectOfType<PauseMenu>().GetComponent<PauseMenu>();
         pathfinding = FindObjectOfType<Pathfinding>().GetComponent<Pathfinding>(); 
         battleHud.SetActive(false);
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
@@ -350,9 +352,17 @@ public class BattleMaster : MonoBehaviour
         moveableNodes.Clear();
     }
 
-    void DisplayTutorial()
+    private void DisplayTutorial()
     {
         tutorialMessage.SetActive(true);
+        nextTurnButton.interactable = false;
+        pauseMenu.gamePaused = true;
+    }
+
+    public void CloseTutorial()
+    {
+        nextTurnButton.interactable = true;
+        pauseMenu.gamePaused = false;
     }
 
     public void NextTurn()
