@@ -17,8 +17,6 @@ public class Pathfinding : MonoBehaviour
     public float speed = .01f;
     [Tooltip("The smaller this number the better the performance")]
     public int furthestAnyoneCanMove = 20; //99 speed
-    [Tooltip("The distance away from enemies you have to be for them to leave the battle")]
-    public int giveUpDistance = 25;
     [HideInInspector]
     public PathNode lastNodeRemoved;
 
@@ -33,11 +31,13 @@ public class Pathfinding : MonoBehaviour
 
     public List<PathNode> FindPath(PathNode endNode, PathNode startNode, int maxNodes, bool ignoreOccupied = false)
     {
+        /* I've never seen this error message, so I will comment it out for performance
         if (endNode == null)
         {
             Debug.LogWarning("endNode was null");
             return null;
         }
+        */
         if (startNode == endNode)
         {
             return new List<PathNode> { endNode };

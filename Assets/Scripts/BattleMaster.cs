@@ -488,6 +488,7 @@ public class BattleMaster : MonoBehaviour
         if (livingPlayers.Count > 0)
         {
             List<PathNode> closestPlayerPath = FindNearestPlayer(); //Also determines the targetedPlayer
+            Movement movement = currentCharacter.GetComponentInParent<Movement>();
             if (closestPlayerPath == null && livingEnemies.Count > 0)
             {
                 NextTurn();
@@ -498,11 +499,11 @@ public class BattleMaster : MonoBehaviour
                 if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x < 0)
                 {
                     //If the enemy is facing left flip them
-                    if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    if (movement.spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
                     {
                         currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
                     }
-                    else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    else if (movement.spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
                     {
                         currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
                     }
@@ -511,23 +512,24 @@ public class BattleMaster : MonoBehaviour
                 if (currentCharacter.transform.position.x - targetedPlayer.transform.position.x >= 0)
                 {
                     //If the enemy is facing right flip them
-                    if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
+                    if (movement.spriteFacingLeft == false && currentCharacter.GetComponent<SpriteRenderer>().flipX == false)
                     {
                         currentCharacter.GetComponent<SpriteRenderer>().flipX = true;
                     }
-                    else if (currentCharacter.GetComponentInParent<Movement>().spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
+                    else if (movement.spriteFacingLeft == true && currentCharacter.GetComponent<SpriteRenderer>().flipX == true)
                     {
                         currentCharacter.GetComponent<SpriteRenderer>().flipX = false;
                     }
                 }
+                movement.attackAtEnd = false;
                 currentCharacter.GetComponent<Animator>().SetTrigger("StartAttack");
                 AudioManager.instance.Play(currentCharacter.attackSound);
             }
             else if (closestPlayerPath != null && closestPlayerPath.Count() != 0)
             {
                 //Pathfind along that path until they are no longer validMovementNodes
-                currentCharacter.GetComponentInParent<Movement>().endTurnAfterMove = true;
-                currentCharacter.GetComponentInParent<Movement>().MoveOnPath(closestPlayerPath);
+                movement.endTurnAfterMove = true;
+                movement.MoveOnPath(closestPlayerPath);
             }
         }
     }
@@ -562,7 +564,7 @@ public class BattleMaster : MonoBehaviour
             }
             else if (shortestPath.Count > 0 && pathfinding.lastNodeRemoved == gameMaster.partyNode) //If the party is within the move range
             {
-                currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
+                currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true; //This is not what is set to cause the error
             }
             return shortestPath;
         }
