@@ -205,9 +205,10 @@ public class CursorOverlapCircle : MonoBehaviour
                 node.transform.GetChild(0).gameObject.SetActive(true);
                 if (grid.gridClicked) //Player movement
                 {
-                    RemoveTutorialPopups();
                     if (!battleMaster.battleStarted)
                     {
+                        RemoveTutorialPopups();
+                        battleMaster.showTutorialPopups = false;
                         gameMaster.targetNode = node;
                         node.destinationNode = true;
                     }
@@ -245,7 +246,7 @@ public class CursorOverlapCircle : MonoBehaviour
 
     public void EnableTutorialPopups()
     {
-        if (battleMaster.showTutorial)
+        if (battleMaster.showTutorialPopups)
         {
             clickHereAnimation.SetActive(true);
             clickHereCircle.SetActive(true);

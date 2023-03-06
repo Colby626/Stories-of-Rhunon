@@ -59,6 +59,7 @@ public class BattleMaster : MonoBehaviour
     public CursorOverlapCircle cursorOverlapCircle;
     private GameMaster gameMaster;
     private Pathfinding pathfinding;
+    private EquipmentManager equipmentManager;
     private CustomGrid grid;
     private PauseMenu pauseMenu;
 
@@ -74,6 +75,8 @@ public class BattleMaster : MonoBehaviour
     public bool firstBattle = true;
     [HideInInspector]
     public bool showTutorial = true;
+    [HideInInspector]
+    public bool showTutorialPopups = true;
 
     [Header("Inventory:")]
     public GameObject inventory;
@@ -117,7 +120,7 @@ public class BattleMaster : MonoBehaviour
         defaultCharacter = characterList[characterListIndex];
         gameMaster = GameMaster.instance.GetComponent<GameMaster>();
         pauseMenu = FindObjectOfType<PauseMenu>().GetComponent<PauseMenu>();
-        pathfinding = FindObjectOfType<Pathfinding>().GetComponent<Pathfinding>(); 
+        pathfinding = FindObjectOfType<Pathfinding>().GetComponent<Pathfinding>();
         battleHud.SetActive(false);
         cursorOverlapCircle = FindObjectOfType<CursorOverlapCircle>().GetComponent<CursorOverlapCircle>();
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
@@ -372,6 +375,7 @@ public class BattleMaster : MonoBehaviour
     public void DisableTutorial() //Called from button
     {
         showTutorial = false;
+        showTutorialPopups = false;
     }
 
     public void NextTurn()
@@ -672,11 +676,12 @@ public class BattleMaster : MonoBehaviour
 
         AudioManager.instance.Play("TurningPageInBookSound");
         inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
-        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
+        equipmentManager = GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>();
+        equipmentManager.ClearEquipmentUI();
 
         inventoryUI.GetComponent<InventoryUI>().UpdateUI();
         equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
-        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI();
+        equipmentManager.UpdateEquipmentUI();
     } //Called from button
     public void PreviousCharacter() //remove buttons during battle
     {
@@ -689,11 +694,12 @@ public class BattleMaster : MonoBehaviour
 
         AudioManager.instance.Play("TurningPageInBookSound");
         inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
-        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().ClearEquipmentUI();
+        equipmentManager = GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>();
+        equipmentManager.ClearEquipmentUI();
 
         inventoryUI.GetComponent<InventoryUI>().UpdateUI();
         equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
-        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI();
+        equipmentManager.UpdateEquipmentUI();
     } //Called from button
 
     #endregion
