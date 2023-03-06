@@ -213,6 +213,12 @@ public class BattleMaster : MonoBehaviour
         }
     }
 
+    public void JoinBattle(GameObject newParticipant)
+    {
+        //characters.Add(newParticipant);
+        livingEnemies.Add(newParticipant);
+    }
+
     IEnumerator WaitHalfASecond()
     {
         yield return new WaitForSeconds(0.5f);

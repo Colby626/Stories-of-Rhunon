@@ -117,6 +117,42 @@ public class GameMaster : MonoBehaviour
         StartBattle();
     }
 
+    /*
+    public void JoinBattle(GameObject caller)
+    {
+        if (participants.Contains(caller))
+        {
+            Debug.Log("caller already in battle" + caller.name);
+            return;
+        }
+        else
+        {
+            Debug.Log("caller joining battle" + caller.name);
+        }
+        //check tiles outward from contact with enemy and player with a distance of distanceToLookForPartcipants and put them in participants list then call StartBattle
+        colliders = Physics2D.OverlapBoxAll(caller.transform.position, new Vector2(caller.GetComponentInParent<Movement>().distanceToLookForParticipants, caller.GetComponentInParent<Movement>().distanceToLookForParticipants), 0);
+
+        foreach (Collider2D collider in colliders) //This should be redone for optimization and just set in the editor 
+        {
+            if (collider.transform.gameObject.CompareTag("Participant"))
+            {
+                if (participants.Contains(collider.gameObject))
+                {
+                    continue;
+                }
+
+                if (!collider.GetComponent<CharacterSheet>().isPlayer)
+                {
+                    participants.Add(collider.gameObject); 
+                    battleMaster.JoinBattle(collider.gameObject);
+                    //JoinBattle(collider.gameObject);
+                    collider.GetComponentInParent<Movement>().lookingForParticipants = true;
+                }
+            }
+        }
+    }
+    */
+
     private void StartBattle()
     {
         foreach (GameObject participant in participants)

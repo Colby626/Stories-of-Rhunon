@@ -204,22 +204,45 @@ public class Movement : MonoBehaviour
 
     private void PlayerInRangeCheck()
     {
-        //If a pathnode within an enemies visible range is the partynode, start the battle sequence
-        if (!battleMaster.battleStarted && !lookingForParticipants) //Could change the repeated raycast into a large collider and use OnTriggerEnter to do this
+        if (!lookingForParticipants)
         {
-            RaycastHit2D[] visibleRange = Physics2D.CircleCastAll(transform.position, viewRange, Vector2.zero);
-            foreach (RaycastHit2D hit in visibleRange)
+            //If a pathnode within an enemies visible range is the partynode, start the battle sequence
+            //If you remove !battleMaster.battleStarted, it is a full crash
+            if (!battleMaster.battleStarted) //Could change the repeated raycast into a large collider and use OnTriggerEnter to do this
             {
-                if (hit.transform.gameObject.GetComponent<PathNode>())
+                Debug.Log("Checking to start battle");
+                RaycastHit2D[] visibleRange = Physics2D.CircleCastAll(transform.position, viewRange, Vector2.zero);
+                foreach (RaycastHit2D hit in visibleRange)
                 {
-                    if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode)
+                    if (hit.transform.gameObject.GetComponent<PathNode>())
                     {
-                        if (wanderNode != null)
+                        if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode)
                         {
-                            wanderNode.destinationNode = false;
+                            if (wanderNode != null)
+                            {
+                                wanderNode.destinationNode = false;
+                            }
+                            lookingForParticipants = true;
+                            Debug.Log("Starting battle");
+                            gameMaster.LookForParticipants(gameObject); 
                         }
-                        lookingForParticipants = true;
-                        gameMaster.LookForParticipants(gameObject); 
+                    }
+                }
+            }
+            else if (!gameMaster.participants.Contains(gameObject) && battleMaster.currentCharacter.isPlayer) //Joining battles in progress
+            {
+                Debug.Log("Checking to join battle");
+                RaycastHit2D[] visibleRange = Physics2D.CircleCastAll(transform.position, viewRange, Vector2.zero);
+                foreach (RaycastHit2D hit in visibleRange)
+                {
+                    if (hit.transform.gameObject.GetComponent<PathNode>())
+                    {
+                        if (hit.transform.gameObject.GetComponent<PathNode>() == gameMaster.partyNode)
+                        {
+                            Debug.Log("Joining a battle in progress, might be adding " + gameObject.name);
+                            lookingForParticipants = true;
+                            //gameMaster.JoinBattle(gameObject);
+                        }
                     }
                 }
             }
