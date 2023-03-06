@@ -82,14 +82,17 @@ public class CursorOverlapCircle : MonoBehaviour
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 mouseExit = false;
                 characterHadBeenFound = false;
-                if (oldCharacter.gameObject != battleMaster.currentCharacter && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+                if (oldMouseOver != null)
                 {
-                    //Display status of current character
-                    oldMouseOver.ActivateStatus(battleMaster.currentCharacter.GetComponent<CharacterSheet>());
+                    if (oldCharacter.gameObject != battleMaster.currentCharacter && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+                    {
+                        //Display status of current character
+                        oldMouseOver.ActivateStatus(battleMaster.currentCharacter.GetComponent<CharacterSheet>());
+                    }
+                    oldCharacter.transform.GetChild(0).gameObject.SetActive(false);
+                    oldCharacter.GetComponent<SpriteRenderer>().material = oldMouseOver.characterMaterial;
+                    oldMouseOver.isHighlighted = false;
                 }
-                oldCharacter.transform.GetChild(0).gameObject.SetActive(false);
-                oldCharacter.GetComponent<SpriteRenderer>().material = oldMouseOver.characterMaterial;
-                oldMouseOver.isHighlighted = false;
             }
 
             if (characterFound && !pauseMenu.gamePaused)
