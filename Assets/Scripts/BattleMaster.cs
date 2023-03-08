@@ -21,7 +21,7 @@ public class BattleMaster : MonoBehaviour
     public bool battleStarted = false;
 
     public List<GameObject> turnOrder = new();
-    public List<GameObject> characters;
+    public List<GameObject> charactersInBattle; 
     public List<GameObject> livingPlayers;
     public List<GameObject> livingEnemies;
     public CharacterSheet currentCharacter;
@@ -113,8 +113,8 @@ public class BattleMaster : MonoBehaviour
         if (battleStarted)
         {
             characterArray = GameObject.FindGameObjectsWithTag("Participant");
-            characters = new List<GameObject>(characterArray);
-            StartBattle(characters);
+            charactersInBattle = new List<GameObject>(characterArray);
+            StartBattle(charactersInBattle);
         }
 
         defaultCharacter = characterList[characterListIndex];
@@ -157,15 +157,15 @@ public class BattleMaster : MonoBehaviour
 
     #region Battle Functions
     public void StartBattle(List<GameObject> participants)
-    {
-        characters = participants;
+    {        
+        charactersInBattle = participants.ToList();
         battleStarted = true;
         battleHud.SetActive(true);
         battleHud.GetComponentInChildren<Animator>().SetTrigger("BattleStart");
         battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", true);
         StartingTurnOrder();
 
-        foreach (GameObject character in characters)
+        foreach (GameObject character in charactersInBattle)
         {
             if (character.GetComponent<CharacterSheet>().isPlayer)
             {
@@ -173,7 +173,7 @@ public class BattleMaster : MonoBehaviour
             }
         }
 
-        foreach (GameObject character in characters)
+        foreach (GameObject character in charactersInBattle)
         {
             if (!character.GetComponent<CharacterSheet>().isPlayer)
             {
@@ -215,9 +215,15 @@ public class BattleMaster : MonoBehaviour
 
     public void JoinBattle(GameObject newParticipant)
     {
-        //characters.Add(newParticipant);
-        livingEnemies.Add(newParticipant);
+        charactersInBattle.Add(newParticipant); 
+        livingEnemies.Add(newParticipant); 
+        for (int i = 0; i < turnOrder.Count; i++) 
+        {
+            turnOrder.RemoveAt(1);
+        }
+        CalculateTurnOrder(); 
     }
+
 
     IEnumerator WaitHalfASecond()
     {
@@ -435,7 +441,7 @@ public class BattleMaster : MonoBehaviour
         //adjusts the priority in the turn order of all characters
         while (!exit) //runs when nothing is in tempList
         {
-            foreach (GameObject character in characters)
+            foreach (GameObject character in charactersInBattle)
             {
                 character.GetComponent<CharacterSheet>().turnOrderPriority += character.GetComponent<CharacterSheet>().characterStats.Reflexes;
 
@@ -447,9 +453,9 @@ public class BattleMaster : MonoBehaviour
                 }
             }
 
-            List<GameObject> tempList = turnOrder.Intersect(characters).ToList();
+            List<GameObject> tempList = turnOrder.Intersect(charactersInBattle).ToList();
 
-            if (tempList.Count == characters.Count && turnOrder.Count >= portraits.Count) //Once each character is in the list once AND there are enough characters in the turn order to fill all the portraits 
+            if (tempList.Count == charactersInBattle.Count && turnOrder.Count >= portraits.Count) //Once each character is in the list once AND there are enough characters in the turn order to fill all the portraits 
             {
                 exit = true;
             }
@@ -466,7 +472,7 @@ public class BattleMaster : MonoBehaviour
         //adjusts the priority in the turn order of all characters
         while (!exit)     //runs while nothing is in tempList
         {
-            foreach (GameObject character in characters)
+            foreach (GameObject character in charactersInBattle)
             {
                 character.GetComponent<CharacterSheet>().turnOrderPriority += character.GetComponent<CharacterSheet>().characterStats.Reflexes;
 
@@ -478,9 +484,9 @@ public class BattleMaster : MonoBehaviour
                 }
             }
 
-            List<GameObject> tempList = turnOrder.Intersect(characters).ToList();
+            List<GameObject> tempList = turnOrder.Intersect(charactersInBattle).ToList();
 
-            if (tempList.Count == characters.Count)
+            if (tempList.Count == charactersInBattle.Count)
             {
                 exit = true;
             }
@@ -576,7 +582,7 @@ public class BattleMaster : MonoBehaviour
         }
         Debug.Log("Removing current enemy, the player is too far away");
         livingEnemies.Remove(currentCharacter.gameObject);
-        characters.Remove(currentCharacter.gameObject);
+        charactersInBattle.Remove(currentCharacter.gameObject);
         while (turnOrder.Contains(currentCharacter.gameObject))
         {
             turnOrder.Remove(currentCharacter.gameObject);
@@ -903,7 +909,7 @@ public class BattleMaster : MonoBehaviour
             turnOrderCalculated = false;
             attackDone = false;
             turnOrder.Clear();
-            characters.Clear();
+            charactersInBattle.Clear();
             livingPlayers.Clear();
             livingEnemies.Clear();
             ResetMovementLimit();

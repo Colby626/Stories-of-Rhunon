@@ -2,7 +2,6 @@ using System.Collections.Generic; //for Lists
 using UnityEngine;
 using System.Linq; //for livingEnemies.Count()
 using TMPro;
-using UnityEditor.Tilemaps;
 
 [System.Serializable]
 public class CharacterEquipment : Component
@@ -238,7 +237,7 @@ public class CharacterSheet : MonoBehaviour
     {
         battleMaster.livingPlayers.Remove(gameObject);
         battleMaster.livingEnemies.Remove(gameObject);
-        battleMaster.characters.Remove(gameObject);
+        battleMaster.charactersInBattle.Remove(gameObject);
         while (battleMaster.turnOrder.Contains(gameObject))
         {
             battleMaster.turnOrder.Remove(gameObject);
