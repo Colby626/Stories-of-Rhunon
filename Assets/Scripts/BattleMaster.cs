@@ -77,6 +77,8 @@ public class BattleMaster : MonoBehaviour
     public bool showTutorial = true;
     [HideInInspector]
     public bool showTutorialPopups = true;
+    [HideInInspector]
+    public bool limitMovementDone = false;
 
     [Header("Inventory:")]
     public GameObject inventory;
@@ -358,6 +360,7 @@ public class BattleMaster : MonoBehaviour
                 }
             }
         }
+        limitMovementDone = true;
     }
 
     private void ResetMovementLimit()
@@ -392,6 +395,7 @@ public class BattleMaster : MonoBehaviour
 
     public void NextTurn()
     {
+        limitMovementDone = false;
         ResetMovementLimit();
         grid.gridClicked = false;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);

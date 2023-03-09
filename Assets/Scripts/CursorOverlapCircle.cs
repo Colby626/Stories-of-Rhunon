@@ -134,8 +134,7 @@ public class CursorOverlapCircle : MonoBehaviour
                         }
                     }
                 }
-                 
-
+                
                 if (!character.isPlayer && !character.isDead && !pauseMenu.gamePaused)
                 {
                     character.transform.GetChild(0).gameObject.SetActive(true);
@@ -161,7 +160,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 }
 
                 //Things to do when hovering over a character and the mouse is clicked (OnMouseDown)
-                if (Input.GetMouseButtonUp(0) && battleMaster.currentCharacter.isPlayer) //Returns true on the frame the user releases the mouse button
+                if (Input.GetMouseButtonUp(0) && battleMaster.currentCharacter.isPlayer && battleMaster.limitMovementDone) //Returns true on the frame the user releases the mouse button
                 {
                     character.MouseDown();
                 }

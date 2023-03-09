@@ -127,7 +127,7 @@ public class CharacterSheet : MonoBehaviour
         characterEquipment = new List<Equipment> { GetComponent<CharacterEquipment>().Head, GetComponent<CharacterEquipment>().Torso,
             GetComponent<CharacterEquipment>().Arms, GetComponent<CharacterEquipment>().Legs, GetComponent<CharacterEquipment>().ArmSlot1,
             GetComponent<CharacterEquipment>().ArmSlot2, GetComponent<CharacterEquipment>().Ring1, GetComponent<CharacterEquipment>().Ring2,
-            GetComponent<CharacterEquipment>().Neck };
+            GetComponent<CharacterEquipment>().Neck }; 
     }
     public void MouseDown()
     {
