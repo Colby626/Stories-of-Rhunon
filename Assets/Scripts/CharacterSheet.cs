@@ -123,11 +123,6 @@ public class CharacterSheet : MonoBehaviour
         gameMaster = GameMaster.instance.GetComponent<GameMaster>();
         partyMovement = gameMaster.party.GetComponent<Movement>();
         pathfinding = gameMaster.GetComponent<Pathfinding>();
-
-        characterEquipment = new List<Equipment> { GetComponent<CharacterEquipment>().Head, GetComponent<CharacterEquipment>().Torso,
-            GetComponent<CharacterEquipment>().Arms, GetComponent<CharacterEquipment>().Legs, GetComponent<CharacterEquipment>().ArmSlot1,
-            GetComponent<CharacterEquipment>().ArmSlot2, GetComponent<CharacterEquipment>().Ring1, GetComponent<CharacterEquipment>().Ring2,
-            GetComponent<CharacterEquipment>().Neck }; 
     }
     public void MouseDown()
     {
