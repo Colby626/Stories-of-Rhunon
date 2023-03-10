@@ -71,17 +71,17 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Speed
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Reflexes
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Strength
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}

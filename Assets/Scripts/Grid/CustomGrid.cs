@@ -79,6 +79,7 @@ public class CustomGrid : MonoBehaviour
             }
         }
         gridFinished = true;
+        Debug.Log("gridFinished = true and GridFinished.Invoke()");
         gridFinishedEvent.Invoke();
     }
 

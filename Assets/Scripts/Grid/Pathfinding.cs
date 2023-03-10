@@ -1,5 +1,5 @@
 using System.Collections.Generic; //For lists
-using System.IO;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
@@ -23,7 +23,7 @@ public class Pathfinding : MonoBehaviour
     private GameMaster gameMaster;
     private CustomGrid grid;
 
-    private void Start()
+    private void Awake()
     {
         gameMaster = FindObjectOfType<GameMaster>().GetComponent<GameMaster>();
         grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();

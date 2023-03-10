@@ -81,12 +81,12 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Reflexes
-      value: 38
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Strength
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
