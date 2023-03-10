@@ -70,6 +70,10 @@ public class PauseMenu : MonoBehaviour
         {
             statsMenu.SetActive(false);
         }
+        if (battleMaster.showTutorial)
+        {
+            FindObjectOfType<CursorOverlapCircle>().EnableTutorialPopups();
+        }
         audioMixer.SetFloat("PausedMasterVolume", 0);
         Time.timeScale = 1f;
         gamePaused = false;
@@ -82,7 +86,9 @@ public class PauseMenu : MonoBehaviour
         battleMaster.levelUpButton.SetActive(false);
         pauseMenu.SetActive(true);
         audioMixer.SetFloat("PausedMasterVolume", amountQuieterWhenPaused);
+        FindObjectOfType<CursorOverlapCircle>().RemoveTutorialPopups();
         Time.timeScale = 0f;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         gamePaused = true;
     }
 
