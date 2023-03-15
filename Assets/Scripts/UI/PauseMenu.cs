@@ -39,20 +39,23 @@ public class PauseMenu : MonoBehaviour
 
     public void Unpause()
     {
-        battleMaster.openInventoryButton.SetActive(true);
-        if (battleMaster.battleStarted && battleMaster.currentCharacter.isPlayer && battleMaster.currentCharacter.characterStats.XP >= battleMaster.currentCharacter.characterStats.XPtoLevelUp)
+        if (!battleMaster.inventoryOpen && !battleMaster.levelupScreenOpen)
         {
-            battleMaster.levelUpButton.SetActive(true);
-            battleMaster.levelUpCharacter = battleMaster.currentCharacter;
-        }
-        else
-        {
-            for (int i = 0; i < battleMaster.characterList.Count(); i++)
+            battleMaster.openInventoryButton.SetActive(true);
+            if (battleMaster.battleStarted && battleMaster.currentCharacter.isPlayer && battleMaster.currentCharacter.characterStats.XP >= battleMaster.currentCharacter.characterStats.XPtoLevelUp)
             {
-                if (battleMaster.characterList[i].characterStats.XP >= battleMaster.characterList[i].characterStats.XPtoLevelUp)
+                battleMaster.levelUpButton.SetActive(true);
+                battleMaster.levelUpCharacter = battleMaster.currentCharacter;
+            }
+            else
+            {
+                for (int i = 0; i < battleMaster.characterList.Count(); i++)
                 {
-                    battleMaster.levelUpButton.SetActive(true);
-                    battleMaster.levelUpCharacter = battleMaster.characterList[i];
+                    if (battleMaster.characterList[i].characterStats.XP >= battleMaster.characterList[i].characterStats.XPtoLevelUp)
+                    {
+                        battleMaster.levelUpButton.SetActive(true);
+                        battleMaster.levelUpCharacter = battleMaster.characterList[i];
+                    }
                 }
             }
         }
@@ -70,7 +73,7 @@ public class PauseMenu : MonoBehaviour
         {
             statsMenu.SetActive(false);
         }
-        if (battleMaster.showTutorial)
+        if (battleMaster.showTutorial && !battleMaster.inventoryOpen && !battleMaster.levelupScreenOpen)
         {
             FindObjectOfType<CursorOverlapCircle>().EnableTutorialPopups();
         }

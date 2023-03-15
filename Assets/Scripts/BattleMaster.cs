@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Linq; //For getting list counts
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
+using UnityEngine.Audio;
 
 public class BattleMaster : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class BattleMaster : MonoBehaviour
     public float textSpeed = 150f;
     public GameObject damagePopUp;
     public bool battleStarted = false;
+    public bool inventoryOpen = false;
+    public bool levelupScreenOpen = false;
 
     public List<GameObject> turnOrder = new();
     public List<GameObject> charactersInBattle; 
@@ -629,6 +632,10 @@ public class BattleMaster : MonoBehaviour
     #region Inventory Functions
     public void OpenInventory()
     {
+        inventoryOpen = true;
+        pauseMenu.audioMixer.SetFloat("PausedMasterVolume", pauseMenu.amountQuieterWhenPaused);
+        Time.timeScale = 0f;
+        pauseMenu.gamePaused = true;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         AudioManager.instance.Play("TurningPageInBookSound");
@@ -655,6 +662,10 @@ public class BattleMaster : MonoBehaviour
 
     public void CloseInventory()
     {
+        inventoryOpen = false;
+        pauseMenu.audioMixer.SetFloat("PausedMasterVolume", 0);
+        Time.timeScale = 1f;
+        pauseMenu.gamePaused = false;
         AudioManager.instance.Play("CloseBookSound");
         if (battleStarted)
         {
@@ -725,6 +736,10 @@ public class BattleMaster : MonoBehaviour
     #region LevelUp Functions
     public void LevelUp()
     {
+        levelupScreenOpen = true;
+        pauseMenu.audioMixer.SetFloat("PausedMasterVolume", pauseMenu.amountQuieterWhenPaused);
+        Time.timeScale = 0f;
+        pauseMenu.gamePaused = true;
         AudioManager.instance.Play("TurningPageInBookSound");
         battleHud.SetActive(false);
         openInventoryButton.SetActive(false);
@@ -869,6 +884,10 @@ public class BattleMaster : MonoBehaviour
 
     public void CloseLevelUpPanel()
     {
+        levelupScreenOpen = false;
+        pauseMenu.audioMixer.SetFloat("PausedMasterVolume", 0);
+        Time.timeScale = 1f;
+        pauseMenu.gamePaused = false;
         cursorOverlapCircle.EnableTutorialPopups();
         if (battleStarted)
         {

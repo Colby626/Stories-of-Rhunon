@@ -949,7 +949,7 @@ RectTransform:
   - {fileID: 2369636193001107532}
   - {fileID: 2248037127036246807}
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2676,7 +2676,7 @@ RectTransform:
   m_Children:
   - {fileID: 1713227024980046108}
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -3229,7 +3229,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4194,7 +4194,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 462432480767351378}
-  - {fileID: 2067279703159981465}
   - {fileID: 2067279703249271584}
   - {fileID: 2067279703245071651}
   - {fileID: 2067279703101732424}
@@ -4206,6 +4205,7 @@ RectTransform:
   - {fileID: 230266538743326730}
   - {fileID: 8909329016514535004}
   - {fileID: 5649098683099148766}
+  - {fileID: 2067279703159981465}
   m_Father: {fileID: 3704339911316333324}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6836,7 +6836,7 @@ RectTransform:
   - {fileID: 8510823371976670487}
   - {fileID: 3400293799102656649}
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7418,7 +7418,7 @@ RectTransform:
   - {fileID: 1515237510698855120}
   - {fileID: 2128785765149649880}
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7544,7 +7544,7 @@ RectTransform:
   - {fileID: 2067279701852971177}
   - {fileID: 5001821481395469743}
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 1
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7898,7 +7898,7 @@ RectTransform:
   - {fileID: 2067279701729049800}
   - {fileID: 2067279702367290647}
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7976,7 +7976,7 @@ RectTransform:
   - {fileID: 2067279701998978499}
   - {fileID: 2067279702488407530}
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -21271,7 +21271,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22093,7 +22093,7 @@ MonoBehaviour:
     type: 3}
   battleStarted: 0
   turnOrder: []
-  characters: []
+  charactersInBattle: []
   livingPlayers: []
   livingEnemies: []
   currentCharacter: {fileID: 0}
@@ -22152,6 +22152,7 @@ MonoBehaviour:
   firstBattle: 1
   showTutorial: 1
   showTutorialPopups: 1
+  limitMovementDone: 0
   inventory: {fileID: 2067279703101732427}
   inventoryUI: {fileID: 2067279702554336515}
   equipmentPortrait: {fileID: 2067279702460596136}
@@ -29665,7 +29666,7 @@ RectTransform:
   m_Children:
   - {fileID: 6373480874265211207}
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -31006,7 +31007,7 @@ RectTransform:
   m_Children:
   - {fileID: 6212283020022882403}
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -31367,7 +31368,7 @@ PrefabInstance:
     - target: {fileID: 1910492410983359305, guid: b7eb40204e790a442aae8b472de9d381,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1910492410983359305, guid: b7eb40204e790a442aae8b472de9d381,
         type: 3}
