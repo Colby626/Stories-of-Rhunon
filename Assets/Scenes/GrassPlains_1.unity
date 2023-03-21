@@ -138,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.477909
+      value: 2.522091
       objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
@@ -115444,6 +115444,11 @@ PrefabInstance:
         type: 3}
       propertyPath: characterList.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: turnOrderPriorityReduction
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}

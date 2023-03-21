@@ -11,6 +11,9 @@ public class BattleMaster : MonoBehaviour
     #region Variables
     [SerializeField]
     private int multiTurnThreshold = 50;
+    [Tooltip("The amount of turnOrderPriority that gets reduced when a new battler joins. 0 makes it to where people currently in battle have turn order priority advantage, higher numbers to a max of the multiTurnThreshold makes this advantage go away.")]
+    [SerializeField]
+    private int turnOrderPriorityReduction;
     [SerializeField]
     private int howFarInTheFutureYouCalculateTurnOrder = 50;
     [Tooltip("The time in seconds it waits before letting an AI run their turn")]
@@ -220,6 +223,14 @@ public class BattleMaster : MonoBehaviour
 
     public void JoinBattle(GameObject newParticipant)
     {
+        foreach (GameObject character in charactersInBattle)
+        {
+            character.GetComponent<CharacterSheet>().turnOrderPriority -= turnOrderPriorityReduction;
+            if (character.GetComponent<CharacterSheet>().turnOrderPriority < 0)
+            {
+                character.GetComponent<CharacterSheet>().turnOrderPriority = 0;
+            }
+        }
         charactersInBattle.Add(newParticipant); 
         livingEnemies.Add(newParticipant); 
         for (int i = 0; i < turnOrder.Count; i++) 
@@ -583,7 +594,7 @@ public class BattleMaster : MonoBehaviour
             }
             else if (shortestPath.Count > 0 && pathfinding.lastNodeRemoved == gameMaster.partyNode) //If the party is within the move range
             {
-                currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true; //This is not what is set to cause the error
+                currentCharacter.GetComponentInParent<Movement>().attackAtEnd = true;
             }
             return shortestPath;
         }

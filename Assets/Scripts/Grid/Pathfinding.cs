@@ -1,5 +1,4 @@
 using System.Collections.Generic; //For lists
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
@@ -20,14 +19,10 @@ public class Pathfinding : MonoBehaviour
     [HideInInspector]
     public PathNode lastNodeRemoved;
 
-    private GameMaster gameMaster;
-    private CustomGrid grid;
-
-    private void Awake()
-    {
-        gameMaster = FindObjectOfType<GameMaster>().GetComponent<GameMaster>();
-        grid = FindObjectOfType<CustomGrid>().GetComponent<CustomGrid>();
-    }
+    //[HideInInspector]
+    public GameMaster gameMaster;
+    //[HideInInspector]
+    public CustomGrid grid;
 
     public List<PathNode> FindPath(PathNode endNode, PathNode startNode, int maxNodes, bool ignoreOccupied = false)
     {

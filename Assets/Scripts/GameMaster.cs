@@ -41,6 +41,8 @@ public class GameMaster : MonoBehaviour
             instance.party = GameObject.FindGameObjectWithTag("Party");
             instance.hoveringOverButton = false;
             instance.participants.Clear();
+            instance.GetComponent<Pathfinding>().gameMaster = instance;
+            instance.GetComponent<Pathfinding>().grid = instance.grid;
             for (int i = 0; i < participants.Count; i++)
             {
                 instance.participants.RemoveAt(0);
@@ -52,6 +54,8 @@ public class GameMaster : MonoBehaviour
         instance.grid = FindObjectOfType<CustomGrid>();
         instance.battleMaster = FindObjectOfType<BattleMaster>();
         instance.party = GameObject.FindGameObjectWithTag("Party");
+        GetComponent<Pathfinding>().gameMaster = instance;
+        GetComponent<Pathfinding>().grid = instance.grid;
     }
 
     private void Update()
@@ -119,7 +123,7 @@ public class GameMaster : MonoBehaviour
 
     public void JoinBattle(GameObject caller)
     {
-        if (participants.Contains(caller))
+        if (participants.Contains(caller) || Vector2.Distance(battleMaster.currentCharacter.GetComponentInParent<Movement>().occupyingNode.transform.position, partyNode.transform.position) > GetComponent<Pathfinding>().furthestAnyoneCanMove * 2)
         {
             return;
         }
