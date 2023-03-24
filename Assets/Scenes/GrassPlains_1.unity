@@ -115448,7 +115448,7 @@ PrefabInstance:
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: turnOrderPriorityReduction
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
@@ -116062,6 +116062,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 85144525}
     m_Modifications:
+    - target: {fileID: 3536630918814662491, guid: 14aa5a369edc5404092a96ae78a24712,
+        type: 3}
+      propertyPath: Health
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3536630918814662491, guid: 14aa5a369edc5404092a96ae78a24712,
         type: 3}
       propertyPath: killToWin

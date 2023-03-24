@@ -50,7 +50,7 @@ public class AudioManager : MonoBehaviour
             Play("MainMenuMusic");
         }
 
-        else if (SceneManager.GetSceneByName("GrassPlains_1").isLoaded)
+        else if (SceneManager.GetSceneByName("GrassPlains_1").isLoaded || SceneManager.GetSceneByName("GrassPlainsDemo").isLoaded)
         {
             Play("ExploringMusic");
         }
