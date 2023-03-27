@@ -235,9 +235,8 @@ public class BattleMaster : MonoBehaviour
         livingEnemies.Add(newParticipant); 
         for (int i = 0; i < turnOrder.Count; i++) 
         {
-            turnOrder.RemoveAt(1);
+            turnOrder.Clear();
         }
-        CalculateTurnOrder(); 
     }
 
 
