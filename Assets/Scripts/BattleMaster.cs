@@ -14,6 +14,9 @@ public class BattleMaster : MonoBehaviour
     [Tooltip("The amount of turnOrderPriority that gets reduced when a new battler joins. 0 makes it to where people currently in battle have turn order priority advantage, higher numbers to a max of the multiTurnThreshold makes this advantage go away.")]
     [SerializeField]
     private int turnOrderPriorityReduction;
+    [Tooltip("The amount of turnOrderPriority that is negated from 0 on a battler joining an in progress battle")]
+    [SerializeField]
+    private int turnOrderPriorityDisadvantage;
     [SerializeField]
     private int howFarInTheFutureYouCalculateTurnOrder = 50;
     [Tooltip("The time in seconds it waits before letting an AI run their turn")]
@@ -231,6 +234,7 @@ public class BattleMaster : MonoBehaviour
                 character.GetComponent<CharacterSheet>().turnOrderPriority = 0;
             }
         }
+        newParticipant.GetComponent<CharacterSheet>().turnOrderPriority -= turnOrderPriorityDisadvantage;
         charactersInBattle.Add(newParticipant); 
         livingEnemies.Add(newParticipant); 
         for (int i = 0; i < turnOrder.Count; i++) 
