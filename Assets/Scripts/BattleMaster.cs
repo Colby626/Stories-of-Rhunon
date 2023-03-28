@@ -425,7 +425,6 @@ public class BattleMaster : MonoBehaviour
         LimitMovement();
         LoadPortraits();
 
-        //If the next person in line is not a player the AI
         if (!currentCharacter.isPlayer)
         {
             nextTurnButton.interactable = false;
@@ -434,6 +433,7 @@ public class BattleMaster : MonoBehaviour
         }
         else
         {
+            gameMaster.GetComponent<CameraFollower>().SwitchFollow(currentCharacter.transform);
             nextTurnButton.interactable = true;
             inventoryButton.interactable = true;
         }
@@ -520,6 +520,7 @@ public class BattleMaster : MonoBehaviour
 
         if (livingPlayers.Count > 0)
         {
+            gameMaster.GetComponent<CameraFollower>().SwitchFollow(currentCharacter.transform);
             List<PathNode> closestPlayerPath = FindNearestPlayer(); //Also determines the targetedPlayer
             Movement movement = currentCharacter.GetComponentInParent<Movement>();
             if (closestPlayerPath == null && livingEnemies.Count > 0)

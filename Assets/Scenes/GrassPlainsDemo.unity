@@ -44894,7 +44894,7 @@ PrefabInstance:
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: turnOrderPriorityDisadvantage
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5620734273927968843, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}

@@ -185,5 +185,6 @@ public class GameMaster : MonoBehaviour
         movedOnTurn = false;
         participants.Clear();
         hoveringOverButton = false;
+        GetComponent<CameraFollower>().SwitchFollow(party.transform);
     }
 }

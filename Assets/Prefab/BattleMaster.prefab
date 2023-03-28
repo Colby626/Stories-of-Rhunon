@@ -22085,6 +22085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiTurnThreshold: 75
+  turnOrderPriorityReduction: 75
+  turnOrderPriorityDisadvantage: 50
   howFarInTheFutureYouCalculateTurnOrder: 50
   delayBeforeEnemyTurns: 1
   timeToDestroyFloatingDamageNumbers: 1.2
@@ -22092,6 +22094,8 @@ MonoBehaviour:
   damagePopUp: {fileID: 7973564843960089088, guid: 4acb551cc8e8ba649a0f890c7d1f4fa2,
     type: 3}
   battleStarted: 0
+  inventoryOpen: 0
+  levelupScreenOpen: 0
   turnOrder: []
   charactersInBattle: []
   livingPlayers: []

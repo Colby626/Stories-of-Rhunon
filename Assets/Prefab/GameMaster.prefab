@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1211944257266054045}
   - component: {fileID: 1535606136392239002}
   - component: {fileID: 1659767146}
+  - component: {fileID: 3409531250776509292}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GameMaster
@@ -45,17 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fdd27f8a2939340b4065c554a2003c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToLookForParticipants: 15
-  participants: []
   highlightMaterial: {fileID: 2100000, guid: 80f6ae4829e86d149aa2e7876877c084, type: 2}
+  partyNode: {fileID: 0}
+  targetNode: {fileID: 0}
+  movedOnTurn: 0
+  movedOnTurnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hoveringOverButton: 0
+  waitingOnEveryoneToStop: 0
+  participants: []
   party: {fileID: 0}
   battleMaster: {fileID: 0}
   grid: {fileID: 0}
-  partyNode: {fileID: 0}
-  targetNode: {fileID: 0}
-  startPositionDetermined: 0
-  movedOnTurn: 0
-  hoveringOverButton: 0
 --- !u!114 &1659767146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,3 +74,19 @@ MonoBehaviour:
   path: []
   colliders: []
   speed: 5
+  furthestAnyoneCanMove: 20
+  lastNodeRemoved: {fileID: 0}
+  gameMaster: {fileID: 0}
+  grid: {fileID: 0}
+--- !u!114 &3409531250776509292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904247318507742507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a914715572468f74f9a04d2c7ee2e1a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

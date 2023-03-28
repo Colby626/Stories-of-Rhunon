@@ -19,9 +19,9 @@ public class Pathfinding : MonoBehaviour
     [HideInInspector]
     public PathNode lastNodeRemoved;
 
-    //[HideInInspector]
+    [HideInInspector]
     public GameMaster gameMaster;
-    //[HideInInspector]
+    [HideInInspector]
     public CustomGrid grid;
 
     public List<PathNode> FindPath(PathNode endNode, PathNode startNode, int maxNodes, bool ignoreOccupied = false)
