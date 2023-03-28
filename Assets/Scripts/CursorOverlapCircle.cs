@@ -170,30 +170,32 @@ public class CursorOverlapCircle : MonoBehaviour
                 character.transform.GetChild(0).gameObject.SetActive(true);
             }
 
-        }
-
-        if (Input.GetMouseButtonUp(0) && !battleMaster.battleStarted && characterFound && !pauseMenu.gamePaused) //Open Inventory when clicking on a player outside of battle
-        {
-            if (character.Name == "Rhaal")
+            if (Input.GetMouseButtonUp(0) && !battleMaster.battleStarted) //Open Inventory when clicking on a player outside of battle
             {
-                battleMaster.characterListIndex = 0;
-                battleMaster.defaultCharacter = character;
-                oldCharacter.transform.GetChild(0).gameObject.SetActive(false);
-                oldCharacter.GetComponent<SpriteRenderer>().material = oldMouseOver.characterMaterial;
-                oldMouseOver.isHighlighted = false;
-
+                if (character.Name == "Rhaal")
+                {
+                    battleMaster.characterListIndex = 0;
+                    battleMaster.defaultCharacter = character;
+                    character.GetComponent<SpriteRenderer>().material = mouseOver.characterMaterial;
+                    mouseOver.isHighlighted = false;
+                }
+                else if (character.Name == "Dues")
+                {
+                    battleMaster.characterListIndex = 1;
+                    battleMaster.defaultCharacter = character;
+                    character.GetComponent<SpriteRenderer>().material = mouseOver.characterMaterial;
+                    mouseOver.isHighlighted = false;
+                }
+                else if (character.Name == "Tadhg")
+                {
+                    battleMaster.characterListIndex = 2;
+                    battleMaster.defaultCharacter = character;
+                    character.GetComponent<SpriteRenderer>().material = mouseOver.characterMaterial;
+                    mouseOver.isHighlighted = false;
+                }
+                RemoveTutorialPopups();
+                battleMaster.OpenInventory();
             }
-            else if (character.Name == "Dues")
-            {
-                battleMaster.characterListIndex = 1;
-                battleMaster.defaultCharacter = character;
-            }
-            else if (character.Name == "Tadhg")
-            {
-                battleMaster.characterListIndex = 2;
-                battleMaster.defaultCharacter = character;
-            }
-            battleMaster.OpenInventory();
         }
 
         //MouseOver on the nodes stuff:
