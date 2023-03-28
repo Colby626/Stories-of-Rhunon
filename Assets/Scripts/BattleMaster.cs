@@ -51,7 +51,8 @@ public class BattleMaster : MonoBehaviour
     private List<TextMeshProUGUI> namesList;
     [SerializeField]
     private List<StatBar> healthBars;
-    private int characterListIndex = 0;
+    [HideInInspector]
+    public int characterListIndex = 0;
     public List<CharacterSheet> characterList;
     public CharacterSheet levelUpCharacter;
     public CharacterSheet defaultCharacter;
@@ -673,7 +674,7 @@ public class BattleMaster : MonoBehaviour
             previousCharacterButton.SetActive(false);
             equipmentPortrait.sprite = currentCharacter.GetComponent<SpriteRenderer>().sprite;
         }
-    } //Called from button
+    } 
 
     public void CloseInventory()
     {

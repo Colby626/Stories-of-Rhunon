@@ -42,64 +42,68 @@ public class CursorOverlapCircle : MonoBehaviour
     {
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //MouseOver on the characters stuff:
-        if (battleMaster.battleStarted)
+        colliders = Physics2D.OverlapCircleAll(worldPosition, cursorRadius);
+
+        for (int i = 0; i < colliders.Length; i++)
         {
-            colliders = Physics2D.OverlapCircleAll(worldPosition, cursorRadius);
-
-            for (int i = 0; i < colliders.Length; i++)
+            if (i == 0)
             {
-                if (i == 0)
-                {
-                    characterFound = false;
-                }
-                if (colliders[i].GetComponent<CharacterSheet>())
-                {
-                    if (character != null && character != colliders[i].GetComponent<CharacterSheet>() && character != null) //Moved from one character to another
-                    {
-                        oldCharacter = character;
-                        oldMouseOver = mouseOver;
-                        mouseExit = true;
-                    }
-                    character = colliders[i].GetComponent<CharacterSheet>();
-                    characterFound = true;
-                    break;
-                }
-                if (i == colliders.Length - 1 && !characterFound)
-                {
-                    if (characterHadBeenFound && character != null) //Moved from a character to no character
-                    {
-                        oldCharacter = character;
-                        oldMouseOver = mouseOver;
-                        mouseExit = true;
-                    }
-                    character = null;
-                }
+                characterFound = false;
             }
-
-            //Thing to do when no longer hovering over a character that you were hovering over (OnMouseExit)
-            if (mouseExit && !pauseMenu.gamePaused)
+            if (colliders[i].GetComponent<CharacterSheet>())
             {
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                mouseExit = false;
-                characterHadBeenFound = false;
-                if (oldMouseOver != null)
+                if (character != null && character != colliders[i].GetComponent<CharacterSheet>() && character != null) //Moved from one character to another
+                {
+                    oldCharacter = character;
+                    oldMouseOver = mouseOver;
+                    mouseExit = true;
+                }
+                character = colliders[i].GetComponent<CharacterSheet>();
+                characterFound = true;
+                break;
+            }
+            if (i == colliders.Length - 1 && !characterFound)
+            {
+                if (characterHadBeenFound && character != null) //Moved from a character to no character
+                {
+                    oldCharacter = character;
+                    oldMouseOver = mouseOver;
+                    mouseExit = true;
+                }
+                character = null;
+            }
+        }
+
+        //Thing to do when no longer hovering over a character that you were hovering over (OnMouseExit)
+        if (mouseExit && !pauseMenu.gamePaused)
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            mouseExit = false;
+            characterHadBeenFound = false;
+            if (oldMouseOver != null)
+            {
+                if (battleMaster.battleStarted)
                 {
                     if (oldCharacter.gameObject != battleMaster.currentCharacter && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
                     {
                         //Display status of current character
                         oldMouseOver.ActivateStatus(battleMaster.currentCharacter.GetComponent<CharacterSheet>());
                     }
-                    oldCharacter.transform.GetChild(0).gameObject.SetActive(false);
-                    oldCharacter.GetComponent<SpriteRenderer>().material = oldMouseOver.characterMaterial;
-                    oldMouseOver.isHighlighted = false;
                 }
+                oldCharacter.transform.GetChild(0).gameObject.SetActive(false);
+                oldCharacter.GetComponent<SpriteRenderer>().material = oldMouseOver.characterMaterial;
+                oldMouseOver.isHighlighted = false;
             }
+        }
 
-            if (characterFound && !pauseMenu.gamePaused)
+        if (characterFound && !pauseMenu.gamePaused)
+        {
+            characterHadBeenFound = true;
+            //Things to do when hovering over players (OnMouseOver)
+            mouseOver = character.GetComponent<MouseOver>();
+
+            if (battleMaster.battleStarted)
             {
-                characterHadBeenFound = true;
-                //Things to do when hovering over players (OnMouseOver)
-                mouseOver = character.GetComponent<MouseOver>();
                 if (!character.isDead && character.isPlayer)
                 {
                     mouseOver.ActivateStatus(character);
@@ -111,7 +115,7 @@ public class CursorOverlapCircle : MonoBehaviour
                     {
                         //The plus 2.5 is for the player being able to attack enemies 1 space away from the distance they can move to and the .5 is from the half of the node they are in
                         //Will be changed to circleCast when limitMovement works properly
-                        RaycastHit2D[] boxCast = Physics2D.BoxCastAll(gameMaster.partyNode.transform.position, new Vector2(battleMaster.currentCharacter.characterStats.Speed/5 + 2.5f, battleMaster.currentCharacter.characterStats.Speed / 5 + 2.5f), 0, Vector2.zero);
+                        RaycastHit2D[] boxCast = Physics2D.BoxCastAll(gameMaster.partyNode.transform.position, new Vector2(battleMaster.currentCharacter.characterStats.Speed / 5 + 2.5f, battleMaster.currentCharacter.characterStats.Speed / 5 + 2.5f), 0, Vector2.zero);
                         foreach (RaycastHit2D hit in boxCast)
                         {
                             if (hit.transform.GetComponent<CharacterSheet>() == character)
@@ -124,7 +128,7 @@ public class CursorOverlapCircle : MonoBehaviour
                     {
                         //The 1.5 in size is for the half a node to get to the edge of the node you are at and 1 node further
                         //Will be changed to circleCast when limitMovement works properly
-                        RaycastHit2D[] boxCast = Physics2D.BoxCastAll(gameMaster.partyNode.transform.position, new Vector2(1.5f, 1.5f), 0, Vector2.zero); 
+                        RaycastHit2D[] boxCast = Physics2D.BoxCastAll(gameMaster.partyNode.transform.position, new Vector2(1.5f, 1.5f), 0, Vector2.zero);
                         foreach (RaycastHit2D hit in boxCast)
                         {
                             if (hit.transform.GetComponent<CharacterSheet>() == character)
@@ -134,7 +138,7 @@ public class CursorOverlapCircle : MonoBehaviour
                         }
                     }
                 }
-                
+
                 if (!character.isPlayer && !character.isDead && !pauseMenu.gamePaused)
                 {
                     character.transform.GetChild(0).gameObject.SetActive(true);
@@ -143,28 +147,53 @@ public class CursorOverlapCircle : MonoBehaviour
                     mouseOver.overheadNameText.text = character.Name;
                 }
 
-                if (!mouseOver.isHighlighted && !character.isDead && !pauseMenu.gamePaused)
-                {
-                    character.GetComponent<SpriteRenderer>().material = mouseOver.highlightMaterial;
-                    mouseOver.isHighlighted = true;
-                }
-
-                if (character.isDead || pauseMenu.gamePaused)
-                {
-                    character.transform.GetChild(0).gameObject.SetActive(false);
-                }
-
-                if (!character.isDead && !pauseMenu.gamePaused && !character.isPlayer)
-                {
-                    character.transform.GetChild(0).gameObject.SetActive(true);
-                }
-
                 //Things to do when hovering over a character and the mouse is clicked (OnMouseDown)
                 if (Input.GetMouseButtonUp(0) && battleMaster.currentCharacter.isPlayer && battleMaster.limitMovementDone) //Returns true on the frame the user releases the mouse button
                 {
                     character.MouseDown();
                 }
             }
+
+            if (!mouseOver.isHighlighted && !character.isDead && !pauseMenu.gamePaused) //Highlight
+            {
+                character.GetComponent<SpriteRenderer>().material = mouseOver.highlightMaterial;
+                mouseOver.isHighlighted = true;
+            }
+
+            if (character.isDead || pauseMenu.gamePaused)
+            {
+                character.transform.GetChild(0).gameObject.SetActive(false);
+            }
+
+            if (!character.isDead && !pauseMenu.gamePaused && !character.isPlayer)
+            {
+                character.transform.GetChild(0).gameObject.SetActive(true);
+            }
+
+        }
+
+        if (Input.GetMouseButtonUp(0) && !battleMaster.battleStarted && characterFound && !pauseMenu.gamePaused) //Open Inventory when clicking on a player outside of battle
+        {
+            if (character.Name == "Rhaal")
+            {
+                battleMaster.characterListIndex = 0;
+                battleMaster.defaultCharacter = character;
+                oldCharacter.transform.GetChild(0).gameObject.SetActive(false);
+                oldCharacter.GetComponent<SpriteRenderer>().material = oldMouseOver.characterMaterial;
+                oldMouseOver.isHighlighted = false;
+
+            }
+            else if (character.Name == "Dues")
+            {
+                battleMaster.characterListIndex = 1;
+                battleMaster.defaultCharacter = character;
+            }
+            else if (character.Name == "Tadhg")
+            {
+                battleMaster.characterListIndex = 2;
+                battleMaster.defaultCharacter = character;
+            }
+            battleMaster.OpenInventory();
         }
 
         //MouseOver on the nodes stuff:
