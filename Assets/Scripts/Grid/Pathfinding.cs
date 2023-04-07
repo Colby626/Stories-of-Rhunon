@@ -71,6 +71,12 @@ public class Pathfinding : MonoBehaviour
                     finalPath.RemoveAt(finalPath.Count - 1);
                     return TrimPath(CalculatePath(endNode), maxNodes);
                 }
+                if (endNode.chest != null) //Only when a player clicks on a chest outside of battle
+                {
+                    List<PathNode> finalPath = CalculatePath(endNode);
+                    finalPath.RemoveAt(finalPath.Count - 1);
+                    return TrimPath(finalPath, maxNodes);
+                }
                 return TrimPath(CalculatePath(endNode), maxNodes);
             }
 
@@ -79,7 +85,7 @@ public class Pathfinding : MonoBehaviour
 
             foreach (PathNode neighborNode in currentNode.GetNeighborNodes())
             {
-                if (ignoreOccupied == false && neighborNode.occupied && neighborNode != gameMaster.partyNode)
+                if (ignoreOccupied == false && neighborNode.occupied && neighborNode != gameMaster.partyNode || neighborNode.chest != null && neighborNode != endNode)
                 {
                     closedList.Add(neighborNode);
                 }

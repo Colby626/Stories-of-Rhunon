@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using System.Linq; //For getting list counts
 using TMPro; //For name text under turn order portraits
 using System.Collections; //For IEnumerator like Timer
-using UnityEngine.Audio;
 
 public class BattleMaster : MonoBehaviour
 {
@@ -69,7 +68,6 @@ public class BattleMaster : MonoBehaviour
     public CursorOverlapCircle cursorOverlapCircle;
     private GameMaster gameMaster;
     private Pathfinding pathfinding;
-    private EquipmentManager equipmentManager;
     private CustomGrid grid;
     private PauseMenu pauseMenu;
 
@@ -94,8 +92,23 @@ public class BattleMaster : MonoBehaviour
     public GameObject inventory;
     [SerializeField]
     private InventoryUI inventoryUI;
+    [HideInInspector]
+    public EquipmentManager equipmentManager;
     [SerializeField]
     private Image equipmentPortrait;
+    public GameObject chestMenu;
+    [SerializeField]
+    private GameObject chestInventory;
+    [SerializeField]
+    private InventoryUI chestInventoryUI;
+    [HideInInspector]
+    public EquipmentManager chestEquipmentManager;
+    [SerializeField]
+    private Image chestEquipmentPortrait;
+    [HideInInspector]
+    public Inventory chest;
+    [SerializeField]
+    private ChestUI chestContents; 
 
     #region Leveling Variables
     [Header("Leveling:")]
@@ -659,7 +672,7 @@ public class BattleMaster : MonoBehaviour
         openInventoryButton.SetActive(false);
         levelUpButton.SetActive(false);
         inventoryUI.GetComponent<InventoryUI>().UpdateUI();
-        GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().UpdateEquipmentUI(); //Updates inventory to match the right character
+        equipmentManager.UpdateEquipmentUI(); //Updates inventory to match the right character
 
         if (!battleStarted)
         {
@@ -675,6 +688,49 @@ public class BattleMaster : MonoBehaviour
             equipmentPortrait.sprite = currentCharacter.GetComponent<SpriteRenderer>().sprite;
         }
     } 
+
+    public void OpenChestMenu()
+    {
+        inventoryOpen = true;
+        pauseMenu.audioMixer.SetFloat("PausedMasterVolume", pauseMenu.amountQuieterWhenPaused);
+        Time.timeScale = 0f;
+        pauseMenu.gamePaused = true;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        gameMaster.hoveringOverButton = true;
+
+        //AudioManager.instance.Play("TurningPageInBookSound"); openingChestSound
+        chestMenu.SetActive(true);
+        openInventoryButton.SetActive(false);
+        levelUpButton.SetActive(false);
+        chestInventoryUI.GetComponent<InventoryUI>().UpdateUI();
+        chestEquipmentManager.UpdateEquipmentUI(); //Updates inventory to match the right character
+        chestEquipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
+
+        chestContents.UpdateChestUI();
+    }
+
+    public void CloseChestMenu()
+    {
+        inventoryOpen = false;
+        pauseMenu.audioMixer.SetFloat("PausedMasterVolume", 0);
+        Time.timeScale = 1f;
+        pauseMenu.gamePaused = false;
+        for (int i = 0; i < characterList.Count - 1; i++)
+        {
+            if (characterList[i].characterStats.XP >= characterList[i].characterStats.XPtoLevelUp)
+            {
+                levelUpButton.SetActive(true);
+            }
+        }
+        openInventoryButton.SetActive(true);
+        grid.gridClicked = false;
+        gameMaster.hoveringOverButton = false;
+        chestInventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
+        chestEquipmentManager.ClearEquipmentUI();
+        chestMenu.SetActive(false);
+
+        chestContents.ClearChestUI();
+    } //Called from button
 
     public void CloseInventory()
     {
@@ -721,7 +777,6 @@ public class BattleMaster : MonoBehaviour
 
         AudioManager.instance.Play("TurningPageInBookSound");
         inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
-        equipmentManager = GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>();
         equipmentManager.ClearEquipmentUI();
 
         inventoryUI.GetComponent<InventoryUI>().UpdateUI();
@@ -739,12 +794,46 @@ public class BattleMaster : MonoBehaviour
 
         AudioManager.instance.Play("TurningPageInBookSound");
         inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
-        equipmentManager = GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>();
         equipmentManager.ClearEquipmentUI();
 
         inventoryUI.GetComponent<InventoryUI>().UpdateUI();
         equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
         equipmentManager.UpdateEquipmentUI();
+    } //Called from button
+
+    public void ChestNextCharacter() //remove buttons during battle
+    {
+        characterListIndex++;
+        if (characterListIndex > characterList.Count - 1)
+        {
+            characterListIndex = 0;
+        }
+        defaultCharacter = characterList[characterListIndex];
+
+        AudioManager.instance.Play("TurningPageInBookSound");
+        chestInventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
+        chestEquipmentManager.ClearEquipmentUI();
+
+        chestInventoryUI.GetComponent<InventoryUI>().UpdateUI();
+        chestEquipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
+        chestEquipmentManager.UpdateEquipmentUI();
+    } //Called from button
+    public void ChestPreviousCharacter() //remove buttons during battle
+    {
+        characterListIndex--;
+        if (characterListIndex < 0)
+        {
+            characterListIndex = characterList.Count - 1;
+        }
+        defaultCharacter = characterList[characterListIndex];
+
+        AudioManager.instance.Play("TurningPageInBookSound");
+        chestInventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
+        chestEquipmentManager.ClearEquipmentUI();
+
+        chestInventoryUI.GetComponent<InventoryUI>().UpdateUI();
+        chestEquipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
+        chestEquipmentManager.UpdateEquipmentUI();
     } //Called from button
 
     #endregion

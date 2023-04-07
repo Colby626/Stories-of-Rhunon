@@ -14,6 +14,7 @@ public class PathNode : MonoBehaviour
     public GameObject occupyingAgent;
     public bool destinationNode = false;
     public bool validMovePosition;
+    public Inventory chest;
 
     public PathNode cameFromNode;
     public List<PathNode> neighborsList = new();
@@ -26,6 +27,19 @@ public class PathNode : MonoBehaviour
         validMovePosition = false;
     }
 
+    private void Start()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.01f);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].CompareTag("Chest"))
+            {
+                chest = colliders[i].GetComponent<Inventory>();
+                break;
+            }
+        }
+    }
+
     public void CalculateFCost()
     {
         fCost = gCost + hCost;
@@ -36,7 +50,7 @@ public class PathNode : MonoBehaviour
         return (Vector2)transform.position;
     }
 
-    public void CreateNeighboringNodesList() //do pathfinding grid once, have a list of participants
+    public void CreateNeighboringNodesList() //do pathfinding grid once
     {
         //Check Left
         if (x - 1 >= 0)

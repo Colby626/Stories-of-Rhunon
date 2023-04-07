@@ -58,6 +58,8 @@ public class Movement : MonoBehaviour
     public PathNode startingNode;
     [HideInInspector]
     public List<Vector2> vectorPath;
+    [HideInInspector]
+    public bool openChestAtEnd = false;
 
     private Vector3 startPosition;
     private Vector2 targetPosition;
@@ -395,6 +397,11 @@ public class Movement : MonoBehaviour
                     battleMaster.NextTurn();
                 }
             }
+            if (openChestAtEnd)
+            {
+                battleMaster.OpenChestMenu();
+                openChestAtEnd = false;
+            }
             isMoving = false;
         }
     }
@@ -433,7 +440,7 @@ public class Movement : MonoBehaviour
         {
             wanderTimer = Random.Range(wanderDelayMin, wanderDelayMax);
             wanderNode = wanderNodes[Random.Range(0, wanderNodes.Count)];
-            if (wanderNode.occupied || wanderNode.destinationNode) //If choosing an occupied node in the wander radius, rechoose
+            if (wanderNode.occupied || wanderNode.destinationNode || wanderNode.chest != null) //If choosing an occupied node in the wander radius or one that contains a chest, rechoose
             {
                 Wander();
                 return;

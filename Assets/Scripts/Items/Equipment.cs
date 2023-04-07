@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Equipment")]
 public class Equipment : Item
 {
-
     public EquipmentSlot equipSlot;     // What slot to equip it in
     public int damageNegation;
     public int damageIncrease;
@@ -16,30 +15,41 @@ public class Equipment : Item
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
         if (battleMaster.battleStarted)
         {
-            if (battleMaster.currentCharacter.GetComponent<Inventory>().items.Contains(this))
+            if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
             {
-                GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().Equip(this);  // Equip
-                RemoveFromInventory(this);  // Remove from inventory
+                battleMaster.equipmentManager.Unequip(this);  //Unequip
+                RemoveFromEquipment(equipSlot); //Remove from equipment
             }
-
-            else if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
+            else
             {
-                GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().Unequip(this);  //Unequip
-                RemoveFromEquipment(this.equipSlot); //Remove from equipment
+                battleMaster.equipmentManager.Equip(this);  // Equip
+                RemoveFromInventory(this);  //Remove from inventory
+            }
+        }
+        else if (battleMaster.chestMenu.activeSelf)
+        {
+            if (battleMaster.defaultCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
+            {
+                battleMaster.chestEquipmentManager.Unequip(this);  //Unequip
+                RemoveFromEquipment(equipSlot); //Remove from equipment
+            }
+            else
+            {
+                battleMaster.chestEquipmentManager.Equip(this);  // Equip
+                RemoveFromInventory(this);  //Remove from inventory
             }
         }
         else
         {
-            if (battleMaster.defaultCharacter.GetComponent<Inventory>().items.Contains(this))
+            if (battleMaster.defaultCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
             {
-                GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().Equip(this);  // Equip
-                RemoveFromInventory(this);  // Remove from inventory
+                battleMaster.equipmentManager.Unequip(this);  //Unequip
+                RemoveFromEquipment(equipSlot); //Remove from equipment
             }
-
-            else if (battleMaster.defaultCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
-            {
-                GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().Unequip(this);  //Unequip
-                RemoveFromEquipment(this.equipSlot); //Remove from equipment
+            else
+            { 
+                battleMaster.equipmentManager.Equip(this);  // Equip
+                RemoveFromInventory(this);  //Remove from inventory
             }
         }
     }

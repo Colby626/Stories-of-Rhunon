@@ -13,6 +13,7 @@ public class CursorOverlapCircle : MonoBehaviour
     private BattleMaster battleMaster;
     private PauseMenu pauseMenu;
     private CustomGrid grid;
+    private Texture2D currentCursorTexture;
 
     //Character variables
     private bool mouseExit = false;
@@ -29,6 +30,10 @@ public class CursorOverlapCircle : MonoBehaviour
     private bool nodeFound = false;
     private bool mouseExitNode = false;
 
+    //Chest variables
+    private bool chestFound = false;
+    public Texture2D chestCursorTexture;
+
 
     private void Start()
     {
@@ -41,6 +46,8 @@ public class CursorOverlapCircle : MonoBehaviour
     private void Update()
     {
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        #region CharacterMouseOver
         //MouseOver on the characters stuff:
         colliders = Physics2D.OverlapCircleAll(worldPosition, cursorRadius);
 
@@ -52,7 +59,7 @@ public class CursorOverlapCircle : MonoBehaviour
             }
             if (colliders[i].GetComponent<CharacterSheet>())
             {
-                if (character != null && character != colliders[i].GetComponent<CharacterSheet>() && character != null) //Moved from one character to another
+                if (character != null && character != colliders[i].GetComponent<CharacterSheet>()) //Moved from one character to another
                 {
                     oldCharacter = character;
                     oldMouseOver = mouseOver;
@@ -77,7 +84,7 @@ public class CursorOverlapCircle : MonoBehaviour
         //Thing to do when no longer hovering over a character that you were hovering over (OnMouseExit)
         if (mouseExit && !pauseMenu.gamePaused)
         {
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            SetCursor(null);
             mouseExit = false;
             characterHadBeenFound = false;
             if (oldMouseOver != null)
@@ -120,7 +127,7 @@ public class CursorOverlapCircle : MonoBehaviour
                         {
                             if (hit.transform.GetComponent<CharacterSheet>() == character)
                             {
-                                Cursor.SetCursor(battleMaster.attackCursorTexture, Vector2.zero, CursorMode.Auto);
+                                SetCursor(battleMaster.attackCursorTexture);
                             }
                         }
                     }
@@ -133,7 +140,7 @@ public class CursorOverlapCircle : MonoBehaviour
                         {
                             if (hit.transform.GetComponent<CharacterSheet>() == character)
                             {
-                                Cursor.SetCursor(battleMaster.attackCursorTexture, Vector2.zero, CursorMode.Auto);
+                                SetCursor(battleMaster.attackCursorTexture);
                             }
                         }
                     }
@@ -198,6 +205,9 @@ public class CursorOverlapCircle : MonoBehaviour
             }
         }
 
+        #endregion
+
+        #region NodeMouseOver
         //MouseOver on the nodes stuff:
         colliders = Physics2D.OverlapCircleAll(worldPosition, cursorRadius);
 
@@ -216,6 +226,17 @@ public class CursorOverlapCircle : MonoBehaviour
                 }
                 node = colliders[i].GetComponent<PathNode>();
                 nodeFound = true;
+                if (node.chest != null && !battleMaster.battleStarted && !gameMaster.hoveringOverButton)
+                {
+                    SetCursor(chestCursorTexture);
+                    battleMaster.chest = node.chest;
+                    chestFound = true;
+                }
+                else if (GetCursorTexture() == chestCursorTexture)
+                {
+                    SetCursor(null);
+                    chestFound = false;
+                }
                 break;
             }
             if (i == colliders.Length - 1 && !nodeFound) //If not over a node
@@ -225,14 +246,22 @@ public class CursorOverlapCircle : MonoBehaviour
                     previousNode = node;
                     mouseExitNode = true;
                 }
-                node = null; 
+                node = null;
+                if (GetCursorTexture() == chestCursorTexture)
+                {
+                    SetCursor(null);
+                }
+                chestFound = false;
             }
         }
         if (nodeFound)
         {
             if (!gameMaster.hoveringOverButton && !pauseMenu.gamePaused && !node.occupied)
             {
-                node.transform.GetChild(0).gameObject.SetActive(true);
+                if (!chestFound)
+                {
+                    node.transform.GetChild(0).gameObject.SetActive(true);
+                }
                 if (grid.gridClicked) //Player movement
                 {
                     if (!battleMaster.battleStarted)
@@ -241,9 +270,13 @@ public class CursorOverlapCircle : MonoBehaviour
                         battleMaster.showTutorialPopups = false;
                         gameMaster.targetNode = node;
                         node.destinationNode = true;
+                        if (chestFound)
+                        {
+                            gameMaster.party.GetComponent<Movement>().openChestAtEnd = true;
+                        }
                     }
                     //Player movement in battle
-                    if (battleMaster.battleStarted && node.validMovePosition && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer)
+                    if (battleMaster.battleStarted && node.validMovePosition && !gameMaster.movedOnTurn && battleMaster.currentCharacter.GetComponent<CharacterSheet>().isPlayer && !chestFound)
                     {
                         gameMaster.targetNode = node;
                         gameMaster.movedOnTurn = true;
@@ -265,6 +298,19 @@ public class CursorOverlapCircle : MonoBehaviour
             previousNode.transform.GetChild(0).gameObject.SetActive(false);
             previousNode = null;
         }
+
+        #endregion
+    }
+
+    private void SetCursor(Texture2D texture)
+    {
+        currentCursorTexture = texture;
+        Cursor.SetCursor(texture, Vector2.zero, CursorMode.Auto);
+    }
+
+    private Texture2D GetCursorTexture()
+    {
+        return currentCursorTexture;
     }
 
     public void RemoveTutorialPopups()
