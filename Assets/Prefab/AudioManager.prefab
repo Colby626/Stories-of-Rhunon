@@ -274,3 +274,19 @@ MonoBehaviour:
     type: 1
     audioMixer: {fileID: 0}
     audioSource: {fileID: 0}
+  - name: ChestOpen
+    clip: {fileID: 8300000, guid: 2620c725e47d0b04280b656ade3946a4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: ChestClose
+    clip: {fileID: 8300000, guid: a00083a3e84a3134bbb242902bbc2f27, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    type: 1
+    audioMixer: {fileID: 0}
+    audioSource: {fileID: 0}

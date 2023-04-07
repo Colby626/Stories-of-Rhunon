@@ -698,7 +698,7 @@ public class BattleMaster : MonoBehaviour
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         gameMaster.hoveringOverButton = true;
 
-        //AudioManager.instance.Play("TurningPageInBookSound"); openingChestSound
+        AudioManager.instance.Play("ChestOpen"); 
         chestMenu.SetActive(true);
         openInventoryButton.SetActive(false);
         levelUpButton.SetActive(false);
@@ -715,6 +715,7 @@ public class BattleMaster : MonoBehaviour
         pauseMenu.audioMixer.SetFloat("PausedMasterVolume", 0);
         Time.timeScale = 1f;
         pauseMenu.gamePaused = false;
+        AudioManager.instance.Play("ChestClose");
         for (int i = 0; i < characterList.Count - 1; i++)
         {
             if (characterList[i].characterStats.XP >= characterList[i].characterStats.XPtoLevelUp)
