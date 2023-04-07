@@ -30920,6 +30920,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1584626135}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &806548918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1815135491329768214, guid: fc242547518354a45b9ba120ed6135f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758552085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &806548920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1815135491329768212, guid: fc242547518354a45b9ba120ed6135f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758552085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806548918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573faaf8d92177241a3970ac44147aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &806707138 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 9e7797bb065982d4497d030f065d6e2f,
@@ -31238,6 +31256,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0505844a909d2ea4996c19b67b2a40b9, type: 3}
+--- !u!1 &823058277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1815135491124194742, guid: fc242547518354a45b9ba120ed6135f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758552085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &830222411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: f681a54372d73d74785b9c9d4ac477e8,
@@ -32078,6 +32102,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2096209310}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &860775407 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1815135490495404135, guid: fc242547518354a45b9ba120ed6135f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758552085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &867899031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36390,6 +36426,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1263888997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2914711706404246507, guid: fc242547518354a45b9ba120ed6135f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758552085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d809ed67ff524d141ab4c2cff290403f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1266455219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44818,14 +44866,29 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
+      propertyPath: chestMenu
+      value: 
+      objectReference: {fileID: 823058277}
+    - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
       propertyPath: textSpeed
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
+      propertyPath: chestContents
+      value: 
+      objectReference: {fileID: 1263888997}
+    - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
       propertyPath: levelUpButton
       value: 
       objectReference: {fileID: 323977012}
+    - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: chestInventory
+      value: 
+      objectReference: {fileID: 806548918}
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: inventoryButton
@@ -44836,6 +44899,11 @@ PrefabInstance:
       propertyPath: tutorialMessage
       value: 
       objectReference: {fileID: 434674342}
+    - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: chestInventoryUI
+      value: 
+      objectReference: {fileID: 806548920}
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: defaultCharacter
@@ -44861,6 +44929,11 @@ PrefabInstance:
       propertyPath: delayBeforeEnemyTurns
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: chestEquipmentPortrait
+      value: 
+      objectReference: {fileID: 860775407}
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: previousCharacterButton

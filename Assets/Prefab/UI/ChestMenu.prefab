@@ -20583,7 +20583,7 @@ GameObject:
   - component: {fileID: 2482812513053874272}
   - component: {fileID: 2482812513053874273}
   - component: {fileID: 2482812513053874278}
-  - component: {fileID: 2482812513053874279}
+  - component: {fileID: 1384630476296096137}
   m_Layer: 5
   m_Name: ChestBackground
   m_TagString: InventoryUI
@@ -20710,7 +20710,7 @@ MonoBehaviour:
   m_Spacing: {x: 60, y: 30}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &2482812513053874279
+--- !u!114 &1384630476296096137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20719,7 +20719,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2482812513053874277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 573faaf8d92177241a3970ac44147aa8, type: 3}
+  m_Script: {fileID: 11500000, guid: d809ed67ff524d141ab4c2cff290403f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   battleMaster: {fileID: 0}

@@ -95027,25 +95027,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f681a54372d73d74785b9c9d4ac477e8, type: 3}
---- !u!1 &1377408008 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1815135491571466759, guid: fc242547518354a45b9ba120ed6135f3,
+--- !u!114 &1377408014 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2914711706404246507, guid: fc242547518354a45b9ba120ed6135f3,
     type: 3}
   m_PrefabInstance: {fileID: 2064442906182863139}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1377408014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377408008}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d809ed67ff524d141ab4c2cff290403f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleMaster: {fileID: 6276197855371139125}
 --- !u!4 &1377936897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 39562e88b536753438a3153c5fbdf7b8,
@@ -113492,6 +113485,12 @@ PrefabInstance:
       propertyPath: items.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4807891748146592651, guid: 9e2d3be66e742304fa8a776cfa0678d5,
+        type: 3}
+      propertyPath: items.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a154cae4e330834a8824c0473d79acd,
+        type: 2}
     - target: {fileID: 6185555566667531716, guid: 9e2d3be66e742304fa8a776cfa0678d5,
         type: 3}
       propertyPath: Health
@@ -116610,6 +116609,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2914711706404246507, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: battleMaster
+      value: 
+      objectReference: {fileID: 6276197855371139125}
     - target: {fileID: 3081686884038009285, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -118710,8 +118714,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -596989141680907126, guid: d9b6f7d0ba749eb43aed210e72cc531a,
         type: 3}
-    m_RemovedComponents:
-    - {fileID: 1815135491571466757, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc242547518354a45b9ba120ed6135f3, type: 3}
 --- !u!1 &2064442906182863141 stripped
 GameObject:

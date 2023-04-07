@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
+    [HideInInspector]
     public BattleMaster battleMaster;
     Inventory inventory;
+    private void Start()
+    {
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
+    }
 
     public void UpdateUI()
     {

@@ -90,8 +90,7 @@ public class BattleMaster : MonoBehaviour
 
     [Header("Inventory:")]
     public GameObject inventory;
-    [SerializeField]
-    private InventoryUI inventoryUI;
+    public InventoryUI inventoryUI;
     [HideInInspector]
     public EquipmentManager equipmentManager;
     [SerializeField]
@@ -99,16 +98,14 @@ public class BattleMaster : MonoBehaviour
     public GameObject chestMenu;
     [SerializeField]
     private GameObject chestInventory;
-    [SerializeField]
-    private InventoryUI chestInventoryUI;
+    public InventoryUI chestInventoryUI;
     [HideInInspector]
     public EquipmentManager chestEquipmentManager;
     [SerializeField]
     private Image chestEquipmentPortrait;
     [HideInInspector]
     public Inventory chest;
-    [SerializeField]
-    private ChestUI chestContents; 
+    public ChestUI chestContents; 
 
     #region Leveling Variables
     [Header("Leveling:")]

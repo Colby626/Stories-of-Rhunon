@@ -12,7 +12,7 @@ public class Equipment : Item
     // Called when pressed in the inventory
     public override void Use()
     {
-        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
         if (battleMaster.battleStarted)
         {
             if (battleMaster.currentCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
@@ -28,15 +28,27 @@ public class Equipment : Item
         }
         else if (battleMaster.chestMenu.activeSelf)
         {
-            if (battleMaster.defaultCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
+            if (withinChest) //if this item is within a chest when clicked on
             {
-                battleMaster.chestEquipmentManager.Unequip(this);  //Unequip
-                RemoveFromEquipment(equipSlot); //Remove from equipment
+                Debug.Log("clicking on an item in a chest");
+                battleMaster.chest.items.Remove(this);
+                battleMaster.chestContents.UpdateChestUI();
+                battleMaster.defaultCharacter.GetComponent<Inventory>().Add(this);
+                battleMaster.chestInventoryUI.UpdateUI();
+                withinChest = false;
             }
             else
             {
-                battleMaster.chestEquipmentManager.Equip(this);  // Equip
-                RemoveFromInventory(this);  //Remove from inventory
+                if (battleMaster.defaultCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
+                {
+                    battleMaster.chestEquipmentManager.Unequip(this);  //Unequip
+                    RemoveFromEquipment(equipSlot); //Remove from equipment
+                }
+                else
+                {
+                    battleMaster.chestEquipmentManager.Equip(this);  // Equip
+                    RemoveFromInventory(this);  //Remove from inventory
+                }
             }
         }
         else
@@ -47,7 +59,7 @@ public class Equipment : Item
                 RemoveFromEquipment(equipSlot); //Remove from equipment
             }
             else
-            { 
+            {
                 battleMaster.equipmentManager.Equip(this);  // Equip
                 RemoveFromInventory(this);  //Remove from inventory
             }

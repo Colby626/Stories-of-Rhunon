@@ -6,14 +6,13 @@ public class EquipmentManager : MonoBehaviour
     public InventorySlot[] equipmentSlots;
 
     Inventory inventory;
-    InventoryUI inventoryUI;
-    BattleMaster battleMaster;
+    [HideInInspector]
+    public BattleMaster battleMaster;
 
     int numSlots;
 
     void Awake()
     {
-        inventoryUI = GameObject.FindGameObjectWithTag("InventoryUI").GetComponent<InventoryUI>();
         battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
         numSlots = Enum.GetNames(typeof(EquipmentSlot)).Length;
     }
@@ -34,7 +33,15 @@ public class EquipmentManager : MonoBehaviour
         {
             oldItem = character.characterEquipment[slotIndex];
 
-            inventory.Add(oldItem);
+            character.GetComponent<Inventory>().items.Add(oldItem);
+        }
+        if (battleMaster.chestMenu.activeSelf)
+        {
+            battleMaster.chestInventoryUI.UpdateUI();
+        }
+        else
+        {
+            battleMaster.inventoryUI.UpdateUI();
         }
 
         character.characterEquipment[slotIndex] = newItem;
@@ -43,8 +50,14 @@ public class EquipmentManager : MonoBehaviour
         UpdateEquipmentUI(slot, newItem);
         AudioManager.instance.Play("EquipSound");
 
-        character.GetComponent<Inventory>().items.Remove(newItem);
-        inventoryUI.UpdateUI();
+        if (battleMaster.chestMenu.activeSelf)
+        {
+            battleMaster.chestInventoryUI.UpdateUI();
+        }
+        else
+        {
+            battleMaster.inventoryUI.UpdateUI();
+        }
 
         //Increase damage or armor
         character.characterStats.Damage += newItem.damageIncrease;
@@ -122,7 +135,14 @@ public class EquipmentManager : MonoBehaviour
         }
         CharacterSheet character = (battleMaster.battleStarted) ? battleMaster.currentCharacter : battleMaster.defaultCharacter;
         character.GetComponent<Inventory>().items.Add(oldItem);
-        inventoryUI.UpdateUI();
+        if (battleMaster.chestMenu.activeSelf)
+        {
+            battleMaster.chestInventoryUI.UpdateUI();
+        }
+        else
+        {
+            battleMaster.inventoryUI.UpdateUI();
+        }
         AudioManager.instance.Play("EquipSound");
 
         character.characterEquipment[(int)slot] = null;

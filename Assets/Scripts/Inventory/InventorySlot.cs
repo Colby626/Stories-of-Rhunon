@@ -33,7 +33,16 @@ public class InventorySlot : MonoBehaviour
     {
         if (item != null)
         {
-            GameObject.FindGameObjectWithTag("EquipmentManager").GetComponent<EquipmentManager>().Unequip((Equipment)item);
+            BattleMaster battleMaster = transform.parent.GetComponent<EquipmentManager>().battleMaster;
+            if (battleMaster.chestMenu.activeSelf)
+            {
+                battleMaster.chestEquipmentManager.Unequip((Equipment)item);
+            }
+            else
+            {
+                battleMaster.equipmentManager.Unequip((Equipment)item);
+            }
+            
         }
     }
 }
