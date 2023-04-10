@@ -32,6 +32,9 @@ public class EquipmentManager : MonoBehaviour
         {
             oldItem = character.characterEquipment[slotIndex];
 
+            character.characterStats.Damage -= oldItem.damageIncrease;
+            character.characterStats.Defense -= oldItem.damageNegation;
+
             character.GetComponent<Inventory>().items.Add(oldItem);
         }
 
