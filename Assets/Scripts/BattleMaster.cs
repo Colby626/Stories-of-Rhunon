@@ -402,14 +402,12 @@ public class BattleMaster : MonoBehaviour
     {
         tutorialMessage.SetActive(true);
         nextTurnButton.interactable = false;
-        pauseMenu.gamePaused = true;
     }
 
     public void CloseTutorial() //Called from button
     {
         showTutorial = false;
         nextTurnButton.interactable = true;
-        pauseMenu.gamePaused = false;
     }
 
     public void DisableTutorial() //Called from button
@@ -658,7 +656,6 @@ public class BattleMaster : MonoBehaviour
         inventoryOpen = true;
         pauseMenu.audioMixer.SetFloat("PausedMasterVolume", pauseMenu.amountQuieterWhenPaused);
         Time.timeScale = 0f;
-        pauseMenu.gamePaused = true;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         AudioManager.instance.Play("TurningPageInBookSound");
@@ -688,7 +685,6 @@ public class BattleMaster : MonoBehaviour
         inventoryOpen = true;
         pauseMenu.audioMixer.SetFloat("PausedMasterVolume", pauseMenu.amountQuieterWhenPaused);
         Time.timeScale = 0f;
-        pauseMenu.gamePaused = true;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         gameMaster.hoveringOverButton = true;
 
@@ -708,7 +704,6 @@ public class BattleMaster : MonoBehaviour
         inventoryOpen = false;
         pauseMenu.audioMixer.SetFloat("PausedMasterVolume", 0);
         Time.timeScale = 1f;
-        pauseMenu.gamePaused = false;
         AudioManager.instance.Play("ChestClose");
         for (int i = 0; i < characterList.Count - 1; i++)
         {
@@ -732,7 +727,6 @@ public class BattleMaster : MonoBehaviour
         inventoryOpen = false;
         pauseMenu.audioMixer.SetFloat("PausedMasterVolume", 0);
         Time.timeScale = 1f;
-        pauseMenu.gamePaused = false;
         AudioManager.instance.Play("CloseBookSound");
         if (battleStarted)
         {
@@ -839,7 +833,6 @@ public class BattleMaster : MonoBehaviour
         levelupScreenOpen = true;
         pauseMenu.audioMixer.SetFloat("PausedMasterVolume", pauseMenu.amountQuieterWhenPaused);
         Time.timeScale = 0f;
-        pauseMenu.gamePaused = true;
         AudioManager.instance.Play("TurningPageInBookSound");
         battleHud.SetActive(false);
         openInventoryButton.SetActive(false);
@@ -987,7 +980,6 @@ public class BattleMaster : MonoBehaviour
         levelupScreenOpen = false;
         pauseMenu.audioMixer.SetFloat("PausedMasterVolume", 0);
         Time.timeScale = 1f;
-        pauseMenu.gamePaused = false;
         cursorOverlapCircle.EnableTutorialPopups();
         if (battleStarted)
         {

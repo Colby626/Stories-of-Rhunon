@@ -58,6 +58,8 @@ public class PauseMenu : MonoBehaviour
                     }
                 }
             }
+            audioMixer.SetFloat("PausedMasterVolume", 0);
+            Time.timeScale = 1f;
         }
         if (battleMaster.battleStarted)
         {
@@ -77,8 +79,6 @@ public class PauseMenu : MonoBehaviour
         {
             FindObjectOfType<CursorOverlapCircle>().EnableTutorialPopups();
         }
-        audioMixer.SetFloat("PausedMasterVolume", 0);
-        Time.timeScale = 1f;
         gamePaused = false;
     }
 
