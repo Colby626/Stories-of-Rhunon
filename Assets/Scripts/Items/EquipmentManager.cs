@@ -5,21 +5,20 @@ public class EquipmentManager : MonoBehaviour
 {
     public InventorySlot[] equipmentSlots;
 
-    Inventory inventory;
     [HideInInspector]
     public BattleMaster battleMaster;
 
     int numSlots;
 
-    void Awake()
+    void Start()
     {
-        battleMaster = GameObject.FindGameObjectWithTag("BattleMaster").GetComponent<BattleMaster>();
         numSlots = Enum.GetNames(typeof(EquipmentSlot)).Length;
     }
 
     // Equip a new item
     public void Equip(Equipment newItem)
     {
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
         Equipment oldItem;
 
         // Find out what slot the item fits in
@@ -35,29 +34,21 @@ public class EquipmentManager : MonoBehaviour
 
             character.GetComponent<Inventory>().items.Add(oldItem);
         }
-        if (battleMaster.chestMenu.activeSelf)
-        {
-            battleMaster.chestInventoryUI.UpdateUI();
-        }
-        else
-        {
-            battleMaster.inventoryUI.UpdateUI();
-        }
 
         character.characterEquipment[slotIndex] = newItem;
 
-        EquipmentSlot slot = newItem.equipSlot;
-        UpdateEquipmentUI(slot, newItem);
-        AudioManager.instance.Play("EquipSound");
-
         if (battleMaster.chestMenu.activeSelf)
         {
+            battleMaster.chestEquipmentManager.UpdateEquipmentUI(newItem.equipSlot, newItem);
             battleMaster.chestInventoryUI.UpdateUI();
         }
         else
         {
+            battleMaster.equipmentManager.UpdateEquipmentUI(newItem.equipSlot, newItem);
             battleMaster.inventoryUI.UpdateUI();
         }
+
+        AudioManager.instance.Play("EquipSound");
 
         //Increase damage or armor
         character.characterStats.Damage += newItem.damageIncrease;
@@ -66,6 +57,7 @@ public class EquipmentManager : MonoBehaviour
 
     public void Unequip(Equipment oldItem)
     {
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
         EquipmentSlot slot = oldItem.equipSlot;
         switch (slot)
         {
@@ -234,6 +226,7 @@ public class EquipmentManager : MonoBehaviour
 
     public void UpdateEquipmentUI()
     {
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
         for (int i = 0; i < numSlots; i++)
         {
             if (battleMaster.battleStarted)

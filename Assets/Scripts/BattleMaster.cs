@@ -96,10 +96,7 @@ public class BattleMaster : MonoBehaviour
     [SerializeField]
     private Image equipmentPortrait;
     public GameObject chestMenu;
-    [SerializeField]
-    private GameObject chestInventory;
     public InventoryUI chestInventoryUI;
-    [HideInInspector]
     public EquipmentManager chestEquipmentManager;
     [SerializeField]
     private Image chestEquipmentPortrait;

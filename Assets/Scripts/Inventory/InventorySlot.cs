@@ -25,7 +25,14 @@ public class InventorySlot : MonoBehaviour
     {
         if (item != null)
         {
-            item.Use();
+            if (transform.parent.GetComponent<ChestUI>())
+            {
+                item.MoveFromChestToInventory(item);
+            }
+            else
+            {
+                item.Use();
+            }
         }
     }
 

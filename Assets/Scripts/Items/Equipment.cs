@@ -28,27 +28,15 @@ public class Equipment : Item
         }
         else if (battleMaster.chestMenu.activeSelf)
         {
-            if (withinChest) //if this item is within a chest when clicked on
+            if (battleMaster.defaultCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
             {
-                Debug.Log("clicking on an item in a chest");
-                battleMaster.chest.items.Remove(this);
-                battleMaster.chestContents.UpdateChestUI();
-                battleMaster.defaultCharacter.GetComponent<Inventory>().Add(this);
-                battleMaster.chestInventoryUI.UpdateUI();
-                withinChest = false;
+                battleMaster.chestEquipmentManager.Unequip(this);  //Unequip
+                RemoveFromEquipment(equipSlot); //Remove from equipment
             }
             else
             {
-                if (battleMaster.defaultCharacter.GetComponent<CharacterSheet>().characterEquipment.Contains(this))
-                {
-                    battleMaster.chestEquipmentManager.Unequip(this);  //Unequip
-                    RemoveFromEquipment(equipSlot); //Remove from equipment
-                }
-                else
-                {
-                    battleMaster.chestEquipmentManager.Equip(this);  // Equip
-                    RemoveFromInventory(this);  //Remove from inventory
-                }
+                battleMaster.chestEquipmentManager.Equip(this);  // Equip
+                RemoveFromInventory(this);  //Remove from inventory
             }
         }
         else

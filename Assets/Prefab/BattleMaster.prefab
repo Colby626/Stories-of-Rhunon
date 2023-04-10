@@ -3831,6 +3831,7 @@ MonoBehaviour:
   - {fileID: 8136109892248928364}
   - {fileID: 8136109894060496392}
   - {fileID: 8136109893675453690}
+  battleMaster: {fileID: 0}
 --- !u!1 &2067279701546320637
 GameObject:
   m_ObjectHideFlags: 0
@@ -4205,8 +4206,8 @@ RectTransform:
   - {fileID: 230266538743326730}
   - {fileID: 8909329016514535004}
   - {fileID: 5649098683099148766}
-  - {fileID: 2067279703159981465}
   - {fileID: 1815135491124194741}
+  - {fileID: 2067279703159981465}
   m_Father: {fileID: 3704339911316333324}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7545,7 +7546,7 @@ RectTransform:
   - {fileID: 2067279701852971177}
   - {fileID: 5001821481395469743}
   m_Father: {fileID: 2067279701696419323}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -22161,7 +22162,14 @@ MonoBehaviour:
   limitMovementDone: 0
   inventory: {fileID: 2067279703101732427}
   inventoryUI: {fileID: 2067279702554336515}
+  equipmentManager: {fileID: 0}
   equipmentPortrait: {fileID: 2067279702460596136}
+  chestMenu: {fileID: 0}
+  chestInventoryUI: {fileID: 0}
+  chestEquipmentManager: {fileID: 0}
+  chestEquipmentPortrait: {fileID: 0}
+  chest: {fileID: 0}
+  chestContents: {fileID: 0}
   levelUpButton: {fileID: 0}
   levelUpPanel: {fileID: 459660734994953190}
   levelUpPortrait: {fileID: 6940494190605326076}
@@ -31790,7 +31798,7 @@ PrefabInstance:
     - target: {fileID: 2482812511393658839, guid: 63602258bfb184949ba1fda88f09cc82,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2482812511393658839, guid: 63602258bfb184949ba1fda88f09cc82,
         type: 3}

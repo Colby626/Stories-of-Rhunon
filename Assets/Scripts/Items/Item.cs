@@ -9,13 +9,30 @@ public class Item : ScriptableObject
     new public string name = "New Item";    // Name of the item
     public Sprite icon = null;              // Item icon
     public bool showInInventory = true;
-    public bool withinChest = false;
     protected BattleMaster battleMaster; 
 
     // Called when the item is pressed in the inventory
     public virtual void Use()
     {
         // Use the item
+    }
+
+    public void MoveFromChestToInventory(Equipment equipment)
+    {
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
+        battleMaster.chest.items.Remove(equipment); //remove from chest
+        battleMaster.chestContents.UpdateChestUI(); //update chest ui
+        battleMaster.defaultCharacter.GetComponent<Inventory>().items.Add(equipment); //put in character's inventory
+        battleMaster.chestInventoryUI.UpdateUI(); //update character's inventory ui (chest menu)
+    }
+
+    public void MoveFromChestToInventory(Item item)
+    {
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
+        battleMaster.chest.items.Remove(item); //remove from chest
+        battleMaster.chestContents.UpdateChestUI(); //update chest ui
+        battleMaster.defaultCharacter.GetComponent<Inventory>().items.Add(item); //put in character's inventory
+        battleMaster.chestInventoryUI.UpdateUI(); //update character's inventory ui (chest menu)
     }
 
     public void RemoveFromInventory(Equipment equipment)
@@ -26,20 +43,10 @@ public class Item : ScriptableObject
             battleMaster.currentCharacter.GetComponent<Inventory>().items.Remove(equipment);
             battleMaster.inventoryUI.UpdateUI();
         }
-        else if (battleMaster.chestMenu.activeSelf) //chest menu is open
+        else if (battleMaster.chestMenu.activeSelf)
         {
-            if (equipment.withinChest) //if clicking on an item in a chest
-            {
-                battleMaster.chest.items.Remove(equipment); //remove from chest
-                battleMaster.chestContents.UpdateChestUI(); //update chest ui
-                battleMaster.defaultCharacter.GetComponent<Inventory>().items.Add(equipment); //put in character's inventory
-                battleMaster.chestInventoryUI.UpdateUI(); //update character's inventory ui (chest menu)
-            }
-            else //clicking on an item in the inventory
-            {
-                battleMaster.defaultCharacter.GetComponent<Inventory>().items.Remove(equipment); //remove the item from the inventory
-                battleMaster.chestInventoryUI.UpdateUI(); //update character inventory UI (chest menu)
-            }
+            battleMaster.defaultCharacter.GetComponent<Inventory>().items.Remove(equipment);
+            battleMaster.chestInventoryUI.UpdateUI();
         }
         else
         {
@@ -57,18 +64,8 @@ public class Item : ScriptableObject
         }
         else if (battleMaster.chestMenu.activeSelf)
         {
-            if (item.withinChest) //if clicking on an item in a chest
-            {
-                battleMaster.chest.items.Remove(item); //remove from chest
-                battleMaster.chestContents.UpdateChestUI(); //update chest ui
-                battleMaster.defaultCharacter.GetComponent<Inventory>().items.Add(item); //put in character's inventory
-                battleMaster.chestInventoryUI.UpdateUI(); //update character's inventory ui (chest menu)
-            }
-            else //clicking on an item in the inventory
-            {
-                battleMaster.defaultCharacter.GetComponent<Inventory>().items.Remove(item); //remove the item from the inventory
-                battleMaster.chestInventoryUI.UpdateUI(); //update character inventory UI (chest menu)
-            }
+            battleMaster.defaultCharacter.GetComponent<Inventory>().items.Remove(item);
+            battleMaster.chestInventoryUI.UpdateUI();
         }
         else
         {
