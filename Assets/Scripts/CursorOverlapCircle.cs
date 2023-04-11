@@ -177,7 +177,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 character.transform.GetChild(0).gameObject.SetActive(true);
             }
 
-            if (Input.GetMouseButtonUp(0) && !battleMaster.battleStarted) //Open Inventory when clicking on a player outside of battle
+            if (Input.GetMouseButtonUp(0) && !battleMaster.battleStarted && !battleMaster.inventoryOpen && !battleMaster.levelupScreenOpen) //Open Inventory when clicking on a player outside of battle
             {
                 if (character.Name == "Rhaal")
                 {
@@ -226,7 +226,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 }
                 node = colliders[i].GetComponent<PathNode>();
                 nodeFound = true;
-                if (node.chest != null && !battleMaster.battleStarted && !gameMaster.hoveringOverButton && !pauseMenu.gamePaused)
+                if (node.chest != null && !battleMaster.battleStarted && !gameMaster.hoveringOverButton && !pauseMenu.gamePaused && !battleMaster.inventoryOpen && !battleMaster.levelupScreenOpen)
                 {
                     SetCursor(chestCursorTexture);
                     battleMaster.chest = node.chest;
