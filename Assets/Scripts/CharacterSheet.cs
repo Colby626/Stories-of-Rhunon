@@ -123,6 +123,15 @@ public class CharacterSheet : MonoBehaviour
         gameMaster = GameMaster.instance.GetComponent<GameMaster>();
         partyMovement = gameMaster.party.GetComponent<Movement>();
         pathfinding = gameMaster.GetComponent<Pathfinding>();
+
+        foreach (Equipment equipment in characterEquipment)
+        {
+            if (equipment != null)
+            {
+                characterStats.Damage += equipment.damageIncrease;
+                characterStats.Defense += equipment.damageNegation;
+            }
+        }
     }
     public void MouseDown()
     {

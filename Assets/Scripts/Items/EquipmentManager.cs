@@ -10,7 +10,7 @@ public class EquipmentManager : MonoBehaviour
 
     int numSlots;
 
-    void Start()
+    void Awake()
     {
         numSlots = Enum.GetNames(typeof(EquipmentSlot)).Length;
     }

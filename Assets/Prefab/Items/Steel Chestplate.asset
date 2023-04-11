@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f8471b3055d80246b24c2b5633742ee, type: 3}
-  m_Name: Iron Chestplate
+  m_Name: Steel Chestplate
   m_EditorClassIdentifier: 
-  name: Iron Chestplate
-  icon: {fileID: 674540885, guid: 9beb12cc9815e774bb2a4b4410c0106c, type: 3}
+  name: Steel Chestplate
+  icon: {fileID: 1812400143, guid: 9beb12cc9815e774bb2a4b4410c0106c, type: 3}
   showInInventory: 1
   equipSlot: 1
-  damageNegation: 3
+  damageNegation: 4
   damageIncrease: 0

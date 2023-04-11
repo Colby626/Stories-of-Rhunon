@@ -91,7 +91,6 @@ public class BattleMaster : MonoBehaviour
     [Header("Inventory:")]
     public GameObject inventory;
     public InventoryUI inventoryUI;
-    [HideInInspector]
     public EquipmentManager equipmentManager;
     [SerializeField]
     private Image equipmentPortrait;
