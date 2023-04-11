@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: Health
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: MaxHealth
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Strength
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -101,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Constitution
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574665, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -157,22 +157,22 @@ PrefabInstance:
     - target: {fileID: 1383555037002574666, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574666, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574666, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.91
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574666, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574666, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -376,29 +376,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad33a31da65d383488651642118a93a9, type: 3}
---- !u!1 &2949315082232947739 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1383555037002574667, guid: ad33a31da65d383488651642118a93a9,
-    type: 3}
-  m_PrefabInstance: {fileID: 4313689269510066000}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1865036095
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2949315082232947739}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5f5b6c8bd65084c4c9378c655a3852b1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
