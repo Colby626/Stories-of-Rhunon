@@ -48,3 +48,4 @@ MonoBehaviour:
   clickHereAnimation: {fileID: 0}
   clickHereCircle: {fileID: 0}
   disableTutorialButton: {fileID: 0}
+  chestCursorTexture: {fileID: 2800000, guid: b56d3a160d9d0134fb3c9387716dc294, type: 3}

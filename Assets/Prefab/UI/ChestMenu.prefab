@@ -13381,6 +13381,7 @@ MonoBehaviour:
   - {fileID: 2482812512197157394}
   - {fileID: 2482812512037472582}
   - {fileID: 2482812511218360782}
+  battleMaster: {fileID: 0}
 --- !u!1 &2482812512176992417
 GameObject:
   m_ObjectHideFlags: 0
@@ -17520,7 +17521,7 @@ GameObject:
   - component: {fileID: 2482812512687824944}
   - component: {fileID: 2482812512687824945}
   m_Layer: 5
-  m_Name: Close Inventory Button
+  m_Name: CloseChestMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20722,7 +20723,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d809ed67ff524d141ab4c2cff290403f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleMaster: {fileID: 0}
 --- !u!1 &2482812513067663973
 GameObject:
   m_ObjectHideFlags: 0

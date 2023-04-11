@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class ChestUI : MonoBehaviour
 {
-    [SerializeField]
     private BattleMaster battleMaster;
     private Inventory inventory;
 
     public void UpdateChestUI()
     {
+        battleMaster = FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>();
         inventory = battleMaster.chest;
 
         InventorySlot[] slots = GetComponentsInChildren<InventorySlot>();
