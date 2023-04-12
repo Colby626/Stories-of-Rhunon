@@ -120,9 +120,9 @@ public class CursorOverlapCircle : MonoBehaviour
                 {
                     if (!gameMaster.movedOnTurn) //Doing the raycast from the player's move speed
                     {
-                        //The plus 2.5 is for the player being able to attack enemies 1 space away from the distance they can move to and the .5 is from the half of the node they are in
+                        //The plus 3.5 is to catch the ones 1 step away from the furthest they can move
                         //Will be changed to circleCast when limitMovement works properly
-                        RaycastHit2D[] boxCast = Physics2D.BoxCastAll(gameMaster.partyNode.transform.position, new Vector2(battleMaster.currentCharacter.characterStats.Speed / 5 + 2.5f, battleMaster.currentCharacter.characterStats.Speed / 5 + 2.5f), 0, Vector2.zero);
+                        RaycastHit2D[] boxCast = Physics2D.BoxCastAll(gameMaster.partyNode.transform.position, new Vector2(battleMaster.currentCharacter.characterStats.Speed / 5 + 3.5f, battleMaster.currentCharacter.characterStats.Speed / 5 + 3.5f), 0, Vector2.zero);
                         foreach (RaycastHit2D hit in boxCast)
                         {
                             if (hit.transform.GetComponent<CharacterSheet>() == character)

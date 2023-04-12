@@ -130,6 +130,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 266631857}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -189,6 +194,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -1807,6 +1827,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -1866,6 +1891,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -5322,6 +5362,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 85144525}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -5381,6 +5426,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -78664,6 +78724,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -78723,6 +78788,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -79080,6 +79160,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101544, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: centeringOffset
@@ -79144,6 +79229,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -84004,6 +84104,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -84063,6 +84168,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -86369,6 +86489,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 85144525}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -86428,6 +86553,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -88379,6 +88519,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -88438,6 +88583,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -91775,6 +91935,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -91834,6 +91999,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -93807,6 +93987,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -93866,6 +94051,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -100171,6 +100371,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -100230,6 +100435,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -100955,6 +101175,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -101014,6 +101239,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -111393,6 +111633,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -111452,6 +111697,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -111630,6 +111890,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -111689,6 +111954,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -112534,6 +112814,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 266631857}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -112593,6 +112878,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -112684,6 +112984,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919556307}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -112743,6 +113048,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}
@@ -113266,6 +113586,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 266631857}
     m_Modifications:
+    - target: {fileID: 520074899294687414, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 801831832196101545, guid: a21a8a16f2631104aa75599cd2abc91d,
         type: 3}
       propertyPath: m_RootOrder
@@ -113325,6 +113650,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642118447591797370, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086202569317228507, guid: a21a8a16f2631104aa75599cd2abc91d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21a8a16f2631104aa75599cd2abc91d, type: 3}

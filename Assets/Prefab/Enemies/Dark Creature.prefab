@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Dark Creature
-  Health: 75
-  MaxHealth: 75
+  Health: 50
+  MaxHealth: 50
   Mana: 35
   MaxMana: 35
   Stamina: 40
@@ -114,10 +114,10 @@ MonoBehaviour:
   characterStats:
     Strength: 8
     Attunement: 55
-    Reflexes: 40
+    Reflexes: 35
     Speed: 40
     Precision: 25
-    Constitution: 75
+    Constitution: 50
     Endurance: 60
     Defense: 0
     Damage: 0

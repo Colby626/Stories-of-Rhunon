@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Steel Sword
   m_EditorClassIdentifier: 
   name: Steel Sword
-  icon: {fileID: 985946956, guid: 4d014f4900039404aa723feafdf759c3, type: 3}
+  icon: {fileID: 641957696, guid: 4d014f4900039404aa723feafdf759c3, type: 3}
   showInInventory: 1
   equipSlot: 4
   damageNegation: 0
