@@ -113762,6 +113762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
+      propertyPath: giveUpDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458318016279073046, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
       propertyPath: defaultCharacter
       value: 
       objectReference: {fileID: 1858257890}

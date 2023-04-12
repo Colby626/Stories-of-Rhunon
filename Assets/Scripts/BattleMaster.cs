@@ -25,7 +25,11 @@ public class BattleMaster : MonoBehaviour
     public float textSpeed = 150f;
     public GameObject damagePopUp;
     public bool battleStarted = false;
+    [Tooltip("This is multiplied by furthestAnyoneCanMove and if someone is further away than that then they leave battle")]
+    public float giveUpDistance = 2;
+    [HideInInspector]
     public bool inventoryOpen = false;
+    [HideInInspector]
     public bool levelupScreenOpen = false;
 
     public List<GameObject> turnOrder = new();
@@ -170,6 +174,12 @@ public class BattleMaster : MonoBehaviour
 
             //Displays the character to go's name on the screen
             turnText.text = "It is " + currentCharacter.Name + "'s turn";
+
+            //Bandaid for sometimes when you click on an enemy really fast after battle starts some tiles remain blue even though you already moved on your turn 
+            if (gameMaster.movedOnTurn)
+            {
+                ResetMovementLimit();
+            }
         }
     }
 
@@ -257,7 +267,7 @@ public class BattleMaster : MonoBehaviour
         LimitMovement();
     }
 
-    private void LimitMovement()
+    public void LimitMovement()
     {
         int maxMoveDistance = currentCharacter.characterStats.Speed / 5;
         List<PathNode> tempPath = null;
@@ -387,7 +397,7 @@ public class BattleMaster : MonoBehaviour
         limitMovementDone = true;
     }
 
-    private void ResetMovementLimit()
+    public void ResetMovementLimit()
     {
         foreach (PathNode node in moveableNodes)
         {
@@ -591,7 +601,7 @@ public class BattleMaster : MonoBehaviour
         Pathfinding pathfinding = gameMaster.GetComponent<Pathfinding>();
         int maxMoveDistance = currentCharacter.characterStats.Speed / 5;
         targetedPlayer = livingPlayers[Random.Range(0, livingPlayers.Count)]; //Randomly pick a player to attack
-        bool tooFarAway = (Vector2.Distance(currentCharacter.GetComponentInParent<Movement>().occupyingNode.transform.position, gameMaster.partyNode.transform.position) > pathfinding.furthestAnyoneCanMove * 2);
+        bool tooFarAway = (Vector2.Distance(currentCharacter.GetComponentInParent<Movement>().occupyingNode.transform.position, gameMaster.partyNode.transform.position) > pathfinding.furthestAnyoneCanMove * giveUpDistance);
         if (!tooFarAway)
         {
             List<PathNode> shortestPath = pathfinding.FindPath(gameMaster.partyNode, currentCharacter.GetComponentInParent<Movement>().occupyingNode, maxMoveDistance);

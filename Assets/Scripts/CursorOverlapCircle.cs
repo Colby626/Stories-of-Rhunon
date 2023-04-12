@@ -159,6 +159,11 @@ public class CursorOverlapCircle : MonoBehaviour
                 {
                     character.MouseDown();
                 }
+
+                if (!character.isDead && !pauseMenu.gamePaused && !character.isPlayer)
+                {
+                    character.transform.GetChild(0).gameObject.SetActive(true);
+                }
             }
 
             if (!mouseOver.isHighlighted && !character.isDead && !pauseMenu.gamePaused) //Highlight
@@ -172,12 +177,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 character.transform.GetChild(0).gameObject.SetActive(false);
             }
 
-            if (!character.isDead && !pauseMenu.gamePaused && !character.isPlayer)
-            {
-                character.transform.GetChild(0).gameObject.SetActive(true);
-            }
-
-            if (Input.GetMouseButtonUp(0) && !battleMaster.battleStarted && !battleMaster.inventoryOpen && !battleMaster.levelupScreenOpen) //Open Inventory when clicking on a player outside of battle
+            if (Input.GetMouseButtonUp(0) && !battleMaster.battleStarted && !battleMaster.inventoryOpen && !battleMaster.levelupScreenOpen && character.isPlayer) //Open Inventory when clicking on a player outside of battle
             {
                 if (character.Name == "Rhaal")
                 {

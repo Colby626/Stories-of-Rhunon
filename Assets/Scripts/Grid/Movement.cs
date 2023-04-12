@@ -459,7 +459,7 @@ public class Movement : MonoBehaviour
     private void OnDrawGizmos()
     {
         //Wander range red
-        grid = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().grid;
+        grid = FindObjectOfType<GameMaster>().GetComponent<GameMaster>().grid;
         Gizmos.color = Color.red;
         if (Application.isPlaying)
         {
