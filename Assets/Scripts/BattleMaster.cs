@@ -691,21 +691,24 @@ public class BattleMaster : MonoBehaviour
 
     public void OpenChestMenu()
     {
-        inventoryOpen = true;
-        pauseMenu.audioMixer.SetFloat("PausedMasterVolume", pauseMenu.amountQuieterWhenPaused);
-        Time.timeScale = 0f;
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        gameMaster.hoveringOverButton = true;
+        if (!chest.transform.GetChild(0).gameObject.activeSelf) //If the chest isn't locked
+        {
+            inventoryOpen = true;
+            pauseMenu.audioMixer.SetFloat("PausedMasterVolume", pauseMenu.amountQuieterWhenPaused);
+            Time.timeScale = 0f;
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            gameMaster.hoveringOverButton = true;
 
-        AudioManager.instance.Play("ChestOpen"); 
-        chestMenu.SetActive(true);
-        openInventoryButton.SetActive(false);
-        levelUpButton.SetActive(false);
-        chestInventoryUI.GetComponent<InventoryUI>().UpdateUI();
-        chestEquipmentManager.UpdateEquipmentUI(); //Updates inventory to match the right character
-        chestEquipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
+            AudioManager.instance.Play("ChestOpen"); 
+            chestMenu.SetActive(true);
+            openInventoryButton.SetActive(false);
+            levelUpButton.SetActive(false);
+            chestInventoryUI.GetComponent<InventoryUI>().UpdateUI();
+            chestEquipmentManager.UpdateEquipmentUI(); //Updates inventory to match the right character
+            chestEquipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
 
-        chestContents.UpdateChestUI();
+            chestContents.UpdateChestUI();
+        }
     }
 
     public void CloseChestMenu()

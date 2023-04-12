@@ -226,7 +226,7 @@ public class CursorOverlapCircle : MonoBehaviour
                 }
                 node = colliders[i].GetComponent<PathNode>();
                 nodeFound = true;
-                if (node.chest != null && !battleMaster.battleStarted && !gameMaster.hoveringOverButton && !pauseMenu.gamePaused && !battleMaster.inventoryOpen && !battleMaster.levelupScreenOpen)
+                if (node.chest != null && !battleMaster.battleStarted && !gameMaster.hoveringOverButton && !pauseMenu.gamePaused && !battleMaster.inventoryOpen && !battleMaster.levelupScreenOpen && !node.chest.transform.GetChild(0).gameObject.activeSelf)
                 {
                     SetCursor(chestCursorTexture);
                     battleMaster.chest = node.chest;

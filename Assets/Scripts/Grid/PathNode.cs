@@ -32,7 +32,7 @@ public class PathNode : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.01f);
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].CompareTag("Chest"))
+            if (colliders[i].GetComponent<Chest>())
             {
                 chest = colliders[i].GetComponent<Inventory>();
                 break;
