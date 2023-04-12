@@ -1,3 +1,4 @@
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -31,8 +32,13 @@ public class LevelUpMouseOver : MonoBehaviour
 
             if (tensPlace != 10) //If not at max level
             {
-                correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex - 1].ToString(), tensPlace.ToString());
-                correspondingText.text = correspondingText.text.Replace(correspondingText.text[finalIndex].ToString(), onesPlace.ToString());
+                //Replacing the 2nd to last character with the tensPlace number
+                StringBuilder stringBuilder = new StringBuilder(correspondingText.text);
+                stringBuilder[finalIndex - 1] = tensPlace.ToString().ToCharArray()[0];
+                //Replacing the last character with the onesPlace number
+                stringBuilder[finalIndex] = onesPlace.ToString().ToCharArray()[0];
+                //Turning the last 2 characters (the numbers) green
+                correspondingText.text = stringBuilder.ToString();
                 finalIndex = correspondingText.text.Length - 1;
                 correspondingText.text = correspondingText.text.Insert(finalIndex - 1, "<color=#49AE04>");
                 finalIndex = correspondingText.text.Length;

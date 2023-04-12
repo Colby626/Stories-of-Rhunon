@@ -234,11 +234,17 @@ public class CharacterSheet : MonoBehaviour
         {
             Health = 0;
             GetComponent<Animator>().SetBool("Death", true);
+            StartDie();
         }
     }
 
-    private void StartDie() //Called from animation event
+    private void StartDie()
     {
+        if (battleMaster.currentCharacter.isPlayer && !isPlayer)
+        {
+            battleMaster.currentCharacter.characterStats.XP += characterStats.XP;
+        }
+
         battleMaster.livingPlayers.Remove(gameObject);
         battleMaster.livingEnemies.Remove(gameObject);
         battleMaster.charactersInBattle.Remove(gameObject);
@@ -247,7 +253,7 @@ public class CharacterSheet : MonoBehaviour
             battleMaster.turnOrder.Remove(gameObject);
         }
         isDead = true;
-        AudioManager.instance.Play(deathSound); 
+        AudioManager.instance.Play(deathSound);
     }
 
     private void FinishDie()
@@ -255,18 +261,14 @@ public class CharacterSheet : MonoBehaviour
         GetComponentInParent<Movement>().occupyingNode.occupied = false;
         GetComponentInParent<Movement>().occupyingNode.occupyingAgent = null;
 
-        if (battleMaster.currentCharacter.isPlayer && !isPlayer)
+        if (battleMaster.currentCharacter.isPlayer && !isPlayer && !gameMaster.movedOnTurn) //In case the death of this character was blocking a path
         {
-            battleMaster.currentCharacter.characterStats.XP += characterStats.XP;
-            if (!gameMaster.movedOnTurn) //In case the death of this character was blocking a path
-            {
-                GetComponentInParent<Movement>().occupyingNode.validMovePosition = true;
-                battleMaster.ResetMovementLimit();
-                battleMaster.LimitMovement();
-                battleMaster.moveableNodes.Add(GetComponentInParent<Movement>().occupyingNode);
-                GetComponentInParent<Movement>().occupyingNode.transform.GetChild(1).gameObject.SetActive(true);
-                GetComponentInParent<Movement>().occupyingNode.transform.GetChild(1).GetComponent<SpriteRenderer>().color = gameMaster.grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
-            }
+            GetComponentInParent<Movement>().occupyingNode.validMovePosition = true;
+            battleMaster.ResetMovementLimit();
+            battleMaster.LimitMovement();
+            battleMaster.moveableNodes.Add(GetComponentInParent<Movement>().occupyingNode);
+            GetComponentInParent<Movement>().occupyingNode.transform.GetChild(1).gameObject.SetActive(true);
+            GetComponentInParent<Movement>().occupyingNode.transform.GetChild(1).GetComponent<SpriteRenderer>().color = gameMaster.grid.blueTile.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
         }
 
         //Display the levelup button if the currentCharacter has more XP than they need to level up
