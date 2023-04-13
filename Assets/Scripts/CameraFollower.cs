@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class CameraFollower : MonoBehaviour
 {
-    private new CinemachineVirtualCamera camera;
+    [HideInInspector] 
+    public new CinemachineVirtualCamera camera;
 
     public void Start()
     {

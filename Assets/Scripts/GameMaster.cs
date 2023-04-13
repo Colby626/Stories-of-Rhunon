@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -43,6 +44,7 @@ public class GameMaster : MonoBehaviour
             instance.participants.Clear();
             instance.GetComponent<Pathfinding>().gameMaster = instance;
             instance.GetComponent<Pathfinding>().grid = instance.grid;
+            instance.GetComponent<CameraFollower>().camera = FindObjectOfType<CinemachineVirtualCamera>();
             for (int i = 0; i < participants.Count; i++)
             {
                 instance.participants.RemoveAt(0);
