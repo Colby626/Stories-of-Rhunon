@@ -172,7 +172,7 @@ public class CharacterSheet : MonoBehaviour
                 battleMaster.attackDone = true;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
-            else
+            else if (!gameMaster.movedOnTurn)
             {
                 //Pathfind to the enemy the player clicked
                 int maxMoveNodes = battleMaster.currentCharacter.characterStats.Speed / 5;
