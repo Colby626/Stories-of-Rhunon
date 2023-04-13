@@ -155,13 +155,11 @@ public class Movement : MonoBehaviour
 
     public void MoveOnPath(List<PathNode> path)
     {
-        /* I've never seen this error message so commenting this to improve performance
         if (path == null)
         {
-            Debug.Log("Path was null");
+            Debug.LogWarning("Path was null");
             return;
         }
-        */
 
         isMoving = true;
         startingNode = path[path.Count - 1]; //Sets the new starting location to whereever the end position is

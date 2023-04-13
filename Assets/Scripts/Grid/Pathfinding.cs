@@ -75,7 +75,7 @@ public class Pathfinding : MonoBehaviour
                 {
                     List<PathNode> finalPath = CalculatePath(endNode);
                     finalPath.RemoveAt(finalPath.Count - 1);
-                    return TrimPath(finalPath, maxNodes);
+                    return TrimPath(finalPath, furthestAnyoneCanMove);
                 }
                 return TrimPath(CalculatePath(endNode), maxNodes);
             }
