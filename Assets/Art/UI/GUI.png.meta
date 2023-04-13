@@ -382,6 +382,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -4057,8 +4069,8 @@ TextureImporter:
       GUI_143: -933999307648687398
       GUI_107: -8625450621194645383
       GUI_88: -3950770370805035295
-      GUI_94: -5086230126759848241
       GUI_68: 1123512737836850413
+      GUI_94: -5086230126759848241
       GUI_44: -8615771256981990170
       GUI_145: 4763504728398491674
       GUI_139: -2714955766945219296
