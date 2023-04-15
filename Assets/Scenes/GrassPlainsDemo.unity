@@ -50010,6 +50010,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6497457780812466449, guid: fc242547518354a45b9ba120ed6135f3,
+        type: 3}
+      propertyPath: m_text
+      value: This displays the current character's status or the status of whichever
+        character you are hovering over
+      objectReference: {fileID: 0}
     - target: {fileID: 6638368949337970279, guid: fc242547518354a45b9ba120ed6135f3,
         type: 3}
       propertyPath: m_fontColor.b

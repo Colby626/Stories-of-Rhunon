@@ -6,6 +6,7 @@ public class MouseOver : MonoBehaviour
 {
     private CharacterSheet character;
     private Image portrait;
+    private StatBar xpBar;
     private StatBar healthBar;
     private StatBar manaBar;
     private StatBar staminaBar;
@@ -37,6 +38,7 @@ public class MouseOver : MonoBehaviour
         manaBar = battleMaster.status.transform.GetChild(2).GetComponent<StatBar>();
         staminaBar = battleMaster.status.transform.GetChild(3).GetComponent<StatBar>();
         nameText = battleMaster.status.transform.GetChild(4).GetComponent<Text>();
+        xpBar = battleMaster.status.transform.GetChild(5).GetComponent<StatBar>();
         highlightMaterial = GameMaster.instance.highlightMaterial;
 
         overheadHealthBar = transform.GetChild(0).GetChild(0).GetComponent<StatBar>();
@@ -53,10 +55,12 @@ public class MouseOver : MonoBehaviour
         healthBar.SetBarMax(participant.MaxHealth);
         manaBar.SetBarMax(participant.MaxMana);
         staminaBar.SetBarMax(participant.MaxStamina);
+        xpBar.SetBarMax(participant.characterStats.XPtoLevelUp);
 
         healthBar.SetBar(participant.Health);
         manaBar.SetBar(participant.Mana);
         staminaBar.SetBar(participant.Stamina);
+        xpBar.SetBar(participant.characterStats.XP);
 
         portrait.sprite = participant.Portrait;
 

@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject battleHud;
     public GameObject optionsMenu;
     public GameObject statsMenu;
+    public GameObject areYouSureMenu;
     public Slider masterVolumeSlider;
     public Slider musicVolumeSlider;
     public Slider soundEffectVolumeSlider;
@@ -74,6 +75,10 @@ public class PauseMenu : MonoBehaviour
         if (statsMenu.activeSelf)
         {
             statsMenu.SetActive(false);
+        }
+        if (areYouSureMenu.activeSelf)
+        {
+            areYouSureMenu.SetActive(false);
         }
         if (battleMaster.showTutorial && !battleMaster.inventoryOpen && !battleMaster.levelupScreenOpen)
         {
