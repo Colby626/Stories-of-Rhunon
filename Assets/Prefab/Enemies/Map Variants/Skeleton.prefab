@@ -54,7 +54,7 @@ MonoBehaviour:
   wander: 1
   wanderDelayMin: 1
   wanderDelayMax: 20
-  distanceToLookForParticipants: 20
+  distanceToLookForParticipants: 15
   lookingForParticipants: 0
   isMoving: 0
   attackAtEnd: 0

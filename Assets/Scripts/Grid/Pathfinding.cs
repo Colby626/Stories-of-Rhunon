@@ -65,10 +65,8 @@ public class Pathfinding : MonoBehaviour
             PathNode currentNode = GetLowestFCostNode(openList);
             if (currentNode == endNode)
             {
-                if (endNode.occupied) //Only when an enemy chooses to move to the player during battle
+                if (endNode.occupied) 
                 {
-                    List<PathNode> finalPath = CalculatePath(endNode);
-                    finalPath.RemoveAt(finalPath.Count - 1);
                     return TrimPath(CalculatePath(endNode), maxNodes);
                 }
                 if (endNode.chest != null) //Only when a player clicks on a chest outside of battle

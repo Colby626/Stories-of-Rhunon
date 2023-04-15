@@ -176,7 +176,7 @@ public class CharacterSheet : MonoBehaviour
             {
                 //Pathfind to the enemy the player clicked
                 int maxMoveNodes = battleMaster.currentCharacter.characterStats.Speed / 5;
-                partyMovement.MoveOnPath(pathfinding.FindPath(GetComponentInParent<Movement>().occupyingNode, gameMaster.partyNode, maxMoveNodes)); //The true here causes a bug
+                partyMovement.MoveOnPath(pathfinding.FindPath(GetComponentInParent<Movement>().occupyingNode, gameMaster.partyNode, maxMoveNodes, true)); //The true here causes a bug
                 if (pathfinding.lastNodeRemoved == GetComponentInParent<Movement>().occupyingNode)
                 {
                     battleMaster.targetedEnemy = gameObject;
