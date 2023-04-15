@@ -127,6 +127,8 @@ public class BattleMaster : MonoBehaviour
     private GameObject constitutionText;
     [SerializeField]
     private GameObject enduranceText;
+    [SerializeField]
+    private GameObject levelUpNameText;
     #endregion
     #endregion
 
@@ -642,6 +644,14 @@ public class BattleMaster : MonoBehaviour
             namesList[i].text = turnOrder[i].GetComponent<CharacterSheet>().Name;
             healthBars[i].SetBarMax(turnOrder[i].GetComponent<CharacterSheet>().MaxHealth);
             healthBars[i].SetBar(turnOrder[i].GetComponent<CharacterSheet>().Health); 
+            if (turnOrder[i].GetComponent<CharacterSheet>().isPlayer)
+            {
+                portraits[i].transform.parent.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                portraits[i].transform.parent.GetComponent<Image>().color = Color.red;
+            }
         }
     }
 
@@ -857,6 +867,7 @@ public class BattleMaster : MonoBehaviour
         precisionText.GetComponent<TextMeshProUGUI>().text = "Precision: " + levelUpCharacter.characterStats.Precision.ToString();
         constitutionText.GetComponent<TextMeshProUGUI>().text = "Constitution: " + levelUpCharacter.characterStats.Constitution.ToString();
         enduranceText.GetComponent<TextMeshProUGUI>().text = "Endurance: " + levelUpCharacter.characterStats.Endurance.ToString();
+        levelUpNameText.GetComponent<TextMeshProUGUI>().text = levelUpCharacter.name;
     } //Called from button
 
     public void LevelUpStrength()

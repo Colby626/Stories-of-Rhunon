@@ -7,22 +7,29 @@ public class Chest : MonoBehaviour
     private bool enemiesNearby = true;
     private void Update()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, lockDistance);
-        enemiesNearby = false;
-        foreach (Collider2D collider in colliders)
+        if (!FindObjectOfType<BattleMaster>().GetComponent<BattleMaster>().battleStarted)
         {
-            if (collider.GetComponent<CharacterSheet>())
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, lockDistance);
+            enemiesNearby = false;
+            foreach (Collider2D collider in colliders)
             {
-                if (!collider.GetComponent<CharacterSheet>().isPlayer) //If they are an enemy, lock the chest
+                if (collider.GetComponent<CharacterSheet>())
                 {
-                    transform.GetChild(0).gameObject.SetActive(true);
-                    enemiesNearby = true;
+                    if (!collider.GetComponent<CharacterSheet>().isPlayer) //If they are an enemy, lock the chest
+                    {
+                        transform.GetChild(0).gameObject.SetActive(true);
+                        enemiesNearby = true;
+                    }
                 }
             }
+            if (!enemiesNearby) //If no enemies nearby, unlock the chest
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+            }
         }
-        if (!enemiesNearby) //If no enemies nearby, unlock the chest
+        else
         {
-            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(true);
         }
     } 
 }
