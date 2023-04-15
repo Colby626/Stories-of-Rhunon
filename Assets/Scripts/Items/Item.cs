@@ -8,6 +8,7 @@ public class Item : ScriptableObject
 
     new public string name = "New Item";    // Name of the item
     public Sprite icon = null;              // Item icon
+    public string blurb;
     public bool showInInventory = true;
     protected BattleMaster battleMaster; 
 

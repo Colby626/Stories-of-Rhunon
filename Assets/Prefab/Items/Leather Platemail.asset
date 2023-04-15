@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Leather Platemail
   icon: {fileID: -697369439, guid: 9beb12cc9815e774bb2a4b4410c0106c, type: 3}
+  blurb: Defense +2
   showInInventory: 1
   equipSlot: 1
   damageNegation: 2

@@ -26,7 +26,7 @@ public class BattleMaster : MonoBehaviour
     public GameObject damagePopUp;
     public bool battleStarted = false;
     [Tooltip("This is multiplied by furthestAnyoneCanMove and if someone is further away than that then they leave battle")]
-    public float giveUpDistance = 2;
+    public float giveUpDistance = 1.5f;
     [HideInInspector]
     public bool inventoryOpen = false;
     [HideInInspector]

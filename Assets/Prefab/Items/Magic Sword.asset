@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Magic Sword
   icon: {fileID: 140479744, guid: 4d014f4900039404aa723feafdf759c3, type: 3}
+  blurb: Damage +4
   showInInventory: 1
   equipSlot: 4
   damageNegation: 0
