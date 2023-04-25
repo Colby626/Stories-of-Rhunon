@@ -425,6 +425,7 @@ public class BattleMaster : MonoBehaviour
     {
         showTutorial = false;
         showTutorialPopups = false;
+        gameMaster.hoveringOverButton = false;
     }
 
     public void NextTurn()

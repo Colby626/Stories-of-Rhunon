@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 {
     public bool gamePaused = false;
     public GameObject pauseMenu;
+    public GameObject pauseButton;
     public GameObject battleHud;
     public GameObject optionsMenu;
     public GameObject statsMenu;
@@ -40,6 +41,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Unpause()
     {
+        pauseButton.SetActive(true);
         if (!battleMaster.inventoryOpen && !battleMaster.levelupScreenOpen)
         {
             battleMaster.openInventoryButton.SetActive(true);
@@ -59,13 +61,13 @@ public class PauseMenu : MonoBehaviour
                     }
                 }
             }
+            if (battleMaster.battleStarted)
+            {
+                battleHud.SetActive(true);
+                battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", true);
+            }
             audioMixer.SetFloat("PausedMasterVolume", 0);
             Time.timeScale = 1f;
-        }
-        if (battleMaster.battleStarted)
-        {
-            battleHud.SetActive(true);
-            battleHud.GetComponentInChildren<Animator>().SetBool("BattleStarted", true);
         }
         pauseMenu.SetActive(false);
         if (optionsMenu.activeSelf)
@@ -84,14 +86,16 @@ public class PauseMenu : MonoBehaviour
         {
             FindObjectOfType<CursorOverlapCircle>().EnableTutorialPopups();
         }
+        gameMaster.hoveringOverButton = false;
         gamePaused = false;
     }
 
-    private void Pause()
+    public void Pause()
     {
         battleHud.SetActive(false);
         battleMaster.openInventoryButton.SetActive(false);
         battleMaster.levelUpButton.SetActive(false);
+        pauseButton.SetActive(false);
         pauseMenu.SetActive(true);
         audioMixer.SetFloat("PausedMasterVolume", amountQuieterWhenPaused);
         FindObjectOfType<CursorOverlapCircle>().RemoveTutorialPopups();
