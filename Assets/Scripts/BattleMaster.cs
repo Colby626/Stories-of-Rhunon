@@ -688,6 +688,15 @@ public class BattleMaster : MonoBehaviour
 
         if (!battleStarted)
         {
+            while (defaultCharacter.isDead)
+            {
+                characterListIndex++;
+                if (characterListIndex > characterList.Count - 1)
+                {
+                    characterListIndex = 0;
+                }
+                defaultCharacter = characterList[characterListIndex];
+            }
             nextCharacterButton.SetActive(true);
             previousCharacterButton.SetActive(true);
             equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
@@ -721,6 +730,16 @@ public class BattleMaster : MonoBehaviour
     {
         if (!chest.transform.GetChild(0).gameObject.activeSelf) //If the chest isn't locked
         {
+            while (defaultCharacter.isDead)
+            {
+                characterListIndex++;
+                if (characterListIndex > characterList.Count - 1)
+                {
+                    characterListIndex = 0;
+                }
+                defaultCharacter = characterList[characterListIndex];
+            }
+
             inventoryOpen = true;
             pauseMenu.audioMixer.SetFloat("PausedMasterVolume", pauseMenu.amountQuieterWhenPaused);
             Time.timeScale = 0f;
@@ -755,7 +774,7 @@ public class BattleMaster : MonoBehaviour
         AudioManager.instance.Play("ChestClose");
         for (int i = 0; i < characterList.Count - 1; i++)
         {
-            if (characterList[i].characterStats.XP >= characterList[i].characterStats.XPtoLevelUp)
+            if (characterList[i].characterStats.XP >= characterList[i].characterStats.XPtoLevelUp && !characterList[i].isDead)
             {
                 levelUpButton.SetActive(true);
             }
@@ -789,7 +808,7 @@ public class BattleMaster : MonoBehaviour
         {
             for (int i = 0; i < characterList.Count - 1; i++)
             {
-                if (characterList[i].characterStats.XP >= characterList[i].characterStats.XPtoLevelUp)
+                if (characterList[i].characterStats.XP >= characterList[i].characterStats.XPtoLevelUp && !characterList[i].isDead)
                 {
                     levelUpButton.SetActive(true);
                 }
@@ -811,6 +830,16 @@ public class BattleMaster : MonoBehaviour
             characterListIndex = 0;
         }
         defaultCharacter = characterList[characterListIndex];
+
+        while (defaultCharacter.isDead)
+        {
+            characterListIndex++;
+            if (characterListIndex > characterList.Count - 1)
+            {
+                characterListIndex = 0;
+            }
+            defaultCharacter = characterList[characterListIndex];
+        }
 
         AudioManager.instance.Play("TurningPageInBookSound");
         inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
@@ -836,6 +865,16 @@ public class BattleMaster : MonoBehaviour
             characterListIndex = characterList.Count - 1;
         }
         defaultCharacter = characterList[characterListIndex];
+
+        while (defaultCharacter.isDead)
+        {
+            characterListIndex++;
+            if (characterListIndex > characterList.Count - 1)
+            {
+                characterListIndex = 0;
+            }
+            defaultCharacter = characterList[characterListIndex];
+        }
 
         AudioManager.instance.Play("TurningPageInBookSound");
         inventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
@@ -863,6 +902,16 @@ public class BattleMaster : MonoBehaviour
         }
         defaultCharacter = characterList[characterListIndex];
 
+        while (defaultCharacter.isDead)
+        {
+            characterListIndex++;
+            if (characterListIndex > characterList.Count - 1)
+            {
+                characterListIndex = 0;
+            }
+            defaultCharacter = characterList[characterListIndex];
+        }
+
         AudioManager.instance.Play("TurningPageInBookSound");
         chestInventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
         chestEquipmentManager.ClearEquipmentUI();
@@ -887,6 +936,16 @@ public class BattleMaster : MonoBehaviour
             characterListIndex = characterList.Count - 1;
         }
         defaultCharacter = characterList[characterListIndex];
+
+        while (defaultCharacter.isDead)
+        {
+            characterListIndex++;
+            if (characterListIndex > characterList.Count - 1)
+            {
+                characterListIndex = 0;
+            }
+            defaultCharacter = characterList[characterListIndex];
+        }
 
         AudioManager.instance.Play("TurningPageInBookSound");
         chestInventoryUI.GetComponent<InventoryUI>().ClearUI(); //Remove all items from inventory graphics
@@ -1081,7 +1140,7 @@ public class BattleMaster : MonoBehaviour
         {
             for (int i = 0; i < characterList.Count(); i++)
             {
-                if (characterList[i].characterStats.XP >= characterList[i].characterStats.XPtoLevelUp)
+                if (characterList[i].characterStats.XP >= characterList[i].characterStats.XPtoLevelUp && !characterList[i].isDead)
                 {
                     levelUpButton.SetActive(true);
                     levelUpCharacter = characterList[i];
