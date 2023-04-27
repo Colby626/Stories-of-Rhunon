@@ -96,6 +96,8 @@ public class BattleMaster : MonoBehaviour
     public GameObject inventory;
     public InventoryUI inventoryUI;
     public EquipmentManager equipmentManager;
+    public GameObject inventoryStatsText;
+    public GameObject chestStatsText;
     [SerializeField]
     private Image equipmentPortrait;
     public GameObject chestMenu;
@@ -689,6 +691,14 @@ public class BattleMaster : MonoBehaviour
             nextCharacterButton.SetActive(true);
             previousCharacterButton.SetActive(true);
             equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
+
+            inventoryStatsText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Strength " + defaultCharacter.characterStats.Strength;
+            inventoryStatsText.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Attunement " + defaultCharacter.characterStats.Attunement;
+            inventoryStatsText.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Reflexes " + defaultCharacter.characterStats.Reflexes;
+            inventoryStatsText.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Speed " + defaultCharacter.characterStats.Speed;
+            inventoryStatsText.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Precision " + defaultCharacter.characterStats.Precision;
+            inventoryStatsText.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Constitution " + defaultCharacter.characterStats.Constitution;
+            inventoryStatsText.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Endurance " + defaultCharacter.characterStats.Endurance;
         }
         else if (currentCharacter.isPlayer)
         {
@@ -696,6 +706,14 @@ public class BattleMaster : MonoBehaviour
             nextCharacterButton.SetActive(false);
             previousCharacterButton.SetActive(false);
             equipmentPortrait.sprite = currentCharacter.GetComponent<SpriteRenderer>().sprite;
+
+            inventoryStatsText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Strength " + currentCharacter.characterStats.Strength;
+            inventoryStatsText.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Attunement " + currentCharacter.characterStats.Attunement;
+            inventoryStatsText.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Reflexes " + currentCharacter.characterStats.Reflexes;
+            inventoryStatsText.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Speed " + currentCharacter.characterStats.Speed;
+            inventoryStatsText.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Precision " + currentCharacter.characterStats.Precision;
+            inventoryStatsText.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Constitution " + currentCharacter.characterStats.Constitution;
+            inventoryStatsText.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Endurance " + currentCharacter.characterStats.Endurance;
         }
     } 
 
@@ -718,6 +736,14 @@ public class BattleMaster : MonoBehaviour
             chestEquipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
 
             chestContents.UpdateChestUI();
+
+            chestStatsText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Strength " + defaultCharacter.characterStats.Strength;
+            chestStatsText.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Attunement " + defaultCharacter.characterStats.Attunement;
+            chestStatsText.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Reflexes " + defaultCharacter.characterStats.Reflexes;
+            chestStatsText.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Speed " + defaultCharacter.characterStats.Speed;
+            chestStatsText.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Precision " + defaultCharacter.characterStats.Precision;
+            chestStatsText.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Constitution " + defaultCharacter.characterStats.Constitution;
+            chestStatsText.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Endurance " + defaultCharacter.characterStats.Endurance;
         }
     }
 
@@ -793,6 +819,14 @@ public class BattleMaster : MonoBehaviour
         inventoryUI.GetComponent<InventoryUI>().UpdateUI();
         equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
         equipmentManager.UpdateEquipmentUI();
+
+        inventoryStatsText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Strength " + defaultCharacter.characterStats.Strength;
+        inventoryStatsText.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Attunement " + defaultCharacter.characterStats.Attunement;
+        inventoryStatsText.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Reflexes " + defaultCharacter.characterStats.Reflexes;
+        inventoryStatsText.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Speed " + defaultCharacter.characterStats.Speed;
+        inventoryStatsText.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Precision " + defaultCharacter.characterStats.Precision;
+        inventoryStatsText.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Constitution " + defaultCharacter.characterStats.Constitution;
+        inventoryStatsText.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Endurance " + defaultCharacter.characterStats.Endurance;
     } //Called from button
     public void PreviousCharacter() //remove buttons during battle
     {
@@ -810,6 +844,14 @@ public class BattleMaster : MonoBehaviour
         inventoryUI.GetComponent<InventoryUI>().UpdateUI();
         equipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
         equipmentManager.UpdateEquipmentUI();
+
+        inventoryStatsText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Strength " + defaultCharacter.characterStats.Strength;
+        inventoryStatsText.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Attunement " + defaultCharacter.characterStats.Attunement;
+        inventoryStatsText.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Reflexes " + defaultCharacter.characterStats.Reflexes;
+        inventoryStatsText.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Speed " + defaultCharacter.characterStats.Speed;
+        inventoryStatsText.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Precision " + defaultCharacter.characterStats.Precision;
+        inventoryStatsText.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Constitution " + defaultCharacter.characterStats.Constitution;
+        inventoryStatsText.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Endurance " + defaultCharacter.characterStats.Endurance;
     } //Called from button
 
     public void ChestNextCharacter() //remove buttons during battle
@@ -828,6 +870,14 @@ public class BattleMaster : MonoBehaviour
         chestInventoryUI.GetComponent<InventoryUI>().UpdateUI();
         chestEquipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
         chestEquipmentManager.UpdateEquipmentUI();
+
+        chestStatsText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Strength " + defaultCharacter.characterStats.Strength;
+        chestStatsText.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Attunement " + defaultCharacter.characterStats.Attunement;
+        chestStatsText.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Reflexes " + defaultCharacter.characterStats.Reflexes;
+        chestStatsText.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Speed " + defaultCharacter.characterStats.Speed;
+        chestStatsText.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Precision " + defaultCharacter.characterStats.Precision;
+        chestStatsText.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Constitution " + defaultCharacter.characterStats.Constitution;
+        chestStatsText.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Endurance " + defaultCharacter.characterStats.Endurance;
     } //Called from button
     public void ChestPreviousCharacter() //remove buttons during battle
     {
@@ -845,6 +895,14 @@ public class BattleMaster : MonoBehaviour
         chestInventoryUI.GetComponent<InventoryUI>().UpdateUI();
         chestEquipmentPortrait.sprite = defaultCharacter.GetComponent<SpriteRenderer>().sprite;
         chestEquipmentManager.UpdateEquipmentUI();
+
+        chestStatsText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Strength " + defaultCharacter.characterStats.Strength;
+        chestStatsText.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Attunement " + defaultCharacter.characterStats.Attunement;
+        chestStatsText.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Reflexes " + defaultCharacter.characterStats.Reflexes;
+        chestStatsText.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Speed " + defaultCharacter.characterStats.Speed;
+        chestStatsText.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Precision " + defaultCharacter.characterStats.Precision;
+        chestStatsText.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Constitution " + defaultCharacter.characterStats.Constitution;
+        chestStatsText.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Endurance " + defaultCharacter.characterStats.Endurance;
     } //Called from button
 
     #endregion
