@@ -125,7 +125,7 @@ PrefabInstance:
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
       propertyPath: characterStats.Precision
-      value: 20
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1383555037002574664, guid: ad33a31da65d383488651642118a93a9,
         type: 3}
@@ -474,6 +474,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2019071135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128575946561506808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6ad60dfbd06ac47b04e7a95274e309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  overheadHealthBar: {fileID: 0}
+  magicBar: {fileID: 0}
+  staminaBar: {fileID: 0}
+  xpBar: {fileID: 0}
 --- !u!114 &2461102825026229760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,19 +508,3 @@ MonoBehaviour:
   overheadNameText: {fileID: 0}
   highlightMaterial: {fileID: 0}
   isHighlighted: 0
---- !u!114 &2019071135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5128575946561506808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef6ad60dfbd06ac47b04e7a95274e309, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  overheadHealthBar: {fileID: 0}
-  magicBar: {fileID: 0}
-  staminaBar: {fileID: 0}
